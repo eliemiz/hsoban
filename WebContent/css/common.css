@@ -1,1 +1,128 @@
 @charset "UTF-8";
+
+/* common */
+html, body, h1, h2, h3, h4, h5, h6, input, textarea, select, button, div,
+	span, p, label, th, td, ul, ol, li, dl, dt, dd {
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+}
+
+body {
+	color: #464646;
+	width: 1260px;
+	margin: auto;
+	padding: 0px 40px 0px 20px;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+.clear_fix:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+
+/* color */
+.c_thatch {
+	color: #bba59b;
+}
+
+.b_thatch {
+	background-color: #bba59b;
+	color: white;
+}
+
+/* input */
+input[type=text], input[type=password], input[type=email], input[type=number]
+	{
+	height: 30px;
+	border: 1px solid #e7e7e7;
+	border-radius: 0px;
+	padding-left: 5px;
+	outline: none;
+	color: #464646;
+	outline: none;
+}
+
+/* button */
+input[type=button], input[type=submit] {
+	outline: none;
+}
+
+.btn {
+	border: 1px solid #e7e7e7;
+	cursor: pointer;
+	height: 30px;
+	padding: 0px 30px;
+	font-weight: bolder;
+}
+
+.btn:hover {
+	background-color: #464646;
+	color: white;
+}
+
+.btn_normal {
+	background-color: white;
+	color: inherit;
+}
+
+.btn_thatch {
+	background-color: #bba59b;
+	color: white;
+}
+
+.btn_black {
+	background-color: #464646;
+	color: white;
+}
+
+/* table */
+table {
+	width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0px;
+}
+
+thead {
+	font-weight: bold;
+	font-size: 15px;
+}
+
+thead td {
+	border: 0px;
+}
+
+th {
+	line-height: 20px;
+	padding: 10px 0px;
+	border-top: 1px solid #e7e7e7;
+	border-bottom: 1px solid #e7e7e7;
+	background: #f9f9f9;
+}
+
+td {
+	line-height: 25px;
+	padding: 10px 0px;
+	border-top: 1px solid #e7e7e7;
+	border-bottom: 1px solid #e7e7e7;
+	word-break: keep-all;
+}
+
+td.td_left {
+	text-align: left;
+}
+
+td.td_center {
+	text-align: center;
+}
+
+@media screen and (max-width: 1280px) {
+	body {
+		width: 100%;
+	}
+}

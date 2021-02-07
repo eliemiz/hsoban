@@ -1,14 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" %>
-<% request.setCharacterEncoding("UTF-8");%>
+    pageEncoding="UTF-8" import="java.util.*" import="java.net.*" %>
+<% 
+	request.setCharacterEncoding("UTF-8");
+	String path = request.getContextPath();
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="/hsoban/css/common.css">
 </head>
 <body>
-	test string	
+	<h1>footer</h1>
 </body>
 </html>
