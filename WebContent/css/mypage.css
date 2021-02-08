@@ -1,0 +1,355 @@
+@charset "UTF-8";
+
+.bbs-tit {
+    margin-bottom: 80px;
+    margin-top: 80px;
+    text-align: center;
+    font-size: 30px;
+    font-family: THELuxmB, 'THELuxmB';
+}
+ul.mypage_tab {
+    width: 100%;
+    overflow: hidden;
+    text-align: center;
+}
+ul.mypage_tab a.on {
+    color: #ffffff;
+    background: #464646;
+    border: #464646 1px solid;
+}
+ a.on {
+    color: #ffffff;
+    background: #464646;
+    border: #464646 1px solid;
+}
+ul.mypage_tab a {
+    display: inline-block;
+    width: 150px;
+    line-height: 32px;
+    color: #464646;
+    background: #f9f9f9;
+    border: #e7e7e7 1px solid;
+    font-weight: bold;
+    transition: all .2s linear;
+    -webkit-transition: all .2s linear;
+    transition: all .2s linear;
+    -ms-transition: all .2s linear;
+    -khtml-transition: all .2s linear;
+    o-transition: all .2s linear;
+}
+#mypage .page-body {
+    padding: 25px 20px 0;
+}
+p.mypage_s_tit {
+    font-weight: 600;
+    font-size: 15px;
+    color: #464646;
+    margin-bottom: 10px;
+}
+#mypage .info {
+    zoom: 1;
+    overflow: hidden;
+    line-height: 1.5;
+}
+.my-btn-area {
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+    margin-top: 30px;
+}
+.my-btn-area a.red {
+    background: #464646;
+    color: #ffffff;
+}
+.my-btn-area a {
+    display: inline-block;
+    margin-left: 5px;
+    line-height: 30px;
+    color: #464646;
+    padding: 0px 30px;
+    background: #ffffff;
+    border: #e7e7e7 1px solid;
+    transition: all .2s linear;
+    -webkit-transition: all .2s linear;
+    transition: all .2s linear;
+    -ms-transition: all .2s linear;
+    -khtml-transition: all .2s linear;
+    o-transition: all .2s linear;
+}
+#myOrder .page-body {
+    padding: 25px 20px;
+}
+.table-d2-list {
+    border-top: 1px solid #e7e7e7;
+}
+.paging {
+    padding-top: 20px;
+    height: 17px;
+    text-align: center;
+    line-height: 0;
+    vertical-align: top;
+}
+#myOrder .foot-dsc {
+    margin-top: 20px;
+}
+.tb-center {
+    text-align: center;
+}
+.tb-left, .tb-center, .tb-right {
+    padding: 0 10px;
+}
+.table-d2-list thead th {
+    padding: 10px 0;
+    border-bottom: 1px solid #e7e7e7;
+    color: #a5a2a2;
+    line-height: 20px;
+}
+body, h1, h2, h3, h4, h5, h6, table, input, select, textarea, a {
+    font-size: 12px;
+    line-height: 1.25;
+    color: #777;
+    font-family: "NanumGothic", AppleGothic, Helvetica, sans-serif;
+}
+.table-d2-list tbody td {
+    padding: 10px 0;
+    border-bottom: 1px solid #e7e7e7;
+}
+#myWish .product {
+    color: #464646;
+    line-height: 25px;
+    font-weight: bold;
+}
+.tb-left {
+    text-align: left;
+}
+#myWish .wish-opt {
+    color: #464646;
+}
+#myWish .tb-btns a.basket {
+    line-height: 30px;
+    color: #ffffff;
+    padding: 0px 15px;
+    background: #bba59b;
+    border: #e7e7e7 1px solid;
+    transition: all .2s linear;
+    -webkit-transition: all .2s linear;
+    transition: all .2s linear;
+    -ms-transition: all .2s linear;
+    -khtml-transition: all .2s linear;
+    o-transition: all .2s linear;
+}
+#myWish .tb-btns a {
+    display: block;
+    margin-bottom: 3px;
+}
+a:-webkit-any-link {
+    color: -webkit-link;
+    cursor: pointer;
+    text-decoration: underline;
+}
+#myWish .tb-btns a.delete {
+    line-height: 30px;
+    color: #464646;
+    padding: 0px 15px;
+    background: #ffffff;
+    border: #e7e7e7 1px solid;
+    transition: all .2s linear;
+    -webkit-transition: all .2s linear;
+    transition: all .2s linear;
+    -ms-transition: all .2s linear;
+    -khtml-transition: all .2s linear;
+    o-transition: all .2s linear;
+}
+#myWish .btn-foot {
+    font-size: 0;
+    line-height: 0;
+    margin-top: 5px;
+    overflow: hidden;
+}
+#myWish .btn-foot a {
+    margin-right: 5px;
+}
+#myWish .btn-foot a.delete {
+    float: left;
+    margin-right: 5px;
+    line-height: 30px;
+    color: #464646;
+    padding: 0px 5px;
+    background: #ffffff;
+    border: #e7e7e7 1px solid;
+    transition: all .2s linear;
+    -webkit-transition: all .2s linear;
+    transition: all .2s linear;
+    -ms-transition: all .2s linear;
+    -khtml-transition: all .2s linear;
+    o-transition: all .2s linear;
+}
+#myWish .table-d2-list table .txt-input2 {
+    width: 25px;
+}
+.txt-input2 {
+    padding: 2px 0 0 2px;
+    height: 17px;
+    line-height: 17px;
+    border: 1px solid #dcdcdc;
+}
+#orderSt .tit-pop {
+    padding-bottom: 3px;
+    border-bottom: 1px solid #d0d0d0;
+}
+#orderSt .txt-date {
+    margin-top: 10px;
+    padding: 7px 35px;
+    border: 5px solid #ededed;
+    
+}
+#orderInfo .table-w {
+    margin-top: 10px;
+}
+.tb-right {
+    text-align: right;
+}
+.btn_black {
+	background-color: #3e3e3e;
+	color: white;
+}
+#personInfo .person-tb {
+    border: 1px solid #dedede;
+}
+.tb-l {
+    text-align: left;
+}
+.pl-6 {
+    padding-left: 6px;
+}
+.pl-30 {
+    padding-left: 15px;
+}
+#join .btn-area {
+    text-align: center;
+    margin: 10px 0;
+}
+#join .btn-area a.write {
+    display: inline-block;
+    margin: 0 2px;
+    line-height: 35px;
+    color: #ffffff;
+    padding: 0px 30px;
+    background: #bba59b;
+    border: #e7e7e7 1px solid;
+}
+<!-- -->
+#join .btn-area a {
+    font-weight: bold;
+    transition: all .2s linear;
+    -webkit-transition: all .2s linear;
+    transition: all .2s linear;
+    -ms-transition: all .2s linear;
+    -khtml-transition: all .2s linear;
+    o-transition: all .2s linear;
+}
+#join .btn-area a.return {
+    display: inline-block;
+    margin: 0 2px;
+    line-height: 35px;
+    color: #464646;
+    padding: 0px 30px;
+    background: #ffffff;
+    border: #e7e7e7 1px solid;
+}
+#mySecede .dbox-wrap .d-box {
+    margin-right: 20px;
+    padding: 30px 140px 10px 20px;
+    background: url(/images/d3/modern_simple/img_secede_box.gif) no-repeat right 0;
+}
+.table-d2-view {
+    margin-top: 5px;
+    border: 2px solid #cdcdcd;
+    border-bottom: 1px solid #cdcdcd;
+}
+#mySecede .btn-foot {
+    margin-top: 25px;
+    font-size: 0;
+    line-height: 0;
+    text-align: center;
+}
+#mySecede .scede-frm table textarea {
+    width: 98%;
+    height: 175px;
+}
+.txt-area1 {
+    overflow-y: scroll;
+    padding: 2px 0 0 2px;
+    line-height: 17px;
+    border: 1px solid #e2e9ef;
+    border-top: 1px solid #aaadb2;
+}
+button, input, select, textarea, a {
+    vertical-align: middle;
+}
+#mySecede .dbox-wrap .d-box {
+    margin-right: 20px;
+    padding: 30px 140px 10px 20px;
+    background: url(/images/d3/modern_simple/img_secede_box.gif) no-repeat right 0;
+}
+#mySecede .dbox-wrap li {
+    padding-left: 10px;
+    padding-bottom: 20px;
+    background: url(/images/d3/modern_simple/common/bull_h3_sqr_gray.gif) no-repeat 0 5px;
+}
+li {
+    list-style: none;
+}
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+legend {
+    display: block;
+    padding-inline-start: 2px;
+    padding-inline-end: 2px;
+    border-width: initial;
+    border-style: none;
+    border-color: initial;
+    border-image: initial;
+}
+fieldset {
+    display: block;
+    margin-inline-start: 2px;
+    margin-inline-end: 2px;
+    padding-block-start: 0.35em;
+    padding-inline-start: 0.75em;
+    padding-inline-end: 0.75em;
+    padding-block-end: 0.625em;
+    min-inline-size: min-content;
+    border-width: 2px;
+    border-style: groove;
+    border-color: threedface;
+    border-image: initial;
+}
+colgroup {
+    display: table-column-group;
+}
+hr, caption, legend {
+    display: none;
+}
+img, fieldset, button {
+    border: 0 none;
+}
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+.table-d2-view th {
+    font-weight: bold;
+    border-right: 1px solid #e3e3e3;
+    background-color: #ededed;
+}
+.table-d2-view th, .table-d2-view td {
+    padding: 6px 0 5px;
+    border-bottom: 1px solid #cdcdcd;
+}
+col {
+    display: table-column;
+}
