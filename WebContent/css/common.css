@@ -26,6 +26,14 @@ a {
 	clear: both;
 }
 
+.fL {
+	float: left;
+}
+
+.fR {
+	float: right;
+}
+
 /* color */
 .c_thatch {
 	color: #bba59b;
@@ -36,9 +44,13 @@ a {
 	color: white;
 }
 
+.c_red {
+	color: red;
+}
+
 /* input */
-input[type=text], input[type=password], input[type=email], input[type=number]
-	{
+input[type=text], input[type=password], input[type=email], input[type=number],
+	input[type=textarea], select {
 	height: 30px;
 	border: 1px solid #e7e7e7;
 	border-radius: 0px;
@@ -113,12 +125,28 @@ td {
 	word-break: keep-all;
 }
 
+th.th_left {
+	text-align: left;
+}
+
+th.th_center {
+	text-align: center;
+}
+
+th.th_right {
+	text-align: right;
+} 
+
 td.td_left {
 	text-align: left;
 }
 
 td.td_center {
 	text-align: center;
+}
+
+td.td_right {
+	text-align: right;
 }
 
 @media screen and (max-width: 1280px) {
