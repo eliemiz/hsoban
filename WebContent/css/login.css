@@ -27,4 +27,7 @@ input[type=button], input[type=submit] {
 	background-color: #ccb099;
 	color: white;
 }
+.btn_gray2{
+	color: #818181;
+}
 
