@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="<%=path%>/css/login.css">
 <style>
 pre {
-	font-size:2px;
+	font-size:3px;
 }
 table {
 	border-collapse:collapse;
@@ -22,12 +22,13 @@ th{
 	height:100px;
 	width:600px;
 	background:#f7f7f7; 
-	font-size:2px;
+	font-size:3px;
 	text-align:center;
 }
 </style>
 </head>
 <body>
+<jsp:include page="../common/header.jsp"/>
 <h2 align="center">아이디/비밀번호 찾기</h2>
 <br><br><br>
 <pre align="center">
@@ -45,5 +46,6 @@ th{
 <span><input type="button" class="btn btn_color" value="로그인" style="height:40px; width:230px;"></span></a></div>
 </div>
 </form>
+<jsp:include page="../common/footer.jsp"/>
 </body>
 </html>

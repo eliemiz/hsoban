@@ -31,7 +31,7 @@ td{
 }
 p {
 	width : 320em;
-	height : 40em;
+	height : 50em;
 	border : 1px solid lightray;
 	font-size:3px;
 	margin:auto;
@@ -44,6 +44,7 @@ pre {
 </style>
 </head>
 <body>
+<jsp:include page="../common/header.jsp"/>
 <h2 align="center">회원정보</h2><br>
 <form method="post">
 <table border align="center">
@@ -106,8 +107,13 @@ pre {
 </table><br>
 <table border align="center" width="960px">
 <tr><th>&nbsp;<input type="checkbox">전체동의</th></tr>
-<tr><th><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox">이용약관&nbsp;<input type="button" value="내용보기" action="#terms">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<input type="checkbox">개인정보 수집 및 이용 안내&nbsp;<input type="button" value="내용보기"><br><br><hr style="border:dashed 1px;"><br>
+<tr><th><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox">이용약관&nbsp;
+	<a href="#terms">
+	<input type="button" class="btn btn_gray2" value="내용보기" style="height:22px; width:110px;"></a></span>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<input type="checkbox">개인정보 수집 및 이용 안내&nbsp;<span><a href="#inform">
+	<input type="button" class="btn btn_gray2" value="내용보기" style="height:22px; width:110px;"></a></span>
+	<br><br><hr style="border:dashed 1px;"><br>
 	<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox">마케팅 수신동의&nbsp;(&nbsp;<input type="checkbox">이메일&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox">&nbsp;SMS)<br><br>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;쇼핑몰에서 제공하는 신상품 소식/할인쿠폰을 무상으로 보내드립니다!<br>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;단, 상품 구매 정보는 수신동의 여부 관계없이 발송합니다.<br>
@@ -258,8 +264,8 @@ pre {
 ② “몰”과 이용자 간에 제기된 전자상거래 소송에는 한국법을 적용합니다.<br><br>
 본 약관은 2013년05월21일부터 적용됩니다.<br>
 </p><br>
-<h6 align="center">개인정보 수집·이용</h6>
-<table border width="960" align="center" text-align="center">
+<h6 align="center" id="inform">개인정보 수집·이용</h6>
+<table border width="960" align="center">
 <tr><th>구분</th><th>목적</th><th>항목</th><th>보유기간</th></tr>
 <col width="10%"><col width="30%"><col width="30%"><col width="30%">
 <tr><td style="background:#f7f7f7;">필수정보</td><td>회원제 서비스 이용 / 본인확인</td><td>이름, 아이디, 비밀번호, 생일, 성별, 이메일, 주소, 휴대폰</td><td>회원탈퇴 후 5일까지</td></tr>
@@ -272,5 +278,6 @@ pre {
 
 
 </pre>
+<jsp:include page="../common/footer.jsp"/>
 </body>
 </html>
