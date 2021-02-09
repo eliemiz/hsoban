@@ -5,14 +5,14 @@ html, body, h1, h2, h3, h4, h5, h6, input, textarea, select, button, div,
 	span, p, label, th, td, ul, ol, li, dl, dt, dd {
 	margin: 0px;
 	padding: 0px;
-	box-sizing: border-box;
 }
 
-body {
-	color: #464646;
-	width: 1260px;
+.content_wrap {
+	width: 1200px;
 	margin: auto;
 	padding: 0px 40px 0px 20px;
+	color: #464646;
+	box-sizing: border-box;
 }
 
 a {
@@ -135,7 +135,7 @@ th.th_center {
 
 th.th_right {
 	text-align: right;
-} 
+}
 
 td.td_left {
 	text-align: left;
@@ -149,8 +149,8 @@ td.td_right {
 	text-align: right;
 }
 
-@media screen and (max-width: 1280px) {
-	body {
+@media screen and (max-width: 1217px) {
+	.content_wrap {
 		width: 100%;
 	}
 }
