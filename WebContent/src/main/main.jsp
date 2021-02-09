@@ -19,16 +19,14 @@
 	<div id="f2s-rolling-container1" class="f2s-swiper">
 		<div class="swiper-container">
 			<div class="swiper-wrapper">                              
-				<div class="swiper-slide"><img src="img/mainroll1.jpg" alt="" /></div>                                
-				<div class="swiper-slide"><img src="img/mainroll2.jpg" alt="" /></div>                           
+				<div class="swiper-slide"><img src="<%=path%>/img/common/mainroll1.jpg" alt="" /></div>                                
+				<div class="swiper-slide"><img src="<%=path%>/img/common/mainroll2.jpg" alt="" /></div>                           
 			</div>
-				<div class="swiper-pagination"></div>
-				<div class="swiper-button-prev"></div>
-				<div class="swiper-button-next"></div>
+				
 		</div>
 	</div>
 </div>
-<div>
+<!-- <div>
 	<div>
 	    <p><span>Bowl</span><a href="" alt="">전체보기</a></p>
                         <ul>
@@ -68,12 +66,13 @@
 		<li>42,000원</li>
 			    	    </ul>
 	    	    	    	
-	</div>
+	</div> -->
 <jsp:include page="../common/side.jsp"/>
 
-<h2>TEST1234</h2>
-<h2>TEST1234</h2>
-<h2>TEST1234</h2>
+
+<jsp:include page="../common/footer.jsp"/>
+
+
 
 
 </body>
