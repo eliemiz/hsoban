@@ -11,7 +11,10 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="<%=path%>/css/login.css">
 <style>
-
+body {
+   text-align: center;
+   margin-top: 50px;
+}
 </style>
 </head>
 <body>
@@ -19,11 +22,11 @@
 <h2 align="center">로그인</h2>
 <br><br>
 <form align="center" method="post">
-아이디<br>
-<input type="text" name="id" size="30"><br>
-비밀번호<br>
-<input type="password" name="pass" size="30"><br>
-<input type="checkbox" name="safety" value="1" checked>보안접속<br>
+<div style="padding-right:170px; font-family: 'Nanum Gothic'; font-size: 12px;">아이디<br></div>
+<input type="text" name="id" size="28"><br><br>
+<div style="padding-right:160px; font-family: 'Nanum Gothic'; font-size: 12px;">비밀번호<br></div>
+<input type="password" name="pass" size="28"><br><br>
+<div style="padding-right:160px;"><input type="checkbox" name="safety" value="1" checked>보안접속</div>
 <div style="text-align:center;"><a href="main.jsp">
 <span><input type="button" class="btn btn_black" value="로그인" style="height:40px; width:230px;"></span></a></div></form><!-- 메인이동 -->
 <br><hr width="230"><br>

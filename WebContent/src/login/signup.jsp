@@ -11,34 +11,25 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="<%=path%>/css/login.css">
 <style>
+body {
+   text-align: center;
+   margin-top: 50px;
+}
 table {
 	border-collapse:collapse;
 }
-th{
-	padding : 4px;
-	height:40px;
-	width:140px;
-	background:#f7f7f7; 
-	font-size:2px;
-	text-align:left;
-}
-td{
-	padding : 4px;
-	height : 40px;
-	width : 800px;
-	font-size:1px; 
-	text-align:left; 
-}
+
 p {
-	width : 320em;
-	height : 50em;
+	width : 97em;
+	height : 15em;
 	border : 1px solid lightray;
-	font-size:3px;
+	font-size:12px;
+	text-align:left;
 	margin:auto;
 	border:solid 1px;
 }
 pre {
-	font-size : 2px;
+	font-size : 12px;
 }
 .scroll { overflow : scroll; }
 </style>
@@ -48,18 +39,18 @@ pre {
 <h2 align="center">회원정보</h2><br>
 <form method="post">
 <table border align="center">
-<tr><th>&nbsp;&nbsp;■ 이름</th>
-	<td>&nbsp;<input type="text" size="10"/></td></tr>
-<tr><th>&nbsp;&nbsp;■ 아이디</th>
-	<td>&nbsp;
-	<input type="text" size="10"/><span>
+<tr><th class="th_left">■ 이름</th>
+	<td class="td_left"><input type="text" size="16"/></td></tr>
+<tr><th class="th_left">■ 아이디</th>
+	<td class="td_left">
+	<input type="text" size="16"/><span>
 	<input type="button" class="btn btn_black" value="중복확인" style="height:22px; width:110px;"></span></td></tr>
-<tr><th>&nbsp;&nbsp;■ 비밀번호</th>
-	<td>&nbsp;<input type="password" size="10"/>&nbsp;*영문 대소문자/숫자/특수문자를 혼용하여 2종류 10~16자 또는 3종류 8~16자</td></tr>
-<tr><th>&nbsp;&nbsp;■ 비밀번호 확인</th>
-	<td>&nbsp;<input type="password" size="10"/></td></tr>
-<tr><th>&nbsp;&nbsp;■ 생일/성별</th>
-	<td>&nbsp;<select>
+<tr><th class="th_left">■ 비밀번호</th>
+	<td class="td_left"><input type="password" size="16"/>&nbsp;*영문 대소문자/숫자/특수문자를 혼용하여 2종류 10~16자 또는 3종류 8~16자</td></tr>
+<tr><th class="th_left">■ 비밀번호 확인</th>
+	<td class="td_left"><input type="password" size="16"/></td></tr>
+<tr><th class="th_left">■ 생일/성별</th>
+	<td class="td_left"><select>
 	<option>선택</option><option>1920</option><option>1921</option><option>1922</option><option>1923</option><option>1924</option><option>1925</option><option>1926</option><option>1927</option><option>1928</option><option>1929</option>
 	<option>1930</option><option>1931</option><option>1932</option><option>1933</option><option>1934</option><option>1935</option><option>1936</option><option>1937</option><option>1938</option><option>1939</option>
 	<option>1940</option><option>1941</option><option>1942</option><option>1943</option><option>1944</option><option>1945</option><option>1946</option><option>1947</option><option>1948</option><option>1949</option>
@@ -81,49 +72,48 @@ pre {
 	<option>31</option></select>일&nbsp;&nbsp;&nbsp;
 	<input type="radio" name="gender" value="남">남&nbsp;&nbsp;<input type="radio" name="gender" value="여">여
 	</td></tr>
-<tr><th>&nbsp;&nbsp;■ 우편번호</th>
-	<td>&nbsp;<input type="text" size="1">&nbsp;-&nbsp;<input type="text" size="1">&nbsp;
-	<span><input type="button" class="btn btn_black" value="주소검색" style="height:22px; width:110px;"></span></td></tr>
-<tr><th>&nbsp;&nbsp;■ 집주소</th>
-	<td>&nbsp;<input type="text" size="30"/></td></tr>
-<tr><th>&nbsp;&nbsp;■ 상세주소</th>
-	<td>&nbsp;<input type="text" size="30"/></td></tr>
-<tr><th>&nbsp;&nbsp;■ 이메일</th>
-	<td>&nbsp;<input type="text" size="5"/>&nbsp;@&nbsp;<input type="text" size="10"/>
+<tr><th class="th_left">■ 우편번호</th>
+	<td class="td_left"><input type="text" size="8" id="zipNo" name="zipNo"/>&nbsp;
+	<span><input type="button" onClick="goPopup();" class="btn btn_black" value="주소검색" style="height:22px; width:110px;"></span></td></tr>
+<tr><th class="th_left">■ 집주소</th>
+	<td class="td_left"><input type="text" size="60" id="roadAddrPart1" name="roadAddrPart1"/></td></tr>
+<tr><th class="th_left">■ 상세주소</th>
+	<td class="td_left"><input type="text" size="60" id="addrDetail" name="addrDetail"/></td></tr>
+<tr><th class="th_left">■ 이메일</th>
+	<td class="td_left"><input type="text" size="10"/>&nbsp;@&nbsp;<input type="text" size="10"/>
 	<select><option>직접입력</option><option>naver.com</option><option>hotmail.com</option><option>hanmail.net</option><option>yahoo.com</option><option>nate.com</option><option>korea.com</option><option>chol.com</option>
 		<option>gmail.com</option><option>netian.com</option></select>&nbsp;&nbsp;
 		<span><input type="button" class="btn btn_black" value="중복확인" style="height:22px; width:110px;"></span>
 	</td></tr>
-<tr><th>&nbsp;&nbsp;■ 휴대폰</th>
-	<td>&nbsp;<select><option>선택</option><option>010</option><option>011</option><option>016</option><option>017</option><option>018</option><option>019</option></select>-
-	<input type="text" size="2">-<input type="text" size="2"></td></tr>
-	
-<tr><th>&nbsp;&nbsp;연락처</th>
-	<td>&nbsp;<select><option>선택</option><option>010</option><option>011</option><option>016</option><option>017</option><option>018</option><option>019</option>
+<tr><th class="th_left">■ 휴대폰</th>
+	<td class="td_left"><select><option>선택</option><option>010</option><option>011</option><option>016</option><option>017</option><option>018</option><option>019</option></select>&nbsp;-&nbsp;
+	<input type="text" size="5">&nbsp;-&nbsp;<input type="text" size="5"></td></tr>
+<tr><th class="th_left">연락처</th>
+	<td class="td_left">&nbsp;<select><option>선택</option><option>010</option><option>011</option><option>016</option><option>017</option><option>018</option><option>019</option>
 	<option>서울(02)</option><option>경기(031)</option><option>인천(032)</option><option>강원(033)</option><option>충남(041)</option><option>대전(042)</option><option>충북(043)</option><option>세종(044)</option>
 	<option>부산(051)</option><option>울산(052)</option><option>대구(053)</option><option>경북(054)</option><option>경남(055)</option><option>전남(061)</option><option>광주(062)</option><option>전북(063)</option>
 	<option>제주(064)</option><option>KT(0502)</option><option>온세텔레콤(0503)</option><option>온세텔레콤(0504)</option><option>다콤(0505)</option><option>온세텔레콤(0507)</option><option>한국케이블텔레콤(0508)</option>
-	<option>인터넷전화(070)</option><option>착신 과금 서비스(080)</option></select>-<input type="text" size="2">-<input type="text" size="2"></td></tr>
+	<option>인터넷전화(070)</option><option>착신 과금 서비스(080)</option></select>&nbsp;-&nbsp;<input type="text" size="5">&nbsp;-&nbsp;<input type="text" size="5"></td></tr>
 </table><br>
-<table border align="center" width="960px">
-<tr><th>&nbsp;<input type="checkbox">전체동의</th></tr>
-<tr><th><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox">이용약관&nbsp;
+<table border align="center" width="1170px">
+<tr><th class="th_left"><input type="checkbox">전체동의</th></tr>
+<tr><th class="th_left"><br><input type="checkbox">&nbsp;&nbsp;&nbsp;이용약관&nbsp;
 	<a href="#terms">
 	<input type="button" class="btn btn_gray2" value="내용보기" style="height:22px; width:110px;"></a></span>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	<input type="checkbox">개인정보 수집 및 이용 안내&nbsp;<span><a href="#inform">
 	<input type="button" class="btn btn_gray2" value="내용보기" style="height:22px; width:110px;"></a></span>
 	<br><br><hr style="border:dashed 1px;"><br>
-	<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox">마케팅 수신동의&nbsp;(&nbsp;<input type="checkbox">이메일&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox">&nbsp;SMS)<br><br>
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;쇼핑몰에서 제공하는 신상품 소식/할인쿠폰을 무상으로 보내드립니다!<br>
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;단, 상품 구매 정보는 수신동의 여부 관계없이 발송합니다.<br>
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;제공 동의를 하지 않으셔도 서비스 이용에는 문제가 없습니다.<br><br>
+	<input type="checkbox">마케팅 수신동의&nbsp;(&nbsp;<input type="checkbox">이메일&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox">&nbsp;SMS)<br><br>
+	&nbsp;&nbsp;&nbsp;쇼핑몰에서 제공하는 신상품 소식/할인쿠폰을 무상으로 보내드립니다!<br>
+	&nbsp;&nbsp;&nbsp;단, 상품 구매 정보는 수신동의 여부 관계없이 발송합니다.<br>
+	&nbsp;&nbsp;&nbsp;제공 동의를 하지 않으셔도 서비스 이용에는 문제가 없습니다.<br><br>
 	</th></tr>
 </table><br>
 <div style="text-align:center;">
 <span><input type="button" class="btn btn_black" value="동의하고 가입완료" style="height:40px; width:230px;"></span></div> <!-- 메인페이지로이동 -->
 </form>
-<br><hr width="960"><h6 align="center" id="terms">이용약관</h6>
+<br><br><hr width="1170"><br><br><h3 align="center" id="terms">이용약관</h3>
 <p class="scroll">
 인터넷 쇼핑몰 『화소반몰 사이버 몰』회원 약관<br><br>
 제1조(목적)<br>
@@ -264,12 +254,11 @@ pre {
 ② “몰”과 이용자 간에 제기된 전자상거래 소송에는 한국법을 적용합니다.<br><br>
 본 약관은 2013년05월21일부터 적용됩니다.<br>
 </p><br>
-<h6 align="center" id="inform">개인정보 수집·이용</h6>
-<table border width="960" align="center">
-<tr><th>구분</th><th>목적</th><th>항목</th><th>보유기간</th></tr>
-<col width="10%"><col width="30%"><col width="30%"><col width="30%">
-<tr><td style="background:#f7f7f7;">필수정보</td><td>회원제 서비스 이용 / 본인확인</td><td>이름, 아이디, 비밀번호, 생일, 성별, 이메일, 주소, 휴대폰</td><td>회원탈퇴 후 5일까지</td></tr>
-<tr><td style="background:#f7f7f7;">선택정보</td><td>마케팅 활용(이벤트, 맞줌형 광고)</td><td>휴대폰, 이메일</td><td>회원탈퇴 후 5일까지</td></tr>
+<h3 align="center" id="inform">개인정보 수집·이용</h3>
+<table border align="center">
+<tr><th class="th_center">구분</th><th class="th_center">목적</th><th class="th_center">항목</th><th class="th_center">보유기간</th></tr>
+<tr><th class="th_center">필수정보</td><td class="td_center">>회원제 서비스 이용 / 본인확인</th><td class="td_center">이름, 아이디, 비밀번호, 생일, 성별, 이메일, 주소, 휴대폰</td><td class="td_center">회원탈퇴 후 5일까지</td></tr>
+<tr><th class="th_center">선택정보</td><td class="td_center">>마케팅 활용(이벤트, 맞줌형 광고)</th><td class="td_center">휴대폰, 이메일</td><td class="td_center">회원탈퇴 후 5일까지</td></tr>
 </table><br><br>
 <pre align="center"><strong>귀하께서는 쇼핑몰에서 위와 같이 수집하는 개인정보에 대해, 동의하지 않거나 개인정보를 기재하지 않음으로써 거부할 수 있습니다.
 다만, 이때 회원에게 제공되는 서비스가 제한될 수 있습니다.</strong>
@@ -280,4 +269,18 @@ pre {
 </pre>
 <jsp:include page="../common/footer.jsp"/>
 </body>
+<script type="text/javascript">
+
+function goPopup(){
+	var pop = window.open("../common/jusoPopup.jsp", "pop", "width=570,height=420, scrollbars=yes, resizable=yes");
+	}
+
+function jusoCallBack(roadAddrPart1, addrDetail, zipNo){
+		document.querySelector("#zipNo").value = zipNo;
+		document.querySelector("#roadAddrPart1").value = roadAddrPart1;
+		document.querySelector("#addrDetail").value = addrDetail;
+		/* document.form.zipNo.value = zipNo;
+		document.form.roadAddrPart1.value = roadAddrPart1; */
+	}
+</script>
 </html>
