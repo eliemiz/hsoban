@@ -1,4 +1,11 @@
 @charset "UTF-8";
+
+body {
+	width: 100%;
+	margin: 0px;	
+	padding: 0px;
+}
+
 #ftWrap { margin-top: 100px; }
 #ftWrap #footer { position: relative; width: 1200px; margin-left: auto; margin-right: auto; }
 #ftWrap #footer .ft-link { zoom: 1; overflow: hidden; padding: 10px 20px 10px 360px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; }
