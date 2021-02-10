@@ -11,8 +11,12 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="<%=path%>/css/login.css">
 <style>
+body {
+   text-align: center;
+   margin-top: 50px;
+}
 pre {
-	font-size:2px;
+	font-size:12px;
 }
 table {
 	border-collapse:collapse;
@@ -22,7 +26,7 @@ th{
 	height:100px;
 	width:600px;
 	background:#f7f7f7; 
-	font-size:2px;
+	font-size:12px;
 	text-align:center;
 }
 </style>
