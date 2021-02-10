@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" import="java.util.*" import="java.net.*"%>
+	pageEncoding="UTF-8" import="java.util.*" import="java.net.*" import="selection.*" %>
 <%
 	request.setCharacterEncoding("UTF-8");
 	String path = request.getContextPath();
@@ -87,16 +87,13 @@
 						<td>
 							<input type="text"> @ <input type="text">
 							<select>
-								<option>직접선택</option>
-								<option>naver.com</option>
-								<option>hotmail.com</option>
-								<option>hanmail.net</option>
-								<option>yahoo.com</option>
-								<option>nate.com</option>
-								<option>korea.com</option>
-								<option>chol.com</option>
-								<option>gmail.com</option>
-								<option>netian.com</option>
+							<%
+							for (Option domain : Selection.domains){
+							%>
+								<option value="<%=domain.value%>"><%=domain.key%></option>
+							<%
+							}
+							%>
 							</select>
 						</td>
 					</tr>
@@ -104,10 +101,13 @@
 						<th class="th_left">연락처</th>
 						<td>
 							<select>
-								<option>010</option>
-								<option>011</option>
-								<option>013</option>
-								<option>017</option>
+							<%
+							for (Option areaCodeEx : Selection.areaCodeEx){
+							%>
+								<option value="<%=areaCodeEx.value%>"><%=areaCodeEx.value%></option>
+							<%
+							}
+							%>
 							</select>
 							-
 							<input type="text" class="w60">
@@ -143,10 +143,13 @@
 						<th class="th_left">연락처1</th>
 						<td>
 							<select>
-								<option>010</option>
-								<option>011</option>
-								<option>016</option>
-								<option>017</option>
+							<%
+							for (Option areaCodeEx : Selection.areaCodeEx){
+							%>
+								<option value="<%=areaCodeEx.value%>"><%=areaCodeEx.value%></option>
+							<%
+							}
+							%>
 							</select>
 							-
 							<input type="text" class="w60">
@@ -156,10 +159,13 @@
 						<th class="th_left">연락처2</th>
 						<td>
 							<select>
-								<option>010</option>
-								<option>011</option>
-								<option>016</option>
-								<option>017</option>
+							<%
+							for (Option areaCode : Selection.areaCode){
+							%>
+								<option value="<%=areaCode.value%>"><%=areaCode.key%></option>
+							<%
+							}
+							%>
 							</select>
 							-
 							<input type="text" class="w60">
@@ -170,24 +176,24 @@
 					<tr>
 						<th class="th_left">배송지 선택</th>
 						<td colspan="3">
-							<input type="radio" name="address"> 자택
-							<input type="radio" name="address"> 최근 배송지
+							<label><input type="radio" name="address"> 자택</label>
+							<label><input type="radio" name="address"> 최근 배송지</label>
 							<input type="button" value="배송지 목록" class="btn btn_normal">
-							<input type="radio" name="address"> 신규 배송지
+							<label><input type="radio" name="address"> 신규 배송지</label>
 						</td>
 					</tr>
 					<tr>
 						<th class="th_left">주소</th>
 						<td colspan="3">
 							<span>
-								<input type="text" class="w60">
+								<input type="text" class="w60" id="zipNo1">
 								-
-								<input type="text" class="w60">
-								<input type="button" value="우편번호" class="btn btn_normal">
+								<input type="text" class="w60" id="zipNo2">
+								<input type="button" value="우편번호" class="btn btn_normal" onclick="goPopup()">
 							</span>
 							<span>
-								<input type="text" class="w240">
-								<input type="text" class="w240">
+								<input type="text" class="w240" id="roadAddrPart1">
+								<input type="text" class="w240" id="addrDetail">
 							</span>
 						</td>
 					</tr>
@@ -273,26 +279,28 @@
 					<tr>
 						<th class="th_left">결제 방법</th>
 						<td>
-							<span>
-								<input type="radio" name="pay"> 무통장 입금
-								<select>
-									<option>농협중앙회</option>
-									<option>국민은행</option>
-									<option>우리은행</option>
-									<option>중앙은행</option>
-								</select>
-							</span>
-							<span><input type="radio" name="pay"> 신용카드</span>
-							<span><input type="radio" name="pay"> 실시간 계좌이체</span>
-							<span><input type="radio" name="pay"> 휴대폰 결제</span>
+							<label>
+								<span>
+									<input type="radio" name="pay"> 무통장 입금
+									<select>
+										<option>농협중앙회</option>
+										<option>국민은행</option>
+										<option>우리은행</option>
+										<option>중앙은행</option>
+									</select>
+								</span>
+							</label>
+							<label><span><input type="radio" name="pay"> 신용카드</span></label>
+							<label><span><input type="radio" name="pay"> 실시간 계좌이체</span></label>
+							<label><span><input type="radio" name="pay"> 휴대폰 결제</span></label>
 						</td>
 					</tr>
 					<tr>
 						<th class="th_left">증빙 신청</th>
 						<td>
 							<span>
-								<input type="radio" name="evidenceCheck"> 신청 안함
-								<input type="radio" name="evidenceCheck"> 현금영수증
+								<label><input type="radio" name="evidenceCheck"> 신청 안함</label>
+								<label><input type="radio" name="evidenceCheck"> 현금영수증</label>
 							</span>
 							<span>
 								<select>
@@ -332,8 +340,10 @@
 					<tr>
 						<th class="th_left">주문 동의</th>
 						<td>
-							<input type="checkbox">
-							상기 결제 정보를 확인하였으며, 구매 진행에 동의합니다.
+							<label>
+								<input type="checkbox">
+								상기 결제 정보를 확인하였으며, 구매 진행에 동의합니다.
+							</label>
 						</td>
 					</tr>
 				</tbody>
@@ -354,10 +364,34 @@
 		</div>
 		
 		<div class="cart_button_wrap">
-			<input type="button" class="btn btn_thatch" value="주문하기">
-			<input type="button" class="btn btn_normal" value="주문취소">
+			<input type="button" class="btn btn_thatch" value="주문하기" onclick="orderSuccess()">
+			<input type="button" class="btn btn_normal" value="주문취소" onclick="orderCancel()">
 		</div>
 	</div>
 	<jsp:include page="../common/footer.jsp"/>
 </body>
+<script type="text/javascript">
+	function goPopup(){
+		var pop = window.open("../common/jusoPopup.jsp", "pop", "width=570,height=420, scrollbars=yes, resizable=yes");
+	}
+
+	function jusoCallBack(roadAddrPart1, addrDetail, zipNo){
+		var zipNo1 = zipNo.substr(0, 3);
+		var zipNo2 = zipNo.substr(3, 3);
+		document.querySelector("#zipNo1").value = zipNo1;
+		document.querySelector("#zipNo2").value = zipNo2;
+		document.querySelector("#roadAddrPart1").value = roadAddrPart1;
+		document.querySelector("#addrDetail").value = addrDetail;
+	}
+	
+	function orderSuccess(){
+		alert('주문에 성공했습니다.');
+		location.href='<%=path%>/src/main/main.jsp';
+	}
+	
+	function orderCancel(){
+		alert('주문을 취소했습니다.');
+		location.href='cart.jsp';
+	}
+</script>
 </html>

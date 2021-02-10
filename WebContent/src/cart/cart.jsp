@@ -100,8 +100,8 @@
 		</div>
 		
 		<div class="cart_button_wrap clear_fix">
-			<input type="button" value="주문하기" class="btn btn_thatch">
-			<input type="button" value="계속 쇼핑하기" class="btn btn_normal">
+			<input type="button" value="주문하기" class="btn btn_thatch" onclick="location.href='order.jsp'">
+			<input type="button" value="계속 쇼핑하기" class="btn btn_normal" onclick="location.href='<%=path%>/src/shop/shop_default.jsp'">
 			<input type="button" value="장바구니 비우기" class="btn btn_normal">
 		</div>
 		
