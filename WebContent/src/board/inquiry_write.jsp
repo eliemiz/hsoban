@@ -54,6 +54,7 @@
                <td>FILE</td>
                <td><input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg"></td>
                </tr>            
+               
       </table>
       <br>
       	<div style="text-align:right;">
@@ -61,5 +62,6 @@
 		<input type="button" value="목록" class="btn btn_normal">
 		</div>
  </form>
+ <jsp:include page="../common/footer.jsp"/>
 </body>
 </html>
