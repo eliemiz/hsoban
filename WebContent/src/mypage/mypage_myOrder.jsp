@@ -10,15 +10,19 @@
 <title>Insert title here</title>
 </head>
 <body>
+<jsp:include page="../common/header.jsp"/>
+<jsp:include page="../common/side.jsp"/>
+
+<div class="content_wrap">
 <div id="contentWrapper">
         <div id="contentWrap">
 <hr>            <div id="content">
                 <div id="myOrder">
                     <div class="bbs-tit">마이페이지</div>
                     <ul class="mypage_tab">
-                        <a class="on" href="../mypage/mypage_myOrder.jsp"><li>주문내역</li></a>
-                        <a href="../mypage/mypage_myWish.jsp"><li>관심상품</li></a>
-                        <a href="../mypage/mypage_main.jsp"><li>마이페이지</li></a>
+                        <a class="on" href="../mypage/mypage_myOrder.jsp" style="text-decoration:none"><li>주문내역</li></a>
+                        <a href="../mypage/mypage_myWish.jsp" style="text-decoration:none"><li>관심상품</li></a>
+                        <a href="../mypage/mypage_main.jsp" style="text-decoration:none"><li>마이페이지</li></a>
                     </ul>
                     <div class="page-body">
                         <p class="mypage_s_tit">주문제품정보</p>
@@ -47,9 +51,9 @@
                                         <tr>
                                         <td><div class="tb-center">1</div></td>
                                         <td><div class="tb-center">2021.02.01</div></td>
-                                        <td><div class="tb-left">두부볼中,小</div></td>
+                                        <td><div class="tb-left"><a href="../mypage/mypage_myOrder_info.jsp" style="text-decoration: none; color: #777;">두부볼中,小</a></div></td>
                                         <td><div class="tb-center tb-bold">0원</div></td>
-                                        <td><div class="tb-center"><a href="../mypage/mypage_myOrder_info.jsp">주문상세</a></div></td>
+                                        <td><div class="tb-center"><a href="../mypage/mypage_myOrder_info.jsp" style="text-decoration:none; color: #777;">주문상세</a></div></td>
                                         <td><div class="tb-center"><a>미배송</a>
                                             </div></td>
                                     </tr>
@@ -68,5 +72,7 @@
             </div><!-- #content -->
         </div><!-- #contentWrap -->
     </div>
+    </div>
+    <jsp:include page="../common/footer.jsp"/>
 </body>
 </html>

@@ -42,14 +42,14 @@ div {
 }
 </style>
 <body>
-<jsp:include page="../common/header.jsp"/>
+<jsp:include page="../common/header.jsp"/><br>
 <h2 align="center">아이디/비밀번호 찾기</h2>
 <br><br>
-<h3 align="center">아이디 찾기</h3><hr width="1100"><br>
-<pre align="center">회원가입 시, 입력하신 이름 + 이메일 또는 휴대폰 번호로 아이디를 확인하실 수 있습니다.
+<h3 align="left" style="padding-left:170px;">아이디 찾기</h3><hr width="1180">
+<pre align="left" style="padding-left:170px;">회원가입 시, 입력하신 이름 + 이메일 또는 휴대폰 번호로 아이디를 확인하실 수 있습니다.
 
 </pre>
-   <div align="center" style="font-size:12px;">
+   <div align="left" style="padding-left:170px;" style="font-size:12px;">
       <input type="radio" name="tempName" id="mail1" onchange="changeForm('mail1')" checked><label for="mail1">이메일로 찾기</label>
       <input type="radio" name="tempName" id="phone1" onchange="changeForm('phone1')"><label for="phone1">휴대폰 번호로 찾기</label>
    </div><br>
@@ -71,10 +71,10 @@ div {
          <a href="login.jsp"><span>
          <input type="button" class="btn btn_black" value="로그인" style="height:30px; width:160px;"></span></a></div>
    </form><br><br>
-<h3 align="center">비밀번호 찾기</h3><hr width="1100"><br>
-<pre align="center">가입하신 아이디 + 이메일 또는 휴대폰 번호를 입력, 본인인증을 통해 이메일 또는 휴대폰 번호로
+<h3 align="left" style="padding-left:170px;">임시 비밀번호 발급</h3><hr width="1180">
+<pre align="left" style="padding-left:170px;">가입하신 아이디 + 이메일 또는 휴대폰 번호를 입력, 본인인증을 통해 이메일 또는 휴대폰 번호로
 임시 비밀번호를 보내드립니다. 확인 후 로그인하셔서 반드시 비밀번호를 변경하시기 바랍니다.</pre><br>
-   <div align="center" style="font-size:12px;">
+   <div align="left" style="padding-left:170px;" style="font-size:12px;">
       <input type="radio" name="tempName2" id="mail2" onchange="changeForm('mail2')" checked><label for="mail2">이메일로 찾기</label>
       <input type="radio" name="tempName2" id="phone2" onchange="changeForm('phone2')"><label for="phone2">휴대폰 번호로 찾기</label>
    </div><br>

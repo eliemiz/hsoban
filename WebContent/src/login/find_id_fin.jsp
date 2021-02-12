@@ -32,7 +32,7 @@ th{
 </style>
 </head>
 <body>
-<jsp:include page="../common/header.jsp"/>
+<jsp:include page="../common/header.jsp"/><br>
 <h2 align="center">아이디/비밀번호 찾기</h2>
 <br><br><br>
 <pre align="center">
