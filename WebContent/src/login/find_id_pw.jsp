@@ -42,7 +42,7 @@ div {
 }
 </style>
 <body>
-<jsp:include page="../common/header.jsp"/>
+<jsp:include page="../common/header.jsp"/><br>
 <h2 align="center">아이디/비밀번호 찾기</h2>
 <br><br>
 <h3 align="center">아이디 찾기</h3><hr width="1100"><br>

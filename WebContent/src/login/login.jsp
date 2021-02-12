@@ -18,7 +18,7 @@ body {
 </style>
 </head>
 <body>
-<jsp:include page="../common/header.jsp"/>
+<jsp:include page="../common/header.jsp"/><br>
 <h2 align="center">로그인</h2>
 <br><br>
 <form align="center" method="post">
@@ -27,7 +27,7 @@ body {
 <div style="padding-right:160px; font-family: 'Nanum Gothic'; font-size: 12px;">비밀번호<br></div>
 <input type="password" name="pass" size="28"><br><br>
 <div style="padding-right:160px;"><input type="checkbox" name="safety" value="1" checked>보안접속</div>
-<div style="text-align:center;"><a href="main.jsp">
+<div style="text-align:center;"><a href="../main/main.jsp">
 <span><input type="button" class="btn btn_black" value="로그인" style="height:40px; width:230px;"></span></a></div></form><!-- 메인이동 -->
 <br><hr width="230"><br>
 <div style="text-align:center;"><a href="find_id_pw.jsp">

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.*" import="java.net.*"%>
+    pageEncoding="UTF-8" import="java.util.*" import="java.net.*"
+    import="selection.*" %>
 <%
 	request.setCharacterEncoding("UTF-8");
 	String path = request.getContextPath();
@@ -19,7 +20,7 @@ table {
 	border-collapse:collapse;
 }
 
-p {
+#p1 {
 	width : 97em;
 	height : 15em;
 	border : 1px solid lightray;
@@ -35,7 +36,7 @@ pre {
 </style>
 </head>
 <body>
-<jsp:include page="../common/header.jsp"/>
+<jsp:include page="../common/header.jsp"/><br>
 <h2 align="center">회원정보</h2><br>
 <form method="post">
 <table border align="center">
@@ -80,20 +81,32 @@ pre {
 <tr><th class="th_left">■ 상세주소</th>
 	<td class="td_left"><input type="text" size="60" id="addrDetail" name="addrDetail"/></td></tr>
 <tr><th class="th_left">■ 이메일</th>
-	<td class="td_left"><input type="text" size="10"/>&nbsp;@&nbsp;<input type="text" size="10"/>
-	<select><option>직접입력</option><option>naver.com</option><option>hotmail.com</option><option>hanmail.net</option><option>yahoo.com</option><option>nate.com</option><option>korea.com</option><option>chol.com</option>
-		<option>gmail.com</option><option>netian.com</option></select>&nbsp;&nbsp;
+	<td class="td_left"><input type="text" size="10"/>&nbsp;@&nbsp;<input type="text" size="10" id="selectedValue"/>
+	<select onchange="onSelect(this)"><%
+	for(Option domain : Selection.domains){
+	%>
+	<option value="<%=domain.value %>"><%=domain.key %></option>
+	<%} %>
+	</select>&nbsp;&nbsp;
 		<span><input type="button" class="btn btn_black" value="중복확인" style="height:22px; width:110px;"></span>
 	</td></tr>
 <tr><th class="th_left">■ 휴대폰</th>
-	<td class="td_left"><select><option>선택</option><option>010</option><option>011</option><option>016</option><option>017</option><option>018</option><option>019</option></select>&nbsp;-&nbsp;
+	<td class="td_left"><select>
+		<%
+		for(Option areaCode : Selection.areaCode){
+		%>
+		<option value="<%=areaCode.value %>"><%=areaCode.key %></option>
+		<%} %>
+	</select>&nbsp;-&nbsp;
 	<input type="text" size="5">&nbsp;-&nbsp;<input type="text" size="5"></td></tr>
 <tr><th class="th_left">연락처</th>
-	<td class="td_left">&nbsp;<select><option>선택</option><option>010</option><option>011</option><option>016</option><option>017</option><option>018</option><option>019</option>
-	<option>서울(02)</option><option>경기(031)</option><option>인천(032)</option><option>강원(033)</option><option>충남(041)</option><option>대전(042)</option><option>충북(043)</option><option>세종(044)</option>
-	<option>부산(051)</option><option>울산(052)</option><option>대구(053)</option><option>경북(054)</option><option>경남(055)</option><option>전남(061)</option><option>광주(062)</option><option>전북(063)</option>
-	<option>제주(064)</option><option>KT(0502)</option><option>온세텔레콤(0503)</option><option>온세텔레콤(0504)</option><option>다콤(0505)</option><option>온세텔레콤(0507)</option><option>한국케이블텔레콤(0508)</option>
-	<option>인터넷전화(070)</option><option>착신 과금 서비스(080)</option></select>&nbsp;-&nbsp;<input type="text" size="5">&nbsp;-&nbsp;<input type="text" size="5"></td></tr>
+	<td class="td_left">&nbsp;<select>
+		<%
+		for(Option areaCodeEx : Selection.areaCodeEx){
+		%>
+		<option value="<%=areaCodeEx.value%>"><%=areaCodeEx.key%></option>
+		<%} %>
+	</select>&nbsp;-&nbsp;<input type="text" size="5">&nbsp;-&nbsp;<input type="text" size="5"></td></tr>
 </table><br>
 <table border align="center" width="1170px">
 <tr><th class="th_left"><input type="checkbox">전체동의</th></tr>
@@ -110,11 +123,11 @@ pre {
 	&nbsp;&nbsp;&nbsp;제공 동의를 하지 않으셔도 서비스 이용에는 문제가 없습니다.<br><br>
 	</th></tr>
 </table><br>
-<div style="text-align:center;">
-<span><input type="button" class="btn btn_black" value="동의하고 가입완료" style="height:40px; width:230px;"></span></div> <!-- 메인페이지로이동 -->
+<div style="text-align:center;"><a href="../main/main.jsp">
+<span><input type="button" class="btn btn_black" value="동의하고 가입완료" style="height:40px; width:230px;"></span></a></div> <!-- 메인페이지로이동 -->
 </form>
 <br><br><hr width="1170"><br><br><h3 align="center" id="terms">이용약관</h3>
-<p class="scroll">
+<p class="scroll" id="p1">
 인터넷 쇼핑몰 『화소반몰 사이버 몰』회원 약관<br><br>
 제1조(목적)<br>
 이 약관은 화소반몰 회사(전자상거래 사업자)가 운영하는 화소반몰 사이버 몰(이하 “몰”이라 한다)에서 제공하는 인터넷 관련 서비스(이하 “서비스”라 한다)를 이용함에 있어 사이버 몰과 이용자의 권리·의무 및 책임사항을 규정함을 목적으로 합니다.<br>
@@ -282,5 +295,9 @@ function jusoCallBack(roadAddrPart1, addrDetail, zipNo){
 		/* document.form.zipNo.value = zipNo;
 		document.form.roadAddrPart1.value = roadAddrPart1; */
 	}
+function onSelect(obj){
+	var input = document.querySelector("#selectedValue");
+	input.value = obj.value;
+};
 </script>
 </html>
