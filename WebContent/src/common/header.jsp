@@ -39,9 +39,9 @@
 		                                <li><a href=" ">Event</a></li>
 		        		    </ul> -->
 		</li>
- 		<li class="menu"><a href="">REVIEW</a>
-		<li class="menu"><a href="">Q&amp;A</a>
-		<li class="menu"><a href="">NOTICE</a>
+ 		<li class="menu"><a href="../board/review_board.jsp">REVIEW</a>
+		<li class="menu"><a href="../board/inquiry_board.jsp">Q&amp;A</a>
+		<li class="menu"><a href="../board/notice_board.jsp">NOTICE</a>
 	    </ul>
         </div>
 
