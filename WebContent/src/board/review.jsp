@@ -36,6 +36,7 @@ dl {
 </head>
 <body>
 	<jsp:include page="../common/header.jsp"/>
+		
 	<br><br>
 	<div class="content_wrap" style="text-align:center;">	
 	<p style= "font-size: 30px;">REVIEW</p><br>

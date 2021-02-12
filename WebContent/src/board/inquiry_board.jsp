@@ -17,6 +17,7 @@ String path = request.getContextPath();
 </head>
 <body>
    <jsp:include page="../common/header.jsp" />
+   	<jsp:include page="../common/side.jsp"/>
    <div style="text-align:center;">
       <br><br>  
       <p class="title">Q&amp;A</p>

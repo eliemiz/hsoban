@@ -17,7 +17,9 @@ String path = request.getContextPath();
 </head>
 <body>
    <jsp:include page="../common/header.jsp" />
+   	<jsp:include page="../common/side.jsp"/>
    <div style="text-align:center;">
+   
       <br><br>  
       <p class="title">NOTICE</p>
       <input align="center" type="button" value="글쓰기" class="btn btn_thatch" /><br>
