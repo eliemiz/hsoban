@@ -6,10 +6,10 @@
 <link rel="stylesheet" href="/hsoban/css/allCommon.css">
 <link rel="stylesheet" href="/hsoban/css/shopdetail.css">
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>[2인세트]</title>
 </head>
 <body>
-<jsp:include page="../common/header.jsp"/>
+<jsp:include page="../../common/header.jsp"/>
 
 <div id="contentWrapper">
 	<div id="contentWrap">
@@ -19,7 +19,7 @@
 					<div class="thumb-info">
 						<div class="thumb-wrap">
 							<div class="thumb detail_image">
-								<img src="/hsoban/img/shop/a.jpg" alt="대표이미지"/>
+								<img src="/hsoban/img/shop/Set1_01.jpg" alt="대표이미지"/>
 							</div>
 						</div>
 						<form name="form1" method="post" id="form1" action="/hsoban/cart/cart.jsp">	
@@ -58,58 +58,48 @@
 							<input type="hidden" name="uid" value="1008823">
 							<input type="hidden" id="option_type" name="option_type" value="PS">
 							<div class="info">
-								<h3 class="tit-prd">상품명</h3>
+								<h3 class="tit-prd">2인 세트</h3>
 								<div class="table-opt">
 									<table summary="판매가격, 적립금, 주문수량, 옵션, 사이즈, 상품조르기, sns">
 										<!-- <caption>상품 옵션</caption> -->
 										<colgroup><col width="90"><col width="*"></colgroup>
 										<tbody>
-											<tr><th scope="row"><div class="tb-left">판매가격</div></th><td class="price"><div class="tb-left">0원</div></td></tr>
-											<tr><td colspan="2">
-												<div class="opt-wrap" style="margin-top: 0">
-													<dl>
-														<dt>size</dt>
-														<dd><select name="optionlist[]" onchange="change_option(this,'basic');" label="size" opt_type="SELECT" opt_id="2" opt_mix="Y" require="Y" opt_mandatory="Y" class="basic_option">
-																<option value>옵션 선택</option>
-																<option value="0" title="中" matrix="1" price="0" sto_id="0" dis_sto_price dis_opt_price org_opt_price="0">中</option>
-																<option value="1" title="小" matrix="2" price="0" sto_id="0" dis_sto_price dis_opt_price org_opt_price="0">小</option>
-															</select>
-														</dd>
-													</dl>
-													<dl>
-														<dt>color</dt>
-														<dd><select name="optionlist[]" onchange="change_option(this,'basic');" label="color" opt_type="SELECT" opt_id="3" opt_mix="Y" require="Y" opt_mandatory="Y" class="basic_option">
-																<option value>옵션 선택</option>
-																<option matrix="1" sto_id="3" price="8000" title="블랙" value="0">블랙(+8,000)</option>
-																<option matrix="2" sto_id="4" price="8000" title="베이지" value="0">베이지(+8,000)</option>
-																<option matrix="3" sto_id="5" price="8000" title="그린" value="0">그린(+8,000)</option>
-																<option matrix="4" sto_id="14" price="8000" title="그레이" value="0">그레이(+8,000)</option>
-																<option matrix="5" sto_id="11" price="8000" title="진그레이" value="0">진그레이(+8,000)</option>
-																<!-- size 선택에 따라 option 선택창 >> 추후 함수 처리 -->														
-															</select>
-														</dd>
-													</dl>
-												</div>
-												</td>
-											</tr>
-											<tr><td colspan="2">
-												<div class="MK_optAddWrap">
-													<div id="MK_innerOptWrap">
-														<div id="MK_innerOptScroll">
-															<ul id="MK_innerOpt_01" class="MK_inner-opt-cm"></ul>
-															<ul id="MK_innerOpt_02" class="MK_inner-opt-cm"></ul>
-														</div>
-														<div id="MK_innerOptPrice">
-															상품금액<span id="MK_txt-prd"></span>원 + 기본옵션<span id="MK_txt-opt"></span>원
-														</div>
-													</div>
-													<div id="MK_innerOptTotal">
+											<tr><th scope="row"><div class="tb-left">소비자가격</div></th><td class="price"><div class="tb-left"><strike>674,000원</strike></div></td></tr>
+											<tr><th scope="row"><div class="tb-left">판매가격</div></th><td class="price"><div class="tb-left">606,000원</div></td></tr>
+											<tr>
+                                                <td colspan="2">
+                                                    <div class="MK_optAddWrap">
+                                                        <div id="MK_innerOptWrap">
+                                                            <div id="MK_innerOptScroll">
+                                                                <ul id="MK_innerOpt_01" class="MK_inner-opt-cm">
+                                                                	<li id="basic_0">
+                                                                		<input type="hidden" id="MS_keys_basic_0" value="0:0" class="basic_option">
+                                                                		<span class="MK_p-name">2인세트</span>
+                                                                		<div class="MK_qty-ctrl">
+	                                                                		<input type="text" id="MS_amount_basic_0" name="amount[]" value="1" onfocusout="set_amount(this, 'basic');" size="4" style="text-align: right; float: left;" class="basic_option" maxlength="">
+	                                                                		<a href="javascript:set_amount('MS_amount_basic_0', 'basic', 'up');" class="MK_btn-up"><img src="/hsoban/img/common/basket_up.gif" alt="수량증가" border="0"></a>
+	                                                                		<a href="javascript:set_amount('MS_amount_basic_0', 'basic', 'down');" class="MK_btn-dw"><img src="/hsoban/img/common/basket_down.gif" alt="수량감소" border="0"></a>
+                                                                		</div>
+                                                                		<strong class="MK_price"><span id="MK_p_price_basic_0">606,000</span>원</strong>
+                                                                	</li>
+                                                                </ul>                                                                
+                                                                <ul id="MK_innerOpt_02" class="MK_inner-opt-cm"></ul>                                                            </div>
+                                                            <div id="MK_innerOptPrice">
+                                                                상품금액 <span id="MK_txt-prd"></span> 원 + 기본옵션 <span id="MK_txt-opt"></span> 원
+                                                            </div>
+                                                             
+
+                                                        </div>
+                                                            <div id="MK_innerOptTotal">
                                                                 <span class="MK_txt-total">TOTAL</span>
-                                                                <strong class="MK_total" id="MK_p_total">0</strong>
+                                                                <strong class="MK_total" id="MK_p_total">606,000</strong>
                                                                 <span class="MK_txt-won">원</span>
+                                                            </div>
+
                                                     </div>
-												</div>
-											</td></tr>
+                                                </td>
+                                            </tr>
+                                            
 											<tr><td colspan="2"><div class="tb-left"></div></td></tr>
 										</tbody>
 									</table>
@@ -228,7 +218,7 @@
 
 
 
-<jsp:include page="../common/footer.jsp"/>
+<jsp:include page="../../common/footer.jsp"/>
 </body>
 </html>
 
