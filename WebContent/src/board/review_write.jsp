@@ -80,7 +80,7 @@
                    </tr>
               </tbody>
            </table>
-      <br>
+        <br>
       	<div style="text-align:right;">
 		<input type="button" value="완료" class="btn btn_thatch" onclick="location.href='review_board.jsp'" >
 		<input type="button" value="목록" class="btn btn_normal" onclick="location.href='review_board.jsp'" >
