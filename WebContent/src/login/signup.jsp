@@ -45,7 +45,7 @@ pre {
 <tr><th class="th_left">■ 아이디</th>
 	<td class="td_left">
 	<input type="text" size="16"/><span>
-	<input type="button" class="btn btn_black" value="중복확인" style="height:22px; width:110px;"></span></td></tr>
+	<input type="button" class="btn btn_black" value="중복확인" style="height:22px; width:110px;" onclick="doubleid()"></span></td></tr>
 <tr><th class="th_left">■ 비밀번호</th>
 	<td class="td_left"><input type="password" size="16"/>&nbsp;*영문 대소문자/숫자/특수문자를 혼용하여 2종류 10~16자 또는 3종류 8~16자</td></tr>
 <tr><th class="th_left">■ 비밀번호 확인</th>
@@ -88,7 +88,7 @@ pre {
 	<option value="<%=domain.value %>"><%=domain.key %></option>
 	<%} %>
 	</select>&nbsp;&nbsp;
-		<span><input type="button" class="btn btn_black" value="중복확인" style="height:22px; width:110px;"></span>
+		<span><input type="button" class="btn btn_black" value="중복확인" style="height:22px; width:110px;" onclick="doublemail()"></span>
 	</td></tr>
 <tr><th class="th_left">■ 휴대폰</th>
 	<td class="td_left"><select>
@@ -283,7 +283,6 @@ pre {
 <jsp:include page="../common/footer.jsp"/>
 </body>
 <script type="text/javascript">
-
 function goPopup(){
 	var pop = window.open("../common/jusoPopup.jsp", "pop", "width=570,height=420, scrollbars=yes, resizable=yes");
 	}
@@ -299,5 +298,11 @@ function onSelect(obj){
 	var input = document.querySelector("#selectedValue");
 	input.value = obj.value;
 };
+function doubleid(){
+	alert("ID가 중복되었습니다.");
+}
+function doublemail(){
+	alert("이메일이 중복되었습니다.")
+}
 </script>
 </html>
