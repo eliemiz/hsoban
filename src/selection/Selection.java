@@ -25,7 +25,7 @@ public class Selection {
 	};
 
 	public static Option[] areaCodeEx = {
-		new Option("", "선택"),
+		new Option("선택", ""),
 		new Option("010", "010"),
 		new Option("011", "011"),
 		new Option("016", "016"),
