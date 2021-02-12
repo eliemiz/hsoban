@@ -1,0 +1,88 @@
+@charset "UTF-8";
+
+/* modify option */
+.modify_option_title {
+	font-weight: bold;
+	font-size: 20px;
+	padding: 15px;
+	border-bottom: 1px solid #cccccc;
+}
+.modify_option_product{
+	font-size: 12px;
+	font-family: "Dotum";
+	padding: 20px;
+}
+.modify_option_thumbnail{
+	float:left;
+	margin-right: 10px;
+}
+
+.modify_option_name_wrap {
+	margin-bottom: 10px;
+}
+
+.modify_option_name{
+	float:left;
+	font-weight: bold;
+	line-height: 20px;
+}
+
+.modify_option_color_wrap {
+	border:1px solid #cccccc;
+	background-color: #fcfcfc;
+	height: 150px;
+	margin-bottom: 10px;
+}
+
+.modify_option_color table, .modify_option_color tr, 
+.modify_option_color th, .modify_option_color td {
+	border: none;
+}
+
+.modify_option_color td {
+	text-align: center;
+	padding: 15px 30px;
+}
+
+.modify_option_color .option_color {
+	width: 100%;
+}
+
+.modify_option_count_wrap table, .modify_option_count_wrap th, 
+.modify_option_count_wrap td {
+	border: none;
+}
+
+.modify_option_count_wrap tr {
+	border:1px solid #cccccc;
+}
+
+.modify_option_count td {
+	padding: 5px;
+}
+
+.modify_option_count .option_count {
+	width:100%;
+}
+
+.modify_option_count .option_price {
+	font-weight: bold;
+}
+
+.modify_option_button_wrap {
+	text-align: center;
+}
+
+.modify_option_button_wrap .btn_option {
+	color: white;
+	width: 90px;
+	padding: 0px;
+} 
+
+.modify_option_button_wrap .btn_modify {
+	background-color: #566277;
+}
+
+.modify_option_button_wrap .btn_cancel {
+	background-color: #afb5bf;
+}

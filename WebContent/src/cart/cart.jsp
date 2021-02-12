@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="java.util.*" import="java.net.*"%>
 <%
@@ -8,10 +9,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>장바구니</title>
 <link rel="stylesheet" href="<%=path%>/css/common.css">
 <link rel="stylesheet" href="<%=path%>/css/cart.css">
 </head>
+	<%
+	int[] prices = new int[]{10000, 20000, 30000, 40000};
+	DecimalFormat df = new DecimalFormat("#,###");
+	%>
 <body>
 	<jsp:include page="../common/header.jsp"/>
 	<jsp:include page="../common/side.jsp"/>
@@ -50,10 +55,10 @@
 						<th>취소</th>
 					</tr>
 					<%
-						for (int i = 1; i <= 4; i++) {
+						for (int i = 0; i < 4; i++) {
 							%>
 							<tr>
-								<td class="td_center"><%=i%></td>
+								<td class="td_center"><%=i + 1%></td>
 								<td class="td_center"><img src="<%=path%>/img/cart/temp.jpg" class="thumbnail_m"></td>
 								<td class="td_left">
 									<div>
@@ -62,15 +67,16 @@
 										</div>
 										<div>
 											<span>[color: 그린(유광) 1개]</span>
-											<img src="<%=path%>/img/cart/option.gif" onclick="location.href='temp.jsp'">	
+											<img src="<%=path%>/img/cart/option.gif" onclick="popUpModifyOption()">
 										</div>
 									</div>
 								</td>
 								<td class="td_center">
-									<input type="number" class="table_cart_number">
+									<% String name = "p" + i; %>
+									<input type="number" class="table_cart_number" value="1" name="<%=name%>">
 									<input type="button" value="수정" class="btn btn_black table_cart_number_modify">
 								</td>
-								<td class="td_center">34,000원</td>
+								<td class="td_center"><%=df.format(prices[i]) %>원</td>
 								<td class="td_center">
 									<span>[기본배송]<br>조건</span>
 								</td>
@@ -88,11 +94,14 @@
 				</tbody>
 				<tfoot>
 					<%
-						int total = 100 + 100;
+						int total = 0;
+						for (int price : prices){
+							total += price;
+						}
 					%>
 					<tr>
 						<td colspan="7" class="td_right">
-							총 구매금액 : <%=total%>
+							총 구매금액 : <%=df.format(total)%>원
 						</td>
 					</tr>
 				</tfoot>
@@ -158,4 +167,11 @@
 	</div>
 	<jsp:include page="../common/footer.jsp"/>
 </body>
+<script type="text/javascript">
+	function popUpModifyOption(){
+		var url = "orderOption.jsp";
+		var option = "width=475, height=475, resizable=yes, scrollbars=yes, status=no";
+		window.open(url, "", option);
+	};
+</script>
 </html>

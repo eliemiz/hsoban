@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="java.util.*" import="java.net.*" import="selection.*" %>
 <%
@@ -8,10 +9,24 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>고급형 주문서 작성</title>
 <link rel="stylesheet" href="<%=path%>/css/common.css">
 <link rel="stylesheet" href="<%=path%>/css/cart.css">
+<style type="text/css">
+#form1 {
+	display: inline;
+}
+
+#form2, #form3 {
+	display: none;
+}
+</style>
 </head>
+	<%
+		int tempPrice = 30000;
+		DecimalFormat df = new DecimalFormat("#,###");
+	%>
+	
 <body>
 	<jsp:include page="../common/header.jsp"/>
 	<jsp:include page="../common/side.jsp"/>
@@ -50,7 +65,7 @@
 								<td class="td_center"><img src="<%=path%>/img/cart/temp.jpg" class="thumbnail_s"></td>
 								<td class="td_left"><a href="temp.jsp">국그릇</a></td>
 								<td class="td_center">1개</td>
-								<td class="td_right">34,000원</td>
+								<td class="td_right"><%= df.format(tempPrice) %>원</td>
 							</tr>
 							<tr>
 								<td colspan="4"><img src="<%=path%>/img/cart/cart_option.gif"> color: 블랙 2개</td>
@@ -85,8 +100,8 @@
 					<tr>
 						<th class="th_left">이메일</th>
 						<td>
-							<input type="text"> @ <input type="text">
-							<select>
+							<input type="text"> @ <input type="text" id="domain">
+							<select onchange="onChangeDomain(this)">
 							<%
 							for (Option domain : Selection.domains){
 							%>
@@ -200,7 +215,7 @@
 					<tr>
 						<th class="th_left"><span>주문메세지</span><span>(100자 내외)</span></th>
 						<td colspan="3">
-							<input type="textarea">
+							<textarea name="order_message"></textarea>
 						</td>
 					</tr>
 					<tr>
@@ -214,8 +229,8 @@
 				<tfoot>
 					<tr>
 						<td colspan="4">
-							<input type="checkbox">
-							해당 배송지 정보를 나의 회원정보로 등록합니다.
+							<label><input type="checkbox">
+							해당 배송지 정보를 나의 회원정보로 등록합니다.</label>
 						</td>
 					</tr>
 				</tfoot>
@@ -302,18 +317,38 @@
 								<label><input type="radio" name="evidenceCheck"> 신청 안함</label>
 								<label><input type="radio" name="evidenceCheck"> 현금영수증</label>
 							</span>
-							<span>
-								<select>
-									<option>핸드폰 번호</option>
-									<option>국세청 현금영수증 카드</option>
-									<option>사업자 번호</option>
+							<div>
+								<select onchange="onSelectEvidence(this)">
+									<option value="form1">핸드폰 번호</option>
+									<option value="form2">국세청 현금영수증 카드</option>
+									<option value="form3">사업자 번호</option>
 								</select>
-								<input type="text" class="w60">
-								-
-								<input type="text" class="w60">
-								-
-								<input type="text" class="w60">
-							</span>
+								<div id="form1">
+									<input type="text" class="w60">
+									-
+									<input type="text" class="w60">
+									-
+									<input type="text" class="w60">
+								</div>
+								<div id="form2">
+									<input type="text" class="w60">
+									-
+									<input type="text" class="w60">
+									-
+									<input type="text" class="w60">
+									-
+									<input type="text" class="w60">
+								</div>
+								<div id="form3">
+									<input type="text" class="w60">
+									-
+									<input type="text" class="w60">
+									-
+									<input type="text" class="w60">
+									업체명 :
+									<input type="text" class="w60"> 
+								</div>
+							</div>
 						</td>
 					</tr>
 					<tr>
@@ -392,6 +427,19 @@
 	function orderCancel(){
 		alert('주문을 취소했습니다.');
 		location.href='cart.jsp';
+	}
+	
+	function onChangeDomain(obj){
+		var domain = document.querySelector("#domain");
+		domain.value = obj.value;
+	}
+	
+	function onSelectEvidence(obj){
+		document.querySelector("#form1").style.display = "none";
+		document.querySelector("#form2").style.display = "none";
+		document.querySelector("#form3").style.display = "none";
+		var form = "#" + obj.value;
+		document.querySelector(form).style.display = "inline";
 	}
 </script>
 </html>
