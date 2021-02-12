@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"
+    import="java.util.*" import="java.net.*" import="selection.*"
+    %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,9 +12,14 @@
 <link rel="stylesheet" href="/hsoban/css/common.css">
 <link rel="stylesheet" href="/hsoban/css/mypage.css">
 <body>
+<jsp:include page="../common/header.jsp"/>
+<jsp:include page="../common/side.jsp"/>
+
+<div class="content_wrap">
 <div id="content">
                 <div id="join">
                     <div class="bbs-tit">회원정보</div>
+                    <!--  
                     <form name="iddupop" method="post" action="/shop/iddup.html">
     <input name="id" type="hidden" value="">
     <input name="mode" type="hidden" value="">
@@ -41,7 +48,9 @@
     <input type="hidden" name="encdata">
     <input type="hidden" name="member_type" value="PERSON">
 </form>
+-->
 <form name="form1" method="post" id="join_form" action="/shop/idinfo.html" enctype="multipart/form-data" autocomplete="off">
+<!--  
 <input type="hidden" name="resno" value="9706302000000">
 <input type="hidden" name="cur_page" value="">
 <input type="hidden" name="brandcode" value="">
@@ -69,7 +78,8 @@
 <input type="hidden" name="app_os" value="">
 <input type="hidden" name="return_url" value="">
 <input type="hidden" name="type" value="upd">
-<input type="hidden" name="reurl" value="">                    
+<input type="hidden" name="reurl" value="">  
+-->                  
                     <!-- 일반회원 기본 노출 -->
                     <div id="personInfo">
                         <table class="person-tb">
@@ -82,7 +92,8 @@
                                 </th>
                                 <td>
                                     <div class="tb-l pl-6">
-                                        <input type="text" name="hname" id="hname" value="이채영" class="MS_input_txt w137" size="15" maxlength="30">                                    </div>
+                                        <input type="text" name="hname" id="hname" value="이채영" class="MS_input_txt w137" size="15" maxlength="30">
+                                    </div>
                                 </td>
                             </tr>
                             <tr>
@@ -91,19 +102,20 @@
                                 </th>
                                 <td>
                                     <div class="tb-l pl-6">
-                                        www970630 
-<input type="hidden" name="id" id="id" value="www970630">                                                                            </div>
+										<input type="hidden" name="id" id="id" value="www970630">                                                                           
+									 </div>
                                 </td>
                             </tr>
-                                                        <tr>
+                            <tr>
                                 <th>
                                     <div class="tb-l pl-30"><span class="red"></span>■ 비밀번호</div>
                                 </th>
                                 <td>
                                     <div class="tb-l pl-6">
-                                         <input type="password" name="password1" id="password1" class="MS_input_txt w137" value="" size="15" maxlength="20" onkeyup="check_pwd_length(this, 'password');">                                        <span class="idpw-info">
-                                                                                    * 영문 대소문자/숫자/특수문자를 혼용하여 2종류 10~16자 또는 3종류 8~16자
-                                                                                </span>
+                                         <input type="password" name="password1" id="password1" class="MS_input_txt w137" value="" size="15" maxlength="20" onkeyup="check_pwd_length(this, 'password');">                                       
+                                          <span class="idpw-info">
+                                           * 영문 대소문자/숫자/특수문자를 혼용하여 2종류 10~16자 또는 3종류 8~16자
+                                          </span>
                                     </div>
                                 </td>
                             </tr>
@@ -129,18 +141,18 @@
                                 </td>
                             </tr>
                                                         
-                                                                                    <tr>
+                            <tr>
                                 <th>
                                     <div class="tb-l pl-30"><span class="red"> </span>■ 우편번호</div>
                                 </th>
                                 <td>
                                     <div class="tb-l pl-6">
-                                         <input type="text" name="hpost1" form="join_form" id="hpost1" class="MS_input_txt" value="" size="3" maxlength="3" onfocus="this.blur();">
- -
- <input type="text" name="hpost2" form="join_form" id="hpost2" class="MS_input_txt" value="" size="3" maxlength="3" onfocus="this.blur();">                                       
-                                    <span><input type="button" class="btn btn_black" value="주소검색" style="height:22px; width:110px;"></span>
+                                         <input type="text" name="hpost1" form="join_form" id="hpost1" class="MS_input_txt" value="" size="6" maxlength="6" >
+                                    <span>
+                                    	<input type="button" class="btn btn_black" onClick="goPopup();" value="주소검색" style="height:22px; width:110px;">
+                                    </span>
                                     </div>
-                                </td>
+                               </td>
                             </tr>
                             <tr>
                                 <th>
@@ -171,7 +183,7 @@
     <input type="text" name="email1" id="email1" onchange="this.form.emailcheck.value=''" class="MS_input_txt" size="10" maxlength="20" value="">
     <span>@</span> 
     <span id="direct_email" style="margin-top:3px;display:inline-block">
-        <input type="text" name="email3" id="email3" class="MS_input_txt" value="hanmail.net" disabled="" size="15" maxlength="25" onchange="this.form.emailcheck.value=''">
+        <input type="text" name="email3" id="email3" class="MS_input_txt" value="" disabled="" size="15" maxlength="25" onchange="this.form.emailcheck.value=''">
     </span>
     <select name="email2" id="email2" class="MS_select MS_email" style="margin-right:5px;" onchange="viewdirect()">
     <option value="direct">직접입력</option><option value="naver.com">naver.com</option><option value="hotmail.com">hotmail.com</option><option value="hanmail.net" selected="selected">hanmail.net</option><option value="yahoo.com">yahoo.com</option><option value="nate.com">nate.com</option><option value="korea.com">korea.com</option><option value="chol.com">chol.com</option><option value="gmail.com">gmail.com</option><option value="netian.com">netian.com</option>
@@ -244,17 +256,47 @@
 
                      
                                                             <div class="btn-area">
-                        <a class="write" href="../mypage/mypage_main.jsp" onclick="modify()">수정완료</a>
+                        <a class="write" href="../mypage/mypage_main.jsp" onclick="modify()" style="text-decoration: none">수정완료</a>
                         
-                        <a class="return" href="../mypage/mypage_main.jsp">취소</a>
+                        <a class="return" href="../mypage/mypage_main.jsp" style="text-decoration: none">취소</a>
                     </div>
                     <!-- use_contract -->
                     </form>                </div><!-- #join -->
             </div>
+            </div>
+            <jsp:include page="../common/footer.jsp"/>
 </body>
+<!-- 
+
+<tr>
+                                <th>
+                                    <div class="tb-l pl-30"><span class="red"> </span>■ 우편번호</div>
+                                </th>
+                                <td>
+                                    <div class="tb-l pl-6">
+                                         <input type="text" name="hpost1" form="join_form" id="hpost1" class="MS_input_txt" value="" size="3" maxlength="3" >
+ -
+ <input type="text" name="hpost2" form="join_form" id="hpost2" class="MS_input_txt" value="" size="3" maxlength="3" >                                       
+                                    <span><input type="button" class="btn btn_black" onClick="goPopup();" value="주소검색" style="height:22px; width:110px;"></span>
+                                    </div>
+                                </td>
+                            </tr>
+ -->
 <script type="text/javascript">
 function modify(){
 	alert("수정이 완료되었습니다.");
 }
+
+function goPopup(){
+	var pop = window.open("../common/jusoPopup.jsp", "pop", "width=570,height=420, scrollbars=yes, resizable=yes");
+	}
+
+function jusoCallBack(haddress1, haddress2, hpost1){
+		document.querySelector("#hpost1").value = hpost1;
+		document.querySelector("#haddress1").value = haddress1;
+		document.querySelector("#haddress2").value = haddress2;
+		/* document.form.zipNo.value = zipNo;
+		document.form.roadAddrPart1.value = roadAddrPart1; */
+	}
 </script>
 </html>

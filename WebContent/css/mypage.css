@@ -125,6 +125,20 @@ body, h1, h2, h3, h4, h5, h6, table, input, select, textarea, a {
 #myWish .wish-opt {
     color: #464646;
 }
+#myWish .tb-btns input.basket {
+    line-height: 30px;
+    color: #ffffff;
+    padding: 0px 15px;
+    background: #bba59b;
+    border: #e7e7e7 1px solid;
+    transition: all .2s linear;
+    -webkit-transition: all .2s linear;
+    transition: all .2s linear;
+    -ms-transition: all .2s linear;
+    -khtml-transition: all .2s linear;
+    o-transition: all .2s linear;
+}
+/*
 #myWish .tb-btns a.basket {
     line-height: 30px;
     color: #ffffff;
@@ -138,15 +152,36 @@ body, h1, h2, h3, h4, h5, h6, table, input, select, textarea, a {
     -khtml-transition: all .2s linear;
     o-transition: all .2s linear;
 }
+*/
+#myWish .tb-btns input {
+    display: block;
+    margin-bottom: 3px;
+}
+/*
 #myWish .tb-btns a {
     display: block;
     margin-bottom: 3px;
 }
+*/
 a:-webkit-any-link {
     color: -webkit-link;
     cursor: pointer;
     text-decoration: underline;
 }
+#myWish .tb-btns input.delete {
+    line-height: 30px;
+    color: #464646;
+    padding: 0px 15px;
+    background: #ffffff;
+    border: #e7e7e7 1px solid;
+    transition: all .2s linear;
+    -webkit-transition: all .2s linear;
+    transition: all .2s linear;
+    -ms-transition: all .2s linear;
+    -khtml-transition: all .2s linear;
+    o-transition: all .2s linear;
+}
+/*
 #myWish .tb-btns a.delete {
     line-height: 30px;
     color: #464646;
@@ -160,6 +195,7 @@ a:-webkit-any-link {
     -khtml-transition: all .2s linear;
     o-transition: all .2s linear;
 }
+*/
 #myWish .btn-foot {
     font-size: 0;
     line-height: 0;
@@ -352,4 +388,15 @@ tbody {
 }
 col {
     display: table-column;
+}
+textarea {
+    width: 600px;
+    height: 47px;
+    padding: 2px;
+    border: 1px solid #EDEDED;
+}
+ul.mypage_tab a:hover{
+	color: #ffffff;
+    background: #464646;
+    border: #464646 1px solid;
 }
