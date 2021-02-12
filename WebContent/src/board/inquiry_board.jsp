@@ -17,7 +17,7 @@ String path = request.getContextPath();
 </head>
 <body>
    <jsp:include page="../common/header.jsp" />
-   	<jsp:include page="../common/side.jsp"/>
+   <jsp:include page="../common/side.jsp"/>
    <div style="text-align:center;">
       <br><br>  
       <p class="title">Q&amp;A</p>
@@ -27,15 +27,14 @@ String path = request.getContextPath();
       <br><br><br>  
       <div class="content_wrap">
       <div style="text-align: right;">
-        <span>
-	    <input id="name" type="radio" name="select" >이름
-	    <input id="title" type="radio" name="select" >제목
-	    <input id="content" type="radio" name="select" >내용
-    <input type="text" name="searchText" value="" />
-    <input style="background-color: #464646;
-	color: white;" type="submit" value="검색" /></span>
+        <span><input id="name" type="radio" name="select" ><label for="name">이름</label>
+	    <input id="title" type="radio" name="select" checked><label for="title">제목</label>
+	    <input id="content" type="radio" name="select"><label for="content">내용</label>
+	    <input type="text" name="searchText" value="" />
+	    <input style="background-color: #464646;
+		color: white;" type="submit" value="검색" /></span>
       </div>
-      <div class="bbs-table-list"></div>
+      <br>
        <table>
       <colgroup>
          <col width="50">
