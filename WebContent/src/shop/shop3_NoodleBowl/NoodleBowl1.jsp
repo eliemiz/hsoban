@@ -214,91 +214,91 @@
                     			<colgroup>
                                     <col width="80"><col width="30"><col width="*"><col width="100"><col width="100"><col width="80">
                                 </colgroup>
-                                <thead>
+                                 <thead>
                                     <tr>
                                         <th scope="col"><div class="tb-center">번호</div></th>
                                         <th scope="col"></th>
                                         <th scope="col"><div class="tb-center">제목</div></th>
                                         <th scope="col"><div class="tb-center">작성자</div></th>
                                         <th scope="col"><div class="tb-center">작성일</div></th>
-                                        <th scope="col"><div class="tb-center">조회</div></th>
+                                        <th scope="col"><div class="tb-center">조회수</div></th>
                                     </tr>
                                 </thead>
-                                 <tbody>
+                                <tbody>
                                 	<tr>
-                                		<td><div class="td-center">+</div></td>
-                                		<td><div class="td_left">&nbsp;<img src="<%=path %>/img/board/mic.png" class="mic"/></div></td>
-                                		<td><div class="td-left"><a href="../../board/notice.jsp">2021년 설 연휴 이전 배송이 2월10일 마감되어 15일 이후 발송됩니다.</a></div></td>
-                                		<td><div class="td-center">운영자</div></td>
-                                		<td><div class="td_center">2021/02/11</div></td>
-                                		<td><div class="td_center">246</div></td>
+                                		<td><div class="tb-center">+</div></td>
+                                		<td><div class="td_left"><img src="<%=path %>/img/board/mic.png" class="mic"/></div></td>
+                                		<td><div class="td_left"><a href="../../board/notice.jsp">2021년 설 연휴 이전 배송이 2월10일 마감되어 15일 이후 발송됩니다.</a></div></td>
+                                		<td><div class="tb-center">운영자</div></td>
+                                		<td><div class="tb-center">2021/02/11</div></td>
+                                		<td><div class="tb-center">246</div></td>
                                 	</tr>
                                 	<tr>
-					                   <td><div class="td_center">8</div></td>
+					                   <td><div class="tb-center">8</div></td>
 					                   <td><div class="td_left"><img src="<%=path%>/img/board/note.jpg" class="note"></div></td>
 					                   <td><div class="td_left"><a href="../../board/inquiry.jsp">재입고문의</a></div></td>
-					                   <td><div class="td_center">홍길동</div></td>
-					                   <td><div class="td_center">2021/02/10</div></td>
-					                   <td><div class="td_center">2</div></td>
+					                   <td><div class="tb-center">홍길동</div></td>
+					                   <td><div class="tb-center">2021/02/10</div></td>
+					                   <td><div class="tb-center">2</div></td>
 						             </tr>
 					               <tr>
-					                   <td><div class="td_center">7</div></td>
+					                   <td><div class="tb-center">7</div></td>
 					                   <td><div class="td_left"><img src="<%=path%>/img/board/note.jpg" class="note"></div></td>
 					                   <td><div class="td_left"><a href="../../board/inquiry.jsp">취소요청</a></div></td>
-					                   <td><div class="td_center">홍길동</div></td>
-					                   <td><div class="td_center">2021/02/09</div></td>
-					                   <td><div class="td_center">15</div></td>
+					                   <td><div class="tb-center">홍길동</div></td>
+					                   <td><div class="tb-center">2021/02/09</div></td>
+					                   <td><div class="tb-center">15</div></td>
 					               </tr>
 					               <tr>
-					                   <td><div class="td_center">6</div></td>
+					                   <td><div class="tb-center">6</div></td>
 					                   <td><div class="td_left"><img src="<%=path%>/img/board/note.jpg" class="note"></div></td>
 					                   <td><div class="td_left"><a href="../../board/inquiry.jsp">환불요청</a></div></td>
-					                   <td><div class="td_center">홍길동</div></td>
-					                   <td><div class="td_center">2021/02/07</div></td>
-					                   <td><div class="td_center">11</div></td>
+					                   <td><div class="tb-center">홍길동</div></td>
+					                   <td><div class="tb-center">2021/02/07</div></td>
+					                   <td><div class="tb-center">11</div></td>
 					               </tr>
 					               <tr>
-					                   <td><div class="td_center">5</div></td>
+					                   <td><div class="tb-center">5</div></td>
 					                   <td><div class="td_left"><img src="<%=path%>/img/board/note.jpg" class="note"></div></td>
 					                   <td><div class="td_left"><img src="<%=path%>/img/board/reply.png" style="padding-left: 10px;" class="reply">
 					                   <a href="../../board/inquiry.jsp">환불요청</a></div></td>
-					                   <td><div class="td_center">운영자</div></td>
-					                   <td><div class="td_center">2021/02/08</div></td>
-					                   <td><div class="td_center">11</div></td>
+					                   <td><div class="tb-center">운영자</div></td>
+					                   <td><div class="tb-center">2021/02/08</div></td>
+					                   <td><div class="tb-center">11</div></td>
 					               </tr>
 					               <tr>
-					                   <td><div class="td_center">4</div></td>
+					                   <td><div class="tb-center">4</div></td>
 					                   <td><div class="td_left"><img src="<%=path%>/img/board/note.jpg" class="note"></div></td>
 					                   <td><div class="td_left"><a href="../../board/inquiry.jsp">주문건요</a></div></td>
-					                   <td><div class="td_center">홍길동</div></td>
-					                   <td><div class="td_center">2021/02/07</div></td>
-					                   <td><div class="td_center">42</div></td>
+					                   <td><div class="tb-center">홍길동</div></td>
+					                   <td><div class="tb-center">2021/02/07</div></td>
+					                   <td><div class="tb-center">42</div></td>
 					               </tr>
 					               <tr>
-					                   <td><div class="td_center">3</div></td>
+					                   <td><div class="tb-center">3</div></td>
 					                   <td><div class="td_left"><img src="<%=path%>/img/board/note.jpg" class="note"></div></td>
 					                   <td><div class="td_left"><img src="<%=path%>/img/board/reply.png" style="padding-left: 10px;" class="reply">
 					                   <a href="../../board/inquiry.jsp">주문건요</a></div></td>
-					                   <td><div class="td_center">운영자</div></td>
-					                   <td><div class="td_center">2021/02/08</div></td>
-					                   <td><div class="td_center">41</div></td>
+					                   <td><div class="tb-center">운영자</div></td>
+					                   <td><div class="tb-center">2021/02/08</div></td>
+					                   <td><div class="tb-center">41</div></td>
 					               </tr>
 					               <tr>
-					                   <td><div class="td_center">2</div></td>
+					                   <td><div class="tb-center">2</div></td>
 					                   <td><div class="td_left"><img src="<%=path%>/img/board/note.jpg" class="note"></div></td>
 					                   <td><div class="td_left"><a href="../../board/inquiry.jsp">입고문의</a></div></td>
-					                   <td><div class="td-center">홍길동</div></td>
-					                   <td><div class="td_center">2021/02/07</div></td>
-					                   <td><div class="td_center">53</div></td>
+					                   <td><div class="tb-center">홍길동</div></td>
+					                   <td><div class="tb-center">2021/02/07</div></td>
+					                   <td><div class="tb-center">53</div></td>
 					               </tr>
 					               <tr>
-					                   <td><div class="td_center">1</div></td>
+					                   <td><div class="tb-center">1</div></td>
 					                   <td><div class="td_left"><img src="<%=path%>/img/board/note.jpg" class="note"></div></td>
 					                   <td><div class="td_left"><img src="<%=path%>/img/board/reply.png" style="padding-left: 10px;" class="reply">
 					                   <a href="../../board/inquiry.jsp">입고문의</a></div></td>
-					                   <td><div class="td_center">운영자</div></td>
-					                   <td><div class="td_center">2021/02/08</div></td>
-					                   <td><div class="td_center">50</div></td>
+					                   <td><div class="tb-center">운영자</div></td>
+					                   <td><div class="tb-center">2021/02/08</div></td>
+					                   <td><div class="tb-center">50</div></td>
 					               </tr>
 					           </tbody>
                         </table>
