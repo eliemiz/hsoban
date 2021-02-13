@@ -12,7 +12,7 @@ public class Dao {
 	protected ResultSet rs;
 	
 	protected String defaultUrl = "jdbc:oracle:thin:@39.117.21.102:1521:xe";
-	protected String defaultUser = "elmz";
+	protected String defaultUser = "hsoban";
 	protected String defaultPassword = "temp";
 	
 	protected void connect() throws SQLException {
