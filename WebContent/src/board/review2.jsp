@@ -31,16 +31,16 @@
 					         <col width="*">
 					     </colgroup>
                             <tr>
-                            <td><a href="../shop/shop_default.jsp"><img src="<%=path%>/img/board/review.jpg" class="img"></a></td>
-                            <td><div class="td_left">상 품 명:<a href="../shop/shop_default.jsp">[두부볼中,小]</a><br>
-                            상품가격:<strong>18,000원</strong></div></td>
+                            <td><a href="../shop/shop_default.jsp"><img src="<%=path%>/img/board/review2.jpg" class="img"></a></td>
+                            <td><div class="td_left">상 품 명:<a href="../shop/shop_default.jsp">수저받침대</a><br>
+                            상품가격:<strong>14,000원</strong></div></td>
                             </tr>
                         </table>
                         <div class="bbs-table-view">
                             <table>
                                 <thead>
                                     <tr>
-                                        <th><div class="td_left">만족합니다.</div></th>
+                                        <th><div class="td_left">수저받침대</div></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -64,7 +64,8 @@
                                     </tr>
                                     <tr>
                                         <td class="td_left">
-                                            <div class="data-bd-cont">&nbsp;마음에 듭니다.<br>
+                                            <div class="data-bd-cont">&nbsp;마음에 듭니다. 컬러가 예쁩니다.<br>
+																	&nbsp;재구매의사있습니다~
                                             </div>
                                         </td>
                                     </tr>
@@ -103,7 +104,7 @@
                                            <td colspan="3" class="td_left">
                                                <textarea name="comment" onchange="Checklength(this);" onkeyup="Checklength(this);" onclick="CheckLogin()" placeholder="내용" style="margin: 0px; width: 999px; height: 85px;">
                                                </textarea>
-                                            <input type="button" value="글쓰기" class="btn_write2">
+                                               <input type="button" value="글쓰기" class="btn_write2">
                                            </td>   
                                         </tr>
                                     </tbody>
@@ -115,14 +116,14 @@
                                     <dt></dt>
                                     <dd>
                                     <input type="button" value="수정" class="btn_write" onclick="location.href='review_write.jsp'">&nbsp;
-                                    <input type="button" value="삭제" class="btn_write"  onclick="location.href='review_board.jsp'">    
+                                    <input type="button" value="삭제" class="btn_write">    
                                     </dd>                                                       
                             </div>
                             <br>
 			               <span><img src="<%=path%>/img/board/up.png" class="up">&nbsp;이전글 :</span>
-	                      	 <a href="../board/review2.jsp">수저받침대</a><br>
+	                      	 <a href="../board/review.jsp">[두부볼中,小]</a><br>
                        	   <span><img src="<%=path%>/img/board/down.png" class="down">&nbsp;다음글 :</span>
-                             <a href="../board/review2.jsp">수저받침대</a>	
+                             <a href="../board/review.jsp">[두부볼中,小]</a>	
                         </div>
                           <br>
 				     	<div style="text-align:right;">
