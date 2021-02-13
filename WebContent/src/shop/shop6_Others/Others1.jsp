@@ -1,10 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.util.*" import="java.net.*"%>
+<%
+	request.setCharacterEncoding("UTF-8");
+	String path = request.getContextPath();
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <link rel="stylesheet" href="/hsoban/css/allCommon.css">
 <link rel="stylesheet" href="/hsoban/css/shopdetail.css">
+<link rel="stylesheet" href="/hsoban/css/common.css">
+<style>
+.mic {
+	width: 14px;
+	height: 14px;
+}
+.note {
+	width: 25px;
+	height: 25px;
+}
+.reply {
+	width: 14px;
+	height: 14px;
+}
+</style>
 <meta charset="UTF-8">
 <title>[수저받침대]</title>
 </head>
@@ -99,7 +118,6 @@
                                                     </div>
 												</div>
 											</td></tr>
-											<tr><td colspan="2"><div class="tb-left"></div></td></tr>
 										</tbody>
 									</table>
 								</div>
@@ -114,65 +132,94 @@
 					<img src="/hsoban/src/shop/img/detail_top.jpg" alt="그릇 소개"/>
 					<div class="prd-detail">
 						<div id="videotalk_area"></div>
-							<p style="margin: 0px; text-align: left;">&nbsp;</p>
-							<p style="margin: 0px; text-align: center;"><strong><font color="#676767"><font size="3"></font></font></strong>&nbsp;</p><font color="#676767"><font size="3">
-							<!-- size 소개 -->
-							<p style="margin: 0px; text-align: center; line-height: 2;">
+							<p align="center" style="margin: 0px; text-align: center;"><span style="font-size: 9pt;"></span><br><span style="text-align: center; font-size: small;">&nbsp;</span></p>
+							<p align="center" style="margin: 0px; text-align: center;"><strong><font color="#676767"><font size="3"></font></font></strong>&nbsp;
 								<strong>
 									<font color="#676767">
-										<font size="3"><span style="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);">◎</span></font>
+										<font style="background-color: rgb(255,255,255)" size="3">◎</font>
 										<font size="5">
-											<font size="4"><span style="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);">size</span></font>
-											<span style="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);">&nbsp;&nbsp;</span>
-										</font>
-										<font size="4"><span style="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);">&nbsp;</span></font>
-									</font>
-									<font color="#626262" size="4"><span style="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);">中</span></font>
-									<font color="#676767">
-										<font size="5"><span style="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);">&nbsp;</span></font>
-									</font>
-									<font size="5">
-										<font style="background-color: rgb(255, 255, 255);">
-											<font color="rgb(0,0,0)">
-												<span style="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);">&nbsp; 10</span>
-												<font style="font-size: 11pt;">
-													<span style="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);">cm(d)&nbsp;× &nbsp;</span>
-													<font size="5"><span style="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);">4</span></font>
+											<font style="background-color: rgb(255,255,255);">
+												<font color="#676767">
+													<font size="4">size</font>
+													&nbsp;&nbsp;
 												</font>
-												<font style="font-size: 11pt;"><span style="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);">cm(h)</span></font>
+											</font>
+											<font style="background-color: rgb(198,198,198);">
+												<font style="background-color: rgb(255,255,255);">
+													<font color="rgb(0.0.0)">11
+														<font style="font-size: 11pt;">cm(d)x													
+															<font size="5">3.5</font>
+															<font style="font-size:11pt;">cm</font>
+															(l)x
+															<font size="5">0.7</font>
+														</font>		
+													</font>																						
+													<font style="font-size: 11pt;">
+														<font color="rgb=(0,0,0)" style="background-color: rgb(255,255,255);">cm(h)</font>
+													</font>
+												</font>
 											</font>
 										</font>
-									</font>
+									</font>									
 								</strong>
 							</p>
-							<font color="rgb(0,0,0)" style="background-color: rgb(255, 255, 255);"><span style="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);"></span></font>
-							<font color="rgb(0,0,0)" style="background-color: rgb(255, 255, 255);"></font>
-							<p style="margin: 0px; text-align: center;"><strong><font size="3"></font></strong><font color="rgb(0,0,0)" style="background-color: rgb(255, 255, 255);">&nbsp;</font></p>
-							<font color="rgb(0,0,0)" style="background-color: rgb(255, 255, 255);"></font>
-							<p style="margin: 0px; text-align: center;"><font color="rgb(0,0,0)" style="background-color: rgb(255, 255, 255);">&nbsp;</font></p>
-							<font color="#676767"><font size="3"><font color="rgb(0,0,0)" style="background-color: rgb(255, 255, 255);"></font></font>
-							<blockquote style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px;" dir="ltr">
-							<p style="margin: 0px; text-align: left;">&nbsp;</p>
-							<p style="margin: 0px; text-align: left;"><font size="2"><font color="#1b1b1b">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></font><font size="2"><font color="#1b1b1b"></font></font></p>
-							<p style="margin: 0px; text-align: left;"><font size="2"><font color="#1b1b1b"></font></font>&nbsp;</p>
-							<p style="margin: 0px; text-align: left;"><font size="2"><font color="#1b1b1b">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-family: Gungsuh,궁서;">&nbsp;º </span></font><span style="font-family: Gungsuh,궁서;">본 제품은 일일이 손으로 빚어 가마에서 구워나오는 수제의 특성상 약간의 사이즈 차이가 있을 수 있습니다.</span></font></p>
-							<span style="font-family: Gungsuh,궁서;"></span><p style="margin: 0px; text-align: left; line-height: 2;"><font size="2"><font color="#1b1b1b"><span style="font-family: Gungsuh,궁서;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;º </span></font><span style="font-family: Gungsuh,궁서;">기물에 보이는 유약의 흐름이나 검정색으로 보이는 작은 철분점은 교환,반품의 사유가 되지 않습니다.</span></font></p>
-							<span style="font-family: Gungsuh,궁서;"></span><p style="margin: 0px; text-align: left; line-height: 2;"><font size="2"><font color="#1b1b1b"><span style="font-family: Gungsuh,궁서;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;º </span></font><span style="font-family: Gungsuh,궁서;">제품 상세 사진은 화면의 해상도에 따라 색이 약간 다를 수 있습니다.</span></font></p></blockquote></font></font>
-							<p style="margin: 0px; text-align: center;"><strong><font color="#676767"><font size="3"></font></font></strong>&nbsp;</p>
-							<p style="margin: 0px; text-align: center;"><img src="" alt="상세이미지1"/></p>
-							<p style="margin: 0px;"><img src="" alt="상세이미지2"/></p>
-							<p style="margin: 0px;"><font color="#7f7f7f" face="Gungsuh,궁서" size="3"><strong><img src="" alt="상세이미지3"/></strong></font></p>
-							<p style="margin: 0px;"><img src="" alt="상세이미지4"/></p><p></p>
-							<p style="margin: 0px; text-align: center;"><font color="#7f7f7f" face="Gungsuh,궁서" size="3"><strong><img src="" alt="상세이미지5"/></strong></font></p>
-							<p style="margin: 0px; text-align: center;"><font color="#7f7f7f" face="Gungsuh,궁서" size="3"><strong><img src="" alt="상세이미지6"/></strong></font></p>
-							<p style="margin: 0px; text-align: center;"><font color="#7f7f7f" face="Gungsuh,궁서" size="3"><strong><img src="" alt="상세이미지7"/></strong></font></p>
-							<p style="margin: 0px;"><img src="" alt="상세이미지8"/></p>
-							<!-- s: 상품 일반정보(상품정보제공 고시) -->
-							<!-- e: 상품 일반정보(상품정보제공 고시) -->
-							<!-- 쿠폰 관련 부분 -->
-							<!-- 쿠폰관련 부분 끝 -->
-							<!-- 몰티비 플레이어 노출 위치 -->
-							<div id="malltb_video_player" style="margin-top: 10px; margin-bottom: 10px; text-align: center; display: none;"></div>
+							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
+							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
+							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
+							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
+							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
+							<p align="left" style="margin: 0px; text-align: left;"><font color="#000000" style="background-color: rgb(255, 255, 255);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#828282" style="background-color: rgb(255, 255, 255);">&nbsp;&nbsp; º&nbsp;본 제품은 일일이 손으로 빚어 가마에서 구워나오는 &nbsp;수제의 특성상&nbsp;약간의 사이즈 차이가 있을 수 있습니다.</font></p>
+							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
+							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; º 기물에 보이는 유약의 흐름이나 검정색으로 보이는 작은 철분점은 교환,반품의 사유가 되지 않습니다.</font></p>
+							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
+							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; º 제품 상세 사진은 화면의 해상도에 따라 색이 약간 다를 수도 있습니다.</font></p>
+							<p align="center" style="margin: 0px; text-align: center;"><br><span style="text-align: center; font-size: small;">&nbsp;</span><br><strong><font color="#676767"><font style="font-size: 11pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></font></strong><br></p>							
+							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
+							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
+							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
+							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
+							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
+							<p align="center" style="margin: 0px; text-align: center;"><img src="/hsoban/img/shop/Others1_02.jpg"></p>
+							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
+							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
+							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>					
+							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>					
+							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>					
+							<p align="center" style="margin: 0px; text-align: center;"><img src="/hsoban/img/shop/Others1_03.jpg"></p>
+							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
+							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
+							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
+							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
+							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
+							<p align="center" style="margin: 0px; text-align: center;"><img src="/hsoban/img/shop/Others1_04.jpg"></p>
+							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
+							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
+							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
+							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
+							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
+							<p align="center" style="margin: 0px; text-align: center;"><img src="/hsoban/img/shop/Others1_05.jpg"></p>
+							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
+							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
+							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
+							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
+							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
+							<p align="center" style="margin: 0px; text-align: center;"><img src="/hsoban/img/shop/Others1_06.jpg"></p>
+							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
+							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
+							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
+							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
+							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
+							<p align="center" style="margin: 0px; text-align: center;"><img src="/hsoban/img/shop/Others1_07.jpg"></p>
+							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
+							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
+							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
+							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
+							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
+							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
+							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
+							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
+							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
+							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
 					</div>
 					<img src="/hsoban/src/shop/img/detail_info.jpg" alt="주의사항" style="display:block;"/>
 					<h3 class="tit-detail">상품문의
@@ -197,16 +244,90 @@
                                         <th scope="col"><div class="tb-center">조회</div></th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                 <tbody>
                                 	<tr>
-                                		<td colspan="6" style="text-align:center;">
-                                			<ol class="paging">
-                                				<li class="now"><a href="">1</a></li>
-                                			</ol>
-                                        </td>
-                                    </tr>
-                                 </tbody>
+                                		<td><div class="td-center">+</div></td>
+                                		<td><div class="td_left">&nbsp;<img src="<%=path %>/img/board/mic.png" class="mic"/></div></td>
+                                		<td><div class="td-left"><a href="../../board/notice.jsp">2021년 설 연휴 이전 배송이 2월10일 마감되어 15일 이후 발송됩니다.</a></div></td>
+                                		<td><div class="td-center">운영자</div></td>
+                                		<td><div class="td_center">2021/02/11</div></td>
+                                		<td><div class="td_center">246</div></td>
+                                	</tr>
+                                	<tr>
+					                   <td><div class="td_center">8</div></td>
+					                   <td><div class="td_left"><img src="<%=path%>/img/board/note.jpg" class="note"></div></td>
+					                   <td><div class="td_left"><a href="../../board/inquiry.jsp">재입고문의</a></div></td>
+					                   <td><div class="td_center">홍길동</div></td>
+					                   <td><div class="td_center">2021/02/10</div></td>
+					                   <td><div class="td_center">2</div></td>
+						             </tr>
+					               <tr>
+					                   <td><div class="td_center">7</div></td>
+					                   <td><div class="td_left"><img src="<%=path%>/img/board/note.jpg" class="note"></div></td>
+					                   <td><div class="td_left"><a href="../../board/inquiry.jsp">취소요청</a></div></td>
+					                   <td><div class="td_center">홍길동</div></td>
+					                   <td><div class="td_center">2021/02/09</div></td>
+					                   <td><div class="td_center">15</div></td>
+					               </tr>
+					               <tr>
+					                   <td><div class="td_center">6</div></td>
+					                   <td><div class="td_left"><img src="<%=path%>/img/board/note.jpg" class="note"></div></td>
+					                   <td><div class="td_left"><a href="../../board/inquiry.jsp">환불요청</a></div></td>
+					                   <td><div class="td_center">홍길동</div></td>
+					                   <td><div class="td_center">2021/02/07</div></td>
+					                   <td><div class="td_center">11</div></td>
+					               </tr>
+					               <tr>
+					                   <td><div class="td_center">5</div></td>
+					                   <td><div class="td_left"><img src="<%=path%>/img/board/note.jpg" class="note"></div></td>
+					                   <td><div class="td_left"><img src="<%=path%>/img/board/reply.png" style="padding-left: 10px;" class="reply">
+					                   <a href="../../board/inquiry.jsp">환불요청</a></div></td>
+					                   <td><div class="td_center">운영자</div></td>
+					                   <td><div class="td_center">2021/02/08</div></td>
+					                   <td><div class="td_center">11</div></td>
+					               </tr>
+					               <tr>
+					                   <td><div class="td_center">4</div></td>
+					                   <td><div class="td_left"><img src="<%=path%>/img/board/note.jpg" class="note"></div></td>
+					                   <td><div class="td_left"><a href="../../board/inquiry.jsp">주문건요</a></div></td>
+					                   <td><div class="td_center">홍길동</div></td>
+					                   <td><div class="td_center">2021/02/07</div></td>
+					                   <td><div class="td_center">42</div></td>
+					               </tr>
+					               <tr>
+					                   <td><div class="td_center">3</div></td>
+					                   <td><div class="td_left"><img src="<%=path%>/img/board/note.jpg" class="note"></div></td>
+					                   <td><div class="td_left"><img src="<%=path%>/img/board/reply.png" style="padding-left: 10px;" class="reply">
+					                   <a href="../../board/inquiry.jsp">주문건요</a></div></td>
+					                   <td><div class="td_center">운영자</div></td>
+					                   <td><div class="td_center">2021/02/08</div></td>
+					                   <td><div class="td_center">41</div></td>
+					               </tr>
+					               <tr>
+					                   <td><div class="td_center">2</div></td>
+					                   <td><div class="td_left"><img src="<%=path%>/img/board/note.jpg" class="note"></div></td>
+					                   <td><div class="td_left"><a href="../../board/inquiry.jsp">입고문의</a></div></td>
+					                   <td><div class="td-center">홍길동</div></td>
+					                   <td><div class="td_center">2021/02/07</div></td>
+					                   <td><div class="td_center">53</div></td>
+					               </tr>
+					               <tr>
+					                   <td><div class="td_center">1</div></td>
+					                   <td><div class="td_left"><img src="<%=path%>/img/board/note.jpg" class="note"></div></td>
+					                   <td><div class="td_left"><img src="<%=path%>/img/board/reply.png" style="padding-left: 10px;" class="reply">
+					                   <a href="../../board/inquiry.jsp">입고문의</a></div></td>
+					                   <td><div class="td_center">운영자</div></td>
+					                   <td><div class="td_center">2021/02/08</div></td>
+					                   <td><div class="td_center">50</div></td>
+					               </tr>
+					           </tbody>
                         </table>
+                        <br>
+					      <div style="text-align: center;">
+					         <input type="button" value="&nbsp;1&nbsp;" class="btn_normal">
+					         <input type="button" value="&nbsp;>&nbsp;" class="btn_normal">
+					         <input type="button" value=">>" class="btn_normal">
+					      </div>
                    </div>
 				</div>
 			</div>
@@ -216,7 +337,7 @@
 </div>
 
 
-
+<jsp:include page="../../common/side.jsp"/>
 <jsp:include page="../../common/footer.jsp"/>
 </body>
 </html>

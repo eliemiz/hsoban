@@ -59,6 +59,7 @@
 		</div>
 	</div>
 	
+<jsp:include page="../../common/side.jsp"/>	
 <jsp:include page="../../common/footer.jsp"/>
 </body>
 </html>
