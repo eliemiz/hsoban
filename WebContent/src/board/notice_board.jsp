@@ -60,53 +60,53 @@ String path = request.getContextPath();
                    <td><div class="td_left">&nbsp;<img src="<%=path%>/img/board/mic.png" class="mic"></div></td>
                    <td><div class="td_left">2021년 설 연휴 이전 배송이 2월10일 마감되어 15일 이후 발송됩니다.</div></td>
                    <td><div class="td_center">운영자</td>
-                   <td><div class="td_center">2021/02/08</div></td>
+                   <td><div class="td_center">2020/02/03</div></td>
                    <td><div class="td_center">200</div></td>               
                </tr>
                <tr>
                    <td><div class="td_center">+</div></td>
                    <td><div class="td_left">&nbsp;<img src="<%=path%>/img/board/mic.png" class="mic"></div></td>
-                   <td><div class="td_left">리뉴얼 제품 업데이트 관련</div></td>
+                   <td><div class="td_left"><a href="../board/notice.jsp">화소반 고객 감사 이벤트</a></div></td>
                    <td><div class="td_center">운영자</td>
-                   <td><div class="td_center">2021/02/01</div></td>
+                   <td><div class="td_center">2020/02/03</div></td>
                    <td><div class="td_center">100</div></td>               
                </tr>
                <tr>
                    <td><div class="td_center">+</div></td>
                    <td><div class="td_left">&nbsp;<img src="<%=path%>/img/board/mic.png" class="mic"></div></td>
-                   <td><div class="td_left">리뉴얼 제품 업데이트 관련</div></td>
+                   <td><div class="td_left"><a href="../board/notice.jsp">화소반 고객 감사 이벤트</a></div></td>
                    <td><div class="td_center">운영자</td>
-                   <td><div class="td_center">2021/02/01</div></td>
+                   <td><div class="td_center">2020/02/03</div></td>
                    <td><div class="td_center">120</div></td>               
                </tr>
                <tr>
                    <td><div class="td_center">+</div></td>
                    <td><div class="td_left">&nbsp;<img src="<%=path%>/img/board/mic.png" class="mic"></div></td>
-                   <td><div class="td_left">화소반 고객 감사 이벤트</div></td>
+                   <td><div class="td_left"><a href="../board/notice.jsp">화소반 고객 감사 이벤트</a></div></td>
                    <td><div class="td_center">운영자</td>
-                   <td><div class="td_center">2021/02/01</div></td>
+                   <td><div class="td_center">2020/02/03</div></td>
                    <td><div class="td_center">198</div></td>               
                </tr>
                <tr>
                    <td><div class="td_center">+</div></td>
                    <td><div class="td_left">&nbsp;<img src="<%=path%>/img/board/mic.png" class="mic"></div></td>
-                   <td><div class="td_left">화소반 고객 감사 이벤트</div></td>
+                   <td><div class="td_left"><a href="../board/notice.jsp">화소반 고객 감사 이벤트</a></div></td>
                    <td><div class="td_center">운영자</td>
-                   <td><div class="td_center">2020/08/01</div></td>
+                   <td><div class="td_center">2020/02/03</div></td>
                    <td><div class="td_center">2</div></td>               
                </tr>
                <tr>
                    <td><div class="td_center">+</div></td>
                    <td><div class="td_left">&nbsp;<img src="<%=path%>/img/board/mic.png" class="mic"></div></td>
-                   <td><div class="td_left">화소반 고객 감사 이벤트</div></td>
+                   <td><div class="td_left"><a href="../board/notice.jsp">화소반 고객 감사 이벤트</a></div></td>
                    <td><div class="td_center">운영자</td>
-                   <td><div class="td_center">2020/03/01</div></td>
+                   <td><div class="td_center">2020/02/03</div></td>
                    <td><div class="td_center">178</div></td>               
                </tr>
                <tr>
                    <td><div class="td_center">+</div></td>
                    <td><div class="td_left">&nbsp;<img src="<%=path%>/img/board/mic.png" class="mic"></div></td>
-                   <td><div class="td_left">화소반 고객 감사 이벤트</div></td>
+                   <td><div class="td_left"><a href="../board/notice.jsp">화소반 고객 감사 이벤트</a></div></td>
                    <td><div class="td_center">운영자</td>
                    <td><div class="td_center">2021/02/03</div></td>
                    <td><div class="td_center">200</div></td>               
@@ -114,7 +114,7 @@ String path = request.getContextPath();
                <tr>
                    <td><div class="td_center">+</div></td>
                    <td><div class="td_left">&nbsp;<img src="<%=path%>/img/board/mic.png" class="mic"></div></td>
-                   <td><div class="td_left">화소반 고객 감사 이벤트</div></td>
+                   <td><div class="td_left"><a href="../board/notice.jsp">화소반 고객 감사 이벤트</a></div></td>
                    <td><div class="td_center">운영자</td>
                    <td><div class="td_center">2020/02/03</div></td>
                    <td><div class="td_center">230</div></td>               
@@ -122,9 +122,9 @@ String path = request.getContextPath();
                <tr>
                    <td><div class="td_center">+</div></td>
                    <td><div class="td_left">&nbsp;<img src="<%=path%>/img/board/mic.png" class="mic"></div></td>
-                   <td><div class="td_left">화소반몰 오픈 이벤트</div></td>
+                   <td><div class="td_left"><a href="../board/notice.jsp">화소반 고객 감사 이벤트</a></div></td>
                    <td><div class="td_center">운영자</td>
-                   <td><div class="td_center">2020/02/01</div></td>
+                   <td><div class="td_center">2020/02/03</div></td>
                    <td><div class="td_center">300</div></td>               
                </tr>
            </tbody>

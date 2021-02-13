@@ -47,6 +47,10 @@ span{
 	width: 14px;
 	height: 14px;
 }
+.event {
+	width: 400px;
+	height: 300px;
+}
 .note {
 	width: 25px;
 	height: 25px;
@@ -57,7 +61,7 @@ span{
 }
 .img {
 	width: 80px;
-	height: 50px;
+	height: 60px;
 }
 .up{
 	width: 8px;
@@ -98,16 +102,7 @@ p.title {
 div {
     display: block;
 }
-table {
-    width: 100%;
-    border-collapse: collapse;
-    border-spacing: 0;
-    -webkit-border-horizontal-spacing: 0px;
-    -webkit-border-vertical-spacing: 0px;
-    table-layout: fixed;
-    word-wrap: break-word;
-    word-break: keep-all;
-}
+
 .prd-tinfo {
     zoom: 1;
     overflow: hidden;
@@ -280,15 +275,27 @@ input {
     font-size: 11px;
     color: #9d9d9d;
 }
-btn btn_normal2 {
+input[type=button], input[type=submit] {
+	outline: none;
+}
+.btn_write {
+	border: 1px solid #e7e7e7;
 	cursor: pointer;
-	height: 20px;
-	width: 8px;
-	padding: 0px 30px;
+	height: 30px;
 	font-weight: bolder;
 	background-color: white;
 	color: inherit;
-	 
+	width: 40px;
+	text-align:center;
+}
+.btn_write2 {
+	border: 1px solid #e7e7e7;
+	cursor: pointer;
+	height: 60px;
+	font-weight: bolder;
+	background-color: white;
+	color: inherit;
+	width: 80px;
 	text-align:center;
 }
 .input-style { 

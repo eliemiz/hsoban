@@ -101,10 +101,10 @@
                                               </td>
                                            </tr>
                                            <tr>
-                                           <td colspan="2" class="td_left">
+                                           <td colspan="3" class="td_left">
                                                <textarea name="comment" onchange="Checklength(this);" onkeyup="Checklength(this);" onclick="CheckLogin()" placeholder="내용" style="margin: 0px; width: 999px; height: 85px;">
-                                               </textarea></td>
-                                            <td><input type="button" value="글쓰기" class="btn_write2">
+                                               </textarea>
+                                               <input type="button" value="글쓰기" class="btn_write2">
                                            </td>   
                                         </tr>
                                     </tbody>
