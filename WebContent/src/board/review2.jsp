@@ -31,16 +31,16 @@
 					         <col width="*">
 					     </colgroup>
                             <tr>
-                            <td><a href="../shop/shop_default.jsp"><img src="<%=path%>/img/board/review.jpg" class="img"></a></td>
-                            <td><div class="td_left">상 품 명:<a href="../shop/shop_default.jsp">머그</a><br>
-                            상품가격:<strong>38,000원</strong></div></td>
+                            <td><a href="../shop/shop_default.jsp"><img src="<%=path%>/img/board/review2.jpg" class="img"></a></td>
+                            <td><div class="td_left">상 품 명:<a href="../shop/shop_default.jsp">수저받침대</a><br>
+                            상품가격:<strong>14,000원</strong></div></td>
                             </tr>
                         </table>
                         <div class="bbs-table-view">
                             <table>
                                 <thead>
                                     <tr>
-                                        <th><div class="td_left">머그</div></th>
+                                        <th><div class="td_left">수저받침대</div></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -64,7 +64,8 @@
                                     </tr>
                                     <tr>
                                         <td class="td_left">
-                                            <div class="data-bd-cont">&nbsp;마음에 듭니다.<br>
+                                            <div class="data-bd-cont">&nbsp;마음에 듭니다. 컬러가 예쁩니다.<br>
+																	&nbsp;재구매의사있습니다~
                                             </div>
                                         </td>
                                     </tr>
@@ -119,9 +120,9 @@
                             </div>
                             <br>
 			               <span><img src="<%=path%>/img/board/up.png" class="up">&nbsp;이전글 :</span>
-	                      	 <a href="../board/review2.jsp">수저받침대</a><br>
+	                      	 <a href="../board/review.jsp">머그</a><br>
                        	   <span><img src="<%=path%>/img/board/down.png" class="down">&nbsp;다음글 :</span>
-                             <a href="../board/review2.jsp">수저받침대</a>	
+                             <a href="../board/review.jsp">머그</a>	
                         </div>
                           <br>
 				     	<div style="text-align:right;">
