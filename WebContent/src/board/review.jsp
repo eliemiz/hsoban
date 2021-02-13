@@ -32,15 +32,15 @@
 					     </colgroup>
                             <tr>
                             <td><a href="../shop/shop_default.jsp"><img src="<%=path%>/img/board/review.jpg" class="img"></a></td>
-                            <td><div class="td_left">상 품 명:<a href="../shop/shop_default.jsp">머그</a><br>
-                            상품가격:<strong>38,000원</strong></div></td>
+                            <td><div class="td_left">상 품 명:<a href="../shop/shop_default.jsp">[두부볼中,小]</a><br>
+                            상품가격:<strong>18,000원</strong></div></td>
                             </tr>
                         </table>
                         <div class="bbs-table-view">
                             <table>
                                 <thead>
                                     <tr>
-                                        <th><div class="td_left">머그</div></th>
+                                        <th><div class="td_left">만족합니다.</div></th>
                                     </tr>
                                 </thead>
                                 <tbody>

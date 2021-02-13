@@ -121,9 +121,9 @@
                             </div>
                             <br>
 			               <span><img src="<%=path%>/img/board/up.png" class="up">&nbsp;이전글 :</span>
-	                      	 <a href="../board/review.jsp">머그</a><br>
+	                      	 <a href="../board/review.jsp">[두부볼中,小]</a><br>
                        	   <span><img src="<%=path%>/img/board/down.png" class="down">&nbsp;다음글 :</span>
-                             <a href="../board/review.jsp">머그</a>	
+                             <a href="../board/review.jsp">[두부볼中,小]</a>	
                         </div>
                           <br>
 				     	<div style="text-align:right;">
