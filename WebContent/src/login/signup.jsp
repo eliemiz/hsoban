@@ -114,9 +114,9 @@ pre {
 	<a href="#terms">
 	<input type="button" class="btn btn_gray2" value="내용보기" style="height:22px; width:110px;"></a></span>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<input type="checkbox">개인정보 수집 및 이용 안내&nbsp;<span><a href="#inform">
-	<input type="button" class="btn btn_gray2" value="내용보기" style="height:22px; width:110px;"></a></span>
-	<br><br><hr style="border:dashed 1px;"><br>
+	<input type="checkbox">개인정보 수집 및 이용 안내&nbsp;<span>
+	<input type="button" class="btn btn_gray2" value="내용보기" style="height:22px; width:110px;" onclick="location.href='#inform'"></span>
+	<br><br><hr width="1100" style="border:dashed 1px;"><br>
 	<input type="checkbox">마케팅 수신동의&nbsp;(&nbsp;<input type="checkbox">이메일&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox">&nbsp;SMS)<br><br>
 	&nbsp;&nbsp;&nbsp;쇼핑몰에서 제공하는 신상품 소식/할인쿠폰을 무상으로 보내드립니다!<br>
 	&nbsp;&nbsp;&nbsp;단, 상품 구매 정보는 수신동의 여부 관계없이 발송합니다.<br>
@@ -124,7 +124,7 @@ pre {
 	</th></tr>
 </table><br>
 <div style="text-align:center;"><a href="../main/main.jsp">
-<span><input type="button" class="btn btn_black" value="동의하고 가입완료" style="height:40px; width:230px;"></span></a></div> <!-- 메인페이지로이동 -->
+<span><input type="button" class="btn btn_black" value="동의하고 가입완료" style="height:40px; width:230px;"></span></a></div> 
 </form>
 <br><br><hr width="1170"><br><br><h3 align="center" id="terms">이용약관</h3>
 <p class="scroll" id="p1">
@@ -255,7 +255,7 @@ pre {
 ① 상위 “몰”과 하위 “몰”이 하이퍼링크(예: 하이퍼링크의 대상에는 문자, 그림 및 동화상 등이 포함됨)방식 등으로 연결된 경우, 전자를 연결 “몰”(웹 사이트)이라고 하고 후자를 피연결 “몰”(웹사이트)이라고 합니다.<br>
 ② 연결“몰”은 피연결“몰”이 독자적으로 제공하는 재화 등에 의하여 이용자와 행하는 거래에 대해서 보증 책임을 지지 않는다는 뜻을 연결“몰”의 초기화면 또는 연결되는 시점의 팝업화면으로 명시한 경우에는 그 거래에 대한 보증 책임을 지지 않습니다.<br><br>
 제22조(저작권의 귀속 및 이용제한)<br>
-① “몰“이 작성한 저작물에 대한 저작권 기타 지적재산권은 ”몰“에 귀속합니다.<br>
+① “몰“이 작성한 저작물에 대한 저작권 기타 지적재산권은 "몰"에 귀속합니다.<br>
 ② 이용자는 “몰”을 이용함으로써 얻은 정보 중 “몰”에게 지적재산권이 귀속된 정보를 “몰”의 사전 승낙 없이 복제, 송신, 출판, 배포, 방송 기타 방법에 의하여 영리목적으로 이용하거나 제3자에게 이용하게 하여서는 안됩니다.<br>
 ③ “몰”은 약정에 따라 이용자에게 귀속된 저작권을 사용하는 경우 당해 이용자에게 통보하여야 합니다.<br><br>
 제23조(분쟁해결)<br>
@@ -270,8 +270,8 @@ pre {
 <h3 align="center" id="inform">개인정보 수집·이용</h3>
 <table border align="center">
 <tr><th class="th_center">구분</th><th class="th_center">목적</th><th class="th_center">항목</th><th class="th_center">보유기간</th></tr>
-<tr><th class="th_center">필수정보</td><td class="td_center">>회원제 서비스 이용 / 본인확인</th><td class="td_center">이름, 아이디, 비밀번호, 생일, 성별, 이메일, 주소, 휴대폰</td><td class="td_center">회원탈퇴 후 5일까지</td></tr>
-<tr><th class="th_center">선택정보</td><td class="td_center">>마케팅 활용(이벤트, 맞줌형 광고)</th><td class="td_center">휴대폰, 이메일</td><td class="td_center">회원탈퇴 후 5일까지</td></tr>
+<tr><th class="th_center">필수정보</td><td class="td_center">회원제 서비스 이용 / 본인확인</th><td class="td_center">이름, 아이디, 비밀번호, 생일, 성별, 이메일, 주소, 휴대폰</td><td class="td_center">회원탈퇴 후 5일까지</td></tr>
+<tr><th class="th_center">선택정보</td><td class="td_center">마케팅 활용(이벤트, 맞줌형 광고)</th><td class="td_center">휴대폰, 이메일</td><td class="td_center">회원탈퇴 후 5일까지</td></tr>
 </table><br><br>
 <pre align="center"><strong>귀하께서는 쇼핑몰에서 위와 같이 수집하는 개인정보에 대해, 동의하지 않거나 개인정보를 기재하지 않음으로써 거부할 수 있습니다.
 다만, 이때 회원에게 제공되는 서비스가 제한될 수 있습니다.</strong>
