@@ -31,7 +31,7 @@
 					         <col width="*">
 					     </colgroup>
                             <tr>
-                            <td><a href="../shop/shop_default.jsp"><img src="<%=path%>/img/board/mug.jpg" class="mug"></a></td>
+                            <td><a href="../shop/shop_default.jsp"><img src="<%=path%>/img/board/mug.jpg" class="img"></a></td>
                             <td><div class="td_left">상 품 명:<a href="../shop/shop_default.jsp">머그</a><br>
                             상품가격:<strong>38,000원</strong></div></td>
                             </tr>
