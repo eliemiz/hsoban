@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="/hsoban/css/common.css">
 <link rel="stylesheet" href="/hsoban/css/mypage.css">
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>마이페이지</title>
 </head>
 <body>
 <jsp:include page="../common/header.jsp"/>

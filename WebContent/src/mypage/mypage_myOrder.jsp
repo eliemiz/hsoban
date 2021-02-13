@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="/hsoban/css/common.css">
 <link rel="stylesheet" href="/hsoban/css/mypage.css">
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>주문 내역</title>
 </head>
 <body>
 <jsp:include page="../common/header.jsp"/>
@@ -64,7 +64,7 @@
                                         <li><strong>1</strong></li>
                                     </ol>
                         <ul class="foot-dsc">
-                            <li>상품명 또는 주문상세의 조회 버튼을 클릭하시면, 주문상세 내역을 확인하실 수 있습니다.</li>
+                            <li>상품명 또는 주문상세를 클릭하시면, 주문상세 내역을 확인하실 수 있습니다.</li>
                             
                         </ul>
                     </div><!-- .page-body -->

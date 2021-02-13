@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원탈퇴</title>
 </head>
 <link rel="stylesheet" href="/hsoban/css/allCommon.css">
 <link rel="stylesheet" href="/hsoban/css/common.css">
@@ -49,7 +49,7 @@
 <script type="text/javascript">
 
 function withdrawal_fin(){
-	var result = confirm('탈퇴할 경우 회원관련 데이터가 복구되지 않습니다 정말로 탈퇴를 하시겠습니까?');
+	var result = confirm('탈퇴할 경우 회원관련 데이터가 복구되지 않습니다. 정말로 탈퇴를 하시겠습니까?');
 	if(result==true){
 		alert('해당 ID를 탈퇴처리해 드렸습니다.');
 		location.href="../mypage/mypage_main.jsp";
@@ -69,7 +69,7 @@ function go(){
 	   else { 
 		   withdrawal_fin()
 	   }
-	}//이렇게 해도 되나.......
+	}
 
 </script>
 </html>
