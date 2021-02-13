@@ -115,7 +115,7 @@ String path = request.getContextPath();
                    <td><div class="td_center">2</div></td>
                    <td><div class="td_left"><img src="<%=path%>/img/board/note.jpg" class="note"></div></td>
                    <td><div class="td_left"><a href="../board/inquiry.jsp">입고문의</a></div></td>
-                   <td><div class="tb-center">홍길동</td>
+                   <td><div class="td_center">홍길동</td>
                    <td><div class="td_center">2021/02/07</div></td>
                    <td><div class="td_center">53</div></td>
                </tr>
