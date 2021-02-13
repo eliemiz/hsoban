@@ -25,7 +25,7 @@
 }
 </style>
 <meta charset="UTF-8">
-<title>[2인세트]</title>
+<title>[4인세트]</title>
 </head>
 <body>
 <jsp:include page="../../common/header.jsp"/>
@@ -77,14 +77,14 @@
 							<input type="hidden" name="uid" value="1008823">
 							<input type="hidden" id="option_type" name="option_type" value="PS">
 							<div class="info">
-								<h3 class="tit-prd">2인 세트</h3>
+								<h3 class="tit-prd">4인 세트</h3>
 								<div class="table-opt">
 									<table summary="판매가격, 적립금, 주문수량, 옵션, 사이즈, 상품조르기, sns">
 										<!-- <caption>상품 옵션</caption> -->
 										<colgroup><col width="90"><col width="*"></colgroup>
 										<tbody>
-											<tr><th scope="row"><div class="tb-left">소비자가격</div></th><td class="price"><div class="tb-left"><strike>674,000원</strike></div></td></tr>
-											<tr><th scope="row"><div class="tb-left">판매가격</div></th><td class="price"><div class="tb-left">606,000원</div></td></tr>
+											<tr><th scope="row"><div class="tb-left">소비자가격</div></th><td class="price"><div class="tb-left"><strike>1,286,000원</strike></div></td></tr>
+											<tr><th scope="row"><div class="tb-left">판매가격</div></th><td class="price"><div class="tb-left">1,157,000원</div></td></tr>
 											<tr>
                                                 <td colspan="2">
                                                     <div class="MK_optAddWrap">
@@ -99,7 +99,7 @@
 	                                                                		<a href="javascript:set_amount('MS_amount_basic_0', 'basic', 'up');" class="MK_btn-up"><img src="/hsoban/img/common/basket_up.gif" alt="수량증가" border="0"></a>
 	                                                                		<a href="javascript:set_amount('MS_amount_basic_0', 'basic', 'down');" class="MK_btn-dw"><img src="/hsoban/img/common/basket_down.gif" alt="수량감소" border="0"></a>
                                                                 		</div>
-                                                                		<strong class="MK_price"><span id="MK_p_price_basic_0">606,000</span>원</strong>
+                                                                		<strong class="MK_price"><span id="MK_p_price_basic_0">1,157,000</span>원</strong>
                                                                 	</li>
                                                                 </ul>                                                                
                                                                 <ul id="MK_innerOpt_02" class="MK_inner-opt-cm"></ul>                                                            </div>
@@ -133,7 +133,7 @@
 					<div class="prd-detail">
 						<div id="videotalk_area"></div>
 							<p align="center" style="margin: 0px; text-align: center;"><strong><font color="#676767"><font size="3"></font></font></strong>&nbsp;
-							<p align="center" style="margin:0px; text-align:center;"><font face="Gungsuh,궁서" size="6">2人세트</font></p>
+							<p align="center" style="margin:0px; text-align:center;"><font face="Gungsuh,궁서" size="6">4人세트</font></p>
 							<p align="center" style="margin: 0px; text-align: center;"><strong><font color="#676767"><font size="3"></font></font></strong>&nbsp;
 							<p align="center" style="margin: 0px; text-align: center;"><font color="#cccccc">10% 할인 상품</font></p>
 							<p align="center" style="margin: 0px; text-align: center;"><strong><font color="#676767"><font size="3"></font></font></strong>&nbsp;
@@ -141,7 +141,7 @@
 							<p align="center" style="margin: 0px; text-align: center;"><font color="#b5594a">색상 랜덤(최대한 같은 제품에 색상이 겹치지 않게 골고루 구성하여 보내드립니다.)</font></p>
 							<p align="center" style="margin: 0px; text-align: center;"><strong><font color="#676767"><font size="3"></font></font></strong>&nbsp;
 							<p align="center" style="margin: 0px; text-align: center;"><strong><font color="#676767"><font size="3"></font></font></strong>&nbsp;
-							<p align="center" style="margin: 0px; text-align: center;"><font color="#5b5b5b">햇볼小 *2 / 햇볼中 *2 / 틴샐러드볼mini *3 / 가로접시中 *2 / 에그볼 *2 / 나즌콩접시 *2 / 피쉬접시 *1 / 원턱접시中 *1 / 하프볼 *1 / 수저받침 *2</font></p>												
+							<p align="center" style="margin: 0px; text-align: center;"><font color="#5b5b5b">밥그릇 *4 / 국그릇 *4 / 나즌콩접시 *2 / 가로접시大 *4 / 트레이접시中 *1 / 일자찬기小 *2 / 틴샐러드볼 미니 *3 / 마스크볼mini *4 / 마스크볼中 *1 / 마스크볼大 *1 / 칭칭볼中 *1 / 대야볼大 *1 / 수저받침 *4</font></p>												
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
@@ -158,7 +158,7 @@
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
-							<p align="center" style="margin: 0px; text-align: center;"><img src="/hsoban/img/shop/Set1_02.jpg"></p>
+							<p align="center" style="margin: 0px; text-align: center;"><img src="/hsoban/img/shop/Set2_02.jpg"></p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
@@ -284,6 +284,8 @@
 		</div>
 	</div>
 </div>
+
+
 <jsp:include page="../../common/side.jsp"/>
 <jsp:include page="../../common/footer.jsp"/>
 </body>

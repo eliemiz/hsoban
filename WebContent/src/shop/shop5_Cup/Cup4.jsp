@@ -24,8 +24,7 @@
 	height: 14px;
 }
 </style>
-<meta charset="UTF-8">
-<title>[2인세트]</title>
+<title>[아이스롱머그]</title>
 </head>
 <body>
 <jsp:include page="../../common/header.jsp"/>
@@ -38,7 +37,7 @@
 					<div class="thumb-info">
 						<div class="thumb-wrap">
 							<div class="thumb detail_image">
-								<img src="/hsoban/img/shop/Set1_01.jpg" alt="대표이미지"/>
+								<img src="/hsoban/img/shop/Cup4_01.jpg" alt="대표이미지"/>
 							</div>
 						</div>
 						<form name="form1" method="post" id="form1" action="/hsoban/cart/cart.jsp">	
@@ -54,9 +53,9 @@
 							<input type="hidden" name="optioncode">
 							<input type="hidden" name="optiontype">
 							<input type="hidden" name="optslist">
-							<input type="hidden" id="price" name="price" value="">
+							<input type="hidden" id="price" name="price" value="78000">
 							<input type="hidden" id="disprice" name="disprice" value="">
-							<input type="hidden" id="price_wh" name="price_wh" value="">
+							<input type="hidden" id="price_wh" name="price_wh" value="78000">
 							<input type="hidden" id="disprice_wh" name="disprice_wh" value="">
 							<input type="hidden" id="option_type_wh" name="option_type_wh" value="PS">
 							<input type="hidden" id="prd_hybrid_min" name="prd_hybrid_min" value="1">
@@ -77,54 +76,52 @@
 							<input type="hidden" name="uid" value="1008823">
 							<input type="hidden" id="option_type" name="option_type" value="PS">
 							<div class="info">
-								<h3 class="tit-prd">2인 세트</h3>
+								<h3 class="tit-prd">아이스롱머그</h3>
 								<div class="table-opt">
 									<table summary="판매가격, 적립금, 주문수량, 옵션, 사이즈, 상품조르기, sns">
 										<!-- <caption>상품 옵션</caption> -->
 										<colgroup><col width="90"><col width="*"></colgroup>
 										<tbody>
-											<tr><th scope="row"><div class="tb-left">소비자가격</div></th><td class="price"><div class="tb-left"><strike>674,000원</strike></div></td></tr>
-											<tr><th scope="row"><div class="tb-left">판매가격</div></th><td class="price"><div class="tb-left">606,000원</div></td></tr>
-											<tr>
-                                                <td colspan="2">
-                                                    <div class="MK_optAddWrap">
-                                                        <div id="MK_innerOptWrap">
-                                                            <div id="MK_innerOptScroll">
-                                                                <ul id="MK_innerOpt_01" class="MK_inner-opt-cm">
-                                                                	<li id="basic_0">
-                                                                		<input type="hidden" id="MS_keys_basic_0" value="0:0" class="basic_option">
-                                                                		<span class="MK_p-name">2인세트</span>
-                                                                		<div class="MK_qty-ctrl">
-	                                                                		<input type="text" id="MS_amount_basic_0" name="amount[]" value="1" onfocusout="set_amount(this, 'basic');" size="4" style="text-align: right; float: left;" class="basic_option" maxlength="">
-	                                                                		<a href="javascript:set_amount('MS_amount_basic_0', 'basic', 'up');" class="MK_btn-up"><img src="/hsoban/img/common/basket_up.gif" alt="수량증가" border="0"></a>
-	                                                                		<a href="javascript:set_amount('MS_amount_basic_0', 'basic', 'down');" class="MK_btn-dw"><img src="/hsoban/img/common/basket_down.gif" alt="수량감소" border="0"></a>
-                                                                		</div>
-                                                                		<strong class="MK_price"><span id="MK_p_price_basic_0">606,000</span>원</strong>
-                                                                	</li>
-                                                                </ul>                                                                
-                                                                <ul id="MK_innerOpt_02" class="MK_inner-opt-cm"></ul>                                                            </div>
-                                                            <div id="MK_innerOptPrice">
-                                                                상품금액 <span id="MK_txt-prd"></span> 원 + 기본옵션 <span id="MK_txt-opt"></span> 원
-                                                            </div>
-                                                             
-
-                                                        </div>
-                                                            <div id="MK_innerOptTotal">
-                                                                <span class="MK_txt-total">TOTAL</span>
-                                                                <strong class="MK_total" id="MK_p_total">606,000</strong>
-                                                                <span class="MK_txt-won">원</span>
-                                                            </div>
-
+											<tr><th scope="row"><div class="tb-left">판매가격</div></th><td class="price"><div class="tb-left">78,000원</div></td></tr>
+											<tr><td colspan="2">
+												<div class="opt-wrap" style="margin-top: 0">
+													<dl>
+														<dt>color</dt>
+														<dd><select name="optionlist[]" onchange="change_option(this,'basic');" label="color" opt_type="SELECT" opt_id="3" opt_mix="Y" require="Y" opt_mandatory="Y" class="basic_option">
+																<option value>옵션 선택</option>
+																<option matrix="1" sto_id="3" price="78000" title="블랙" value="0">블랙 - 품절</option>
+																<option matrix="2" sto_id="4" price="78000" title="베이지" value="0">베이지 - 품절</option>
+																<option matrix="4" sto_id="14" price="78000" title="그레이" value="0">그레이 - 품절</option>
+																<!-- size 선택에 따라 option 선택창 >> 추후 함수 처리 -->														
+															</select>
+														</dd>
+													</dl>
+												</div>
+												</td>
+											</tr>
+											<tr><td colspan="2">
+												<div class="MK_optAddWrap">
+													<div id="MK_innerOptWrap">
+														<div id="MK_innerOptScroll">
+															<ul id="MK_innerOpt_01" class="MK_inner-opt-cm"></ul>
+															<ul id="MK_innerOpt_02" class="MK_inner-opt-cm"></ul>
+														</div>
+														<div id="MK_innerOptPrice">
+															상품금액<span id="MK_txt-prd"></span>원 + 기본옵션<span id="MK_txt-opt"></span>원
+														</div>
+													</div>
+													<div id="MK_innerOptTotal">
+                                                         <span class="MK_txt-total">TOTAL</span>
+                                                         <strong class="MK_total" id="MK_p_total">0</strong>
+                                                         <span class="MK_txt-won">원</span>
                                                     </div>
-                                                </td>
-                                            </tr>
+												</div>
+											</td></tr>
 										</tbody>
 									</table>
 								</div>
 								<div class="prd-btns">
-                                    <a href="../cart/order.jsp" class="btn_red"><img src="/hsoban/src/shop/img/btn_order.png" alt="바로구매" title="바로구매"></a>
-                                    <a href="../cart/cart.jsp"><img src="/hsoban/src/shop/img/btn_cart.png" alt="장바구니 담기" title="장바구니 담기"></a>
-                                    <a href="../mypage/mypage_myWish.jsp"><img src="/hsoban/src/shop/img/btn_wish.png" alt="관심상품" title="관심상품"></a>
+									<div style="text-align:right; color:#525252; font-size:12px; font-weight:bold;">상품이 품절되었습니다.</div>
                                 </div>
 							</div>
 						</form>
@@ -132,16 +129,26 @@
 					<img src="/hsoban/src/shop/img/detail_top.jpg" alt="그릇 소개"/>
 					<div class="prd-detail">
 						<div id="videotalk_area"></div>
+							<p align="center" style="margin: 0px; text-align: center;"><span style="font-size: 9pt;"></span><br><span style="text-align: center; font-size: small;">&nbsp;</span></p>
 							<p align="center" style="margin: 0px; text-align: center;"><strong><font color="#676767"><font size="3"></font></font></strong>&nbsp;
-							<p align="center" style="margin:0px; text-align:center;"><font face="Gungsuh,궁서" size="6">2人세트</font></p>
+								<strong>
+									<font color="#676767">
+										<font size="3">◎</font>
+										<font size="5">
+											<font size="4">size</font>
+											<font color="rgb(0.0.0)">&nbsp;&nbsp; 8
+												<font style="font-size: 11pt;">cm(d)x													
+													<font size="5">15</font>
+												</font>
+												<font style="font-size: 11pt;">cm(h)</font>
+											</font>
+										</font>
+									</font>
+								</strong>
+							</p>
 							<p align="center" style="margin: 0px; text-align: center;"><strong><font color="#676767"><font size="3"></font></font></strong>&nbsp;
-							<p align="center" style="margin: 0px; text-align: center;"><font color="#cccccc">10% 할인 상품</font></p>
+							<p align="center" style="margin: 0px; text-align: center;"><strong><font color="#707070">용량&nbsp;550ml</font></strong></p>
 							<p align="center" style="margin: 0px; text-align: center;"><strong><font color="#676767"><font size="3"></font></font></strong>&nbsp;
-							<p align="center" style="margin: 0px; text-align: center;"><strong><font color="#676767"><font size="3"></font></font></strong>&nbsp;
-							<p align="center" style="margin: 0px; text-align: center;"><font color="#b5594a">색상 랜덤(최대한 같은 제품에 색상이 겹치지 않게 골고루 구성하여 보내드립니다.)</font></p>
-							<p align="center" style="margin: 0px; text-align: center;"><strong><font color="#676767"><font size="3"></font></font></strong>&nbsp;
-							<p align="center" style="margin: 0px; text-align: center;"><strong><font color="#676767"><font size="3"></font></font></strong>&nbsp;
-							<p align="center" style="margin: 0px; text-align: center;"><font color="#5b5b5b">햇볼小 *2 / 햇볼中 *2 / 틴샐러드볼mini *3 / 가로접시中 *2 / 에그볼 *2 / 나즌콩접시 *2 / 피쉬접시 *1 / 원턱접시中 *1 / 하프볼 *1 / 수저받침 *2</font></p>												
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
@@ -152,13 +159,26 @@
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; º 기물에 보이는 유약의 흐름이나 검정색으로 보이는 작은 철분점은 교환,반품의 사유가 되지 않습니다.</font></p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; º 제품 상세 사진은 화면의 해상도에 따라 색이 약간 다를 수도 있습니다.</font></p>
-							<p align="center" style="margin: 0px; text-align: center;"><br><span style="text-align: center; font-size: small;">&nbsp;</span><br><strong><font color="#676767"><font style="font-size: 11pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></font></strong><br></p>							
+							<p align="center" style="margin: 0px; text-align: center;"><br><span style="text-align: center; font-size: small;">&nbsp;</span><br><strong><font color="#676767"><font style="font-size: 11pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></font></strong><br></p>			
+							<p align="center" style="margin: 0px; text-align: center;"><font color="#828282" style="background-color: rgb(255,255,255)">* 진그레이 색상은 제장상의 이유로 단종되었습니다.</font></p>				
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
-							<p align="center" style="margin: 0px; text-align: center;"><img src="/hsoban/img/shop/Set1_02.jpg"></p>
+							<p align="center" style="margin: 0px; text-align: center;"><img src="/hsoban/img/shop/Cup4_02.jpg"></p>
+							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
+							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
+							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
+							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
+							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>					
+							<p align="center" style="margin: 0px; text-align: center;"><img src="/hsoban/img/shop/Cup4_03.jpg"></p>
+							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
+							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
+							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
+							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
+							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
+							<p align="center" style="margin: 0px; text-align: center;"><img src="/hsoban/img/shop/Cup4_04.jpg"></p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
@@ -284,6 +304,8 @@
 		</div>
 	</div>
 </div>
+
+
 <jsp:include page="../../common/side.jsp"/>
 <jsp:include page="../../common/footer.jsp"/>
 </body>

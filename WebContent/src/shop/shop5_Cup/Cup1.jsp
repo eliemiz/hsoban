@@ -76,13 +76,13 @@
 							<input type="hidden" name="uid" value="1008823">
 							<input type="hidden" id="option_type" name="option_type" value="PS">
 							<div class="info">
-								<h3 class="tit-prd">상품명</h3>
+								<h3 class="tit-prd">머그</h3>
 								<div class="table-opt">
 									<table summary="판매가격, 적립금, 주문수량, 옵션, 사이즈, 상품조르기, sns">
 										<!-- <caption>상품 옵션</caption> -->
 										<colgroup><col width="90"><col width="*"></colgroup>
 										<tbody>
-											<tr><th scope="row"><div class="tb-left">판매가격</div></th><td class="price"><div class="tb-left">0원</div></td></tr>
+											<tr><th scope="row"><div class="tb-left">판매가격</div></th><td class="price"><div class="tb-left">38,000원</div></td></tr>
 											<tr><td colspan="2">
 												<div class="opt-wrap" style="margin-top: 0">
 													<dl>
@@ -151,6 +151,9 @@
 									</font>
 								</strong>
 							</p>
+							<p align="center" style="margin: 0px; text-align: center;"><strong><font color="#676767"><font size="3"></font></font></strong>&nbsp;
+							<p align="center" style="margin: 0px; text-align: center;"><strong><font color="#707070">용량&nbsp;320ml</font></strong></p>
+							<p align="center" style="margin: 0px; text-align: center;"><strong><font color="#676767"><font size="3"></font></font></strong>&nbsp;
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
@@ -323,29 +326,3 @@
 <jsp:include page="../../common/footer.jsp"/>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
