@@ -52,6 +52,33 @@
                                     </ul>
                                 </dd>
                             </dl>
+							<dl class="item-list">
+                                <dt class="thumb"><a href="SideBowl2.jsp"><img class="MS_prod_img_s" src="/hsoban/img/shop/SideBowl2_00.jpg" alt="상품 썸네일" title="상품 썸네일"></a></dt>
+                                <dd>
+                                    <ul>
+                                        <li class="prd-name"><span class="MK-product-icons"></span>나즌볼 中</li>
+                                        <li class="prd-price">48,000원</li>
+                                    </ul>
+                                </dd>
+                            </dl>
+							<dl class="item-list">
+                                <dt class="thumb"><a href="SideBowl3.jsp"><img class="MS_prod_img_s" src="/hsoban/img/shop/SideBowl3_00.jpg" alt="상품 썸네일" title="상품 썸네일"></a></dt>
+                                <dd>
+                                    <ul>
+                                        <li class="prd-name"><span class="MK-product-icons"></span>피클볼 中</li>
+                                        <li class="prd-price">36,000원</li>
+                                    </ul>
+                                </dd>
+                            </dl>
+							<dl class="item-list">
+                                <dt class="thumb"><a href="SideBowl4.jsp"><img class="MS_prod_img_s" src="/hsoban/img/shop/SideBowl4_00.jpg" alt="상품 썸네일" title="상품 썸네일"></a></dt>
+                                <dd>
+                                    <ul>
+                                        <li class="prd-name"><span class="MK-product-icons"></span>콩접시 中</li>
+                                        <li class="prd-price">26,000원</li>
+                                    </ul>
+                                </dd>
+                            </dl>
 						</div>
 					</div>
 				</div>

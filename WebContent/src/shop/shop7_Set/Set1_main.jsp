@@ -52,6 +52,15 @@
                                     </ul>
                                 </dd>
                             </dl>
+							<dl class="item-list">
+                                <dt class="thumb"><a href="Set2.jsp"><img class="MS_prod_img_s" src="/hsoban/img/shop/Set2_00.jpg" alt="상품 썸네일" title="상품 썸네일"></a></dt>
+                                <dd>
+                                    <ul>
+                                        <li class="prd-name"><span class="MK-product-icons"></span>4인세트</li>
+                                        <li class="prd-price"><span><strike>1,206,000원</strike>&nbsp;→&nbsp;</span>1,157,000원</li>
+                                    </ul>
+                                </dd>
+                            </dl>
 						</div>
 					</div>
 				</div>

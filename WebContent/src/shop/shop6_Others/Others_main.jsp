@@ -52,6 +52,33 @@
                                     </ul>
                                 </dd>
                             </dl>
+							<dl class="item-list">
+                                <dt class="thumb"><a href="Others2.jsp"><img class="MS_prod_img_s" src="/hsoban/img/shop/Others2_00.jpg" alt="상품 썸네일" title="상품 썸네일"></a></dt>
+                                <dd>
+                                    <ul>
+                                        <li class="prd-name"><span class="MK-product-icons"></span>소스팟</li>
+                                        <li class="prd-price">22,000원</li>
+                                    </ul>
+                                </dd>
+                            </dl>
+							<dl class="item-list">
+                                <dt class="thumb"><a href="Others3.jsp"><img class="MS_prod_img_s" src="/hsoban/img/shop/Others3_00.jpg" alt="상품 썸네일" title="상품 썸네일"></a></dt>
+                                <dd>
+                                    <ul>
+                                        <li class="prd-name"><span class="MK-product-icons"></span>술병</li>
+                                        <li class="prd-price">68,000원</li>
+                                    </ul>
+                                </dd>
+                            </dl>
+							<dl class="item-list">
+                                <dt class="thumb"><a href="Others4.jsp"><img class="MS_prod_img_s" src="/hsoban/img/shop/Others4_00.jpg" alt="상품 썸네일" title="상품 썸네일"></a></dt>
+                                <dd>
+                                    <ul>
+                                        <li class="prd-name"><span class="MK-product-icons"></span>드리퍼</li>
+                                        <li class="prd-price">120,000원</li>
+                                    </ul>
+                                </dd>
+                            </dl>
 						</div>
 					</div>
 				</div>

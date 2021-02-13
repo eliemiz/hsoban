@@ -52,6 +52,24 @@
                                     </ul>
                                 </dd>
                             </dl>
+							<dl class="item-list">
+                                <dt class="thumb"><a href="NoodleBowl2.jsp"><img class="MS_prod_img_s" src="/hsoban/img/shop/NoodleBowl2_00.jpg" alt="상품 썸네일" title="상품 썸네일"></a></dt>
+                                <dd>
+                                    <ul>
+                                        <li class="prd-name"><span class="MK-product-icons"></span>윤볼</li>
+                                        <li class="prd-price">68,000원</li>
+                                    </ul>
+                                </dd>
+                            </dl>
+							<dl class="item-list">
+                                <dt class="thumb"><a href="NoodleBowl3.jsp"><img class="MS_prod_img_s" src="/hsoban/img/shop/NoodleBowl3_00.jpg" alt="상품 썸네일" title="상품 썸네일"></a></dt>
+                                <dd>
+                                    <ul>
+                                        <li class="prd-name"><span class="MK-product-icons"></span>햇볼 大</li>
+                                        <li class="prd-price">68,000원</li>
+                                    </ul>
+                                </dd>
+                            </dl>
 						</div>
 					</div>
 				</div>
