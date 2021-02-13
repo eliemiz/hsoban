@@ -20,10 +20,10 @@
 	<jsp:include page="../common/header.jsp"/>
 	<jsp:include page="../common/side.jsp"/>
 	<div style="text-align:center;">
-	<br><br>
+	<br><br><br>
 	<p class="title">REVIEW</p>
 	</div>
-	<br><br>
+	<br><br><br>
 	<div id="content" class="content_wrap">
                         <table class="prd-tinfo">
                          <colgroup>
@@ -100,21 +100,22 @@
                                               </td>
                                            </tr>
                                            <tr>
-                                           <td colspan="2" class="td_left">
+                                           <td colspan="3" class="td_left">
                                                <textarea name="comment" onchange="Checklength(this);" onkeyup="Checklength(this);" onclick="CheckLogin()" placeholder="내용" style="margin: 0px; width: 999px; height: 85px;">
-                                               </textarea></td>
-                                            <td><input type="button" value="글쓰기" class="btn_write2">
+                                               </textarea>
+                                            <input type="button" value="글쓰기" class="btn_write2">
                                            </td>   
                                         </tr>
                                     </tbody>
                                 </table>
                             </fieldset>
 							</form>
+							<br>
 							   <div class="view-link">
                                     <dt></dt>
                                     <dd>
-                                    <input type="button" value="수정" class="btn_write" onclick="location.href='review_write.jsp'">&nbsp;&nbsp;
-                                    <input type="button" value="삭제" class="btn_write">    
+                                    <input type="button" value="수정" class="btn_write" onclick="location.href='review_write.jsp'">&nbsp;
+                                    <input type="button" value="삭제" class="btn_write"  onclick="location.href='review_board.jsp'">    
                                     </dd>                                                       
                             </div>
                             <br>

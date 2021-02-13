@@ -20,10 +20,10 @@
 	<jsp:include page="../common/header.jsp"/>
 	<jsp:include page="../common/side.jsp"/>
 	<div style="text-align:center;">
-	<br><br>
+	<br><br><br>
 	<p class="title">REVIEW</p>
 	</div>
-	<br><br>
+	<br><br><br>
 	<div id="content" class="content_wrap">
                         <table class="prd-tinfo">
                          <colgroup>
@@ -111,10 +111,11 @@
                                 </table>
                             </fieldset>
 							</form>
+							<br>
 							   <div class="view-link">
                                     <dt></dt>
                                     <dd>
-                                    <input type="button" value="수정" class="btn_write" onclick="location.href='review_write.jsp'">&nbsp;&nbsp;
+                                    <input type="button" value="수정" class="btn_write" onclick="location.href='review_write.jsp'">&nbsp;
                                     <input type="button" value="삭제" class="btn_write">    
                                     </dd>                                                       
                             </div>

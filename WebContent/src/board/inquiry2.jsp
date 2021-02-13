@@ -33,7 +33,7 @@
                                   <th class="td_left">
                                   <div class="cont-sub-des">
                                       <div>
-                                          <span><em>제목</em>재입고문의</span>
+                                          <span><em>제목</em>Re: 재입고문의</span>
                                       </div>
                                   </div>
                               </tr>
@@ -43,7 +43,7 @@
                                   <td class="td_left">
                                       <div class="cont-sub-des">
                                           <div>
-                                              <span><em>작성자</em>ijk230</span>
+                                              <span><em>작성자</em>운영자</span>
                                           </div>
                                       </div>
                                   </td>
@@ -52,15 +52,15 @@
                                   <td class="td_left">
                                       <div class="cont-sub-des">
                                           <div>
-                                               <span><em>작성일</em>2021-02-09</span>
-                                               <span><em>조회수</em> 13</span>
+                                               <span><em>작성일</em>2021-02-10</span>
+                                               <span><em>조회수</em> 3</span>
                                           </div>
                                       </div>
                                   </td>
                               </tr>
                               <tr>
                                   <td class="td_left">
-                                      <div class="data-bd-cont">&nbsp;림볼 재입고되나요?<br>
+                                      <div class="data-bd-cont">&nbsp;이벤트 행사 제품은 품절되면 다시 제작을 하지 않아 재입고가 어렵습니다.<br>
                                       </div>
                                   </td>
                               </tr>
@@ -72,9 +72,9 @@
 						   <div class="view-link">
 		                             <dt></dt>
 		                             <dd>
-		                             <input type="button" value="수정" class="btn_write" onclick="location.href='review_write.jsp'">&nbsp;
-		                             <input type="button" value="삭제" class="btn_write">&nbsp;    
-		                             <input type="button" value="답변" class="btn_write">  
+		                             <input type="button" value="수정" class="btn_write" onclick="location.href='inquiry_write.jsp'">&nbsp;
+		                             <input type="button" value="삭제" class="btn_write" onclick="location.href='inquiry_board.jsp'">&nbsp;    
+		                             <input type="button" value="답변" class="btn_write" onclick="location.href='inquiry_write.jsp'">  
 		                             </dd>                                                       
 		                       </div>                          
 		                    <br>
