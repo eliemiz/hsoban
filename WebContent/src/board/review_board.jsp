@@ -28,9 +28,9 @@
 	<br><br><br>
 	<div class="content_wrap">
     <div style="text-align:right;">
-    	<span><input id="name" type="radio" name="select" ><label for="name">이름</label>
-	    <input id="title" type="radio" name="select" checked><label for="title">제목</label>
-	    <input id="content" type="radio" name="select"><label for="content">내용</label>
+    	<span><input id="name" type="radio" name="select" ><label for="name">이름</label>&nbsp;
+	    <input id="title" type="radio" name="select" checked><label for="title">제목</label>&nbsp;
+	    <input id="content" type="radio" name="select"><label for="content">내용</label>&nbsp;
 	    <input type="text" name="searchText" value="" />
 	    <input style="background-color: #464646;
 		color: white;" type="submit" value="검색" /></span>
@@ -63,72 +63,72 @@
               <td><div class="td_center"><img src="<%=path%>/img/board/note.jpg" class="note"></div></td>
               <td><div class="td_center"><a href="../shop/shop_default.jsp"><img src="<%=path%>/img/board/review.jpg" class="img" ></div></td>
               <td><div class="td_left"><a href="../board/review.jsp">[두부볼中,小]&nbsp;만족합니다.</a></div></td>
-              <td><div class="td_center">홍길동</td>
+              <td><div class="td_center">ijk230</td>
               <td><div class="td_center">2021/02/08</div></td>
-              <td><div class="td_center">200</div></td>               
+              <td><div class="td_center">13</div></td>               
           </tr>
          <tr>
               <td><div class="td_center">7</div></td>
               <td><div class="td_center"><img src="<%=path%>/img/board/note.jpg" class="note"></div></td>
-              <td><div class="td_center"><a href="../shop/shop_default.jsp"><img src="<%=path%>/img/board/review.jpg" class="img" ></div></td>
-              <td><div class="td_left"><a href="../board/review.jsp">[두부볼中,小]&nbsp;만족합니다.</a></div></td>
-              <td><div class="td_center">홍길동</td>
+              <td><div class="td_center"><a href="../shop/shop_default.jsp"><img src="<%=path%>/img/board/mug.jpg" class="img" ></div></td>
+              <td><div class="td_left"><a href="../board/review3.jsp">[머그]&nbsp;귀여워요.</a></div></td>
+              <td><div class="td_center">temp</td>
               <td><div class="td_center">2021/02/08</div></td>
-              <td><div class="td_center">200</div></td>               
+              <td><div class="td_center">15</div></td>               
           </tr>
            <tr>
               <td><div class="td_center">6</div></td>
               <td><div class="td_center"><img src="<%=path%>/img/board/note.jpg" class="note"></div></td>
               <td><div class="td_center"><a href="../shop/shop_default.jsp"><img src="<%=path%>/img/board/review.jpg" class="img" ></div></td>
               <td><div class="td_left"><a href="../board/review.jsp">[두부볼中,小]&nbsp;만족합니다.</a></div></td>
-              <td><div class="td_center">홍길동</td>
+              <td><div class="td_center">ijk230</td>
               <td><div class="td_center">2021/02/08</div></td>
-              <td><div class="td_center">200</div></td>               
+              <td><div class="td_center">13</div></td>               
           </tr>
            <tr>
               <td><div class="td_center">5</div></td>
               <td><div class="td_center"><img src="<%=path%>/img/board/note.jpg" class="note"></div></td>
-              <td><div class="td_center"><a href="../shop/shop_default.jsp"><img src="<%=path%>/img/board/review.jpg" class="img" ></div></td>
-              <td><div class="td_left"><a href="../board/review.jsp">[두부볼中,小]&nbsp;만족합니다.</a></div></td>
-              <td><div class="td_center">홍길동</td>
+              <td><div class="td_center"><a href="../shop/shop_default.jsp"><img src="<%=path%>/img/board/review2.jpg" class="img" ></div></td>
+              <td><div class="td_left"><a href="../board/review2.jsp">[수저받침대]&nbsp;만족합니다.</a></div></td>
+              <td><div class="td_center">ijk230</td>
               <td><div class="td_center">2021/02/08</div></td>
-              <td><div class="td_center">200</div></td>               
+              <td><div class="td_center">15</div></td>               
           </tr>
           <tr>
               <td><div class="td_center">4</div></td>
               <td><div class="td_center"><img src="<%=path%>/img/board/note.jpg" class="note"></div></td>
-              <td><div class="td_center"><a href="../shop/shop_default.jsp"><img src="<%=path%>/img/board/review.jpg" class="img" ></div></td>
-              <td><div class="td_left"><a href="../board/review.jsp">[두부볼中,小]&nbsp;만족합니다.</a></div></td>
-              <td><div class="td_center">홍길동</td>
+              <td><div class="td_center"><a href="../shop/shop_default.jsp"><img src="<%=path%>/img/board/mug.jpg" class="img" ></div></td>
+              <td><div class="td_left"><a href="../board/review3.jsp">[머그]&nbsp;귀여워요.</a></div></td>
+              <td><div class="td_center">temp</td>
               <td><div class="td_center">2021/02/08</div></td>
-              <td><div class="td_center">200</div></td>               
+              <td><div class="td_center">13</div></td>               
           </tr>
           <tr>
               <td><div class="td_center">3</div></td>
               <td><div class="td_center"><img src="<%=path%>/img/board/note.jpg" class="note"></div></td>
               <td><div class="td_center"><a href="../shop/shop_default.jsp"><img src="<%=path%>/img/board/review.jpg" class="img" ></div></td>
               <td><div class="td_left"><a href="../board/review.jsp">[두부볼中,小]&nbsp;만족합니다.</a></div></td>
-              <td><div class="td_center">홍길동</td>
+              <td><div class="td_center">temp</td>
               <td><div class="td_center">2021/02/08</div></td>
-              <td><div class="td_center">200</div></td>               
+              <td><div class="td_center">15</div></td>               
           </tr>
            <tr>
               <td><div class="td_center">2</div></td>
               <td><div class="td_center"><img src="<%=path%>/img/board/note.jpg" class="note"></div></td>
-              <td><div class="td_center"><a href="../shop/shop_default.jsp"><img src="<%=path%>/img/board/review.jpg" class="img" ></div></td>
-              <td><div class="td_left"><a href="../board/review.jsp">[두부볼中,小]&nbsp;만족합니다.</a></div></td>
-              <td><div class="td_center">홍길동</td>
+              <td><div class="td_center"><a href="../shop/shop_default.jsp"><img src="<%=path%>/img/board/review2.jpg" class="img" ></div></td>
+              <td><div class="td_left"><a href="../board/review2.jsp">[수저받침대]&nbsp;만족합니다.</a></div></td>
+              <td><div class="td_center">temp123</td>
               <td><div class="td_center">2021/02/08</div></td>
-              <td><div class="td_center">200</div></td>               
+              <td><div class="td_center">15</div></td>               
           </tr>
          <tr>
               <td><div class="td_center">1</div></td>
               <td><div class="td_center"><img src="<%=path%>/img/board/note.jpg" class="note"></div></td>
               <td><div class="td_center"><a href="../shop/shop_default.jsp"><img src="<%=path%>/img/board/review.jpg" class="img" ></div></td>
               <td><div class="td_left"><a href="../board/review.jsp">[두부볼中,小]&nbsp;만족합니다.</a></div></td>
-              <td><div class="td_center">홍길동</td>
+              <td><div class="td_center">temp123</td>
               <td><div class="td_center">2021/02/08</div></td>
-              <td><div class="td_center">200</div></td>               
+              <td><div class="td_center">13</div></td>               
           </tr>
       </tbody>
    </table>

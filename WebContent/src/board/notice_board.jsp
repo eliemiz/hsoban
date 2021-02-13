@@ -27,9 +27,9 @@ String path = request.getContextPath();
       <br><br><br>  
       <div class="content_wrap">
       <div style="text-align: right;">
-        <span><input id="name" type="radio" name="select" ><label for="name">이름</label>
-	    <input id="title" type="radio" name="select" checked><label for="title">제목</label>
-	    <input id="content" type="radio" name="select"><label for="content">내용</label>
+        <span><input id="name" type="radio" name="select" ><label for="name">이름</label>&nbsp;
+	    <input id="title" type="radio" name="select" checked><label for="title">제목</label>&nbsp;
+	    <input id="content" type="radio" name="select"><label for="content">내용</label>&nbsp;
 	    <input type="text" name="searchText" value="" />
 	    <input style="background-color: #464646;
 		color: white;" type="submit" value="검색" /></span>
