@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="/hsoban/css/common.css">
 <link rel="stylesheet" href="/hsoban/css/mypage.css">
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>관심상품</title>
 </head>
 <body>
 <jsp:include page="../common/header.jsp"/>
@@ -65,7 +65,7 @@
                                        	</td>
                                         <td>
                                             <div class="tb-center">
-                                                <a href=""><img src="/hsoban/img/mypage/0010000000263.jpg" style="width: 84px; height: 84px"></a>
+                                                <a href="../shop/shop1_Bowl/Bowl1.jsp"><img src="/hsoban/img/mypage/0010000000263.jpg" style="width: 84px; height: 84px"></a>
                                             </div>
                                         </td>
                                         <td class="product">
@@ -124,7 +124,7 @@ function go_cart(){
 
 
 function go_delete(){
-	alert("Wish List 상품이 삭제 됩니다.");
+	alert("Wish List 상품이 삭제됩니다.");
 }
 
 function go_s_delete(){
@@ -134,7 +134,7 @@ function go_s_delete(){
 	   }
 
 	   else { 
-		   alert("Wish List 상품이 삭제 됩니다.");
+		   alert("Wish List 상품이 삭제됩니다.");
 	   }
 	}
 
