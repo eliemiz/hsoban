@@ -22,15 +22,16 @@
  .my-box { border:1px solid; padding:10px; }
 </style>
 </head>
+
 <body>
 	<div id="scroll-right">
 	<div id="side-menu-wrap">
 		<div class="side-menu">
                     <img src="<%=path%>/img/common/sidelogo.jpg" alt="hsoban">
 			<div class="board-btn div-wrap">
-				<a href="공지">NOTICE</a>
-				<a href="Q&A">Q&amp;A</a>
-				<a href="리뷰">REVIEW</a>
+				<a href="/hsoban/src/board/notice_board.jsp">NOTICE</a>
+				<a href="/hsoban/src/board/inquiry_board.jsp">Q&amp;A</a>
+				<a href="/hsoban/src/board/review_board.jsp">REVIEW</a>
 				<a href="javascript:CreateBookmarkLink('http://www.hsobanmall.com', '화소반 그릇 공식 쇼핑몰');">FAVORITES</a> 
 				<!-- 북마크 등록 -->
 			</div>
@@ -44,5 +45,6 @@
              </div>
      	   </div>       
         </div>
+
 </body>
 </html>
