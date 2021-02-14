@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="/hsoban/css/allCommon.css">
 <link rel="stylesheet" href="/hsoban/css/common.css">
 <style>
+.menu{cursor:pointer;}
 </style>
 <meta charset="UTF-8">
 <title>header</title>
