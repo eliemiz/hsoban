@@ -22,15 +22,6 @@
  .my-box { border:1px solid; padding:10px; }
 </style>
 </head>
-<script type="text/javascript">
-function show(){
-   if(document.querySelector("#scroll-right").style.right >= "0px"){
-   document.querySelector("#scroll-right").style.right = "-220px";
-   }
-   else 
-	   document.querySelector("#scroll-right").style.right = "0px";	
-}
-</script>
 <body>
 	<div id="scroll-right">
 	<div id="side-menu-wrap">
@@ -58,5 +49,15 @@ function show(){
         </div>      
 </body>
 <script>
+var isShow = false;
+function show(){
+	isShow = isShow ? false : true; 
+	if( isShow == false){
+		document.querySelector("#scroll-right").style.right = "-220px";
+		} else {
+			document.querySelector("#scroll-right").style.right = "0px";
+		}
+	
+}
 </script>
 </html>

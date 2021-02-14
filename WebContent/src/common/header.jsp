@@ -8,8 +8,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="/hsoban/css/header.css">
-<link rel="stylesheet" href="/hsoban/css/allCommon.css">
-<link rel="stylesheet" href="/hsoban/css/common.css">
+
 <style>
 .menu{cursor:pointer;}
 </style>
