@@ -38,7 +38,7 @@ table {
 }
 div {
    font-size:4px;
-   font-weight:bold;
+   
 }
 
 </style>
@@ -46,7 +46,6 @@ div {
 <jsp:include page="../common/header.jsp"/>
 <div class="content_wrap">
 <p class="p_title">아이디/비밀번호 찾기</p>
-<br><br>
 <p class="p_subtit" align="left">아이디 찾기</p><hr width="1180">
 <pre align="left" style="color:#777777;">회원가입 시, 입력하신 이름 + 이메일 또는 휴대폰 번호로 아이디를 확인하실 수 있습니다.
 

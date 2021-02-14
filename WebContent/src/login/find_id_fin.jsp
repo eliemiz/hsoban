@@ -29,11 +29,12 @@ th{
 	font-size:12px;
 	text-align:center;
 }
+test
 </style>
 </head>
 <body>
 <jsp:include page="../common/header.jsp"/>
-<div class="content_wrap"><br>
+<div class="content_wrap">
 <p class="p_title">아이디/비밀번호 찾기</p>
 <pre align="center">
 회원가입 시 입력하신 이름 + 이메일 또는 휴대폰 번호로 아이디를 확인하실 수 있습니다.
