@@ -52,13 +52,40 @@
                                     </ul>
                                 </dd>
                             </dl>
+							<dl class="item-list">
+                                <dt class="thumb"><a href="PlateDish2.jsp"><img class="MS_prod_img_s" src="/hsoban/img/shop/PlateDish2_00.jpg" alt="상품 썸네일" title="상품 썸네일"></a></dt>
+                                <dd>
+                                    <ul>
+                                        <li class="prd-name"><span class="MK-product-icons"></span>딥타원접시 특대</li>
+                                        <li class="prd-price">160,000원</li>
+                                    </ul>
+                                </dd>
+                            </dl>
+							<dl class="item-list">
+                                <dt class="thumb"><a href="PlateDish3.jsp"><img class="MS_prod_img_s" src="/hsoban/img/shop/PlateDish3_00.jpg" alt="상품 썸네일" title="상품 썸네일"></a></dt>
+                                <dd>
+                                    <ul>
+                                        <li class="prd-name"><span class="MK-product-icons"></span>딥사각접시</li>
+                                        <li class="prd-price">68,000원</li>
+                                    </ul>
+                                </dd>
+                            </dl>
+							<dl class="item-list">
+                                <dt class="thumb"><a href="PlateDish4.jsp"><img class="MS_prod_img_s" src="/hsoban/img/shop/PlateDish4_00.jpg" alt="상품 썸네일" title="상품 썸네일"></a></dt>
+                                <dd>
+                                    <ul>
+                                        <li class="prd-name"><span class="MK-product-icons"></span>대접시</li>
+                                        <li class="prd-price">160,000원</li>
+                                    </ul>
+                                </dd>
+                            </dl>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	
+<jsp:include page="../../common/side.jsp"/>		
 <jsp:include page="../../common/footer.jsp"/>
 </body>
 </html>

@@ -63,7 +63,7 @@
 							%>
 							<tr>
 								<td class="td_center"><img src="<%=path%>/img/cart/temp.jpg" class="thumbnail_s"></td>
-								<td class="td_left"><a href="temp.jsp">국그릇</a></td>
+								<td class="td_left"><a href="<%=path%>/src/shop/shop1_Bowl/Bowl1.jsp">국그릇</a></td>
 								<td class="td_center">1개</td>
 								<td class="td_right"><%= df.format(tempPrice) %>원</td>
 							</tr>
@@ -364,6 +364,10 @@
 		
 		<div class="cart_wrap clear_fix">
 			<table class="table_order">
+				<colgroup>
+					<col width="130px">
+					<col width="*">
+				</colgroup>
 				<thead>
 					<tr>
 						<td colspan="2">

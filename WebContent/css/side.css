@@ -1,7 +1,8 @@
 @charset "UTF-8";
 
-#scroll-right {position: fixed; z-index: 80;  top: 0; right:0px; background: #fff; height: 100%; width: 180px;  padding: 20px; border-left: solid 1px #e6e6e6;padding-top: 100px; }
+#scroll-right {position: fixed; z-index: 80;  top: 0; right:0px; background: #fff; height: 100%; width: 180px;  padding: 20px; border-left: solid 1px #e6e6e6;padding-top: 100px; transition: 0.5s;}
 #scroll-right a{line-height: 23px; font-family:NanumGothic,'NanumGothic'; }
+
 
 .side-menu .div-wrap{display: block; margin-bottom: 5px;}
 .side-menu .board-btn { margin:35px auto 5px; }

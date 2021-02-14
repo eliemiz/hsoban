@@ -400,3 +400,13 @@ ul.mypage_tab a:hover{
     background: #464646;
     border: #464646 1px solid;
 }
+div.my-btn-area a:hover{
+	color: #ffffff;
+    background: #464646;
+    border: #464646 1px solid;
+}
+div.my-btn-area a.red:hover{
+	color: #ffffff;
+    background: #bba59b;
+    border: #e7e7e7 1px solid;
+}

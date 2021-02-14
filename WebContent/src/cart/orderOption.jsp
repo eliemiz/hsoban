@@ -60,13 +60,13 @@
 					</colgroup>
 					<tr>
 						<td>블랙</td>
-						<td><input type="number" class="option_count"></td>
+						<td><input type="number" class="option_count" value="1"></td>
 						<td class="option_price">30,000원</td>
 						<td><img src="<%=path%>/img/cart/btn_comment_del.gif"></td>
 					</tr>
 					<tr>
 						<td>그린(유광)</td>
-						<td><input type="number" class="option_count"></td>
+						<td><input type="number" class="option_count" value="1"></td>
 						<td class="option_price">30,000원</td>
 						<td><img src="<%=path%>/img/cart/btn_comment_del.gif"></td>
 					</tr>

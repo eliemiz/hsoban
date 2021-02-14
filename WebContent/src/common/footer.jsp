@@ -20,7 +20,7 @@
 	    	<div class="fminner"><img src="<%=path%>/img/common/foot_info2.jpg" alt="img02"></div>
 	    	<div class="fminner">
 	            <img src="<%=path%>/img/common/foot_info3.jpg" alt="img03">
-                    <a href="리뷰링크">REVIEW<b><img src="<%=path%>/img/common/foot_arrow.png"></b></a>
+                    <a href="/hsoban/src/board/review_board.jsp">REVIEW<b><img src="<%=path%>/img/common/foot_arrow.png"></b></a>
 	    	</div>
 		</div>
     </div>
@@ -32,9 +32,9 @@
         <img src="<%=path%>/img/common/foot_text.jpg" alt="hsoban">
 		<div class="copy">
 			<p>
-			<a href="개인정보취급방침링크"><img src="<%=path%>/img/common/foot_link1.jpg" alt="개인정보취급방침"></a>
+			<a><img src="<%=path%>/img/common/foot_link1.jpg" alt="개인정보취급방침"></a>
             | 
-            <a href="이용약관 링크"><img src="<%=path%>/img/common/foot_link2.jpg" alt="이용약관"></a>
+            <%-- <a><img src="<%=path%>/img/common/foot_link2.jpg" alt="이용약관"></a> --%>
 			</p>
             <img src="<%=path%>/img/common/foot_copy.jpg" alt="copyright">
 		</div>

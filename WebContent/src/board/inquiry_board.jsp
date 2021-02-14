@@ -27,9 +27,9 @@ String path = request.getContextPath();
       <br><br><br>  
       <div class="content_wrap">
       <div style="text-align: right;">
-        <span><input id="name" type="radio" name="select" ><label for="name">이름</label>
-	    <input id="title" type="radio" name="select" checked><label for="title">제목</label>
-	    <input id="content" type="radio" name="select"><label for="content">내용</label>
+        <span><input id="name" type="radio" name="select" ><label for="name">이름</label>&nbsp;
+	    <input id="title" type="radio" name="select" checked><label for="title">제목</label>&nbsp;
+	    <input id="content" type="radio" name="select"><label for="content">내용</label>&nbsp;
 	    <input type="text" name="searchText" value="" />
 	    <input style="background-color: #464646;
 		color: white;" type="submit" value="검색" /></span>
@@ -115,7 +115,7 @@ String path = request.getContextPath();
                    <td><div class="td_center">2</div></td>
                    <td><div class="td_left"><img src="<%=path%>/img/board/note.jpg" class="note"></div></td>
                    <td><div class="td_left"><a href="../board/inquiry.jsp">입고문의</a></div></td>
-                   <td><div class="tb-center">홍길동</td>
+                   <td><div class="td_center">홍길동</td>
                    <td><div class="td_center">2021/02/07</div></td>
                    <td><div class="td_center">53</div></td>
                </tr>

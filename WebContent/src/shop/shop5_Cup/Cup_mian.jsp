@@ -52,13 +52,40 @@
                                     </ul>
                                 </dd>
                             </dl>
+							<dl class="item-list">
+                                <dt class="thumb"><a href="Cup2.jsp"><img class="MS_prod_img_s" src="/hsoban/img/shop/Cup2_00.jpg" alt="상품 썸네일" title="상품 썸네일"></a></dt>
+                                <dd>
+                                    <ul>
+                                        <li class="prd-name"><span class="MK-product-icons"></span>티잔</li>
+                                        <li class="prd-price">32,000원</li>
+                                    </ul>
+                                </dd>
+                            </dl>
+							<dl class="item-list">
+                                <dt class="thumb"><a href="Cup3.jsp"><img class="MS_prod_img_s" src="/hsoban/img/shop/Cup3_00.jpg" alt="상품 썸네일" title="상품 썸네일"></a></dt>
+                                <dd>
+                                    <ul>
+                                        <li class="prd-name"><span class="MK-product-icons"></span>저그</li>
+                                        <li class="prd-price">68,000원</li>
+                                    </ul>
+                                </dd>
+                            </dl>
+							<dl class="item-list">
+                                <dt class="thumb"><a href="Cup4.jsp"><img class="MS_prod_img_s" src="/hsoban/img/shop/Cup4_00.jpg" alt="상품 썸네일" title="상품 썸네일"></a></dt>
+                                <dd>
+                                    <ul>
+                                        <li class="prd-name"><span class="MK-product-icons"></span>아이스통머그</li>
+                                        <li class="prd-price">78,000원</li>
+                                    </ul>
+                                </dd>
+                            </dl>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	
+<jsp:include page="../../common/side.jsp"/>	
 <jsp:include page="../../common/footer.jsp"/>
 </body>
 </html>

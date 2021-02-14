@@ -22,7 +22,15 @@
  .my-box { border:1px solid; padding:10px; }
 </style>
 </head>
-
+<script type="text/javascript">
+function show(){
+   if(document.querySelector("#scroll-right").style.right >= "0px"){
+   document.querySelector("#scroll-right").style.right = "-220px";
+   }
+   else 
+	   document.querySelector("#scroll-right").style.right = "0px";	
+}
+</script>
 <body>
 	<div id="scroll-right">
 	<div id="side-menu-wrap">
@@ -38,13 +46,17 @@
 			<div class="side-cs-center div-wrap"><img src="<%=path%>/img/common/side_banner1.jpg" alt="cscenter"></div>
 			<div class="side-bank-info div-wrap"><img src="<%=path%>/img/common/side_banner2.jpg" alt="bank"></div>
 		</div>
-
 		<div class="right-btn">
-                    <i class="fa rotate" aria-hidden="true"><img src="<%=path%>/img/common/side_right.png" alt="hide"></i>
+                    <i class="fa rotate" aria-hidden="true"><img src="/hsoban/img/common/side_right.png" alt="hide" onclick="show()"></i>
+                    <i class="fa rotate" aria-hidden="true"><img src="/hsoban/img/common/side_cart.png" alt="cart_link" onclick="location.href='/hsoban/src/cart/cart.jsp'"></i>
+                    <i class="fa rotate" aria-hidden="true"><img src="/hsoban/img/common/side_mypage.png" alt="mypage_link" onclick="location.href='/hsoban/src/mypage/mypage_main.jsp'"></i>
+                    <i class="fa rotate" aria-hidden="true"><img src="/hsoban/img/common/side_up.png" alt="scroll_up" onclick="window.scrollTo(0,0);"></i>
+                    <i class="fa rotate" aria-hidden="true"><img src="/hsoban/img/common/side_down.png" alt="scroll_down" onclick="window.scrollTo(0,10000);"></i>
                     <b></b>
              </div>
      	   </div>       
-        </div>
-
+        </div>      
 </body>
+<script>
+</script>
 </html>

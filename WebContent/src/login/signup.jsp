@@ -84,7 +84,7 @@ pre {
 <tr><th class="th_left">■ 이메일</th>
 	<td class="td_left"><input type="text" size="10"/>&nbsp;@&nbsp;<input type="text" size="10" id="selectedValue"/>
 	<select onchange="onSelect(this)"><%
-	for(Option domain : Selection.domains){
+			for(Option domain : Selection.domains){
 	%>
 	<option value="<%=domain.value %>"><%=domain.key %></option>
 	<%} %>
@@ -95,7 +95,7 @@ pre {
 	<td class="td_left"><select>
 		<%
 		for(Option areaCode : Selection.areaCode){
-		%>
+			%>
 		<option value="<%=areaCode.value %>"><%=areaCode.key %></option>
 		<%} %>
 	</select>&nbsp;-&nbsp;
@@ -104,7 +104,7 @@ pre {
 	<td class="td_left">&nbsp;<select>
 		<%
 		for(Option areaCodeEx : Selection.areaCodeEx){
-		%>
+			%>
 		<option value="<%=areaCodeEx.value%>"><%=areaCodeEx.key%></option>
 		<%} %>
 	</select>&nbsp;-&nbsp;<input type="text" size="5">&nbsp;-&nbsp;<input type="text" size="5"></td></tr>

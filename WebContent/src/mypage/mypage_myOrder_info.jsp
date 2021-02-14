@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>주문 상세 내역</title>
 </head>
 <link rel="stylesheet" href="/hsoban/css/allCommon.css">
 <link rel="stylesheet" href="/hsoban/css/common.css">
