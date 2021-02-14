@@ -10,7 +10,6 @@
 <link rel="stylesheet" href="/hsoban/css/header.css">
 <link rel="stylesheet" href="/hsoban/css/allCommon.css">
 <link rel="stylesheet" href="/hsoban/css/common.css">
-
 <style>
 </style>
 <meta charset="UTF-8">
@@ -18,15 +17,14 @@
 </head>
 <script type="text/javascript">
 function showSub(){
-   if(document.querySelector('.sub').style.display >= 'none'){
-	   document.querySelector('.sub').style.display = 'block';
-	  
-   }
-   else 
-	   document.querySelector('.sub').style.display = 'none';
+   var sub = document.querySelector('.sub');
+      if (sub.style.display == 'block'){
+         sub.style.display = 'none';
+      }else {
+         sub.style.display = 'block';
+      }
 }
 </script>
-<%--#headerWrap .topWrap .gnb .gnb-list .subbox --%>
 <body>
 <div id="headerWrap">
  <div class="logo_wrap"><h1><a href="/hsoban/src/main/main.jsp"><img src="<%=path%>/img/common/logo.png" alt="hsoban" /></a></h1></div>

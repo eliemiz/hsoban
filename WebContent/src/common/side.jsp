@@ -49,7 +49,7 @@ function show(){
 		<div class="right-btn">
                     <i class="fa rotate" aria-hidden="true"><img src="/hsoban/img/common/side_right.png" alt="hide" onclick="show()"></i>
                     <i class="fa rotate" aria-hidden="true"><img src="/hsoban/img/common/side_cart.png" alt="cart_link" onclick="location.href='/hsoban/src/cart/cart.jsp'"></i>
-                    <i class="fa rotate" aria-hidden="true"><img src="/hsoban/img/common/side_mypage.png" alt="mypage_link" onclick="location.href='/hsoban/src/mypage/mypage_myOrder.jsp'"></i>
+                    <i class="fa rotate" aria-hidden="true"><img src="/hsoban/img/common/side_mypage.png" alt="mypage_link" onclick="location.href='/hsoban/src/mypage/mypage_main.jsp'"></i>
                     <i class="fa rotate" aria-hidden="true"><img src="/hsoban/img/common/side_up.png" alt="scroll_up" onclick="window.scrollTo(0,0);"></i>
                     <i class="fa rotate" aria-hidden="true"><img src="/hsoban/img/common/side_down.png" alt="scroll_down" onclick="window.scrollTo(0,10000);"></i>
                     <b></b>
