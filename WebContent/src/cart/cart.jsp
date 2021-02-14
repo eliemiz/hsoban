@@ -63,7 +63,7 @@
 								<td class="td_left">
 									<div>
 										<div>
-											<a href="temp.jsp">국그릇</a>
+											<a href="<%=path%>/src/shop/shop1_Bowl/Bowl1.jsp">국그릇</a>
 										</div>
 										<div>
 											<span>[color: 그린(유광) 1개]</span>
@@ -110,7 +110,7 @@
 		
 		<div class="cart_button_wrap clear_fix">
 			<input type="button" value="주문하기" class="btn btn_thatch" onclick="location.href='order.jsp'">
-			<input type="button" value="계속 쇼핑하기" class="btn btn_normal" onclick="location.href='<%=path%>/src/shop/shop_default.jsp'">
+			<input type="button" value="계속 쇼핑하기" class="btn btn_normal" onclick="location.href='<%=path%>/src/shop/shop1_Bowl/Bowl_main.jsp'">
 			<input type="button" value="장바구니 비우기" class="btn btn_normal">
 		</div>
 		
@@ -146,7 +146,7 @@
 							<tr>
 								<td class="td_center"><img src="<%=path%>/img/cart/temp.jpg" class="thumbnail_m"></td>
 								<td class="td_left">국그릇</td>
-								<td class="td_center"><input type="number" class="table_cart_number"> 개</td>
+								<td class="td_center"><input type="number" class="table_cart_number" value="1"> 개</td>
 								<td class="td_center">있음</td>
 								<td class="td_center">123,456원</td>
 								<td class="td_center">
