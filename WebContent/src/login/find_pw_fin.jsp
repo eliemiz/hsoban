@@ -32,9 +32,9 @@ th{
 </style>
 </head>
 <body>
-<jsp:include page="../common/header.jsp"/><br>
-<h2 align="center">아이디/비밀번호 찾기</h2>
-<br><br><br>
+<jsp:include page="../common/header.jsp"/>
+<div class="content_wrap"><br>
+<p class="p_title" align="center">아이디/비밀번호 찾기</p>
 <pre align="center">
 회원가입 시 입력하신 이름 + 이메일 또는 휴대폰 번호로 아이디를 확인하실 수 있습니다.
 정보 보호를 위해 아이디 일부는 숨김 처리하고, 임시 비밀번호는 가입하신 이메일로 발송됩니다.
@@ -49,7 +49,7 @@ th{
 <div style="text-align:center;"><a href="login.jsp">
 <span><input type="button" class="btn btn_color" value="로그인" style="height:40px; width:230px;"></span></a></div>
 </div>
-</form>
+</form></div>
 <jsp:include page="../common/footer.jsp"/>
 </body>
 </html>

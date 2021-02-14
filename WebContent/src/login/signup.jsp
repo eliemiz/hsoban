@@ -36,8 +36,9 @@ pre {
 </style>
 </head>
 <body>
-<jsp:include page="../common/header.jsp"/><br>
-<h2 align="center">회원정보</h2><br>
+<jsp:include page="../common/header.jsp"/>
+<div class="content_wrap"><br>
+<p class="p_title" align="center">회원정보</p><br>
 <form method="post">
 <table border align="center">
 <tr><th class="th_left">■ 이름</th>
@@ -110,11 +111,11 @@ pre {
 </table><br>
 <table border align="center" width="1170px">
 <tr><th class="th_left"><input type="checkbox">전체동의</th></tr>
-<tr><th class="th_left"><br><input type="checkbox">&nbsp;&nbsp;&nbsp;이용약관&nbsp;
+<tr><th class="th_left"><br><input type="checkbox">&nbsp;이용약관&nbsp;
 	<a href="#terms">
 	<input type="button" class="btn btn_gray2" value="내용보기" style="height:22px; width:110px;"></a></span>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<input type="checkbox">개인정보 수집 및 이용 안내&nbsp;<span>
+	<input type="checkbox">&nbsp;개인정보 수집 및 이용 안내&nbsp;<span>
 	<input type="button" class="btn btn_gray2" value="내용보기" style="height:22px; width:110px;" onclick="location.href='#inform'"></span>
 	<br><br><hr width="1100" style="border:dashed 1px;"><br>
 	<input type="checkbox">마케팅 수신동의&nbsp;(&nbsp;<input type="checkbox">이메일&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox">&nbsp;SMS)<br><br>
@@ -279,7 +280,7 @@ pre {
 
 
 
-</pre>
+</pre></div>
 <jsp:include page="../common/footer.jsp"/>
 </body>
 <script type="text/javascript">
