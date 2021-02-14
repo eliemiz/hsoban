@@ -52,7 +52,7 @@ function withdrawal_fin(){
 	var result = confirm('탈퇴할 경우 회원관련 데이터가 복구되지 않습니다. 정말로 탈퇴를 하시겠습니까?');
 	if(result==true){
 		alert('해당 ID를 탈퇴처리해 드렸습니다.');
-		location.href="../mypage/mypage_main.jsp";
+		location.href="../main/main.jsp";
 	}else{
 		location.href="../mypage/mypage_main.jsp";
 	}

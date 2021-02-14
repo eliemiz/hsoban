@@ -8,7 +8,7 @@ String path = request.getContextPath();
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>NOTICE</title>
 <link rel="stylesheet" href="<%=path%>/css/common.css">
 <link rel="stylesheet" href="<%=path%>/css/board.css">
 <style>

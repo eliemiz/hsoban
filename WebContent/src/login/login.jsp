@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원 로그인</title>
 <link rel="stylesheet" href="<%=path%>/css/login.css">
 <style>
 body {
@@ -20,6 +20,7 @@ body {
 </head>
 <body>
 <jsp:include page="../common/header.jsp"/>
+<jsp:include page="../common/side.jsp"/>
 <div class="content_wrap">
 <br>
 <p class="p_title" align="center">로그인</p>

@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>REVIEW</title>
 <link rel="stylesheet" href="<%=path%>/css/common.css">
 <link rel="stylesheet" href="<%=path%>/css/boardwrite.css">
 <style>

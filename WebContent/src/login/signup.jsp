@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>개인 회원 가입/수정</title>
 <link rel="stylesheet" href="<%=path%>/css/login.css">
 <style>
 body {
@@ -37,6 +37,7 @@ pre {
 </head>
 <body>
 <jsp:include page="../common/header.jsp"/>
+<jsp:include page="../common/side.jsp"/>
 <div class="content_wrap"><br>
 <p class="p_title" align="center">회원정보</p><br>
 <form method="post">

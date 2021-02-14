@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="/hsoban/css/common.css">
 
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>화소반 그릇 공식 쇼핑몰</title>
 <style>
 #prdBrand .cate-wrap .bcate { text-align: center; font-size: 16px; font-weight: normal; margin: 80px auto 45px; font-size:30px; }
 #prdBrand .cate-wrap .mcate { zoom: 1; overflow: hidden; margin: 20px 0; padding: 10px 0 10px 20px; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; }

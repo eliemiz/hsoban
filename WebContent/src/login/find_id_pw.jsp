@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>아이디/비밀번호 찾기</title>
 <link rel="stylesheet" href="<%=path%>/css/login.css">
 </head>
 <style>
@@ -44,6 +44,7 @@ div {
 </style>
 <body>
 <jsp:include page="../common/header.jsp"/>
+<jsp:include page="../common/side.jsp"/>
 <div class="content_wrap">
 <p class="p_title">아이디/비밀번호 찾기</p>
 <p class="p_subtit" align="left">아이디 찾기</p><hr width="1180">
