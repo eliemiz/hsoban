@@ -49,7 +49,7 @@
         </div>      
 </body>
 <script>
-var isShow = false;
+var isShow = true;
 function show(){
 	isShow = isShow ? false : true; 
 	if( isShow == false){
