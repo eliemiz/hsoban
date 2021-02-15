@@ -8,11 +8,23 @@ public class Notice {
 	private int account_id;
 	private String account_name;
 	private Date posting_date;
+	private String posting_date_s;
 	private int views;
 	private String content;
 	public Notice() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	public Notice(int notice_id, String title, int account_id, String account_name, String posting_date_s, int views,
+			String content) {
+		super();
+		this.notice_id = notice_id;
+		this.title = title;
+		this.account_id = account_id;
+		this.account_name = account_name;
+		this.posting_date_s = posting_date_s;
+		this.views = views;
+		this.content = content;
 	}
 	public Notice(int notice_id, String title, int account_id, String account_name, Date posting_date, int views,
 			String content) {
@@ -54,6 +66,12 @@ public class Notice {
 	}
 	public void setPosting_date(Date posting_date) {
 		this.posting_date = posting_date;
+	}
+	public String getPosting_date_s() {
+		return posting_date_s;
+	}
+	public void setPosting_date_s(String posting_date_s) {
+		this.posting_date_s = posting_date_s;
 	}
 	public int getViews() {
 		return views;
