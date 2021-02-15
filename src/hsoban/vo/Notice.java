@@ -5,34 +5,31 @@ import java.util.Date;
 public class Notice {
 	private int notice_id;
 	private String title;
+	private String content;
 	private int account_id;
-	private String account_name;
 	private Date posting_date;
 	private String posting_date_s;
 	private int views;
-	private String content;
 	public Notice() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Notice(int notice_id, String title, int account_id, String account_name, String posting_date_s, int views,
-			String content) {
+	
+	public Notice(int notice_id, String title, String content, int account_id, String posting_date_s, int views) {
 		super();
 		this.notice_id = notice_id;
 		this.title = title;
+		this.content = content;
 		this.account_id = account_id;
-		this.account_name = account_name;
 		this.posting_date_s = posting_date_s;
 		this.views = views;
-		this.content = content;
 	}
-	public Notice(int notice_id, String title, int account_id, String account_name, Date posting_date, int views,
+	public Notice(int notice_id, String title, int account_id, Date posting_date, int views,
 			String content) {
 		super();
 		this.notice_id = notice_id;
 		this.title = title;
 		this.account_id = account_id;
-		this.account_name = account_name;
 		this.posting_date = posting_date;
 		this.views = views;
 		this.content = content;
@@ -54,12 +51,6 @@ public class Notice {
 	}
 	public void setAccount_id(int account_id) {
 		this.account_id = account_id;
-	}
-	public String getAccount_name() {
-		return account_name;
-	}
-	public void setAccount_name(String account_name) {
-		this.account_name = account_name;
 	}
 	public Date getPosting_date() {
 		return posting_date;
