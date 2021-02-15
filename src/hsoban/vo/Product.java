@@ -18,13 +18,15 @@ public class Product {
 	private String product_size;
 	private int price;
 	private String description;
+	private String thumbnail; // 썸네일 경로
 
 	public Product() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Product(int product_id, String color, String name, String product_size, int price, String description) {
+	public Product(int product_id, String color, String name, String product_size, int price, String description,
+			String thumbnail) {
 		super();
 		this.product_id = product_id;
 		this.color = color;
@@ -32,6 +34,7 @@ public class Product {
 		this.product_size = product_size;
 		this.price = price;
 		this.description = description;
+		this.thumbnail = thumbnail;
 	}
 
 	public Product(int product_id, String color) {
@@ -86,6 +89,14 @@ public class Product {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public String getThumbnail() {
+		return thumbnail;
+	}
+
+	public void setThumbnail(String thumbnail) {
+		this.thumbnail = thumbnail;
 	}
 
 }
