@@ -87,6 +87,23 @@ public class Order {
 		super();
 		this.order_id = order_id;
 		this.account_id = account_id;
+		
+	}
+	
+	public Order(int account_id, int product_id, String color, int order_count, String order_date_s, int post,
+			String address, String address2, String order_message, String pay, int total) {
+		super();
+		this.account_id = account_id;
+		this.product_id = product_id;
+		this.color = color;
+		this.order_count = order_count;
+		this.order_date_s = order_date_s;
+		this.post = post;
+		this.address = address;
+		this.address2 = address2;
+		this.order_message = order_message;
+		this.pay = pay;
+		this.total = total;
 	}
 	public int getOrder_id() {
 		return order_id;
