@@ -37,7 +37,7 @@ public class Dao_Notice extends Dao {
 		try {
 			connect();
 			
-			String sql = "SELCT * FROM NOTICE WHERE notice_id like '%'||?||'%'";
+			String sql = "SELCT * FROM NOTICE WHERE notice_id = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1,notice_id);
 			
