@@ -1,31 +1,29 @@
 package hsoban.vo;
 
-/*CREATE TABLE CART (
-ACCOUNT_ID NUMBER,
-PRODUCT_ID NUMBER,
-COLOR VARCHAR2(50),
-COUNT NUMBER,
-CONSTRAINT CART_PK PRIMARY KEY (ACCOUNT_ID, PRODUCT_ID, COLOR)
+/*-- 관심상품 테이블
+CREATE TABLE WISH_LIST (
+	ACCOUNT_ID NUMBER,
+	PRODUCT_ID NUMBER,
+	COLOR VARCHAR2(50),
+	CONSTRAINT WISH_LIST_PK PRIMARY KEY (ACCOUNT_ID, PRODUCT_ID, COLOR)
 );*/
 
-public class Cart {
+public class WishList {
 	private int account_id;
 	private int product_id;
 	private String color;
-	private int count;
 
 	// constructor
-	public Cart() {
+	public WishList() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Cart(int account_id, int product_id, String color, int count) {
+	public WishList(int account_id, int product_id, String color) {
 		super();
 		this.account_id = account_id;
 		this.product_id = product_id;
 		this.color = color;
-		this.count = count;
 	}
 
 	// getter and setter
@@ -53,18 +51,9 @@ public class Cart {
 		this.color = color;
 	}
 
-	public int getCount() {
-		return count;
-	}
-
-	public void setCount(int count) {
-		this.count = count;
-	}
-
 	@Override
 	public String toString() {
-		return "Cart [account_id=" + account_id + ", product_id=" + product_id + ", color=" + color + ", count=" + count
-				+ "]";
+		return "WishList [account_id=" + account_id + ", product_id=" + product_id + ", color=" + color + "]";
 	}
 
 }

@@ -96,3 +96,17 @@ INSERT INTO ORDERED VALUES
 	(14, 100014, 100255, '분홍', 6, '2021-02-25', 
 	15141, '서울시 강남구 테헤란로', '23-14번지', '파송되지 않게 배송 부탁드립니다.'
 	, '현금 결제', 5000);
+
+SELECT * FROM cart ORDER BY product_id, color;
+
+-- 장바구니 테이블
+CREATE TABLE CART (
+	ACCOUNT_ID NUMBER,
+	PRODUCT_ID NUMBER,
+	COLOR VARCHAR2(50),
+	COUNT NUMBER,
+	CONSTRAINT CART_PK PRIMARY KEY (ACCOUNT_ID, PRODUCT_ID, COLOR)
+);
+
+UPDATE cart SET count = 3
+	WHERE account_id = 100200 AND product_id = 100022 AND color = '블랙';
