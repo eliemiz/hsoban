@@ -1,4 +1,4 @@
-package hsoban;
+package hsoban.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

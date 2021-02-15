@@ -1,7 +1,9 @@
-package hsoban;
+package hsoban.dao;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+
+import hsoban.vo.Temp;
 
 public class Dao_Temp extends Dao {
 

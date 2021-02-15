@@ -1,4 +1,4 @@
-package hsoban;
+package hsoban.vo;
 
 public class Temp {
 	private int id;
