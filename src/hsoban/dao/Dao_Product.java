@@ -7,7 +7,26 @@ import hsoban.vo.Product;
 public class Dao_Product extends Dao {
 	// 조회(전체, 리스트)
 	public ArrayList<Product> getProdList() {
-		ArrayList<Product> plist = null;
+		ArrayList<Product> plist = new ArrayList<Product>();
+		try {
+			connect();
+
+			String sql = "SELECT * FROM PRODUCT ORDER BY CATEGORY";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				Product prod = new Product(rs.getInt("product_id"), rs.getString("color"), rs.getString("name"),
+						rs.getString("category"), rs.getString("product_size"), rs.getInt("price"),
+						rs.getString("description"), rs.getString("thumbnail"));
+				plist.add(prod);
+			}
+			rs.close();
+			pstmt.close();
+			con.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return plist;
 	}
 
@@ -39,15 +58,43 @@ public class Dao_Product extends Dao {
 		}
 		return plist;
 	}
-	
+
 	// 조회(조건, 단일) - product_id, color
-	public Product getProduct(int product_id, String color) {
-		Product prod = null;
-		return prod;
+	public ArrayList<Product> getProdList(int product_id, String color) {
+		ArrayList<Product> plist = new ArrayList<Product>();
+		try {
+			connect();
+
+			String sql = "SELECT * FROM PRODUCT WHERE product_id LIKE '%'||?||'%' AND color LIKE '%'||?||'%'";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, product_id);
+			pstmt.setString(2, color);
+			
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				Product prod = new Product(rs.getInt("product_id"), rs.getString("color"), rs.getString("name"),
+						rs.getString("category"), rs.getString("product_size"), rs.getInt("price"),
+						rs.getString("description"), rs.getString("thumbnail"));
+				plist.add(prod);
+			}
+
+			rs.close();
+			pstmt.close();
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return plist;
 	}
-	
+
 	public static void main(String[] args) {
 		Dao_Product dao = new Dao_Product();
-		ArrayList<Product> plist = dao.getProdList("");
+		
+		ArrayList<Product> plist = dao.getProdList();
+//		ArrayList<Product> plist = dao.getProdList("");
+//		ArrayList<Product> plist = dao.getProdList(0,"");
 	}
 }
