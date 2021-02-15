@@ -37,13 +37,14 @@ public class Account {
 	private String phone2;
 	private boolean mail_recv;
 	private boolean sms_recv;
+	private String auth;
 	public Account() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public Account(int account_id, String name, String id, String pass, String birthday_s, String gender, int post,
 			String address, String address2, String email, String phone, String phone2, boolean mail_recv,
-			boolean sms_recv) {
+			boolean sms_recv, String auth) {
 		super();
 		this.account_id = account_id;
 		this.name = name;
@@ -59,10 +60,11 @@ public class Account {
 		this.phone2 = phone2;
 		this.mail_recv = mail_recv;
 		this.sms_recv = sms_recv;
+		this.auth = auth;
 	}
 	public Account(int account_id, String name, String id, String pass, Date birthday, String gender, int post,
 			String address, String address2, String email, String phone, String phone2, boolean mail_recv,
-			boolean sms_recv) {
+			boolean sms_recv, String auth) {
 		super();
 		this.account_id = account_id;
 		this.name = name;
@@ -78,6 +80,7 @@ public class Account {
 		this.phone2 = phone2;
 		this.mail_recv = mail_recv;
 		this.sms_recv = sms_recv;
+		this.auth = auth;
 	}
 	public Account(int account_id, String pass) {
 		super();
@@ -185,5 +188,12 @@ public class Account {
 	public void setSms_recv(boolean sms_recv) {
 		this.sms_recv = sms_recv;
 	}
+	public String getAuth() {
+		return auth;
+	}
+	public void setAuth(String auth) {
+		this.auth = auth;
+	}
 }
+
 
