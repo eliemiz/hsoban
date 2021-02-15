@@ -36,7 +36,7 @@ public class Dao_Product extends Dao {
 		try {
 			connect();
 
-			String sql = "SELECT * FROM PRODUCT WHERE CATEGORY = ? ORDER BY PRODUCT_ID";
+			String sql = "SELECT * FROM PRODUCT WHERE CATEGORY LIKE '%'||UPPER( ? )||'%' ORDER BY PRODUCT_ID";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, category);
 			rs = pstmt.executeQuery();
@@ -65,7 +65,7 @@ public class Dao_Product extends Dao {
 		try {
 			connect();
 
-			String sql = "SELECT * FROM PRODUCT WHERE product_id LIKE '%'||?||'%' AND color LIKE '%'||?||'%'";
+			String sql = "SELECT * FROM PRODUCT WHERE product_id = ? AND color LIKE '%'|| UPPER( ? ) ||'%'";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, product_id);
 			pstmt.setString(2, color);

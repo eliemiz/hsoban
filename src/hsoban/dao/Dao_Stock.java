@@ -12,7 +12,7 @@ public class Dao_Stock extends Dao {
 		ArrayList<Stock> stlist = new ArrayList<Stock>();
 		try {
 			connect();
-			String sql = "SELECT * FROM STOCK WHERE product_id LIKE '%'||?||'%' AND color LIKE '%'||?||'%'";
+			String sql = "SELECT * FROM STOCK WHERE product_id = ? AND color LIKE '%'||UPPER( ? )||'%'";
 
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, product_id);
@@ -42,7 +42,7 @@ public class Dao_Stock extends Dao {
 			connect();
 			con.setAutoCommit(false);
 
-			String sql = "UPDATE STOCK SET STOCK = ? WHERE PRODUCT_ID = ? AND COLOR = ?";
+			String sql = "UPDATE STOCK SET STOCK = ? WHERE PRODUCT_ID = ? AND COLOR LIKE '%'||UPPER( ? )||'%'";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, stock.getStock());
 			pstmt.setInt(2, stock.getProduct_id());
