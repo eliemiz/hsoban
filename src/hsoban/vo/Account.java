@@ -35,14 +35,15 @@ public class Account {
 	private String email;
 	private String phone;
 	private String phone2;
-	
+	private boolean mail_recv;
+	private boolean sms_recv;
 	public Account() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
 	public Account(int account_id, String name, String id, String pass, String birthday_s, String gender, int post,
-			String address, String address2, String email, String phone, String phone2) {
+			String address, String address2, String email, String phone, String phone2, boolean mail_recv,
+			boolean sms_recv) {
 		super();
 		this.account_id = account_id;
 		this.name = name;
@@ -56,10 +57,12 @@ public class Account {
 		this.email = email;
 		this.phone = phone;
 		this.phone2 = phone2;
+		this.mail_recv = mail_recv;
+		this.sms_recv = sms_recv;
 	}
-
 	public Account(int account_id, String name, String id, String pass, Date birthday, String gender, int post,
-			String address, String address2, String email, String phone, String phone2) {
+			String address, String address2, String email, String phone, String phone2, boolean mail_recv,
+			boolean sms_recv) {
 		super();
 		this.account_id = account_id;
 		this.name = name;
@@ -73,130 +76,114 @@ public class Account {
 		this.email = email;
 		this.phone = phone;
 		this.phone2 = phone2;
+		this.mail_recv = mail_recv;
+		this.sms_recv = sms_recv;
 	}
-
 	public Account(int account_id, String pass) {
 		super();
 		this.account_id = account_id;
 		this.pass = pass;
 	}
-
 	public Account(String name, String email) {
 		super();
 		this.name = name;
 		this.email = email;
 	}
-
 	public Account(String name, String phone, String phone2) {
 		super();
 		this.name = name;
 		this.phone = phone;
 		this.phone2 = phone2;
 	}
-
 	public int getAccount_id() {
 		return account_id;
 	}
-
 	public void setAccount_id(int account_id) {
 		this.account_id = account_id;
 	}
-
 	public String getName() {
 		return name;
 	}
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
 	public String getId() {
 		return id;
 	}
-
 	public void setId(String id) {
 		this.id = id;
 	}
-
 	public String getPass() {
 		return pass;
 	}
-
 	public void setPass(String pass) {
 		this.pass = pass;
 	}
-
 	public Date getBirthday() {
 		return birthday;
 	}
-
 	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
 	}
-
 	public String getBirthday_s() {
 		return birthday_s;
 	}
-
 	public void setBirthday_s(String birthday_s) {
 		this.birthday_s = birthday_s;
 	}
-
 	public String getGender() {
 		return gender;
 	}
-
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-
 	public int getPost() {
 		return post;
 	}
-
 	public void setPost(int post) {
 		this.post = post;
 	}
-
 	public String getAddress() {
 		return address;
 	}
-
 	public void setAddress(String address) {
 		this.address = address;
 	}
-
 	public String getAddress2() {
 		return address2;
 	}
-
 	public void setAddress2(String address2) {
 		this.address2 = address2;
 	}
-
 	public String getEmail() {
 		return email;
 	}
-
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
 	public String getPhone() {
 		return phone;
 	}
-
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-
 	public String getPhone2() {
 		return phone2;
 	}
-
 	public void setPhone2(String phone2) {
 		this.phone2 = phone2;
 	}
-
+	public boolean isMail_recv() {
+		return mail_recv;
+	}
+	public void setMail_recv(boolean mail_recv) {
+		this.mail_recv = mail_recv;
+	}
+	public boolean isSms_recv() {
+		return sms_recv;
+	}
+	public void setSms_recv(boolean sms_recv) {
+		this.sms_recv = sms_recv;
+	}
 }
 
