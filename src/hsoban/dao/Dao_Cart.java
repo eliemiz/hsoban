@@ -14,10 +14,34 @@ import hsoban.vo.Cart;
 
 public class Dao_Cart extends Dao {
 
-	// 조회(전체, 리스트) - NOT USING
+	// 조회(전체, 리스트)
 	public ArrayList<Cart> getCartList() {
 
-		ArrayList<Cart> list = null;
+		ArrayList<Cart> list = new ArrayList<Cart>();
+
+		try {
+			connect();
+
+			String sql = "SELECT * FROM CART";
+			pstmt = con.prepareStatement(sql);
+
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				Cart cart = new Cart(rs.getInt("ACCOUNT_ID"), rs.getInt("PRODUCT_ID"), rs.getString("COLOR"),
+						rs.getInt("COUNT"));
+				list.add(cart);
+			}
+
+			rs.close();
+			pstmt.close();
+			con.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 		return list;
 	}
@@ -55,10 +79,36 @@ public class Dao_Cart extends Dao {
 		return list;
 	}
 
-	// 조회(조건, 단일) - NOT USING
+	// 조회(조건, 단일)
 	public Cart getCart(int account_id, int product_id, String color) {
 
 		Cart cart = null;
+
+		try {
+			connect();
+
+			String sql = "SELECT * FROM CART WHERE ACCOUNT_ID = ? AND PRODUCT_ID = ? AND COLOR = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, account_id);
+			pstmt.setInt(2, product_id);
+			pstmt.setString(3, color);
+
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				cart = new Cart(rs.getInt("ACCOUNT_ID"), rs.getInt("PRODUCT_ID"), rs.getString("COLOR"),
+						rs.getInt("COUNT"));
+			}
+
+			rs.close();
+			pstmt.close();
+			con.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 		return cart;
 	}
