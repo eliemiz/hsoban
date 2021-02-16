@@ -106,17 +106,17 @@ public class Dao_Review extends Dao {
 				connect();
 				con.setAutoCommit(false);
 
-				String sql = "INSERT INTO Review VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				String sql = "INSERT INTO Review VALUES (REVIEW_ID_SEQ.nextval, ?, ?, ?, ?, ?, to_date(?, 'YYYY-MM-DD'), ?, ?)";
 				pstmt = con.prepareStatement(sql);
-				pstmt.setInt(1, review.getReview_id());
-				pstmt.setInt(2, review.getProduct_id());
-				pstmt.setString(3, review.getColor());
-				pstmt.setString(4, review.getTitle());
-				pstmt.setString(5, review.getContent());
-				pstmt.setInt(6, review.getAccount_id());
-				pstmt.setString(7, review.getPosting_date_s());
-				pstmt.setInt(8, review.getViews());
-				pstmt.setString(9, review.getAttach());
+				//pstmt.setInt(1, review.getReview_id());
+				pstmt.setInt(1, review.getProduct_id());
+				pstmt.setString(2, review.getColor());
+				pstmt.setString(3, review.getTitle());
+				pstmt.setString(4, review.getContent());
+				pstmt.setInt(5, review.getAccount_id());
+				pstmt.setString(6, review.getPosting_date_s());
+				pstmt.setInt(7, review.getViews());
+				pstmt.setString(8, review.getAttach());
 				pstmt.executeQuery();
 				con.commit();
 
@@ -144,25 +144,37 @@ public class Dao_Review extends Dao {
 		}
 
 		// 수정
+		/*
+		 UPDATE REVIEW SET
+CONTENT = '튼튼합니다.'
+WHERE ACCOUNT_ID = 100012 AND REVIEW_ID=3;
+		 */
 		public void updateReview(Review review) {
 			try {
 				connect();
 				con.setAutoCommit(false);
 
-				String sql = 
-				"UPDATE Review SET PRODUCT_ID = ? AND COLOR = ? AND TITLE = ? AND CONTENT = ? "
-				+ "AND ACCOUNT_ID = ? AND POSTING_DATE_S = ? AND VIEWS = ? WHERE REVIEW_ID = ? ";
+				String sql =" UPDATE REVIEW\r\n"
+						+ "	SET PRODUCT_ID =?,\r\n"
+						+ "		COLOR = ?,\r\n"
+						+ "		TITLE = ?,\r\n"
+						+ "		CONTENT = ?,\r\n"
+						+ "		ACCOUNT_ID = ?,\r\n"
+						+ "		POSTING_DATE = to_date(?, 'YYYY-MM-DD'),\r\n"
+						+ "		VIEWS = ?,\r\n"
+						+ "		ATTACH = ?\r\n"
+						+ "WHERE REVIEW_ID = ? ";
 				pstmt = con.prepareStatement(sql);
-				pstmt.setInt(1, review.getReview_id());
-				pstmt.setInt(2, review.getProduct_id());
-				pstmt.setString(3, review.getColor());
-				pstmt.setString(4, review.getTitle());
-				pstmt.setString(5, review.getContent());
-				pstmt.setInt(6, review.getAccount_id());
-				pstmt.setString(7, review.getPosting_date_s());
-				pstmt.setInt(8, review.getViews());
-				pstmt.setString(9, review.getAttach());
-				pstmt.executeQuery();
+				pstmt.setInt(1, review.getProduct_id());
+				pstmt.setString(2, review.getColor());
+				pstmt.setString(3, review.getTitle());
+				pstmt.setString(4, review.getContent());
+				pstmt.setInt(5, review.getAccount_id());
+				pstmt.setString(6, review.getPosting_date_s());
+				pstmt.setInt(7, review.getViews());
+				pstmt.setString(8, review.getAttach());
+				pstmt.setInt(9, review.getReview_id());
+				pstmt.executeUpdate();
 				con.commit();
 
 				pstmt.close();
@@ -220,11 +232,27 @@ public class Dao_Review extends Dao {
 		}
 	public static void main(String[] args) {
 		Dao_Review dao = new Dao_Review();
-		ArrayList<Review> rlist = dao.getReviewList(1);
-		System.out.println(rlist);
-		dao.updateReview(new Review( 1, 1000100, "진그레이", "만족합니다.", "예뻐요.", 100012,
-   "2021/02/08", 13, null));
+//      ArrayList<Review> rlist = dao.getReviewList(1);
+//      System.out.println(rlist);
+      //dao.deleteReview(1);
+      // dao.insertReview(new Review(0, 1000100, "진그레이", "만족합니다.", "예뻐요.뻥이에요222", 100012,"2021-02-08", 13, "event.jpg"));
+      dao.updateReview(new Review(2, 1000100, "진그레이", "만족합니다.", "예뻐요.뻥이에요222수정", 100012,"2021-02-08", 13, "event.jpg"));
+		
 		
 	}
+	/*
+	 CREATE TABLE REVIEW (
+	   REVIEW_ID NUMBER,
+	   PRODUCT_ID NUMBER,
+	   COLOR VARCHAR2(50),
+	   TITLE VARCHAR2(300),
+	   CONTENT VARCHAR2(4000),
+	   ACCOUNT_ID NUMBER,
+	   POSTING_DATE DATE,
+	   VIEWS NUMBER,
+	   ATTACH VARCHAR2(200),
+	   CONSTRAINT REVIEW_PK PRIMARY KEY (REVIEW_ID)
+	);
 
+	 */
 }

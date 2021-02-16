@@ -29,7 +29,7 @@ public class Qna {
 	private int account_id;
 	private Date posting_date;
 	private String posting_date_s;
-	private int view;
+	private int views;
 	private String attach;
 	private int prev_id;
 	private int next_id;
@@ -38,7 +38,7 @@ public class Qna {
 		// TODO Auto-generated constructor stub
 	}
 	public Qna(int qna_id, int product_id, String color, String title, String content, int account_id,
-			Date posting_date, int view, String attach, int prev_id, int next_id) {
+			Date posting_date, int views, String attach, int prev_id, int next_id) {
 		super();
 		this.qna_id = qna_id;
 		this.product_id = product_id;
@@ -47,13 +47,13 @@ public class Qna {
 		this.content = content;
 		this.account_id = account_id;
 		this.posting_date = posting_date;
-		this.view = view;
+		this.views = views;
 		this.attach = attach;
 		this.prev_id = prev_id;
 		this.next_id = next_id;
 	}
 	public Qna(int qna_id, int product_id, String color, String title, String content, int account_id,
-			String posting_date_s, int view, String attach, int prev_id, int next_id) {
+			String posting_date_s, int views, String attach, int prev_id, int next_id) {
 		super();
 		this.qna_id = qna_id;
 		this.product_id = product_id;
@@ -62,7 +62,7 @@ public class Qna {
 		this.content = content;
 		this.account_id = account_id;
 		this.posting_date_s = posting_date_s;
-		this.view = view;
+		this.views = views;
 		this.attach = attach;
 		this.prev_id = prev_id;
 		this.next_id = next_id;
@@ -115,11 +115,11 @@ public class Qna {
 	public void setPosting_date_s(String posting_date_s) {
 		this.posting_date_s = posting_date_s;
 	}
-	public int getView() {
-		return view;
+	public int getViews() {
+		return views;
 	}
-	public void setView(int view) {
-		this.view = view;
+	public void setViews(int views) {
+		this.views = views;
 	}
 	public String getAttach() {
 		return attach;
@@ -139,5 +139,6 @@ public class Qna {
 	public void setNext_id(int next_id) {
 		this.next_id = next_id;
 	}
-      
+
+	
 }
