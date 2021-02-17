@@ -144,11 +144,6 @@ public class Dao_Review extends Dao {
 		}
 
 		// 수정
-		/*
-		 UPDATE REVIEW SET
-CONTENT = '튼튼합니다.'
-WHERE ACCOUNT_ID = 100012 AND REVIEW_ID=3;
-		 */
 		public void updateReview(Review review) {
 			try {
 				connect();
@@ -232,27 +227,13 @@ WHERE ACCOUNT_ID = 100012 AND REVIEW_ID=3;
 		}
 	public static void main(String[] args) {
 		Dao_Review dao = new Dao_Review();
-//      ArrayList<Review> rlist = dao.getReviewList(1);
-//      System.out.println(rlist);
+      ArrayList<Review> rlist = dao.getReviewList(1);
+      System.out.println(rlist);
       //dao.deleteReview(1);
-      // dao.insertReview(new Review(0, 1000100, "진그레이", "만족합니다.", "예뻐요.뻥이에요222", 100012,"2021-02-08", 13, "event.jpg"));
-      dao.updateReview(new Review(2, 1000100, "진그레이", "만족합니다.", "예뻐요.뻥이에요222수정", 100012,"2021-02-08", 13, "event.jpg"));
+      dao.insertReview(new Review(0, 1000100, "진그레이", "만족합니다.", "예뻐요.뻥이에요", 100012,"2021-02-08", 13, "event.jpg"));
+      //dao.updateReview(new Review(2, 1000100, "진그레이", "만족합니다.", "예뻐요.뻥이에요222수정", 100012,"2021-02-08", 13, "event.jpg"));
 		
 		
 	}
-	/*
-	 CREATE TABLE REVIEW (
-	   REVIEW_ID NUMBER,
-	   PRODUCT_ID NUMBER,
-	   COLOR VARCHAR2(50),
-	   TITLE VARCHAR2(300),
-	   CONTENT VARCHAR2(4000),
-	   ACCOUNT_ID NUMBER,
-	   POSTING_DATE DATE,
-	   VIEWS NUMBER,
-	   ATTACH VARCHAR2(200),
-	   CONSTRAINT REVIEW_PK PRIMARY KEY (REVIEW_ID)
-	);
 
-	 */
 }
