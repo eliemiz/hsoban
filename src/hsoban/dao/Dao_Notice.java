@@ -45,7 +45,7 @@ public class Dao_Notice extends Dao {
 			
 			while(rs.next()) {
 				Notice notice = new Notice(rs.getInt(1), rs.getString(2),
-								rs.getString(3), rs.getInt(4), rs.getString(5),
+								rs.getString(3), rs.getInt(4), rs.getDate(5), // posting_date get_string > date로 수정
 								rs.getInt(6));
 				nlist.add(notice);
 			}
@@ -78,7 +78,7 @@ public class Dao_Notice extends Dao {
 		try {
 			connect();
 			con.setAutoCommit(false);
-			String sql = "INSERT INTO NOTICE VALUES (?, ?, ?, ?, ?, ?)";
+			String sql = "INSERT INTO NOTICE VALUES (NOTICE_ID_SEQ.nextval, ?, ?, ?, ?, ?, ?)"; //NOTICE_ID_SEQ.nextval 추가
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, notice.getNotice_id());
 			pstmt.setString(2, notice.getTitle());
