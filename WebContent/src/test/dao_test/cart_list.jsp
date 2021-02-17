@@ -52,8 +52,11 @@ String path = request.getContextPath();
 				<td><input type="text" name="account_id" value="<%=account_id%>"></td>
 			</tr>
 			<tr>
-				<td colspan="2"><input type="button" value="검색" id="searchButton" class="btn btn_thatch">
-			</td>
+				<td colspan="2">
+					<input type="button" value="검색" id="searchButton" class="btn btn_thatch">
+					<input type="button" value="새 데이터 입력" id="insertButton" class="btn btn_black" onclick="location.href='cart_insert.jsp'">
+				</td>
+			</tr>
 		</table>
 	</form>
 	<table id="cartList">
