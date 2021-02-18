@@ -46,6 +46,7 @@
 %>
 <body>
 	<form method="post" id="stockForm">
+	<input type="hidden" name="process" value=""/>
 	<table>
 		<tr><th>Product_ID</th><td><input type="text" name="product_id" value="<%=st.getProduct_id()%>"/></td></tr>
 		<tr><th>Color</th><td><input type="text" name="color" value="<%=st.getColor()%>"/></td></tr>
