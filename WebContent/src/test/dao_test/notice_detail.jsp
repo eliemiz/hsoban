@@ -93,6 +93,11 @@
    var process = document.querySelector('[name=process]');
    var updateButton = document.querySelector('#updateButton');
    var deleteButton = document.querySelector('#deleteButton');
+   var notice_id = document.querySelector('[name=notice_id]');
+   var account_id = document.querySelector('[name=account_id]');
+   var views = document.querySelector('[name=views]');
+   var title = document.querySelector('[name=title]');
+   var content = document.querySelector('[name=content]');
  	// update button
    updateButton.onclick = function(){
 	   //유효성체크
