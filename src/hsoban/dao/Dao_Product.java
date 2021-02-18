@@ -37,7 +37,7 @@ public class Dao_Product extends Dao {
 		try {
 			connect();
 
-			String sql = "SELECT * FROM PRODUCT WHERE CATEGORY LIKE '%'||UPPER( ? )||'%' ORDER BY PRODUCT_ID";
+			String sql = "SELECT * FROM PRODUCT WHERE upper(CATEGORY) LIKE '%'||UPPER( ? )||'%' ORDER BY PRODUCT_ID";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, category);
 			rs = pstmt.executeQuery();
