@@ -95,7 +95,7 @@ public class Dao_Cart extends Dao {
 
 			rs = pstmt.executeQuery();
 
-			while (rs.next()) {
+			if (rs.next()) {
 				cart = new Cart(rs.getInt("ACCOUNT_ID"), rs.getInt("PRODUCT_ID"), rs.getString("COLOR"),
 						rs.getInt("COUNT"));
 			}

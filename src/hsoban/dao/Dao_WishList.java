@@ -42,6 +42,36 @@ public class Dao_WishList extends Dao {
 
 		return list;
 	}
+	
+	// 조회(조건, 단일)
+	public WishList getWish(int account_id, int product_id, String color) {
+		WishList wish = new WishList();
+
+		try {
+			connect();
+
+			String sql = "SELECT * FROM WISH_LIST WHERE ACCOUNT_ID = ? AND PRODUCT_ID = ? AND COLOR = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, account_id);
+			pstmt.setInt(2, product_id);
+			pstmt.setString(3, color);
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				wish = new WishList(rs.getInt("ACCOUNT_ID"), rs.getInt("PRODUCT_ID"), rs.getString("COLOR"));
+			}
+
+			rs.close();
+			pstmt.close();
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return wish;
+	}
 
 	// 입력
 	public void insertWishList(WishList wish) {
