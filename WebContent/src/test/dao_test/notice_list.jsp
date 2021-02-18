@@ -40,20 +40,19 @@ ArrayList<Notice> list = dao.getNoticeList();
 <body>
 	<!-- ### 공지는 검색을 할 필요가 없으므로 조회(조건-리스트) 메서드가 없습니다.
 	즉, 아래와 같은 검색폼은 없어도 됩니다. -->
-	<%-- <form method="post" id="noticeForm">
+	<%-- <form method="post" id="noticeForm"> // notice_id는 시퀀스에 의해 자동 생성되므로 form 안써도 됨.
 		
 			<tr>
 				<th>notice_id</th>
 				<td><input type="text" name="notice_id" value="<%=notice_id%>"></td>
 			</tr>--%>
-			<table>
+		<table>
 			<tr>
 				<td colspan="2">
 				<input type="button" value="새 데이터 입력" id="insertButton" 
 					class="btn btn_black" onclick="location.href='notice_insert.jsp'"></td>
 			</tr>
 		</table>
-	</form> 
 	<table id="noticeList">
 		<tr>
 			<th>notice_id</th>
@@ -71,7 +70,7 @@ ArrayList<Notice> list = dao.getNoticeList();
 			<td><%=notice.getTitle()%></td>
 			<td><%=notice.getContent()%></td>
 			<td><%=notice.getAccount_id()%></td>
-			<td><%=notice.getPosting_date_s()%></td>
+			<td><%=notice.getPosting_date()%></td>
 			<td><%=notice.getViews()%></td>
 		</tr>
 		<%

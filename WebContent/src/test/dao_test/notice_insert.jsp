@@ -79,11 +79,11 @@
       var posting_date = document.querySelector('[name=posting_date_s]');
       var views = document.querySelector('[name=views]');
       
-      if(isNaN(notice_id.value)) || isNaN(content.value) || isNaN(account_id) || isNaN(views)){
+      if(isNaN(notice_id.value) || isNaN(account_id.value) || isNaN(views.value)){
     	  alert('숫자를 입력하세요');
     	  return false;
       }
-      if((title.value)==null || (title.value)=""){
+      if((title.value)==null || (title.value)==""){
     	  alert('글자를 입력하세요');
     	  return false;
       }
