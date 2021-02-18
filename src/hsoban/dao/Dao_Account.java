@@ -35,34 +35,6 @@ public class Dao_Account extends Dao {
 		}
 		return list;
 	}
-	// 조회(조건-리스트) - 일단 작성했습니다 
-	public ArrayList<Account> getAccountList(int account_id){
-		ArrayList<Account> list = new ArrayList<Account>();
-		try {
-			connect();
-			String sql = "SELECT * FROM ACCOUNT WHERE ACCOUNT_ID = ?";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, account_id);
-			rs = pstmt.executeQuery();
-			while (rs.next()) {
-				Account account = new Account(rs.getInt("ACCOUNT_ID"), rs.getString("NAME"),
-						rs.getString("ID"), rs.getString("PASS"), rs.getDate("BIRTHDAY"),
-						rs.getString("GENDER"), rs.getInt("POST"), rs.getString("ADDRESS"), 
-						rs.getString("ADDRESS2"), rs.getString("EMAIL"), rs.getString("PHONE"),
-						rs.getString("PHONE2"), rs.getBoolean("MAIL_RECV"), rs.getBoolean("SMS_RECV"),
-						rs.getString("AUTH"));
-				list.add(account);
-			}
-			rs.close();
-			pstmt.close();
-			con.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return list;
-	}
 	// 조회(조건-단일) - 계정번호, 비밀번호
 	public Account getAccount(int account_id, String pass){
 		Account account = null;
@@ -154,7 +126,7 @@ public class Dao_Account extends Dao {
 		try {
 			connect();
 			con.setAutoCommit(false);
-			String sql = "INSERT INTO ACCOUNT VALUES(ACCOUNT_ID_SEQ, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			String sql = "INSERT INTO ACCOUNT VALUES(ACCOUNT_ID_SEQ.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, account.getAccount_id());
 			pstmt.setString(2, account.getName());
