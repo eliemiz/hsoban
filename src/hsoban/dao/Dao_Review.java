@@ -3,6 +3,7 @@ package hsoban.dao;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import hsoban.vo.Cart;
 import hsoban.vo.Review;
 
 /*
@@ -22,10 +23,36 @@ import hsoban.vo.Review;
  */
 public class Dao_Review extends Dao {
 	
-//조회(전체, 리스트) - NOT USING
+//조회(전체, 리스트) 
 	public ArrayList<Review> getReviewList() {
 
-		ArrayList<Review> rlist = null;
+		ArrayList<Review> rlist = new ArrayList<Review>();
+
+		try {
+			connect();
+
+			String sql = "SELECT * FROM Reivew";
+			pstmt = con.prepareStatement(sql);
+
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				Review review = new Review(rs.getInt("REVIEW_ID"), rs.getInt("PRODUCT_ID"), 
+						   rs.getString("COLOR"), rs.getString("TITLE"), rs.getString("CONTENT"),
+						   rs.getInt("ACCOUNT_ID"), rs.getDate("POSTING_DATE"),
+						   rs.getInt("VIEWS"),  rs.getString("ATTACH"));
+				rlist.add(review);
+			}
+
+			rs.close();
+			pstmt.close();
+			con.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 		return rlist;
 	}
@@ -152,9 +179,6 @@ public class Dao_Review extends Dao {
 						+ "		COLOR = ?,\r\n"
 						+ "		TITLE = ?,\r\n"
 						+ "		CONTENT = ?,\r\n"
-						+ "		ACCOUNT_ID = ?,\r\n"
-						+ "		POSTING_DATE = to_date(?, 'YYYY-MM-DD'),\r\n"
-						+ "		VIEWS = ?,\r\n"
 						+ "		ATTACH = ?\r\n"
 						+ "WHERE REVIEW_ID = ? ";
 				pstmt = con.prepareStatement(sql);
@@ -162,11 +186,8 @@ public class Dao_Review extends Dao {
 				pstmt.setString(2, review.getColor());
 				pstmt.setString(3, review.getTitle());
 				pstmt.setString(4, review.getContent());
-				pstmt.setInt(5, review.getAccount_id());
-				pstmt.setString(6, review.getPosting_date_s());
-				pstmt.setInt(7, review.getViews());
-				pstmt.setString(8, review.getAttach());
-				pstmt.setInt(9, review.getReview_id());
+				pstmt.setString(5, review.getAttach());
+				pstmt.setInt(6, review.getReview_id());
 				pstmt.executeUpdate();
 				con.commit();
 
