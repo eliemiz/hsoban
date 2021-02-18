@@ -7,27 +7,24 @@ import hsoban.vo.Account;
 
 
 public class Dao_Account extends Dao {
-	// 단일 조회 계정번호/비밀번호
-	public ArrayList<Account> getAccountList(int account_id, String pass){
-		ArrayList<Account> alist = new ArrayList<Account>();
+	// 조회(전체) - 미사용
+	// 조회(조건-단일) - 계정번호, 비밀번호
+	public Account getAccount(int account_id, String pass){
+		Account account = null;
 		try {
 			connect();
-			
 			String sql = "SELECT * FROM account WHERE account_id=? AND pass=?";
-			System.out.println(sql);
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, account_id);
 			pstmt.setString(2, pass);			
 			rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
-				Account account = new Account(rs.getInt(1), rs.getString(2),
-						rs.getString(3), rs.getString(4), rs.getString(5),
-						rs.getString(6), rs.getInt(7), rs.getString(8), 
-						rs.getString(9), rs.getString(10), rs.getString(11),
-						rs.getString(12), rs.getBoolean(13), rs.getBoolean(14),
-						rs.getString(15));
-				alist.add(account);
+			if(rs.next()) {
+				account = new Account(rs.getInt("ACCOUNT_ID"), rs.getString("NAME"),
+						rs.getString("ID"), rs.getString("PASS"), rs.getDate("BIRTHDAY"),
+						rs.getString("GENDER"), rs.getInt("POST"), rs.getString("ADDRESS"), 
+						rs.getString("ADDRESS2"), rs.getString("EMAIL"), rs.getString("PHONE"),
+						rs.getString("PHONE2"), rs.getBoolean("MAIL_RECV"), rs.getBoolean("SMS_RECV"),
+						rs.getString("AUTH"));
 			}
 			rs.close();
 			pstmt.close();
@@ -37,29 +34,26 @@ public class Dao_Account extends Dao {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-		return alist;
+		return account;
 	}
-	// 단일 조회2 이름/이메일
-	public ArrayList<Account> getAccountList2(String name, String email){
-		ArrayList<Account> alist = new ArrayList<Account>();
+	// 조회(조건-단일) - 이름, 이메일
+	public Account getAccount2(String name, String email){
+		Account account = null;
 		try {
 			connect();
-			
 			String sql = "SELECT * FROM account WHERE name=? AND email=?";
 			System.out.println(sql);
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, name);
 			pstmt.setString(2, email);			
 			rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
-				Account account = new Account(rs.getInt(1), rs.getString(2),
-						rs.getString(3), rs.getString(4), rs.getString(5),
-						rs.getString(6), rs.getInt(7), rs.getString(8), 
-						rs.getString(9), rs.getString(10), rs.getString(11),
-						rs.getString(12), rs.getBoolean(13), rs.getBoolean(14),
-						rs.getString(15));
-				alist.add(account);
+			if(rs.next()) {
+				account = new Account(rs.getInt("ACCOUNT_ID"), rs.getString("NAME"),
+						rs.getString("ID"), rs.getString("PASS"), rs.getDate("BIRTHDAY"),
+						rs.getString("GENDER"), rs.getInt("POST"), rs.getString("ADDRESS"), 
+						rs.getString("ADDRESS2"), rs.getString("EMAIL"), rs.getString("PHONE"),
+						rs.getString("PHONE2"), rs.getBoolean("MAIL_RECV"), rs.getBoolean("SMS_RECV"),
+						rs.getString("AUTH"));
 			}
 			rs.close();
 			pstmt.close();
@@ -69,29 +63,26 @@ public class Dao_Account extends Dao {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-		return alist;
+		return account;
 	}
-	// 단일 조회3 이름/번호
-	public ArrayList<Account> getAccountList3(String name, String phone){
-		ArrayList<Account> alist = new ArrayList<Account>();
+	// 조회(조건-단일) 이름, 폰번호
+	public Account getAccount3(String name, String phone){
+		Account account = null;
 		try {
 			connect();
-			
 			String sql = "SELECT * FROM account WHERE account_id=? AND pass=?";
 			System.out.println(sql);
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, name);
 			pstmt.setString(2, phone);			
 			rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
-				Account account = new Account(rs.getInt(1), rs.getString(2),
-						rs.getString(3), rs.getString(4), rs.getString(5),
-						rs.getString(6), rs.getInt(7), rs.getString(8), 
-						rs.getString(9), rs.getString(10), rs.getString(11),
-						rs.getString(12), rs.getBoolean(13), rs.getBoolean(14),
-						rs.getString(15));
-				alist.add(account);
+			if(rs.next()) {
+				account = new Account(rs.getInt("ACCOUNT_ID"), rs.getString("NAME"),
+						rs.getString("ID"), rs.getString("PASS"), rs.getDate("BIRTHDAY"),
+						rs.getString("GENDER"), rs.getInt("POST"), rs.getString("ADDRESS"), 
+						rs.getString("ADDRESS2"), rs.getString("EMAIL"), rs.getString("PHONE"),
+						rs.getString("PHONE2"), rs.getBoolean("MAIL_RECV"), rs.getBoolean("SMS_RECV"),
+						rs.getString("AUTH"));
 			}
 			rs.close();
 			pstmt.close();
@@ -101,14 +92,14 @@ public class Dao_Account extends Dao {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-		return alist;
+		return account;
 	}
-	// 계정 등록 
+	// 입력 
 	public void insertAccount(Account account) {
 		try {
 			connect();
 			con.setAutoCommit(false);
-			String sql = "INSERT INTO ACCOUNT VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			String sql = "INSERT INTO ACCOUNT VALUES(account_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, account.getAccount_id());
 			pstmt.setString(2, account.getName());
@@ -128,7 +119,6 @@ public class Dao_Account extends Dao {
 			
 			pstmt.executeQuery();
 			con.commit();
-		
 			pstmt.close();
 			con.close();
 		} catch (SQLException e) {
@@ -143,7 +133,7 @@ public class Dao_Account extends Dao {
 			e.printStackTrace();
 			try {
 				con.rollback();
-			} catch (Exception e1) {
+			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
 		}
@@ -155,9 +145,8 @@ public class Dao_Account extends Dao {
 			con.setAutoCommit(false);
 			String sql = "UPDATE account SET \r\n"
 					+ "name = ?,\r\n"
-					+ "id = ?,\r\n"
-					+ "pass = ?,\r\n"
-					+ "birthday_s = ?,\r\n"
+					+ "pass = ?,\r\n"			
+					+ "gender = ?,\r\n"
 					+ "post = ?,\r\n"
 					+ "address = ?,\r\n"
 					+ "address2 = ?,\r\n"
@@ -165,24 +154,21 @@ public class Dao_Account extends Dao {
 					+ "phone = ?,\r\n"
 					+ "phone2 = ?,\r\n"
 					+ "mail_recv = ?,\r\n"
-					+ "sms_recv = ?,\r\n"
-					+ "auth = ?\r\n"
+					+ "sms_recv = ?\r\n"
 					+ "WHERE account_id = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, account.getName());
 			pstmt.setString(2, account.getId());
-			pstmt.setString(3, account.getPass());
-			pstmt.setString(4, account.getBirthday_s());
-			pstmt.setInt(5, account.getPost());
-			pstmt.setString(6, account.getAddress());
-			pstmt.setString(7, account.getAddress2());
-			pstmt.setString(8, account.getEmail());
-			pstmt.setString(9, account.getPhone());
-			pstmt.setString(10, account.getPhone2());
-			pstmt.setBoolean(11, account.isMail_recv());
-			pstmt.setBoolean(12, account.isSms_recv());
-			pstmt.setString(13, account.getAuth());
-			pstmt.setInt(14, account.getAccount_id());
+			pstmt.setString(3, account.getGender());
+			pstmt.setInt(4, account.getPost());
+			pstmt.setString(5, account.getAddress());
+			pstmt.setString(6, account.getAddress2());
+			pstmt.setString(7, account.getEmail());
+			pstmt.setString(8, account.getPhone());
+			pstmt.setString(9, account.getPhone2());
+			pstmt.setBoolean(10, account.isMail_recv());
+			pstmt.setBoolean(11, account.isSms_recv());
+			pstmt.setInt(12, account.getAccount_id());
 			
 			pstmt.executeQuery();
 			con.commit();
@@ -201,7 +187,7 @@ public class Dao_Account extends Dao {
 			e.printStackTrace();
 			try {
 				con.rollback();
-			} catch (Exception e1) {
+			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
 		}
@@ -234,14 +220,14 @@ public class Dao_Account extends Dao {
 			e.printStackTrace();
 			try {
 				con.rollback();
-			} catch(Exception e1) {
+			} catch(SQLException e1) {
 				e1.printStackTrace();
 			}
 		}
 	}
 	public static void main(String[] args) {
 		Dao_Account dao = new Dao_Account();
-		ArrayList<Account> alist = dao.getAccountList3("테스트", "010-1234-5678");
+	  //ArrayList<Account> alist = dao.getAccount(account_id, pass)("테스트", "010-1234-5678");
 		
 	  /*dao.insertAccount(new Account(0,"테스트","test","test123!!","2020-01-01","남", 01,
 				"경기도 어딘가","111호","test@test.com","010-1234-5678","02-1234-5678", false, false, null));*/
