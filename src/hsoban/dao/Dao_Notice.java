@@ -17,9 +17,9 @@ public class Dao_Notice extends Dao {
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				Notice notice = new Notice(rs.getInt(1), rs.getString(2),
-								rs.getString(3), rs.getInt(4), rs.getString(5),
-								rs.getInt(6));
+				Notice notice = new Notice(rs.getInt("NOTICE_ID"), rs.getString("TITLE"),
+								rs.getString("CONTENT"), rs.getInt("ACCOUNT_ID"), rs.getDate("POSTING_DATE"), // getDate 변경
+								rs.getInt("VIEWS"));
 				nlist.add(notice);
 			}
 			rs.close();
@@ -32,32 +32,31 @@ public class Dao_Notice extends Dao {
 	}
 	
 	// 조회(조건-단일) - notice_id
-	public ArrayList<Notice> getNoticeList(int notice_id){
-		ArrayList<Notice> nlist = new ArrayList<Notice>();
+	public Notice getNotice(int notice_id) {
+		Notice notice = null;
 		try {
 			connect();
-			
-			String sql = "SELCT * FROM NOTICE WHERE notice_id = ?";
+			String sql = "SELECT * FROM NOTICE where notice_id = ?"; 
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1,notice_id);
-			
+			pstmt.setInt(1, notice_id);
 			rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
-				Notice notice = new Notice(rs.getInt(1), rs.getString(2),
-								rs.getString(3), rs.getInt(4), rs.getDate(5), // posting_date get_string > date로 수정
-								rs.getInt(6));
-				nlist.add(notice);
+			if(rs.next()) {
+				notice=new Notice(rs.getInt("NOTICE_ID"),rs.getString("TITLE"),
+						rs.getString("CONTENT"),rs.getInt("ACCOUNT_ID"),
+						rs.getDate("POSTING_DATE"),
+						rs.getInt("VIEWS"));
 			}
 			rs.close();
 			pstmt.close();
 			con.close();
-		} catch(SQLException e) {
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch(Exception e) {
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return nlist;
+		return notice;
 	}
 	
 	// 입력
