@@ -96,7 +96,7 @@ public class Dao_Product extends Dao {
 				connect();
 				con.setAutoCommit(false);
 
-				String sql = "INSERT INTO STOCK \r\n"
+				String sql = "INSERT INTO PRODUCT \r\n"
 							+ "VALUES(product_id_seq.nextval,'?','?','?','?',?,'?','?')";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, ins.getColor());
@@ -132,11 +132,10 @@ public class Dao_Product extends Dao {
 				
 				// 상품 가격을 변경할 수도 있다고 생각해서 PRICE만 변경처리 할 수 있게 작성했습니다.
 				String sql = "UPDATE PRODUCT \r\n"
-						+ " SET PRICE = ? WHERE PRODUCT_ID = ? AND COLOR LIKE '%'||UPPER( ? )||'%'";
+						+ " SET PRICE = ? WHERE COLOR = ?";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, upt.getPrice());
-				pstmt.setInt(2, upt.getProduct_id());
-				pstmt.setString(3, upt.getColor());
+				pstmt.setString(2, upt.getColor());
 				pstmt.executeUpdate();
 				con.commit();
 

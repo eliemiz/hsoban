@@ -15,6 +15,7 @@ public class Dao_Stock extends Dao {
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				Stock s = new Stock(rs.getInt(1), rs.getString(2), rs.getInt(3));
+				stlist.add(s);
 			}
 			rs.close();
 			pstmt.close();
@@ -64,7 +65,7 @@ public class Dao_Stock extends Dao {
 			connect();
 			con.setAutoCommit(false);
 
-			String sql = "INSERT INTO STOCK VALUES(?,'?',?)";
+			String sql = "INSERT INTO STOCK VALUES(?,?,?)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, ins.getProduct_id());
 			pstmt.setString(2, ins.getColor());
@@ -93,11 +94,10 @@ public class Dao_Stock extends Dao {
 			connect();
 			con.setAutoCommit(false);
 
-			String sql = "UPDATE STOCK SET STOCK = ? WHERE PRODUCT_ID = ? AND COLOR LIKE '%'||UPPER( ? )||'%'";
+			String sql = "UPDATE STOCK SET STOCK = ? WHERE COLOR = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, upt.getStock());
-			pstmt.setInt(2, upt.getProduct_id());
-			pstmt.setString(3, upt.getColor());
+			pstmt.setString(2, upt.getColor());
 			pstmt.executeUpdate();
 			con.commit();
 
