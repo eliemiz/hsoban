@@ -27,25 +27,11 @@ String path = request.getContextPath();
 </style>
 </head>
 <%
-// ### 검색 기능이 없으므로 notice_id 변수 선언도 필요 없다
-// 변수 선언
-/* String notice_id = request.getParameter("notice_id");
-if (notice_id == null || notice_id.trim().equals("")) {
-	notice_id = "";
-} */
 // 목록 불러오기
 Dao_Notice dao = new Dao_Notice();
 ArrayList<Notice> list = dao.getNoticeList();
 %>
 <body>
-	<!-- ### 공지는 검색을 할 필요가 없으므로 조회(조건-리스트) 메서드가 없습니다.
-	즉, 아래와 같은 검색폼은 없어도 됩니다. -->
-	<%-- <form method="post" id="noticeForm"> // notice_id는 시퀀스에 의해 자동 생성되므로 form 안써도 됨.
-		
-			<tr>
-				<th>notice_id</th>
-				<td><input type="text" name="notice_id" value="<%=notice_id%>"></td>
-			</tr>--%>
 		<table>
 			<tr>
 				<td colspan="2">
@@ -79,16 +65,7 @@ ArrayList<Notice> list = dao.getNoticeList();
 	</table>
 </body>
 <script type="text/javascript">
-	// ### 검색 관련 객체 삭제
-   /* var searchButton = document.querySelector('#searchButton');
-   searchButton.onclick = function(){
-      var notice_id = document.querySelector('[name=notice_id]');
-      if(isNaN(notice_id.value)){
-         alert('숫자를 입력해주세요.');
-         return false;
-      }
-      document.querySelector('#noticeForm').submit();
-   } */
+
    function callDetail(notice_id){
       var url = "notice_detail.jsp?";
       url += "notice_id=" + notice_id;
