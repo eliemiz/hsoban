@@ -6,17 +6,50 @@ import hsoban.vo.Order;
 
 public class Dao_Order extends Dao{
 
-	//조회 (account_id)
-	public ArrayList<Order> getOrderList(int account_id){
+	//조회(전체, 리스트)
+	public ArrayList<Order> getOrderList(){
 		
 		ArrayList<Order> list = new ArrayList<Order>();
 		
 		try {
 			connect();
 			
-			String sql = "SELECT * FROM ORDERED WHERE ACCOUNT_ID = ? ORDER BY ORDER_DATE";
+			String sql = "SELECT * FROM ORDERED";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, account_id);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				list.add(new Order(rs.getInt(1), rs.getInt(2), rs.getInt(3),
+						rs.getString(4), rs.getInt(5), rs.getDate(6), rs.getInt(7), 
+						rs.getString(8), rs.getString(9), rs.getString(10), 
+						rs.getString(11),rs.getInt(12)));
+			}
+			rs.close();
+			pstmt.close();
+			con.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	
+	//조회 (order_id)
+	public ArrayList<Order> getOrderList(int order_id){
+		
+		ArrayList<Order> list = new ArrayList<Order>();
+		
+		try {
+			connect();
+			
+			String sql = "SELECT * FROM ORDERED WHERE ORDER_ID = ? ORDER BY ORDER_DATE";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, order_id);
 			rs=pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -70,6 +103,37 @@ public ArrayList<Order> getOrderList2(int order_id,int account_id){
 		return list;
 	}
 	
+	//조회 (조건, 단일)
+public Order getOrder(int order_id){
+	
+	Order order = null;
+	
+	try {
+		connect();
+		
+		String sql = "SELECT * FROM ORDERED WHERE ORDER_ID = ?";
+		pstmt = con.prepareStatement(sql);
+		pstmt.setInt(1, order_id);
+		rs=pstmt.executeQuery();
+		
+		while(rs.next()) {
+			 order = new Order(rs.getInt(1),rs.getInt(2),rs.getInt(3),rs.getString(4),
+					rs.getInt(5),rs.getDate(6),rs.getInt(7),rs.getString(8),rs.getString(9),
+					rs.getString(10),rs.getString(11),rs.getInt(12));
+		}
+		
+		rs.close();
+		pstmt.close();
+		con.close();
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}catch(Exception e) {
+		e.printStackTrace();
+	}
+	return order;
+}
+
+
 	//입력
 	public void insertOrder(Order order) {
 		try {
@@ -127,8 +191,10 @@ public ArrayList<Order> getOrderList2(int order_id,int account_id){
 		ArrayList<Order> olist = dao.getOrderList2(9,451212);
 		System.out.println(olist);
 		
-		dao.insertOrder(new Order(100112,114568,"브라운",11,"2021-02-14",125468,
-				"고양시","파주시","경비실에 맡겨주세요","카드",23000));		
+		/*
+		 * dao.insertOrder(new Order(100112,114568,"브라운",11,"2021-02-14",125468,
+		 * "고양시","파주시","경비실에 맡겨주세요","카드",23000));
+		 */
 	}
 
 }
