@@ -97,7 +97,7 @@ public class Dao_Product extends Dao {
 				con.setAutoCommit(false);
 
 				String sql = "INSERT INTO PRODUCT \r\n"
-							+ "VALUES(product_id_seq.nextval,'?','?','?','?',?,'?','?')";
+							+ "VALUES(product_id_seq.nextval,?,?,?,?,?,?,?)";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, ins.getColor());
 				pstmt.setString(2, ins.getName());
