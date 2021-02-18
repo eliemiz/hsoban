@@ -22,10 +22,10 @@ import hsoban.vo.Qna;
 );
  */
 public class Dao_Qna extends Dao {
-//조회(전체, 리스트) - NOT USING
+//조회(전체, 리스트) 
 	public ArrayList<Qna> getQnaList() {
 
-		ArrayList<Qna> qlist = null;
+		ArrayList<Qna> qlist = new ArrayList<Qna>();
 
 		return qlist;
 	}
@@ -37,10 +37,9 @@ public class Dao_Qna extends Dao {
 		try {
 			connect();
 			
-			String sql = "SELECT * FROM QNA WHERE PRODUCT_ID = ? ORDER BY QNA_ID";
+			String sql = "SELECT * FROM QNA";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, product_id);
-
+			
 			rs = pstmt.executeQuery();	
 			
 			while (rs.next()) {
@@ -64,8 +63,8 @@ public class Dao_Qna extends Dao {
 		
 	}
 	// 조회(조건, 단일) - qna_id
-		public ArrayList<Qna> getQna(int qna_id) {
-			ArrayList<Qna> qlist = new ArrayList<Qna>();
+		public Qna getQna(int qna_id) {
+			Qna qna = null;
 			
 			try {
 				connect();
@@ -76,12 +75,12 @@ public class Dao_Qna extends Dao {
 
 				rs = pstmt.executeQuery();	
 				
-				while (rs.next()) {
-					Qna qna = new Qna(rs.getInt("QNA_ID"), rs.getInt("PRODUCT_ID"), 
+				if (rs.next()) {
+					qna = new Qna(rs.getInt("QNA_ID"), rs.getInt("PRODUCT_ID"), 
 							   rs.getString("COLOR"), rs.getString("TITLE"), rs.getString("CONTENT"),
 							   rs.getInt("ACCOUNT_ID"), rs.getDate("POSTING_DATE"), rs.getInt("VIEWS"),  
 							   rs.getString("ATTACH"),  rs.getInt("PREV_ID"), rs.getInt("NEXT_ID"));
-					qlist.add(qna);
+				
 				}
 				rs.close();
 				pstmt.close();
@@ -93,7 +92,7 @@ public class Dao_Qna extends Dao {
 				e.printStackTrace();
 			}
 
-			return qlist;
+			return qna;
 			
 		}
 		/*
@@ -170,9 +169,6 @@ public class Dao_Qna extends Dao {
 	            		+ "		COLOR = ?,\r\n"
 	            		+ "		TITLE = ?,\r\n"
 	            		+ "		CONTENT = ?,\r\n"
-	            		+ "		ACCOUNT_ID = ?,\r\n"
-	            		+ "		POSTING_DATE = to_date(?, 'YYYY-MM-DD'),\r\n"
-	            		+ "		VIEWS = ?,\r\n"
 	            		+ "		ATTACH = ?,\r\n"
 	            		+ "		PREV_ID = ?,\r\n"
 	            		+ "		NEXT_ID = ?\r\n"
@@ -182,13 +178,10 @@ public class Dao_Qna extends Dao {
 	            pstmt.setString(2, qna.getColor());
 	            pstmt.setString(3, qna.getTitle());
 	            pstmt.setString(4, qna.getContent());
-	            pstmt.setInt(5, qna.getAccount_id());
-	            pstmt.setString(6, qna.getPosting_date_s());
-	            pstmt.setInt(7, qna.getViews());
-	            pstmt.setString(8, qna.getAttach());
-	            pstmt.setInt(9, qna.getPrev_id());
-	            pstmt.setInt(10, qna.getNext_id());
-	            pstmt.setInt(11, qna.getQna_id());
+	            pstmt.setString(5, qna.getAttach());
+	            pstmt.setInt(6, qna.getPrev_id());
+	            pstmt.setInt(7, qna.getNext_id());
+	            pstmt.setInt(8, qna.getQna_id());
 	            pstmt.executeUpdate();
 	            con.commit();
 
