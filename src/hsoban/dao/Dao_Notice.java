@@ -61,14 +61,6 @@ public class Dao_Notice extends Dao {
 	
 	// 입력
 	/*
-	 공지게시글 테이블
-	NOTICE_ID NUMBER,
-   	TITLE VARCHAR2(300),
-   	CONTENT VARCHAR2(4000),
-   	ACCOUNT_ID NUMBER,
-   	POSTING_DATE DATE,
-   	VIEWS NUMBER,
-   	CONSTRAINT NOTICE_PK 
 	공지글 입력 sql
 	INSERT INTO NOTICE VALUES (1,'화소반 고객 감사 이벤트', '화소반 그릇과 함께 상차림 한 걸 올려주시면 저희가 7명께
 	롱팟 스테이크접시 사각원찬기 小 긴일자찬기를 드립니다!!많이 참여해 주세요^^', 1, '운영자', '2021/02/03', 130, 'event.jpg');
@@ -77,14 +69,13 @@ public class Dao_Notice extends Dao {
 		try {
 			connect();
 			con.setAutoCommit(false);
-			String sql = "INSERT INTO NOTICE VALUES (NOTICE_ID_SEQ.nextval, ?, ?, ?, ?, ?, ?)"; //NOTICE_ID_SEQ.nextval 추가
+			String sql = "INSERT INTO NOTICE VALUES (NOTICE_ID_SEQ.nextval, ?, ?, ?, ?, ?)"; 
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, notice.getNotice_id());
-			pstmt.setString(2, notice.getTitle());
-			pstmt.setString(3, notice.getContent());
-			pstmt.setInt(4, notice.getAccount_id());
-			pstmt.setString(5, notice.getPosting_date_s());
-			pstmt.setInt(6, notice.getViews());
+			pstmt.setString(1, notice.getTitle());  
+			pstmt.setString(2, notice.getContent());
+			pstmt.setInt(3, notice.getAccount_id());
+			pstmt.setString(4, notice.getPosting_date_s());
+			pstmt.setInt(5, notice.getViews());
 			
 			rs = pstmt.executeQuery();
 			con.commit();
@@ -110,12 +101,6 @@ public class Dao_Notice extends Dao {
 	}
 	
 	// 수정
-	/*
-	공지수정 sql
-	UPDATE NOTICE SET
-	CONTENT = '화소반 고객 감사 1차 이벤트'
-	WHERE ACCOUNT_ID = 1 AND NOTICE_ID=1;
-	*/
 	public void updateNotice(Notice notice) {
 		try {
 			connect();
@@ -149,6 +134,7 @@ public class Dao_Notice extends Dao {
 				e1.printStackTrace();
 			}
 		}
+
 	}
 	
 	// 삭제
