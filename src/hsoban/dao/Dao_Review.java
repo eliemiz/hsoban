@@ -31,10 +31,8 @@ public class Dao_Review extends Dao {
 	}
 	
 //조회(조건, 리스트)- product_id
-	public ArrayList<Review> getReviewList(int product_id) {
-
+	public ArrayList<Review> getReviewList(int product_id) {	
 		ArrayList<Review> rlist = new ArrayList<Review>();
-		
 		try {
 			connect();
 			
@@ -65,9 +63,9 @@ public class Dao_Review extends Dao {
 		
 	}
 // 조회(조건, 단일) - review_id
-	public ArrayList<Review> getReview(int review_id) {
+	public Review getReview(int review_id) {
 
-		ArrayList<Review> rlist = new ArrayList<Review>();
+		Review review = null;
 		
 		try {
 			connect();
@@ -78,12 +76,12 @@ public class Dao_Review extends Dao {
 
 			rs = pstmt.executeQuery();	
 			
-			while (rs.next()) {
-				Review review = new Review(rs.getInt("REVIEW_ID"), rs.getInt("PRODUCT_ID"), 
+			if(rs.next()) {
+				review = new Review(rs.getInt("REVIEW_ID"), rs.getInt("PRODUCT_ID"), 
 						   rs.getString("COLOR"), rs.getString("TITLE"), rs.getString("CONTENT"),
 						   rs.getInt("ACCOUNT_ID"), rs.getDate("POSTING_DATE"),
 						   rs.getInt("VIEWS"),  rs.getString("ATTACH"));
-				rlist.add(review);
+				
 			}
 			rs.close();
 			pstmt.close();
@@ -95,7 +93,7 @@ public class Dao_Review extends Dao {
 			e.printStackTrace();
 		}
 
-		return rlist;
+		return review;
 		
 	}
 
@@ -227,7 +225,7 @@ public class Dao_Review extends Dao {
 		}
 	public static void main(String[] args) {
 		Dao_Review dao = new Dao_Review();
-      ArrayList<Review> rlist = dao.getReviewList(1);
+		ArrayList<Review> rlist = dao.getReviewList(1);
       System.out.println(rlist);
       //dao.deleteReview(1);
       dao.insertReview(new Review(0, 1000100, "진그레이", "만족합니다.", "예뻐요.뻥이에요", 100012,"2021-02-08", 13, "event.jpg"));
