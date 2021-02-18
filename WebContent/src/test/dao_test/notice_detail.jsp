@@ -13,8 +13,7 @@
 <link rel="stylesheet" href="<%=path%>/css/common.css">
 </head>
 <%
-	// ### 데이터를 조회하기 위한 변수가 필요합니다. notice_id만 있으면 조회가 가능하므로 
-	// 일단은 다른 데이터들은 지우도록 합니다.
+	// ### 데이터를 조회하기 위한 변수
    String notice_id = request.getParameter("notice_id");
    
    if(notice_id==null || notice_id.trim().equals("")){
@@ -25,14 +24,10 @@
    // notice_id로 검색하므로 조회(조건-단일)에 해당합니다.
    // dao.getNotice(Integer.parseInt(notice_id)) 메서드로 조회합니다.
    Dao_Notice dao = new Dao_Notice();
-   /* Notice notice = dao.getNotice(Integer.parseInt(notice_id), title, content, Integer.parseInt(account_id),
-               posting_date, Integer.parseInt(views)); */
 	Notice notice = dao.getNotice(Integer.parseInt(notice_id));
                
 	// ### update를 위한 부분입니다.
 	// update될 값들을 객체선언 및 유효성 체크를 합니다.
-	// 아래에 에러가 뜨는 부분은 맨 위에 동일한 변수명이 있어서 그렇습니다.
-	// 위 부분을 삭제하면 해결됩니다.
    String title = request.getParameter("title");
    if(title==null){
       title="";
@@ -87,7 +82,7 @@
          <tr><th>views</th><td><input type="text" name="views" value="<%=notice.getViews() %>" disabled></td></tr>
          <tr><td colspan="2">
                <input type="submit" value="수정" id="updateButton"/> <%-- 수정안되는이유?? --%>
-               <input type="submit" value="삭제" id="deleteButton"/> <%-- 삭제확인 --%>
+               <input type="submit" value="삭제" id="deleteButton"/> 
                <input type="submit" value="리스트로 이동" onclick="location.href='notice_list.jsp'"> <%--리스트이동이 안되는이유?? --%>
             </td></tr>
       </table>
@@ -98,13 +93,14 @@
    var process = document.querySelector('[name=process]');
    var updateButton = document.querySelector('#updateButton');
    var deleteButton = document.querySelector('#deleteButton');
-   //유효성체크
-      
-      if(isNaN(notice_id.value)) || isNaN(content.value) || isNaN(account_id) || isNaN(views)){
+ 	// update button
+   updateButton.onclick = function(){
+	   //유효성체크
+      if(isNaN(notice_id.value) || isNaN(account_id.value) || isNaN(views.value)){
     	  alert('숫자를 입력하세요');
     	  return false;
       }
-      if((title.value)==null || (title.value)=""){
+      if((title.value)==null || (title.value)==""){
     	  alert('글자를 입력하세요');
     	  return false;
       }
@@ -113,6 +109,10 @@
 			return false;
 		}
       
+    	process.value = 'update';
+    	noticeForm.submit();
+    	}
+ 	
    // ### form 내의 삭제 버튼을 보면 id가 deleteButton로 되어있습니다
    // 해당 버튼을 클릭하면 deleteButton.onclick 이벤트가 발생해
    // 아래와 같이 process.value의 값을 'delete'로 바꾸고,
