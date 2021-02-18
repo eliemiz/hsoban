@@ -126,23 +126,22 @@ public class Dao_Account extends Dao {
 		try {
 			connect();
 			con.setAutoCommit(false);
-			String sql = "INSERT INTO ACCOUNT VALUES(ACCOUNT_ID_SEQ.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			String sql = "INSERT INTO ACCOUNT VALUES (ACCOUNT_ID_SEQ.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, account.getAccount_id());
-			pstmt.setString(2, account.getName());
-			pstmt.setString(3, account.getId());
-			pstmt.setString(4, account.getPass());
-			pstmt.setString(5, account.getBirthday_s());
-			pstmt.setString(6, account.getGender());
-			pstmt.setInt(7, account.getPost());
-			pstmt.setString(8, account.getAddress());
-			pstmt.setString(9, account.getAddress2());
-			pstmt.setString(10, account.getEmail());
-			pstmt.setString(11, account.getPhone());
-			pstmt.setString(12, account.getPhone2());
-			pstmt.setBoolean(13, account.isMail_recv());
-			pstmt.setBoolean(14, account.isSms_recv());
-			pstmt.setString(15, account.getAuth());
+			pstmt.setString(1, account.getName());
+			pstmt.setString(2, account.getId());
+			pstmt.setString(3, account.getPass());
+			pstmt.setString(4, account.getBirthday_s());
+			pstmt.setString(5, account.getGender());
+			pstmt.setInt(6, account.getPost());
+			pstmt.setString(7, account.getAddress());
+			pstmt.setString(8, account.getAddress2());
+			pstmt.setString(9, account.getEmail());
+			pstmt.setString(10, account.getPhone());
+			pstmt.setString(11, account.getPhone2());
+			pstmt.setBoolean(12, account.isMail_recv());
+			pstmt.setBoolean(13, account.isSms_recv());
+			pstmt.setString(14, account.getAuth());
 			
 			pstmt.executeQuery();
 			con.commit();
@@ -256,8 +255,17 @@ public class Dao_Account extends Dao {
 		Dao_Account dao = new Dao_Account();
 	  //ArrayList<Account> alist = dao.getAccount(account_id, pass)("테스트", "010-1234-5678");
 		
-	  /*dao.insertAccount(new Account(0,"테스트","test","test123!!","2020-01-01","남", 01,
-				"경기도 어딘가","111호","test@test.com","010-1234-5678","02-1234-5678", false, false, null));*/
+		
+		
+		
+		/*
+		 * dao.insertAccount(new Account(0, "홍길동","test22","123","2020-03-03","여", 01,
+		 * "경기도 어딘가","222호","test2@test2.com","010-9451-9451","02-1234-4321", false,
+		 * false, "회원"));
+		 */
+		 
+		
+		 
 	  /*dao.updateAccount(new Account(0,"테스트2","test","test123!!","2020-01-01", "남", 01,
 				"경기도 어딘가","111호","test@test.com","010-1234-5678","02-1234-5678", false, false, null));*/
 	   // dao.deleteAccount(0);
