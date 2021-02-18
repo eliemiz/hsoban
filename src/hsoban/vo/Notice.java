@@ -14,7 +14,15 @@ public class Notice {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
+	/*
+	@Override
+	public String toString() {
+		return "Notice [notice_id=" + notice_id + ", title=" + title + ", content=" + content + ", account_id="
+				+ account_id + ", posting_date=" + posting_date + ", posting_date_s=" + posting_date_s + ", views="
+				+ views + "]";
+	}
+	*/
+
 	public Notice(int notice_id, String title, String content, int account_id, String posting_date_s, int views) {
 		super();
 		this.notice_id = notice_id;
@@ -24,16 +32,17 @@ public class Notice {
 		this.posting_date_s = posting_date_s;
 		this.views = views;
 	}
-	public Notice(int notice_id, String title, int account_id, Date posting_date, int views,
-			String content) {
+
+	public Notice(int notice_id, String title, String content, int account_id, Date posting_date, int views) {
 		super();
 		this.notice_id = notice_id;
 		this.title = title;
+		this.content = content;
 		this.account_id = account_id;
 		this.posting_date = posting_date;
 		this.views = views;
-		this.content = content;
 	}
+
 	public int getNotice_id() {
 		return notice_id;
 	}
