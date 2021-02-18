@@ -14,6 +14,35 @@ CREATE TABLE WISH_LIST (
 
 public class Dao_WishList extends Dao {
 
+	// 조회(전체)
+	public ArrayList<WishList> getWishList() {
+		ArrayList<WishList> list = new ArrayList<WishList>();
+		
+		try {
+			connect();
+			
+			String sql = "SELECT * FROM WISH_LIST";
+			pstmt = con.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				WishList wish = new WishList(rs.getInt("ACCOUNT_ID"), rs.getInt("PRODUCT_ID"), rs.getString("COLOR"));
+				list.add(wish);
+			}
+			
+			rs.close();
+			pstmt.close();
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+	
 	// 조회(조건, 리스트)
 	public ArrayList<WishList> getWishList(int account_id) {
 		ArrayList<WishList> list = new ArrayList<WishList>();
@@ -74,7 +103,7 @@ public class Dao_WishList extends Dao {
 	}
 
 	// 입력
-	public void insertWishList(WishList wish) {
+	public void insertWish(WishList wish) {
 
 		try {
 			connect();
@@ -111,7 +140,7 @@ public class Dao_WishList extends Dao {
 	}
 
 	// 삭제
-	public void deleteWishList(int account_id, int product_id, String color) {
+	public void deleteWish(int account_id, int product_id, String color) {
 		try {
 			connect();
 			con.setAutoCommit(false);
@@ -152,8 +181,8 @@ public class Dao_WishList extends Dao {
 		Dao_WishList dao = new Dao_WishList();
 		ArrayList<WishList> list = dao.getWishList(100012);
 		System.out.println(list);
-//		dao.insertWishList(new WishList(100012, 100303, "분홍"));
-		dao.deleteWishList(100012, 100122, "블랙");
+//		dao.insertWish(new WishList(100012, 100303, "분홍"));
+		dao.deleteWish(100012, 100122, "블랙");
 		list = dao.getWishList(100012);
 		System.out.println(list);
 	}

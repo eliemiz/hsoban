@@ -18,7 +18,6 @@
 	String account_id = request.getParameter("account_id");
 	String product_id = request.getParameter("product_id");
 	String color = request.getParameter("color");
-	String count = request.getParameter("count");
 	
 	// validate
 	if (account_id == null || account_id.trim().equals("")) {
@@ -30,23 +29,20 @@
 	if (color == null) {
 		color = "";
 	}
-	if (count == null || count.trim().equals("")) {
-		count = "0";
-	}
 	
 	// insert
 	if (account_id != "0"){
-		Cart cart = new Cart(Integer.parseInt(account_id), Integer.parseInt(product_id), color, Integer.parseInt(count));
+		WishList wish = new WishList(Integer.parseInt(account_id), Integer.parseInt(product_id), color);
 		
-		Dao_Cart dao = new Dao_Cart();
-		dao.insertCart(cart);		
+		Dao_WishList dao = new Dao_WishList();
+		dao.insertWish(wish);		
 		
-		response.sendRedirect("cart_list.jsp");
+		response.sendRedirect("wish_list.jsp");
 	}
 	
 	%>
 <body>
-	<form method="post" id="cartForm">
+	<form method="post" id="wishForm">
 		<table>
 			<tr>
 				<th>account_id</th>
@@ -61,10 +57,6 @@
 				<td><input type="text" name="color"></td>
 			</tr>
 			<tr>
-				<th>count</th>
-				<td><input type="text" name="count"></td>
-			</tr>
-			<tr>
 				<td colspan="2"><input type="button" value="입력" class="btn btn_thatch" id="insertButton"></td>
 			</tr>
 		</table>
@@ -73,18 +65,17 @@
 <script type="text/javascript">
 	var insertButton = document.querySelector('#insertButton');
 	insertButton.onclick = function() {
-		var cartForm = document.querySelector('#cartForm');
+		var wishForm = document.querySelector('#wishForm');
 		var account_id = document.querySelector('[name=account_id]');
 		var product_id = document.querySelector('[name=product_id]');
-		var count = document.querySelector('[name=count]');
 		
 		// 유효성 체크
-		if (isNaN(account_id.value) || isNaN(product_id.value) || isNaN(count.value)){
+		if (isNaN(account_id.value) || isNaN(product_id.value)){
 			alert('숫자를 입력하세요');
 			return false;
 		}
 		
-		cartForm.submit();
+		wishForm.submit();
 	}
 </script>
 </html>
