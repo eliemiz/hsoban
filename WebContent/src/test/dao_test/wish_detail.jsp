@@ -81,6 +81,5 @@
 			wishForm.submit();	
 		} 
 	}
-	
 </script>
 </html>

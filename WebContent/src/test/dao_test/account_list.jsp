@@ -66,7 +66,11 @@
 		<%
 		for(Account account : list){
 		%>
-		<tr>
+		<tr onclick="callDetail('<%=account.getAccount_id()%>','<%=account.getName()%>','<%=account.getId()%>',
+								'<%=account.getPass()%>','<%=account.getBirthday()%>','<%=account.getGender()%>',
+								'<%=account.getPost()%>','<%=account.getAddress()%>','<%=account.getAddress2()%>',
+								'<%=account.getEmail()%>,'<%=account.getPhone()%>','<%=account.getPhone2()%>',
+								'<%=account.isMail_recv()%>','<%=account.isSms_recv()%>','<%=account.getAuth()%>')">
 			<td><%=account.getAccount_id()%></td>
 			<td><%=account.getName()%></td>
 			<td><%=account.getId()%></td>
@@ -94,10 +98,29 @@
 	searchButton.onclick = function() {
 		var account_id = document.querySelector('[name=account_id]');
 		if (isNaN(account_id.value)){
-			alert('숫자를 입력해주세요');
+			alert('account_id에 숫자를 입력해주세요');
 			return false;
 		}
 		document.querySelector('#accountForm').submit();
-	}	
+	}
+	function callDetail(){
+		var url = "account_detail.jsp?";
+		url += "account_id=" + arguments[0];
+		url += "&name=" + arguments[1];
+		url += "&id=" + arguments[2];
+		url += "&pass=" + arguments[3];
+		url += "&birthday=" + arguments[4];
+		url += "&gender=" + arguments[5];
+		url += "&post=" + arguments[6];
+		url += "&address=" + arguments[7];
+		url += "&address2=" + arguments[8];
+		url += "&email=" + arguments[9];
+		url += "&phone=" + arguments[10];
+		url += "&phone2=" + arguments[11];
+		url += "&mail_recv=" + arguments[12];
+		url += "&sms_recv=" + arguments[13];
+		url += "&auth=" + arguments[14];
+		location.href = url;
+	}
 </script>
 </html>
