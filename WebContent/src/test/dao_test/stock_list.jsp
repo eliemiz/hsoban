@@ -27,7 +27,7 @@ String path = request.getContextPath();
 	<table>
 		<tr><th>Product_ID</th><th>Color</th><th>Stock</th></tr>
 		<%for(Stock st:stlist){%>
-		<tr ondblclick="callDetail(<%=st.getProduct_id()%>,<%=st.getColor()%>)">
+		<tr ondblclick="callDetail(<%=st.getProduct_id()%>,'<%=st.getColor()%>')">
 			<td><%=st.getProduct_id()%></td>
 			<td><%=st.getColor()%></td>
 			<td><%=st.getStock()%></td>
@@ -36,7 +36,7 @@ String path = request.getContextPath();
 	</table>
 </body>
 <script type="text/javascript">
-	function detail(product_id, color){
+	function callDetail(product_id, color){
 		var url = "stock_detail.jsp?";
 		url += "product_id=" + arguments[0];
 		url += "&color=" + arguments[1];
