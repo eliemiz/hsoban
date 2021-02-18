@@ -66,9 +66,9 @@
 		<%
 		for(Account account : list){
 		%>
-		<tr onclick="callDetail('<%=account.getAccount_id()%>','<%=account.getName()%>','<%=account.getId()%>',
+		<tr onclick="callDetail(<%=account.getAccount_id()%>,'<%=account.getName()%>','<%=account.getId()%>',
 								'<%=account.getPass()%>','<%=account.getBirthday()%>','<%=account.getGender()%>',
-								'<%=account.getPost()%>','<%=account.getAddress()%>','<%=account.getAddress2()%>',
+								<%=account.getPost()%>,'<%=account.getAddress()%>','<%=account.getAddress2()%>',
 								'<%=account.getEmail()%>,'<%=account.getPhone()%>','<%=account.getPhone2()%>',
 								'<%=account.isMail_recv()%>','<%=account.isSms_recv()%>','<%=account.getAuth()%>')">
 			<td><%=account.getAccount_id()%></td>
