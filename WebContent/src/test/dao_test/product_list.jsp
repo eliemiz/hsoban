@@ -74,7 +74,7 @@ String path = request.getContextPath();
 		document.querySelector("#productForm").submit();
 	}
 
-	function detail(product_id, color){
+	function callDetail(product_id, color){
 		var url = "product_detail.jsp?";
 		url += "product_id=" + arguments[0];
 		url += "&color=" + arguments[1];
