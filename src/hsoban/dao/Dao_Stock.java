@@ -94,10 +94,11 @@ public class Dao_Stock extends Dao {
 			connect();
 			con.setAutoCommit(false);
 
-			String sql = "UPDATE STOCK SET STOCK = ? WHERE COLOR = ?";
+			String sql = "UPDATE STOCK SET STOCK = ? WHERE PRODUCT_ID = ? AND COLOR = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, upt.getStock());
-			pstmt.setString(2, upt.getColor());
+			pstmt.setInt(2, upt.getProduct_id());
+			pstmt.setString(3, upt.getColor());
 			pstmt.executeUpdate();
 			con.commit();
 
