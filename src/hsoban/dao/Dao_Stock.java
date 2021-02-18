@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import hsoban.vo.Stock;
 
 public class Dao_Stock extends Dao {
-	// 조회(전체, 리스트) - NOT USING - 0218 추가(X이나 혹시몰라 작성)
-	public ArrayList<Stock> stockList(Stock stock) {
+	// 조회(조건, 리스트) - NOT USING - 0218 추가(X이나 혹시몰라 작성)
+	public ArrayList<Stock> getStockList() {
 		ArrayList<Stock> stlist = new ArrayList<Stock>();
 		try {
 			connect();
