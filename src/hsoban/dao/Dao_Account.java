@@ -4,11 +4,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import hsoban.vo.Account;
-import hsoban.vo.Notice;
+
 
 
 public class Dao_Account extends Dao {
-	// 조회(전체) - 일단 작성했습니다 
+	// 조회(전체) 
 	public ArrayList<Account> getAccountList(){
 		ArrayList<Account> list = new ArrayList<Account>();
 		try {
@@ -35,43 +35,41 @@ public class Dao_Account extends Dao {
 		}
 		return list;
 	}
-	// 조회(조건, 리스트) /// 검색
-	public ArrayList<Account> getAccountList(int account_id, String pass){
-		ArrayList<Account> list = new ArrayList<Account>();
+	// 조회(조건-단일) - 회원번호
+	public Account getAccount(int account_id){
+		Account account = new Account();
 		try {
 			connect();
-			String sql = "SELECT * FROM ACCOUNT WHERE ACCOUNT_ID = ? AND PASS = ?";
+			String sql = "SELECT * FROM account WHERE account_id = ?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, account_id);
-			pstmt.setString(2, pass);			
+			pstmt.setInt(1, account_id);		
 			rs = pstmt.executeQuery();
-			while (rs.next()) {
-				Account account = new Account(rs.getInt("ACCOUNT_ID"), rs.getString("NAME"),
+			if(rs.next()) {
+				account = new Account(rs.getInt("ACCOUNT_ID"), rs.getString("NAME"),
 						rs.getString("ID"), rs.getString("PASS"), rs.getDate("BIRTHDAY"),
 						rs.getString("GENDER"), rs.getInt("POST"), rs.getString("ADDRESS"), 
 						rs.getString("ADDRESS2"), rs.getString("EMAIL"), rs.getString("PHONE"),
 						rs.getString("PHONE2"), rs.getBoolean("MAIL_RECV"), rs.getBoolean("SMS_RECV"),
 						rs.getString("AUTH"));
-				list.add(account);
 			}
 			rs.close();
 			pstmt.close();
 			con.close();
-		} catch (SQLException e) {
+		} catch(SQLException e) {
 			e.printStackTrace();
-		} catch (Exception e) {
+		} catch(Exception e) {
 			e.printStackTrace();
 		}
-		return list;
+		return account;
 	}
-	// 조회(조건-단일) - 계정번호, 비밀번호
-	public Account getAccount(int account_id, String pass){
+	// 조회(조건-단일) - 아이디, 비밀번호
+	public Account getAccount(String id, String pass){
 		Account account = new Account();
 		try {
 			connect();
-			String sql = "SELECT * FROM account WHERE account_id=? AND pass=?";
+			String sql = "SELECT * FROM account WHERE id=? AND pass=?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, account_id);
+			pstmt.setString(1, id);
 			pstmt.setString(2, pass);			
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
