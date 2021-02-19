@@ -110,3 +110,8 @@ CREATE TABLE CART (
 
 UPDATE cart SET count = 3
 	WHERE account_id = 100200 AND product_id = 100022 AND color = '블랙';
+
+SELECT * FROM product;
+INSERT INTO product VALUES  (101013, 'red', '국그릇', 'bowl', '적당히 큼', 1000000, 'json으로 설명 달 예정', '그림.그림');
+
+SELECT * FROM review;
