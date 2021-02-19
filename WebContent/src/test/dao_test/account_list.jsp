@@ -16,22 +16,36 @@
 </head>
 <%
 	String account_id = request.getParameter("account_id");
+	String id = request.getParameter("id");
+	String pass = request.getParameter("pass");
+	String name = request.getParameter("name");
+	String email = request.getParameter("email");
+	String phone = request.getParameter("phone");
+
 	if (account_id == null || account_id.trim().equals("")){
 		account_id = "";
 	}
-	String pass = request.getParameter("pass");
+	if (id == null) id = "";
 	if (pass == null) pass = "";
-	
-	log("#### account_id =" + account_id);
-	log("#### pass =" + pass);
-	
+	if (name == null) name = "";
+	if (email == null) email = "";
+	if (phone == null) phone = "";
+	/* String pass = request.getParameter("pass");
+	if (pass == null) pass = ""; */
+	 
 	Dao_Account dao = new Dao_Account();
-	ArrayList<Account> list;
-	if(account_id == "" && pass == ""){
-		list = dao.getAccountList();
-	}else{
-		list = dao.getAccountList(Integer.parseInt(account_id), pass);
-	}
+	ArrayList<Account> list = new ArrayList<Account>();
+	   if(account_id != ""){
+		  list.add(dao.getAccount(Integer.parseInt(account_id)));
+	   } else if(id != "" && pass != ""){
+	      list.add(dao.getAccount(id, pass));
+	   } else if (name != "" && email != "") {
+	      list.add(dao.getAccount(name, email));
+	   } else if (name != "" && phone != "") {
+		  list.add(dao.getAccount(name, phone));   
+	   } else {
+	      list = dao.getAccountList();
+	   }
 %>
 <body>
    <form method="post" id="accountForm">
@@ -39,10 +53,6 @@
 			<tr>
 				<th>계정번호(account_id)</th>
 				<td><input type="text" name="account_id" value="<%=account_id%>"></td>
-			</tr>
-			<tr>
-				<th>패스워드(pass)</th>
-				<td><input type="text" name="pass" value="<%=pass%>"></td>
 			</tr>
 			<tr>
 				<td colspan="2">
@@ -74,11 +84,7 @@
 		<%
 		for(Account account : list){
 		%>
-		<tr onclick="callDetail(<%=account.getAccount_id()%>,'<%=account.getName()%>','<%=account.getId()%>',
-								'<%=account.getPass()%>','<%=account.getBirthday()%>','<%=account.getGender()%>',
-								<%=account.getPost()%>,'<%=account.getAddress()%>','<%=account.getAddress2()%>',
-								'<%=account.getEmail()%>,'<%=account.getPhone()%>','<%=account.getPhone2()%>',
-								'<%=account.isMail_recv()%>','<%=account.isSms_recv()%>','<%=account.getAuth()%>')">
+		<tr onclick="callDetail(<%=account.getAccount_id()%>)">
 			<td><%=account.getAccount_id()%></td>
 			<td><%=account.getName()%></td>
 			<td><%=account.getId()%></td>
@@ -101,13 +107,16 @@
 	</table>
 </body>
 <script type="text/javascript">
-	var searchButton = document.querySelector('#searchButton');
+var searchButton = document.querySelector('#searchButton');
 	searchButton.onclick = function() {
 		var account_id = document.querySelector('[name=account_id]');
+		
+		// 유효성 체크
 		if (isNaN(account_id.value)){
-			alert('account_id에 숫자를 입력해주세요');
+			alert('숫자를 입력해주세요.');
 			return false;
 		}
+
 		document.querySelector('#accountForm').submit();
 	}
 	function callDetail(){
