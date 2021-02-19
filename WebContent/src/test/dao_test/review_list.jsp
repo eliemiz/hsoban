@@ -32,22 +32,26 @@
 		if (reivew_id == null || reivew_id.trim().equals("")){
 			reivew_id = "";
 		}
+		String product_id = request.getParameter("product_id");
+		if (product_id == null || product_id.trim().equals("")){
+			product_id = "";
+		}
 		
 		// 목록 불러오기
 		Dao_Review dao = new Dao_Review();
 		ArrayList<Review> rlist;
-		if (reivew_id == ""){
+		if (product_id  == ""){
 			rlist = dao.getReviewList();
 		} else {
-			rlist = dao.getReviewList(Integer.parseInt(reivew_id));	
+			rlist = dao.getReviewList(Integer.parseInt(product_id));	
 		}
 	%>
 <body>
 	<form method="post" id="reviewForm">
 		<table>
 			<tr>
-				<th>reivew_id</th>
-				<td><input type="text" name="reivew_id" value="<%=reivew_id%>"></td>
+				<th>product_id</th>
+				<td><input type="text" name="product_id" value="<%=product_id%>"></td>
 			</tr>
 			<tr>
 				<td colspan="2"><input type="button" value="검색" id="searchButton" class="btn btn_thatch">
@@ -89,9 +93,9 @@
 <script type="text/javascript">
 	var searchButton = document.querySelector('#searchButton');
 	searchButton.onclick = function() {
-		var review_id = document.querySelector('[name=review_id]');
+		var product_id = document.querySelector('[name=product_id]');
 		// 유효성 체크
-		if (isNaN(reivew_id.value)){
+		if (isNaN(product_id.value)){
 			alert('숫자를 입력해주세요.');
 			return false;
 		}
