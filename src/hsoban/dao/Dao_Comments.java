@@ -1,6 +1,8 @@
 package hsoban.dao;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
+import hsoban.vo.Cart;
 import hsoban.vo.Comments;
 /*
 CREATE TABLE COMMENTS (
@@ -18,16 +20,52 @@ CREATE TABLE COMMENTS (
 	private String pass;
 	private String content;
  */
+import hsoban.vo.Review;
 
 public class Dao_Comments extends Dao {
+	/*
+	 CREATE TABLE COMMENTS (
+	    COMMENT_ID NUMBER,
+	    REVIEW_ID NUMBER,
+	   ID VARCHAR2(200),
+	   PASS VARCHAR2(200),
+	   CONTENT VARCHAR2(4000),
+	   CONSTRAINT COMMENT_PK PRIMARY KEY (COMMENT_ID)
+);
+	 */
 
-//조회(전체, 리스트) - NOT USING
+//조회(전체, 리스트) 
 public ArrayList<Comments> getCommentsList() {
 
-		ArrayList<Comments> clist = null;
+		ArrayList<Comments> clist = new ArrayList<Comments>();
+
+		try {
+			connect();
+
+			String sql = "SELECT * FROM Comments";
+			pstmt = con.prepareStatement(sql);
+
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				Comments comments = new Comments(rs.getInt("COMMENT_ID"), rs.getInt("REVIEW_ID"), 
+						   rs.getString("ID"), rs.getString("PASS"), rs.getString("CONTENT"));
+				clist.add(comments);
+			}
+
+			rs.close();
+			pstmt.close();
+			con.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 		return clist;
 	}
+	
 //조회(조건, 리스트)- review_id	
 	public ArrayList<Comments> getCommentsList(int review_id) {
 
@@ -60,6 +98,38 @@ public ArrayList<Comments> getCommentsList() {
 		return clist;
 		
 	}
+	// 조회(조건, 단일)
+		public Comments getComments(int comment_id) {
+
+			Comments comments = null;
+
+			try {
+				connect();
+
+				String sql = "SELECT * FROM COMMENTS WHERE COMMENT_ID = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, comment_id);
+
+				rs = pstmt.executeQuery();
+
+				if (rs.next()) {
+					comments = new Comments(rs.getInt("COMMENT_ID"), rs.getInt("REVIEW_ID"), 
+							   rs.getString("ID"), rs.getString("PASS"), rs.getString("CONTENT"));
+				}
+
+				rs.close();
+				pstmt.close();
+				con.close();
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+			return comments;
+		}
+
 		   // 입력
 	      public void insertComments(Comments comments) {
 
@@ -107,17 +177,13 @@ public ArrayList<Comments> getCommentsList() {
 	            con.setAutoCommit(false);
 
 	            String sql ="  UPDATE COMMENTS \r\n"
-	            		+ " 	SET REVIEW_ID =?,\r\n"
-	            		+ " 	    ID =?,\r\n"
-	            		+ " 	    PASS =?,\r\n"
+	            		+ " 	SET PASS =?,\r\n"
 	            		+ " 	    CONTENT =?\r\n"
 	            		+ "WHERE COMMENT_ID = ? ";
 	            pstmt = con.prepareStatement(sql);
-	            pstmt.setInt(1, comments.getReview_id());
-	            pstmt.setString(2, comments.getId());
-	            pstmt.setString(3, comments.getPass());
-	            pstmt.setString(4, comments.getContent());
-	            pstmt.setInt(5, comments.getComment_id());
+	            pstmt.setString(1, comments.getPass());
+	            pstmt.setString(2, comments.getContent());
+	            pstmt.setInt(3, comments.getComment_id());
 	            pstmt.executeUpdate();
 	            con.commit();
 
