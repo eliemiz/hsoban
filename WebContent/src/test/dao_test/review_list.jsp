@@ -99,9 +99,9 @@
 		document.querySelector('#reviewForm').submit();
 	}
 
-	function callDetail(reivew_id){
+	function callDetail(review_id){
 		var url = "review_detail.jsp?";
-		url += "reivew_id=" + reivew_id;	
+		url += "review_id=" + review_id;	
 		location.href = url;
 	}
 	
