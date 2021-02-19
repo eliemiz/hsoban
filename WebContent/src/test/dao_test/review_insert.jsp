@@ -14,20 +14,16 @@
 	<%
 	
 	// 변수 선언
-		String review_id = request.getParameter("review_id");
 		String product_id = request.getParameter("product_id");
 		String color = request.getParameter("color");
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
 		String account_id = request.getParameter("account_id");
-		String posting_date = request.getParameter("posting_date");
+		String posting_date_s = request.getParameter("posting_date_s");
 		String views = request.getParameter("views");
 		String attach = request.getParameter("attach");
 	
 	// validate
-	if (review_id == null || review_id.trim().equals("")) {
-					review_id = "0";
-	}
 	if (product_id == null || product_id.trim().equals("")) {
 		product_id = "0";
 	}
@@ -43,8 +39,8 @@
 	if (account_id == null || account_id.trim().equals("")) {
 		account_id = "0";
 	}
-	if (posting_date == null) {
-		posting_date = "";
+	if (posting_date_s == null) {
+		posting_date_s = "";
 	}
 	if (views == null || views.trim().equals("")) {
 		views = "0";
@@ -54,9 +50,9 @@
 	}
 	
 	// insert
-	if (review_id != "0"){
-		Review review = new Review(Integer.parseInt(review_id), Integer.parseInt(product_id), color,
-				   title, content, Integer.parseInt(account_id), posting_date, Integer.parseInt(views), attach);
+	if (product_id != "0"){
+		Review review = new Review(Integer.parseInt(product_id), color, title, content, 
+				Integer.parseInt(account_id), posting_date_s, Integer.parseInt(views), attach);
 		
 		Dao_Review dao = new Dao_Review();
 		dao.insertReview(review);		
@@ -68,10 +64,7 @@
 <body>
 	<form method="post" id="reviewForm">
  <table>
-		<tr>
-			<th>review_id</th>
-			<td><input type="text" name="review_id"></td>
-		</tr>	
+		
 		<tr>
 			<th>product_id</th>
 			<td><input type="text" name="product_id"></td>
@@ -93,7 +86,7 @@
 			<td><input type="text" name="account_id"></td>
 		</tr>	
 		<tr>	
-			<th>posting_date</th>
+			<th>posting_date_s</th>
 			<td><input type="text" name="posting_date_s"></td>
 		</tr>	
 		<tr>	
@@ -116,17 +109,16 @@
 	var insertButton = document.querySelector('#insertButton');
 	insertButton.onclick = function() {
 		var reviewForm = document.querySelector('#reviewForm');
-		var review_id = document.querySelector('[name=review_id]');
 		var product_id = document.querySelector('[name=product_id]');
 		var color = document.querySelector('[name=color]');
 		var title = document.querySelector('[name=title]');
 		var content = document.querySelector('[name=content]');
 		var account_id = document.querySelector('[name=account_id]');
-		var posting_date = document.querySelector('[name=posting_date_s]');
+		var posting_date_s = document.querySelector('[name=posting_date_s]');
 		var views = document.querySelector('[name=views]');
 		var attach = document.querySelector('[name=attach]');
 		// 유효성 체크
-		if (isNaN(review_id.value) || isNaN(product_id.value) || isNaN(account_id.value) || isNaN(views.value)){
+		if (isNaN(product_id.value) || isNaN(account_id.value) || isNaN(views.value)){
 			alert('숫자를 입력하세요');
 			return false;
 		}

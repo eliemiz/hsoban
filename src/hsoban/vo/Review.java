@@ -58,6 +58,34 @@ public class Review {
 		this.views = views;
 		this.attach = attach;
 	}
+	
+	public Review(int review_id) {
+		super();
+		this.review_id = review_id;
+	}
+
+	public Review(int product_id, String color, String title, String content, String attach) {
+		super();
+		this.product_id = product_id;
+		this.color = color;
+		this.title = title;
+		this.content = content;
+		this.attach = attach;
+	}
+	
+	
+	public Review(int product_id, String color, String title, String content, int account_id, String posting_date_s,
+			int views, String attach) {
+		super();
+		this.product_id = product_id;
+		this.color = color;
+		this.title = title;
+		this.content = content;
+		this.account_id = account_id;
+		this.posting_date_s = posting_date_s;
+		this.views = views;
+		this.attach = attach;
+	}
 	public int getReview_id() {
 		return review_id;
 	}
