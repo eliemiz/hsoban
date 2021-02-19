@@ -67,6 +67,21 @@ public class Qna {
 		this.prev_id = prev_id;
 		this.next_id = next_id;
 	}
+	
+	public Qna(int product_id, String color, String title, String content, int account_id, String posting_date_s,
+			int views, String attach, int prev_id, int next_id) {
+		super();
+		this.product_id = product_id;
+		this.color = color;
+		this.title = title;
+		this.content = content;
+		this.account_id = account_id;
+		this.posting_date_s = posting_date_s;
+		this.views = views;
+		this.attach = attach;
+		this.prev_id = prev_id;
+		this.next_id = next_id;
+	}
 	public int getQna_id() {
 		return qna_id;
 	}
