@@ -13,15 +13,12 @@
 <link rel="stylesheet" href="<%=path%>/css/common.css">
 </head>
 <%
-   String notice_id = request.getParameter("notice_id");
    String title = request.getParameter("title");
    String content = request.getParameter("content");
    String account_id = request.getParameter("account_id");
    String posting_date_s = request.getParameter("posting_date_s");
    String views = request.getParameter("views");
-   if(notice_id==null || notice_id.trim().equals("")){
-      notice_id="0";
-   }
+
    if(title==null){
       title="";
    }
@@ -29,19 +26,19 @@
    if(content==null){
       content="";
    }
-   if(account_id==null || notice_id.trim().equals("")){
+   if(account_id==null || account_id.trim().equals("")){
       account_id="0";
    }
    if(posting_date_s==null){
       posting_date_s="";
    }
-   if(views==null || notice_id.trim().equals("")){
+   if(views==null || views.trim().equals("")){
       views="0";
    }
    
    // insert
-   if(notice_id != "0"){
-      Notice notice = new Notice(Integer.parseInt(notice_id), title, content, Integer.parseInt(account_id),
+   if(title != ""){
+      Notice notice = new Notice(title, content, Integer.parseInt(account_id),
             posting_date_s, Integer.parseInt(views));
       Dao_Notice dao = new Dao_Notice();
       dao.insertNotice(notice);
@@ -52,7 +49,6 @@
 <body>
    <form method="post" id="noticeForm">
       <table>
-         <tr><th>notice_id</th><td><input type="text" name="notice_id"/></td></tr>
          <tr><th>title</th><td><input type="text" name="title"/></td></tr>
          <tr><th>content</th><td><input type="text" name="content"/></td></tr>
          <tr><th>account_id</th><td><input type="text" name="account_id"/></td></tr>
@@ -67,14 +63,13 @@
    insertButton.onclick = function(){
 	  // 유효성 객체를 위해 선언한 변수
 	  var noticeForm = document.querySelector('#noticeForm');
-      var notice_id = document.querySelector('[name=notice_id]');
       var title = document.querySelector('[name=title]');
       var content = document.querySelector('[name=content]');
       var account_id = document.querySelector('[name=account_id]');
       var posting_date = document.querySelector('[name=posting_date_s]');
       var views = document.querySelector('[name=views]');
       
-      if(isNaN(notice_id.value) || isNaN(account_id.value) || isNaN(views.value)){
+      if( isNaN(account_id.value) || isNaN(views.value)){
     	  alert('숫자를 입력하세요');
     	  return false;
       }
