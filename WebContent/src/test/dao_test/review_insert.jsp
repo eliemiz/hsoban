@@ -87,7 +87,7 @@
 		</tr>	
 		<tr>	
 			<th>posting_date_s</th>
-			<td><input type="text" name="posting_date_s"></td>
+			<td><input type="text" name="posting_date_s" placeholder="YYYY-MM-DD"></td>
 		</tr>	
 		<tr>	
 			<th>views</th>
