@@ -31,7 +31,7 @@ public class Dao_Review extends Dao {
 		try {
 			connect();
 
-			String sql = "SELECT * FROM Reivew";
+			String sql = "SELECT * FROM REVIEW ORDER BY REVIEW_ID";
 			pstmt = con.prepareStatement(sql);
 
 			rs = pstmt.executeQuery();
