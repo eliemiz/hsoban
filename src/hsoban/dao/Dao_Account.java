@@ -124,7 +124,7 @@ public class Dao_Account extends Dao {
 		Account account = null;
 		try {
 			connect();
-			String sql = "SELECT * FROM account WHERE account_id=? AND pass=?";
+			String sql = "SELECT * FROM account WHERE name=? AND phone=?";
 			System.out.println(sql);
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, name);
