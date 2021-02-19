@@ -61,7 +61,7 @@
          <tr><th>title</th><td><input type="text" name="title" value="<%=notice.getTitle() %>"></td></tr>
          <tr><th>content</th><td><input type="text" name="content" value="<%=notice.getContent() %>" ></td></tr>
          <tr><th>account_id</th><td><input type="text" name="account_id" value="<%=notice.getAccount_id() %>" disabled></td></tr>
-         <tr><th>posting_date</th><td><input type="text" name="posting_date_s" value="<%=notice.getPosting_date() %>" disabled></td></tr>
+         <tr><th>posting_date</th><td><input type="text" name="posting_date" value="<%=notice.getPosting_date() %>" disabled></td></tr>
          <tr><th>views</th><td><input type="text" name="views" value="<%=notice.getViews() %>" disabled></td></tr>
          <tr><td colspan="2">
                <input type="submit" value="수정" id="updateButton"/> 
