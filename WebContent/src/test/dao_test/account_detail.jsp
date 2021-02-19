@@ -145,13 +145,17 @@ var updateButton = document.querySelector('#updateButton');
 var deleteButton = document.querySelector('#deleteButton');
 
 	 updateButton.onclick = function(){
-  	    if(isNaN(account_id.value) || isNaN(post.value)){
+  	    if(isNaN(post.value)){
  	      alert('숫자를 입력하세요');
  		  return false;
   	    }
-	 	proc.value = 'update';
+        if(isNaN(mail_recv.value) || isNaN(sms_recv.value)){
+		  alert('숫자를 입력하세요');
+		  return false;
+		}
+  	    proc.value = 'update';
 	 	accountForm.submit();
-	 	}
+	 }
 	 
 	deleteButton.onclick = function() {
 		proc.value = 'delete';

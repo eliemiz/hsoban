@@ -30,8 +30,6 @@
 	if (name == null) name = "";
 	if (email == null) email = "";
 	if (phone == null) phone = "";
-	/* String pass = request.getParameter("pass");
-	if (pass == null) pass = ""; */
 	 
 	Dao_Account dao = new Dao_Account();
 	ArrayList<Account> list = new ArrayList<Account>();
@@ -51,14 +49,57 @@
    <form method="post" id="accountForm">
 		<table>
 			<tr>
-				<th>계정번호(account_id)</th>
+				<th>account_id</th>
 				<td><input type="text" name="account_id" value="<%=account_id%>"></td>
 			</tr>
 			<tr>
 				<td colspan="2">
 					<input type="button" value="검색" id="searchButton" class="btn btn_thatch">
-					<input type="button" value="회원가입하기" id="insertButton" class="btn btn_black" 
-						onclick="location.href='account_insert.jsp'">
+				</td>
+			</tr>
+		</table>
+	</form>
+	<form method="post" id="accountForm">
+		<table>
+			<tr>
+				<th>id</th>
+				<td><input type="text" name="id" value="<%=id%>"></td>
+				<th>pass</th>
+				<td><input type="text" name="pass" value="<%=pass%>"></td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<input type="button" value="검색" id="searchButton" class="btn btn_thatch">
+				</td>
+			</tr>
+		</table>
+	</form>
+	<form method="post" id="accountForm">
+		<table>
+			<tr>
+				<th>name</th>
+				<td><input type="text" name="name" value="<%=name%>"></td>
+				<th>email</th>
+				<td><input type="text" name="email" value="<%=email%>"></td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<input type="button" value="검색" id="searchButton" class="btn btn_thatch">
+				</td>
+			</tr>
+		</table>
+	</form>
+	<form method="post" id="accountForm">
+		<table>
+			<tr>
+				<th>name</th>
+				<td><input type="text" name="name" value="<%=name%>"></td>
+				<th>phone</th>
+				<td><input type="text" name="phone" value="<%=phone%>"></td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<input type="button" value="검색" id="searchButton" class="btn btn_thatch">
 				</td>
 			</tr>
 		</table>
@@ -107,9 +148,14 @@
 	</table>
 </body>
 <script type="text/javascript">
-var searchButton = document.querySelector('#searchButton');
+	var searchButton = document.querySelector("#searchButton");
 	searchButton.onclick = function() {
+		alert("test");
 		var account_id = document.querySelector('[name=account_id]');
+		var id = document.querySelector('[name=id]');
+		var pass = document.querySelector('[name=pass]');
+		var email = document.querySelector('[name=email]');
+		var phone = document.querySelector('[name=phone]');
 		
 		// 유효성 체크
 		if (isNaN(account_id.value)){
