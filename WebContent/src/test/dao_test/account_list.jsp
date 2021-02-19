@@ -22,8 +22,16 @@
 	String pass = request.getParameter("pass");
 	if (pass == null) pass = "";
 	
+	log("#### account_id =" + account_id);
+	log("#### pass =" + pass);
+	
 	Dao_Account dao = new Dao_Account();
-	ArrayList<Account> list = dao.getAccountList();
+	ArrayList<Account> list;
+	if(account_id == "" && pass == ""){
+		list = dao.getAccountList();
+	}else{
+		list = dao.getAccountList(Integer.parseInt(account_id), pass);
+	}
 %>
 <body>
    <form method="post" id="accountForm">
@@ -38,7 +46,7 @@
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input type="button" value="검색" id="searchBtn" class="btn btn_thatch">
+					<input type="button" value="검색" id="searchButton" class="btn btn_thatch">
 					<input type="button" value="회원가입하기" id="insertButton" class="btn btn_black" 
 						onclick="location.href='account_insert.jsp'">
 				</td>
@@ -90,11 +98,10 @@
 		<%
 		}
 		%>
-	
 	</table>
 </body>
 <script type="text/javascript">
-	var searchButton = document.querySelector('#searchBtn');
+	var searchButton = document.querySelector('#searchButton');
 	searchButton.onclick = function() {
 		var account_id = document.querySelector('[name=account_id]');
 		if (isNaN(account_id.value)){
