@@ -16,6 +16,11 @@
 	String account_id = request.getParameter("account_id");
 	if (account_id == null || account_id.trim().equals("")){
 		account_id = "0";}
+	
+	
+	Dao_Account dao = new Dao_Account();
+	Account account = dao.getAccount(Integer.parseInt(account_id));
+	
 	String name = request.getParameter("name");
 	if (name == null) {name = "";}
 	String id = request.getParameter("id");
@@ -44,20 +49,20 @@
 	String sms_recv = request.getParameter("ms_recv");
 	if (sms_recv == null) {sms_recv = "";}
 	String auth = request.getParameter("auth");
-	if (auth  == null) {auth  = "";}
+	if (auth  == null) {auth  = "";} 
 	
-	Dao_Account dao = new Dao_Account();
-	Account account = dao.getAccount(Integer.parseInt(account_id));
 	String proc = request.getParameter("proc");
 	if (proc == null) {
 		proc = "";
 	}
 	if (proc.equals("update")){
+		
 		Account newAccount = new Account(Integer.parseInt(account_id), name, id, pass, 
 				birthday_s, gender, Integer.parseInt(post), address, address2, email, phone,
 				phone2, Boolean.parseBoolean(mail_recv), Boolean.parseBoolean(sms_recv), auth);
 		
 		dao.updateAccount(newAccount);
+		response.sendRedirect("account_list.jsp");
 	}
 	if (proc.equals("delete")) {
 		dao.deleteAccount(Integer.parseInt(account_id));
@@ -70,7 +75,7 @@
 		<table>
 			<tr>
 				<th>account_id</th>
-				<td><input type="text" name="account_id" value="<%=account.getAccount_id()%>"></td>
+				<td><input type="text" name="account_id" value="<%=account.getAccount_id()%>" disabled></td>
 			</tr>
 			<tr>
 				<th>name</th>
@@ -78,7 +83,7 @@
 			</tr>
 			<tr>
 				<th>id</th>
-				<td><input type="text" name="id" value="<%=account.getId()%>"></td>
+				<td><input type="text" name="id" value="<%=account.getId()%>" disabled></td>
 			</tr>
 			<tr>
 				<th>pass</th>
@@ -86,7 +91,7 @@
 			</tr>
 			<tr>
 				<th>birthday</th>
-				<td><input type="text" name="birthday" value="<%=account.getBirthday()%>"></td>
+				<td><input type="text" name="birthday" value="<%=account.getBirthday()%>" disabled></td>
 			</tr>
 			<tr>
 				<th>gender</th>
@@ -126,12 +131,12 @@
 			</tr>
 			<tr>
 				<th>auth</th>
-				<td><input type="text" name="auth" value="<%=account.getAuth()%>"></td>
+				<td><input type="text" name="auth" value="<%=account.getAuth()%>" disabled></td>
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input type="submit" value="수정" id="updateButton">
-					<input type="submit" value="삭제" id="deleteButton">
+					<input type="button" value="수정" id="updateButton">
+					<input type="button" value="삭제" id="deleteButton">
 					<input type="button" value="리스트 이동" onclick="location.href='account_list.jsp'">
 				</td>
 			</tr>
@@ -143,16 +148,14 @@ var accountForm = document.querySelector('#accountForm');
 var proc = document.querySelector('[name=proc]');
 var updateButton = document.querySelector('#updateButton');
 var deleteButton = document.querySelector('#deleteButton');
+var post = document.querySelector('[name=post]');
 
 	 updateButton.onclick = function(){
+		
   	    if(isNaN(post.value)){
- 	      alert('숫자를 입력하세요');
+ 	      alert('숫자를 입력하세요(post)');
  		  return false;
   	    }
-        if(isNaN(mail_recv.value) || isNaN(sms_recv.value)){
-		  alert('숫자를 입력하세요');
-		  return false;
-		}
   	    proc.value = 'update';
 	 	accountForm.submit();
 	 }
