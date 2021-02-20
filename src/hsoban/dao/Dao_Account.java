@@ -211,7 +211,7 @@ public class Dao_Account extends Dao {
 					+ "WHERE account_id = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, account.getName());
-			pstmt.setString(2, account.getId());
+			pstmt.setString(2, account.getPass());
 			pstmt.setString(3, account.getGender());
 			pstmt.setInt(4, account.getPost());
 			pstmt.setString(5, account.getAddress());
