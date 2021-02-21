@@ -107,11 +107,13 @@ public class Dao_Notice extends Dao {
 			con.setAutoCommit(false);
 			
 			String sql = "UPDATE NOTICE SET\r\n"
+					+ " TITLE = ?, \r\n"
 					+ " CONTENT = ? \r\n"
 					+ "	WHERE NOTICE_ID=?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, notice.getContent());
-			pstmt.setInt(2, notice.getNotice_id());
+			pstmt.setString(1, notice.getTitle());
+			pstmt.setString(2, notice.getContent());
+			pstmt.setInt(3, notice.getNotice_id());
 			pstmt.executeQuery();
 			con.commit();
 			
