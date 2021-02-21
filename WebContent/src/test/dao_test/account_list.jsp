@@ -129,6 +129,7 @@ body {
          <tr>
             <td colspan="2">
                <input type="button" value="검색" id="searchButton4" class="btn btn_thatch">
+               <input type="button" value="회원 가입" class="btn btn_black" onclick="location.href='account_insert.jsp'">
             </td>
          </tr>
       </table>
