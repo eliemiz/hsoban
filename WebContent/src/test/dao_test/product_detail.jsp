@@ -39,7 +39,7 @@
 		<tr><th>Category</th><td><input type="text" name="color" value="<%=prod.getCategory()%>"/></td></tr>		
 		<tr><th>Size</th><td><input type="text" name="color" value="<%=prod.getProduct_size()%>"/></td></tr>		
 		<tr><th>Price</th><td><input type="text" name="color" value="<%=prod.getPrice()%>"/></td></tr>
-		<tr><td colspan="2"><input type="button" value="리스트로 이동" onclick="location.href='product_list.jsp'"/></td></tr>		
+		<tr><td align="center" colspan="2"><input type="button" value="리스트로 이동" onclick="location.href='product_list.jsp'"/></td></tr>		
 	</table>
 	</form>
 </body>
