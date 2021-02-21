@@ -25,7 +25,7 @@
 }
 </style>
 <meta charset="UTF-8">
-<title>[국그릇]</title>
+<title>[틴샐러드볼大]</title>
 </head>
 <body>
 <jsp:include page="../../common/header.jsp"/>
@@ -38,7 +38,7 @@
 					<div class="thumb-info">
 						<div class="thumb-wrap">
 							<div class="thumb detail_image">
-								<img src="/hsoban/img/shop/Bowl1_01.jpg" alt="대표이미지"/>
+								<img src="/hsoban/img/shop/Bowl2_01.jpg" alt="대표이미지"/>
 							</div>
 						</div>
 						<form name="form1" method="post" id="form1" action="/hsoban/cart/cart.jsp">	
@@ -54,9 +54,9 @@
 							<input type="hidden" name="optioncode">
 							<input type="hidden" name="optiontype">
 							<input type="hidden" name="optslist">
-							<input type="hidden" id="price" name="price" value="34000">
+							<input type="hidden" id="price" name="price" value="78000">
 							<input type="hidden" id="disprice" name="disprice" value="">
-							<input type="hidden" id="price_wh" name="price_wh" value="34000">
+							<input type="hidden" id="price_wh" name="price_wh" value="78000">
 							<input type="hidden" id="disprice_wh" name="disprice_wh" value="">
 							<input type="hidden" id="option_type_wh" name="option_type_wh" value="PS">
 							<input type="hidden" id="prd_hybrid_min" name="prd_hybrid_min" value="1">
@@ -77,7 +77,7 @@
 							<input type="hidden" name="uid" value="1008823">
 							<input type="hidden" id="option_type" name="option_type" value="PS">
 							<div class="info">
-								<h3 class="tit-prd">국그릇</h3>
+								<h3 class="tit-prd">틴샐러드볼大</h3>
 								<div class="table-opt">
 									<table summary="판매가격, 적립금, 주문수량, 옵션, 사이즈, 상품조르기, sns">
 										<!-- <caption>상품 옵션</caption> -->
@@ -90,12 +90,12 @@
 														<dt>color</dt>
 														<dd><select name="optionlist[]" onchange="change_option(this,'basic');" label="color" opt_type="SELECT" opt_id="3" opt_mix="Y" require="Y" opt_mandatory="Y" class="basic_option">
 																<option value>옵션 선택</option>
-																<option matrix="1" sto_id="3" price="34000" title="블랙" value="0">블랙</option>
-																<option matrix="2" sto_id="4" price="34000" title="베이지" value="0">베이지</option>
-																<option matrix="3" sto_id="5" price="34000" title="그린(유광)" value="0">그린(유광)</option>
-																<option matrix="4" sto_id="14" price="34000" title="와인" value="0">와인</option>
-																<option matrix="4" sto_id="14" price="34000" title="그레이" value="0">그레이</option>
-																<option matrix="5" sto_id="11" price="34000" title="진그레이" value="0">진그레이</option>
+																<option matrix="1" sto_id="3" price="78000" title="블랙" value="0">블랙</option>
+																<option matrix="2" sto_id="4" price="78000" title="베이지" value="0">베이지</option>
+																<option matrix="3" sto_id="5" price="78000" title="그린(유광)" value="0">그린(유광)-일시품절</option>
+																<option matrix="4" sto_id="14" price="78000" title="와인" value="0">와인</option>
+																<option matrix="4" sto_id="14" price="78000" title="그레이" value="0">그레이</option>
+																<option matrix="5" sto_id="11" price="78000" title="진그레이" value="0">진그레이</option>
 																<!-- size 선택에 따라 option 선택창 >> 추후 함수 처리 -->																												
 															</select>
 														</dd>
@@ -142,8 +142,8 @@
 										<font size="3">◎</font>
 										<font size="5">
 											<font size="4">size</font>
-											<font color="rgb(0.0.0)">&nbsp;&nbsp; 11.5
-												<font style="font-size: 11pt;">cm(d)x													
+											<font color="rgb(0.0.0)">&nbsp;&nbsp; 23
+												<font style="font-size: 11pt;">cm(d)-바닥지름8cmx													
 													<font size="5">6</font>
 												</font>
 												<font style="font-size: 11pt;">cm(h)</font>
@@ -168,37 +168,37 @@
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
-							<p align="center" style="margin: 0px; text-align: center;"><img src="/hsoban/img/shop/Bowl1_02.jpg"></p>
+							<p align="center" style="margin: 0px; text-align: center;"><img src="/hsoban/img/shop/Bowl2_02.jpg"></p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>					
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>					
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>					
-							<p align="center" style="margin: 0px; text-align: center;"><img src="/hsoban/img/shop/Bowl1_03.jpg"></p>
+							<p align="center" style="margin: 0px; text-align: center;"><img src="/hsoban/img/shop/Bowl2_03.jpg"></p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
-							<p align="center" style="margin: 0px; text-align: center;"><img src="/hsoban/img/shop/Bowl1_04.jpg"></p>
+							<p align="center" style="margin: 0px; text-align: center;"><img src="/hsoban/img/shop/Bowl2_04.jpg"></p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
-							<p align="center" style="margin: 0px; text-align: center;"><img src="/hsoban/img/shop/Bowl1_05.jpg"></p>
+							<p align="center" style="margin: 0px; text-align: center;"><img src="/hsoban/img/shop/Bowl2_05.jpg"></p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
-							<p align="center" style="margin: 0px; text-align: center;"><img src="/hsoban/img/shop/Bowl1_06.jpg"></p>
+							<p align="center" style="margin: 0px; text-align: center;"><img src="/hsoban/img/shop/Bowl2_06.jpg"></p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
-							<p align="center" style="margin: 0px; text-align: center;"><img src="/hsoban/img/shop/Bowl1_07.jpg"></p>
+							<p align="center" style="margin: 0px; text-align: center;"><img src="/hsoban/img/shop/Bowl2_07.jpg"></p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>

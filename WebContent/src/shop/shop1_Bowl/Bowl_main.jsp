@@ -80,6 +80,35 @@
                                 </dd>
                             </dl>
 						</div>
+						<div class="item-cont">
+							<dl class="item-list">
+                                <dt class="thumb"><a href="Bowl5.jsp"><img class="MS_prod_img_s" src="/hsoban/img/shop/Bowl5_00.jpg" alt="상품 썸네일" title="상품 썸네일"></a></dt>
+                                <dd>
+                                    <ul>
+                                        <li class="prd-name"><span class="MK-product-icons"></span>토리볼</li>
+                                        <li class="prd-price">32,000원</li>
+                                    </ul>
+                                </dd>
+                            </dl>
+                            <dl class="item-list">
+                                <dt class="thumb"><a href="Bowl6.jsp"><img class="MS_prod_img_s" src="/hsoban/img/shop/Bowl6_00.jpg" alt="상품 썸네일" title="상품 썸네일"></a></dt>
+                                <dd>
+                                    <ul>
+                                        <li class="prd-name"><span class="MK-product-icons"></span>라운드볼</li>
+                                        <li class="prd-price">120,000원</li>
+                                    </ul>
+                                </dd>
+                            </dl>
+                            <dl class="item-list">
+                                <dt class="thumb"><a href="Bowl7.jsp"><img class="MS_prod_img_s" src="/hsoban/img/shop/Bowl7_00.jpg" alt="상품 썸네일" title="상품 썸네일"></a></dt>
+                                <dd>
+                                    <ul>
+                                        <li class="prd-name"><span class="MK-product-icons"></span>속 더 깊은 볼</li>
+                                        <li class="prd-price">140,000원</li>
+                                    </ul>
+                                </dd>
+                            </dl>							
+						</div>
 					</div>
 				</div>
 			</div>
