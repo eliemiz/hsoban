@@ -13,9 +13,9 @@
 <head>
 <meta charset="UTF-8">
 <title>장바구니</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <link rel="stylesheet" href="<%=path%>/css/common.css">
 <link rel="stylesheet" href="<%=path%>/css/cart.css">
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
 </head>
 	
 	<%
@@ -102,7 +102,6 @@
 						<th>취소</th>
 					</tr>
 					<%
-						// TODO : 불러온 목록 화면에 뿌리기
 						int total = 0;
 						for (int i = 0; i < cartList.size(); i++) {
 							Cart cart = cartList.get(i);								
@@ -122,7 +121,7 @@
 							<tr>
 								<td style="display:none">
 									<% String id = "cartForm" + i; %>
-										<form id="<%=id%>">
+									<form id="<%=id%>" method="post">
 										<input type="hidden" name="account_id" value="${account_id}">
 										<input type="hidden" name="product_id" value="${product_id}">
 										<input type="hidden" name="color" value="${color}">
@@ -226,7 +225,7 @@
 						<tr>
 							<td style="display:none">
 								<% String id = "wishForm" + i; %>
-								<form id="<%=id%>">
+								<form id="<%=id%>" method="post">
 									<input type="hidden" name="account_id" value="${account_id}">
 									<input type="hidden" name="product_id" value="${product_id}">
 									<input type="hidden" name="color" value="${color}">

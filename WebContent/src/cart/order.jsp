@@ -1,6 +1,10 @@
+<%@page import="hsoban.dao.Dao_Order"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" import="java.util.*" import="java.net.*" import="selection.*" %>
+	pageEncoding="UTF-8" import="java.util.*" import="java.net.*" import="selection.*" 
+	import="hsoban.vo.*" import="hsoban.dao.*" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
 	request.setCharacterEncoding("UTF-8");
 	String path = request.getContextPath();
@@ -10,6 +14,7 @@
 <head>
 <meta charset="UTF-8">
 <title>고급형 주문서 작성</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <link rel="stylesheet" href="<%=path%>/css/common.css">
 <link rel="stylesheet" href="<%=path%>/css/cart.css">
 <style type="text/css">
@@ -23,6 +28,28 @@
 </style>
 </head>
 	<%
+		// TODO : session에서 가져오기
+		int account_id = 100001;
+	
+		// Dao
+		Dao_Cart daoCart = new Dao_Cart();
+		Dao_Product daoProduct = new Dao_Product();
+		Dao_Order daoOrder = new Dao_Order();
+	
+		// cart list
+		ArrayList<Cart> cartList = daoCart.getCartList(account_id);
+		
+		// insert order
+		// int order_id, int account_id, int product_id, String color, int order_count, String order_date_s,
+		// int post, String address, String address2, String order_message, String pay, int total
+		ArrayList<Order> orderList = (ArrayList<Order>)request.getAttribute("orderList");
+
+		if (orderList != null){
+			for (Order order : orderList) {
+				daoOrder.insertOrder(order);
+			}	
+		}
+		
 		int tempPrice = 30000;
 		DecimalFormat df = new DecimalFormat("#,###");
 	%>
@@ -59,16 +86,22 @@
 						<th>가격</th>
 					</tr>
 					<%
-						for (int i = 1; i <= 4; i++) {
+						for (int i = 0; i < cartList.size(); i++) {
+							Cart cart = cartList.get(i);
+							Product product = daoProduct.getProdList(cart.getProduct_id(), cart.getColor());
 							%>
+							<c:set var="account_id" value="<%=cart.getAccount_id() %>"/>
+							<c:set var="product_id" value="<%=cart.getProduct_id() %>"/>
+							<c:set var="color" value="<%=cart.getColor() %>"/>
+							<c:set var="count" value="<%=cart.getCount() %>"/>
 							<tr>
-								<td class="td_center"><img src="<%=path%>/img/cart/temp.jpg" class="thumbnail_s"></td>
-								<td class="td_left"><a href="<%=path%>/src/shop/shop1_Bowl/Bowl1.jsp">국그릇</a></td>
-								<td class="td_center">1개</td>
-								<td class="td_right"><%= df.format(tempPrice) %>원</td>
+								<td class="td_center"><img src="<%=path%><%=product.getThumbnail()%>" class="thumbnail_s"></td>
+								<td class="td_left"><a href="<%=path%>/src/shop/shop1_Bowl/Bowl1.jsp"><%=product.getName() %></a></td>
+								<td class="td_center">${count}개</td>
+								<td class="td_right"><%= df.format(product.getPrice()) %>원</td>
 							</tr>
 							<tr>
-								<td colspan="4"><img src="<%=path%>/img/cart/cart_option.gif"> color: 블랙 2개</td>
+								<td colspan="4"><img src="<%=path%>/img/cart/cart_option.gif"> color: ${color} ${count}개</td>
 							</tr>		
 							<%
 						}
