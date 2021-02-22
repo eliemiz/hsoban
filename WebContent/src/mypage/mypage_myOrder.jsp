@@ -16,11 +16,6 @@ ArrayList<Order> list;
 
 list = dao.getOrderList();
 
-Dao_Product daoo = new Dao_Product();
-ArrayList<Product> plist = daoo.getProdList();
-
-plist = daoo.getProdList();
-
 %>
 </head>
 <body>

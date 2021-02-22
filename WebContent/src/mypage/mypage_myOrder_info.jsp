@@ -45,10 +45,11 @@ div {
 		Order order = dao.getOrder(Integer.parseInt(order_id));
 		
 		
-		Dao_Product daoo = new Dao_Product();
-		ArrayList<Product> plist = daoo.getProdList();
-
-		plist = daoo.getProdList();
+		Dao_Product daoProduct = new Dao_Product();
+		Product product = daoProduct.getProdList(order.getProduct_id(), order.getColor());
+		
+		Dao_Account daoAccount = new Dao_Account();
+		Account account = daoAccount.getAccount( order.getAccount_id());
 %>
 <body>
 <jsp:include page="../common/header.jsp"/>
@@ -72,22 +73,17 @@ div {
                 <tbody>
                     <tr>
                         <th scope="row"><div class="tb-center">주문번호</div></th>
-                        <td><div class="tb-center">20210201225913-16894579728</div></td>
+                        <td><div class="tb-center"><%=order.getOrder_id() %></div></td>
                         <th scope="row"><div class="tb-center">주문일자</div></th>
-                        <td><div class="tb-center">2021.02.01</div></td>
+                        <td><div class="tb-center"><%=order.getOrder_date() %></div></td>
                     </tr>
                     <tr>
                         <th scope="row"><div class="tb-center">주문자</div></th>
-                        <td><div class="tb-center">이채영</div></td>
+                        <td><div class="tb-center"><%=account.getName() %></div></td>
                         <th scope="row"><div class="tb-center">주문서 입금현황 </div></th>
-                        <td><div class="tb-center">미입금</div></td>
+                        <td><div class="tb-center">결제완료</div></td>
                     </tr>
-                    <tr>
-                        <th scope="row"><div class="tb-center">주문 메모</div></th>
-                        <td colspan="3"><div class="tb-left">
-입금자 : 이채영
-</div></td>
-                    </tr>
+
                                     </tbody>
             </table>
         </div>
@@ -104,17 +100,17 @@ div {
                 <tbody>
                     <tr>
                         <th scope="row"><div class="tb-center">수취인</div></th>
-                        <td><div class="tb-center">이채영</div></td>
+                        <td><div class="tb-center"><%=account.getName() %></div></td>
                         <th scope="row"><div class="tb-center">연락처</div></th>
-                        <td><div class="tb-center">-</div></td>
+                        <td><div class="tb-center"><%=account.getPhone() %></div></td>
                     </tr>
                     <tr>
                         <th scope="row"><div class="tb-center">주소</div></th>
-                        <td colspan="3"><div class="tb-left">-</div></td>
+                        <td colspan="3"><div class="tb-left"><%=order.getAddress() %><%=order.getAddress2() %></div></td>
                     </tr>
                     <tr>
                         <th scope="row"><div class="tb-center">배송메세지</div></th>
-                        <td colspan="3"><div class="tb-left"></div></td>
+                        <td colspan="3"><div class="tb-left"><%=order.getOrder_message() %></div></td>
                     </tr>
                                 </tbody>
             </table>
@@ -152,7 +148,7 @@ div {
                         </td>
                         <td>
                             <div class="tb-left">
-                                <a href="javascript:go_brand('001000000026');" style="text-decoration: none; color: #777;"><%=plist.getName()%><br></a>
+                                <a href="javascript:go_brand('001000000026');" style="text-decoration: none; color: #777;"><%=product.getName() %><br></a>
                                 <span class="quantity order_table_Td style4"> color : <%=order.getColor() %></span>
                             </div>
                         </td>
