@@ -32,10 +32,29 @@
 	Dao_Product daoProduct = new Dao_Product();
 	Dao_Stock daoStock = new Dao_Stock();
 	
-	// modifyNumber 클릭 시, cart update
-	String process = request.getParameter("process");
-	if (process == null) {
-		process = "";
+	// Update, Delete 처리. TODO : 유효성 체크
+	String account_id_temp = request.getParameter("account_id");
+	String product_id = request.getParameter("product_id");
+	String color = request.getParameter("color");
+	
+	String proc = request.getParameter("proc");
+	if (proc == null){
+		proc = "";
+	}
+	
+	if (proc.equals("modifyNumber")){
+		String count = request.getParameter("count");
+		daoCart.updateCart(new Cart(Integer.parseInt(account_id_temp), Integer.parseInt(product_id), color, Integer.parseInt(count)));
+	} else if (proc.equals("addCart")) {
+		daoCart.insertCart(new Cart(Integer.parseInt(account_id_temp), Integer.parseInt(product_id), color, 1)); // TODO 숫자 변경?
+		daoWishlist.deleteWish(Integer.parseInt(account_id_temp), Integer.parseInt(product_id), color);
+	} else if (proc.equals("deleteCart")) {
+		daoCart.deleteCart(Integer.parseInt(account_id_temp), Integer.parseInt(product_id), color);
+	} else if (proc.equals("addWish")) {
+		daoWishlist.insertWish(new WishList(Integer.parseInt(account_id_temp), Integer.parseInt(product_id), color));
+		daoCart.deleteCart(Integer.parseInt(account_id_temp), Integer.parseInt(product_id), color);
+	} else if (proc.equals("deleteWish")) {
+		daoWishlist.deleteWish(Integer.parseInt(account_id_temp), Integer.parseInt(product_id), color);
 	}
 	
 	// cart list 불러오기
@@ -95,8 +114,22 @@
 							total += product.getPrice() * cart.getCount();
 							
 							%>
-							<% String id = "cartForm" + i; %>
+							<%-- form 생성 --%>
+							<c:set var="account_id" value="<%=cart.getAccount_id()%>"/>
+							<c:set var="product_id" value="<%=cart.getProduct_id()%>"/>
+							<c:set var="color" value="<%=cart.getColor()%>"/>
+							<c:set var="count" value="<%=cart.getCount()%>"/>
 							<tr>
+								<td style="display:none">
+									<% String id = "cartForm" + i; %>
+										<form id="<%=id%>">
+										<input type="hidden" name="account_id" value="${account_id}">
+										<input type="hidden" name="product_id" value="${product_id}">
+										<input type="hidden" name="color" value="${color}">
+										<input type="hidden" name="count" value="${count}">
+										<input type="hidden" name="proc">
+									</form>
+								</td>
 								<td class="td_center"><%=i + 1%></td>
 								<td class="td_center"><img src="<%=path%><%=product.getThumbnail() %>" class="thumbnail_m"></td>
 								<td class="td_left">
@@ -106,17 +139,18 @@
 											<a href="<%=path%>/src/shop/shop1_Bowl/Bowl1.jsp"><%=product.getName() %></a>
 										</div>
 										<div>
-											<span>[color: <%=cart.getColor() %> <%=cart.getCount() %>개]</span>
+											<span>[color: ${color} ${count}개]</span>
 											<img src="<%=path%>/img/cart/option.gif" onclick="popUpModifyOption()" class="modifyOption">
 										</div>
 									</div>
 								</td>
 								<td class="td_center">
 									<%-- TODO : name 쓰이는 곳 있는지? --%>
-									<% String name = "count" + i; %>
-									<c:set var="name" value="<%=name%>"/>
-									<input type="number" class="table_cart_number" value="<%=cart.getCount() %>" name="${name}">
-									<input type="button" value="수정" class="btn btn_black table_cart_number_modify">
+									<% String m_count = "m_count" + i; %>
+									<c:set var="m_count" value="<%=m_count%>"/>
+									<input type="number" class="table_cart_number" value="${count}" name="${m_count}">
+									<input type="button" value="수정" class="btn btn_black table_cart_number_modify" 
+										onclick="submitCartForm(<%=i%>, 'modifyNumber')">
 								</td>
 								<td class="td_center"><%=df.format(product.getPrice()) %>원</td>
 								<td class="td_center">
@@ -124,14 +158,16 @@
 								</td>
 								<td class="td_center">
 									<span>
-										<input type="button" value="관심상품 등록" class="btn btn_thatch">
+										<input type="button" value="관심상품 등록" class="btn btn_thatch" 
+											onclick="submitCartForm(<%=i%>, 'addWish')">
 									</span>
 									<span>
-										<input type="button" value="장바구니 삭제" class="btn btn_normal">
+										<input type="button" value="장바구니 삭제" class="btn btn_normal"
+											onclick="submitCartForm(<%=i%>, 'deleteCart')">
+											
 									</span>
 								</td>
 							</tr>
-							
 							<%
 						}
 					%>
@@ -184,7 +220,19 @@
 						Product product = daoProduct.getProdList(wish.getProduct_id(), wish.getColor());
 						Stock stock = daoStock.getStock(wish.getProduct_id(), wish.getColor());
 						%>
+						<c:set var="account_id" value="<%=wish.getAccount_id()%>"/>
+						<c:set var="product_id" value="<%=wish.getProduct_id()%>"/>
+						<c:set var="color" value="<%=wish.getColor()%>"/>
 						<tr>
+							<td style="display:none">
+								<% String id = "wishForm" + i; %>
+								<form id="<%=id%>">
+									<input type="hidden" name="account_id" value="${account_id}">
+									<input type="hidden" name="product_id" value="${product_id}">
+									<input type="hidden" name="color" value="${color}">
+									<input type="hidden" name="proc">
+								</form>
+							</td>
 							<td class="td_center"><img src="<%=path%><%=product.getThumbnail()%>" class="thumbnail_m"></td>
 							<td class="td_left">
 								<div><%=product.getName()%></div>
@@ -201,10 +249,12 @@
 							<td class="td_center"><%=df.format(product.getPrice()) %>원</td>
 							<td class="td_center">
 								<span>
-									<input type="button" value="장바구니 담기" class="btn btn_thatch">
+									<input type="button" value="장바구니 담기" class="btn btn_thatch"
+										onclick="submitCartForm(<%=i%>, 'addCart')">
 								</span>
 								<span>
-									<input type="button" value="관심상품 삭제" class="btn btn_normal">
+									<input type="button" value="관심상품 삭제" class="btn btn_normal"
+										onclick="submitCartForm(<%=i%>, 'deleteWish')">
 								</span>
 							</td>
 						</tr>
@@ -224,6 +274,23 @@
 		window.open(url, "", option);
 	};
 	
-	
+	function submitCartForm(){
+		var idx = arguments[0];
+		var proc = arguments[1];
+
+		var form = '';
+		if (proc == 'modifyNumber'){
+			var m_count = document.querySelector("[name=m_count" + idx + "]");
+			form = document.querySelector("#cartForm" + idx);
+			form.count.value = m_count.value;
+		} else if (proc == 'addWish' || proc == 'deleteCart') {
+			form = document.querySelector("#cartForm" + idx);
+		} else if (proc == 'addCart' || proc == 'deleteWish') {
+			form = document.querySelector("#wishForm" + idx)
+		}
+		form.proc.value = proc;
+		
+		form.submit();
+	}
 </script>
 </html>

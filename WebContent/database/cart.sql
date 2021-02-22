@@ -214,3 +214,6 @@ INSERT INTO stock VALUES WHERE (SELECT product_id, color, 10 FROM product WHERE 
 INSERT INTO product VALUES (100000, '그린', '국그릇', 'BOWL', 'SIZE수정 필요', 32000, 'DESCRIPTION 수정 필요', '/shop/Bowl1_00.jpg');
 INSERT INTO product VALUES (product_id_seq.nextval, '그린', '국그릇', 'BOWL', 'SIZE수정 필요', 32000, 'DESCRIPTION 수정 필요', '/shop/Bowl1_00.jpg');
 INSERT INTO product VALUES (product_id_seq.nextval, '블랙', '두부볼', 'BOWL', 'SIZE수정 필요', 32000, 'DESCRIPTION 수정 필요', '/shop/Bowl1_00.jpg');
+
+SELECT * FROM cart;
+SELECT * FROM WISH_LIST wl;
