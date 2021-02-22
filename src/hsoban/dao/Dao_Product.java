@@ -97,15 +97,16 @@ public class Dao_Product extends Dao {
 				con.setAutoCommit(false);
 
 				String sql = "INSERT INTO PRODUCT \r\n"
-							+ "VALUES(product_id_seq.nextval,?,?,?,?,?,?,?)";
+							+ "VALUES(?,?,?,?,?,?,?,?)";
 				pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, ins.getColor());
-				pstmt.setString(2, ins.getName());
-				pstmt.setString(3, ins.getCategory());
-				pstmt.setString(4, ins.getProduct_size());
-				pstmt.setInt(5, ins.getPrice());
-				pstmt.setString(6, ins.getDescription());
-				pstmt.setString(7, ins.getThumbnail());
+				pstmt.setInt(1, ins.getProduct_id());
+				pstmt.setString(2, ins.getColor());
+				pstmt.setString(3, ins.getName());
+				pstmt.setString(4, ins.getCategory());
+				pstmt.setString(5, ins.getProduct_size());
+				pstmt.setInt(6, ins.getPrice());
+				pstmt.setString(7, ins.getDescription());
+				pstmt.setString(8, ins.getThumbnail());
 				pstmt.executeUpdate();
 				con.commit();
 
