@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"
-    import="java.util.*"
-    import="java.net.*"
-    %>
+    pageEncoding="UTF-8" import="java.util.*" import="java.net.*"
+	import="hsoban.dao.*" import="hsoban.vo.*"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <% request.setCharacterEncoding("UTF-8");
    String path = request.getContextPath();
 %>    
@@ -13,9 +13,24 @@
 <title>REVIEW</title>
 <link rel="stylesheet" href="<%=path%>/css/common.css">
 <link rel="stylesheet" href="<%=path%>/css/board.css">
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <style>
+.paging { padding-top: 20px; height: 17px; text-align: center; line-height: 0; vertical-align: top; }
+.paging li { display: inline;}
+.paging li a, .paging li strong { 
+overflow: hidden; width: auto; height: 15px; padding: 0; color: #999; cursor: pointer; 
+background:#ffffff; width: 30px; height: 30px; line-height: 30px; border: #e7e7e7 1px solid; 
+display: inline-block;transition:all .2s linear; -webkit-transition:all .2s linear; 
+transition:all .2s linear; -ms-transition:all .2s linear; -khtml-transition:all .2s linear; o-transition:all .2s linear;
+}
+.paging li strong { font-weight: bold; letter-spacing: -1px; background:#e7e7e7; }
 </style>
+
 </head>
+<%
+Dao_Review dao = new Dao_Review();
+ArrayList<Review> rlist = dao.getReviewList();
+%>
 <body>
 	<jsp:include page="../common/header.jsp"/>
     <jsp:include page="../common/side.jsp"/>
@@ -58,87 +73,33 @@
          </tr>
      </thead>
 	    <tbody>
-          <tr>
-              <td><div class="td_center">8</div></td>
-              <td><div class="td_center"><img src="<%=path%>/img/board/note.jpg" class="note"></div></td>
-              <td><div class="td_center"><a href="../shop/shop_default.jsp"><img src="<%=path%>/img/board/review.jpg" class="img" ></div></td>
-              <td><div class="td_left"><a href="../board/review.jsp">[두부볼中,小]&nbsp;만족합니다.</a></div></td>
-              <td><div class="td_center">ijk230</td>
-              <td><div class="td_center">2021/02/08</div></td>
-              <td><div class="td_center">13</div></td>               
-          </tr>
-         <tr>
-              <td><div class="td_center">7</div></td>
-              <td><div class="td_center"><img src="<%=path%>/img/board/note.jpg" class="note"></div></td>
-              <td><div class="td_center"><a href="../shop/shop_default.jsp"><img src="<%=path%>/img/board/mug.jpg" class="img" ></div></td>
-              <td><div class="td_left"><a href="../board/review3.jsp">[머그]&nbsp;귀여워요.</a></div></td>
-              <td><div class="td_center">temp</td>
-              <td><div class="td_center">2021/02/08</div></td>
-              <td><div class="td_center">15</div></td>               
-          </tr>
-           <tr>
-              <td><div class="td_center">6</div></td>
-              <td><div class="td_center"><img src="<%=path%>/img/board/note.jpg" class="note"></div></td>
-              <td><div class="td_center"><a href="../shop/shop_default.jsp"><img src="<%=path%>/img/board/review.jpg" class="img" ></div></td>
-              <td><div class="td_left"><a href="../board/review.jsp">[두부볼中,小]&nbsp;만족합니다.</a></div></td>
-              <td><div class="td_center">ijk230</td>
-              <td><div class="td_center">2021/02/08</div></td>
-              <td><div class="td_center">13</div></td>               
-          </tr>
-           <tr>
-              <td><div class="td_center">5</div></td>
-              <td><div class="td_center"><img src="<%=path%>/img/board/note.jpg" class="note"></div></td>
-              <td><div class="td_center"><a href="../shop/shop_default.jsp"><img src="<%=path%>/img/board/review2.jpg" class="img" ></div></td>
-              <td><div class="td_left"><a href="../board/review2.jsp">[수저받침대]&nbsp;만족합니다.</a></div></td>
-              <td><div class="td_center">ijk230</td>
-              <td><div class="td_center">2021/02/08</div></td>
-              <td><div class="td_center">15</div></td>               
-          </tr>
-          <tr>
-              <td><div class="td_center">4</div></td>
-              <td><div class="td_center"><img src="<%=path%>/img/board/note.jpg" class="note"></div></td>
-              <td><div class="td_center"><a href="../shop/shop_default.jsp"><img src="<%=path%>/img/board/mug.jpg" class="img" ></div></td>
-              <td><div class="td_left"><a href="../board/review3.jsp">[머그]&nbsp;귀여워요.</a></div></td>
-              <td><div class="td_center">temp</td>
-              <td><div class="td_center">2021/02/08</div></td>
-              <td><div class="td_center">13</div></td>               
-          </tr>
-          <tr>
-              <td><div class="td_center">3</div></td>
-              <td><div class="td_center"><img src="<%=path%>/img/board/note.jpg" class="note"></div></td>
-              <td><div class="td_center"><a href="../shop/shop_default.jsp"><img src="<%=path%>/img/board/review.jpg" class="img" ></div></td>
-              <td><div class="td_left"><a href="../board/review.jsp">[두부볼中,小]&nbsp;만족합니다.</a></div></td>
-              <td><div class="td_center">temp</td>
-              <td><div class="td_center">2021/02/08</div></td>
-              <td><div class="td_center">15</div></td>               
-          </tr>
-           <tr>
-              <td><div class="td_center">2</div></td>
-              <td><div class="td_center"><img src="<%=path%>/img/board/note.jpg" class="note"></div></td>
-              <td><div class="td_center"><a href="../shop/shop_default.jsp"><img src="<%=path%>/img/board/review2.jpg" class="img" ></div></td>
-              <td><div class="td_left"><a href="../board/review2.jsp">[수저받침대]&nbsp;만족합니다.</a></div></td>
-              <td><div class="td_center">temp123</td>
-              <td><div class="td_center">2021/02/08</div></td>
-              <td><div class="td_center">15</div></td>               
-          </tr>
-         <tr>
-              <td><div class="td_center">1</div></td>
-              <td><div class="td_center"><img src="<%=path%>/img/board/note.jpg" class="note"></div></td>
-              <td><div class="td_center"><a href="../shop/shop_default.jsp"><img src="<%=path%>/img/board/review.jpg" class="img" ></div></td>
-              <td><div class="td_left"><a href="../board/review.jsp">[두부볼中,小]&nbsp;만족합니다.</a></div></td>
-              <td><div class="td_center">temp123</td>
-              <td><div class="td_center">2021/02/08</div></td>
-              <td><div class="td_center">13</div></td>               
-          </tr>
+	    
+	    <%
+		for (Review review : rlist){
+		%>		
+		<tr onclick="callDetail(<%=review.getReview_id() %>)">				
+			<td><div class="td_center"><%=review.getReview_id() %></div></td>
+			 <td><div class="td_center"><img src="<%=path%>/img/board/note.jpg" class="note"></div></td>
+			<td><div class="td_center"><a href="../shop/shop_default.jsp">
+			<img src="<%=path%>/img/board/review.jpg" class="img" ></div></td>
+			<td><div class="td_left"><a href="../board/review.jsp"><%=review.getTitle() %></a></div></td>
+			<td><div class="td_center"><%=review.getAccount_id() %></div></td>
+			<td><div class="td_center"><%=review.getPosting_date() %></div></td>
+			<td><div class="td_center"><%=review.getViews() %></div></td>
+		</tr>
+		<%
+		}
+		%> 
+          
       </tbody>
    </table>
-      <br>
-      <div style="text-align: center;">
-         <input type="button" value="&nbsp;1&nbsp;" class="btn_normal">
-         <input type="button" value="&nbsp;>&nbsp;" class="btn_normal">
-         <input type="button" value=">>" class="btn_normal">
-      </div>
+      <ol class="paging">
+   		<li><strong>1</strong></li>
+   </ol>
+
    </div>
    <jsp:include page="../common/footer.jsp" />
 </body>
+<script type="text/javascript">
+</script>
 </html>
