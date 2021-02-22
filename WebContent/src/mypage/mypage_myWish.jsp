@@ -29,13 +29,12 @@
                             <table summary="사진,  상품명, 수량, 재고, 적립금, 가격, 장바구니">
                                 <caption>예치금 내역</caption>
                                 <colgroup>
-                                    <col width="100">
+                                    <col width="130">
                                     <col width="100">
                                     <col width="*">
-                                    <col width="120">
-                                    <col width="120">
-                                    <col width="120">
                                     <col width="150">
+                                    <col width="150">
+                                    <col width="180">
                                 </colgroup>
         <form name="list_form" method="post"></form>                                <thead>
                                     <tr>
@@ -46,7 +45,6 @@
                                         </th>
                                         <th scope="row"><div class="tb-center" style="font-size:12px">사진</div></th>
                                         <th scope="row"><div class="tb-center" style="font-size:12px">상품명</div></th>
-                                        <th scope="row"><div class="tb-center" style="font-size:12px">수량</div></th>
                                         <th scope="row"><div class="tb-center" style="font-size:12px">재고</div></th>
                                         <!--<th scope="row"><div class="tb-center">적립금</div></th>-->
                                         <th scope="row"><div class="tb-center" style="font-size:12px">가격</div></th>
@@ -72,7 +70,6 @@
                                             <div class="tb-left">국그릇</div>
                                             <div class="tb-left"><span class="wish-opt">[color : 베이지 1개]</span></div>
                                         </td>
-                                        <td><div class="tb-center"><input type="text" name="order_quantity[]" value="1" class="txt-input2">개</div></td>
                                         <td><div class="tb-center">있음</div></td>
                                         <!--<td><div class="tb-right">0원</div></td>-->
                                         <td>

@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.*" import="java.net.*"
-	import="hsoban.dao.*" import="hsoban.vo.*"
-	%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,24 +30,6 @@ div {
     letter-spacing: -1px;
 }
 </style>
-<%
-//변수 선언 for 페이지 로드
-		String order_id = request.getParameter("order_id");
-
-		// validate
-		if (order_id == null || order_id.trim().equals("")) {
-			order_id = "0";
-		}
-		
-		Dao_Order dao = new Dao_Order();
-		Order order = dao.getOrder(Integer.parseInt(order_id));
-		
-		
-		Dao_Product daoo = new Dao_Product();
-		ArrayList<Product> plist = daoo.getProdList();
-
-		plist = daoo.getProdList();
-%>
 <body>
 <jsp:include page="../common/header.jsp"/>
 <jsp:include page="../common/side.jsp"/>
@@ -61,8 +41,8 @@ div {
     <div class="bbs-tit">주문 상세 </div>
         <h2><b>주문자정보</b></h2>
         <div class="table-w table-orderinfo">
-       <table summary="">
-                                <caption>주문자정보</caption>
+            <table summary="">
+                <caption>주문자정보</caption>
                 <colgroup>
                     <col width="120">
                     <col width="*">
@@ -124,41 +104,47 @@ div {
             <table summary="">
                 <caption>주문상품정보</caption>
                 <colgroup>
-                    <col width="100">
+                    <col width="60">
                     <col width="*">
-                    <col width="105">
-                    <col width="130">
-                    <col width="130">
+                    <col width="110">
+                    <col width="55">
+                    <col width="80">
+                    <col width="80">
+                    <col width="80">
                 </colgroup>
                 <thead>
                     <tr><th scope="row" colspan="2"><div class="tb-center" style="font-size:12px">주문상품정보</div></th>
+                    <th scope="row"><div class="tb-center" style="font-size:12px">상품별주문번호</div></th>
                     <th scope="row"><div class="tb-center" style="font-size:12px">수량</div></th>
                     <th scope="row"><div class="tb-center" style="font-size:12px">가격</div></th>
                     <th scope="row"><div class="tb-center" style="font-size:12px">처리상태</div></th>
+                    <th scope="row"><div class="tb-center" style="font-size:12px">배송번호</div></th>
                 </tr></thead>
                 <tfoot>
-                    <tr><td colspan="5">
+                    <tr><td colspan="7">
                         <div class="tb-right">
-                           <%=order.getTotal() %> 원
+                            (상품구매금액) (할인/추가금액)  = 0원
                         </div>
                     </td>
                 </tr></tfoot>
                 <tbody>
                 <tr>
-               			<td>
+                        <td>
                             <div class="tb-center">
                               <img src="/hsoban/img/mypage/0010000000263.jpg" style="width: 58px; height: 58px">
                             </div>
                         </td>
                         <td>
                             <div class="tb-left">
-                                <a href="javascript:go_brand('001000000026');" style="text-decoration: none; color: #777;"><%=plist.getName()%><br></a>
-                                <span class="quantity order_table_Td style4"> color : <%=order.getColor() %></span>
+                                <a href="javascript:go_brand('001000000026');" style="text-decoration: none; color: #777;">두부볼中,小<br></a>
+                                <span class="quantity order_table_Td style4"> size : 小, color : 그린</span>
                             </div>
                         </td>
-                        <td><div class="tb-center"><%=order.getOrder_count()%></div></td>
-                        <td><div class="tb-center tb-price"><strong><font color="#FF5D00"><%=order.getTotal() %></font></strong>원</div></td>
-                        <td><div class="tb-center">배송완료</div></td>
+                        <td><div class="tb-center">20210201225913-16894579728_[1]</div></td>
+                        <td><div class="tb-center">1</div></td>
+                        <td><div class="tb-center tb-price"><strong><font color="#FF5D00">18,000</font></strong>원</div></td>
+                        <td><div class="tb-center">입금전취소-구매자</div></td>
+                        <td><div class="tb-center">S-21020122-683630465-00</div></td>
                  </tr>
                  </tbody>
            </table>
@@ -170,15 +156,19 @@ div {
                 <colgroup>
                     <col width="180">
                     <col width="250">
+                    <col width="*">
                 </colgroup>
                 <thead>
                     <tr><th scope="row"><div class="tb-center" style="font-size:12px">결제방법</div></th>
                     <th scope="row"><div class="tb-center" style="font-size:12px">결제금액</div></th>
+                    <th scope="row"><div class="tb-center" style="font-size:12px">세부내역</div></th>
                 </tr></thead>
                 <tfoot>
                     <tr>
-                        <td><div class="tb-center"><%=order.getPay() %></div></td>
-                        <td><div class="tb-center"><%=order.getTotal() %></div></td>
+                        <td><div class="tb-center">무통장</div></td>
+                        <td><div class="tb-center">0원 (미입금)</div></td>
+                        <td><div class="tb-center">우리은행 1002-895-790115 (예금주:문선화) <span id="bankname_banker">이채영</span> 
+                                                                        </div></td>
                     </tr>
                 </tfoot>
             </table>
