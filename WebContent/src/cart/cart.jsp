@@ -1,6 +1,9 @@
 <%@page import="java.text.DecimalFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" import="java.util.*" import="java.net.*"%>
+	pageEncoding="UTF-8" import="java.util.*" import="java.net.*" 
+	import="hsoban.vo.*" import="hsoban.dao.*" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
 	request.setCharacterEncoding("UTF-8");
 	String path = request.getContextPath();
@@ -12,10 +15,35 @@
 <title>장바구니</title>
 <link rel="stylesheet" href="<%=path%>/css/common.css">
 <link rel="stylesheet" href="<%=path%>/css/cart.css">
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
 </head>
+	
 	<%
-	int[] prices = new int[]{10000, 20000, 30000, 40000};
+
+	// for number format
 	DecimalFormat df = new DecimalFormat("#,###");
+	
+	// TODO : session에서 가져올 것
+	int account_id = 100001;
+	
+	// 사용되는 DAO 객체 생성
+	Dao_Cart daoCart = new Dao_Cart();
+	Dao_WishList daoWishlist = new Dao_WishList();
+	Dao_Product daoProduct = new Dao_Product();
+	Dao_Stock daoStock = new Dao_Stock();
+	
+	// modifyNumber 클릭 시, cart update
+	String process = request.getParameter("process");
+	if (process == null) {
+		process = "";
+	}
+	
+	// cart list 불러오기
+	ArrayList<Cart> cartList = daoCart.getCartList(account_id);
+	
+	// wish list 불러오기
+	ArrayList<WishList> wishList = daoWishlist.getWishList(account_id);
+	
 	%>
 <body>
 	<jsp:include page="../common/header.jsp"/>
@@ -55,28 +83,42 @@
 						<th>취소</th>
 					</tr>
 					<%
-						for (int i = 0; i < 4; i++) {
+						// TODO : 불러온 목록 화면에 뿌리기
+						int total = 0;
+						for (int i = 0; i < cartList.size(); i++) {
+							Cart cart = cartList.get(i);								
+							
+							// # product_id를 토대로 상품 정보 불러오기
+							Product product = daoProduct.getProdList(cart.getProduct_id(), cart.getColor());
+
+							// total 계산
+							total += product.getPrice() * cart.getCount();
+							
 							%>
+							<% String id = "cartForm" + i; %>
 							<tr>
 								<td class="td_center"><%=i + 1%></td>
-								<td class="td_center"><img src="<%=path%>/img/cart/temp.jpg" class="thumbnail_m"></td>
+								<td class="td_center"><img src="<%=path%><%=product.getThumbnail() %>" class="thumbnail_m"></td>
 								<td class="td_left">
 									<div>
 										<div>
-											<a href="<%=path%>/src/shop/shop1_Bowl/Bowl1.jsp">국그릇</a>
+											<%-- TODO : 링크 경로 바꾸기 --%>
+											<a href="<%=path%>/src/shop/shop1_Bowl/Bowl1.jsp"><%=product.getName() %></a>
 										</div>
 										<div>
-											<span>[color: 그린(유광) 1개]</span>
-											<img src="<%=path%>/img/cart/option.gif" onclick="popUpModifyOption()">
+											<span>[color: <%=cart.getColor() %> <%=cart.getCount() %>개]</span>
+											<img src="<%=path%>/img/cart/option.gif" onclick="popUpModifyOption()" class="modifyOption">
 										</div>
 									</div>
 								</td>
 								<td class="td_center">
-									<% String name = "p" + i; %>
-									<input type="number" class="table_cart_number" value="1" name="<%=name%>">
+									<%-- TODO : name 쓰이는 곳 있는지? --%>
+									<% String name = "count" + i; %>
+									<c:set var="name" value="<%=name%>"/>
+									<input type="number" class="table_cart_number" value="<%=cart.getCount() %>" name="${name}">
 									<input type="button" value="수정" class="btn btn_black table_cart_number_modify">
 								</td>
-								<td class="td_center"><%=df.format(prices[i]) %>원</td>
+								<td class="td_center"><%=df.format(product.getPrice()) %>원</td>
 								<td class="td_center">
 									<span>[기본배송]<br>조건</span>
 								</td>
@@ -88,17 +130,13 @@
 										<input type="button" value="장바구니 삭제" class="btn btn_normal">
 									</span>
 								</td>
+							</tr>
+							
 							<%
 						}
 					%>
 				</tbody>
 				<tfoot>
-					<%
-						int total = 0;
-						for (int price : prices){
-							total += price;
-						}
-					%>
 					<tr>
 						<td colspan="7" class="td_right">
 							총 구매금액 : <%=df.format(total)%>원
@@ -141,25 +179,37 @@
 						<th>처리</th>
 					</tr>
 					<%
-						for (int i = 1; i <= 4; i++){
-							%>
-							<tr>
-								<td class="td_center"><img src="<%=path%>/img/cart/temp.jpg" class="thumbnail_m"></td>
-								<td class="td_left">국그릇</td>
-								<td class="td_center"><input type="number" class="table_cart_number" value="1"> 개</td>
-								<td class="td_center">있음</td>
-								<td class="td_center">123,456원</td>
-								<td class="td_center">
-									<span>
-										<input type="button" value="장바구니 담기" class="btn btn_thatch">
-									</span>
-									<span>
-										<input type="button" value="관심상품 삭제" class="btn btn_normal">
-									</span>
-								</td>
-							</tr>
-							<%
-						}
+					for (int i = 0; i < wishList.size(); i++){
+						WishList wish = wishList.get(i);
+						Product product = daoProduct.getProdList(wish.getProduct_id(), wish.getColor());
+						Stock stock = daoStock.getStock(wish.getProduct_id(), wish.getColor());
+						%>
+						<tr>
+							<td class="td_center"><img src="<%=path%><%=product.getThumbnail()%>" class="thumbnail_m"></td>
+							<td class="td_left">
+								<div><%=product.getName()%></div>
+								<div><span>[color:<%=wish.getColor()%>]</span></div>
+							</td>
+							<td class="td_center"><input type="number" class="table_cart_number" value="1"> 개</td>
+							<td class="td_center">
+								<c:set var="stock" value="<%=stock.getStock() %>" scope="page"/>
+								<c:choose>
+									<c:when test="${stock > 0}">있음</c:when>
+									<c:otherwise>없음</c:otherwise>
+								</c:choose>
+							</td> 
+							<td class="td_center"><%=df.format(product.getPrice()) %>원</td>
+							<td class="td_center">
+								<span>
+									<input type="button" value="장바구니 담기" class="btn btn_thatch">
+								</span>
+								<span>
+									<input type="button" value="관심상품 삭제" class="btn btn_normal">
+								</span>
+							</td>
+						</tr>
+						<%
+					}
 					%>
 				</tbody>
 			</table>
@@ -173,5 +223,7 @@
 		var option = "width=475, height=475, resizable=yes, scrollbars=yes, status=no";
 		window.open(url, "", option);
 	};
+	
+	
 </script>
 </html>
