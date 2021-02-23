@@ -135,7 +135,7 @@ public class Dao_OrderDetail extends Dao {
 			connect();
 			con.setAutoCommit(false);
 
-			String sql = "INSERT INTO ORDER_BY_DETAIL VALUES (?,?,TO_DATE(?,'YYYY-MM-DD'),?,?,?,?,?,?)";
+			String sql = "INSERT INTO ORDER_BY_DETAIL VALUES (?,?,TO_DATE(?,'YYYY-MM-DD HH24:MI:SS'),?,?,?,?,?,?)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, order.getOrder_id());
 			pstmt.setInt(2, order.getAccount_id());

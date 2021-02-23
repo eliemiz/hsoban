@@ -220,11 +220,24 @@ SELECT * FROM WISH_LIST wl;
 
 SELECT * FROM ORDERED;
 SELECT * FROM order_by_product;
-ALTER TABLE order_by_product RENAME COLUMN order_count TO "count";
+SELECT * FROM order_by_detail;
+
+SELECT * FROM product;
+SELECT * FROM account;
+
+SELECT * FROM product;
+
+INSERT INTO account VALUES (100001, '김회원', 'tempid', 'temppass', '2020-01-01', '남', 15535, '서울신림동', '강북로 15-1', 'temporary@naver.com', '010-1234-5678', '010-8765-4321', '0', '0', 'NORMAL');
+
+DELETE FROM account WHERE account_id = 100060;
+DROP TABLE order_by_detail;
+CREATE TABLE order_by_product AS SELECT order_id, product_id, color, order_count FROM ordered;
+CREATE TABLE order_by_detail AS SELECT order_id, account_id, ORDER_date, post, address, address2, order_message, pay, total FROM ordered;
+
 SELECT * FROM order_by_detail;
 
 SELECT * FROM product;
 
-DROP TABLE order_by_detail;
-CREATE TABLE order_by_product AS SELECT order_id, product_id, color, order_count FROM ordered;
-CREATE TABLE order_by_detail AS SELECT order_id, account_id, ORDER_date, post, address, address2, order_message, pay, total FROM ordered;
+SELECT order_id_seq.nextval FROM dual;
+
+SELECT * FROM ORDER_BY_PRODUCT obp ;

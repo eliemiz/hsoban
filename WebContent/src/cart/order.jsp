@@ -1,4 +1,4 @@
-<%@page import="hsoban.dao.Dao_Order"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="java.util.*" import="java.net.*" import="selection.*" 
@@ -27,37 +27,69 @@
 }
 </style>
 </head>
-	<%
-		// TODO : session에서 가져오기
-		int account_id = 100001;
+<%
 	
-		// Dao
-		Dao_Cart daoCart = new Dao_Cart();
-		Dao_Product daoProduct = new Dao_Product();
-		Dao_Order daoOrder = new Dao_Order();
+	// format
+	SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+	DecimalFormat df = new DecimalFormat("#,###");
 	
-		// cart list
-		ArrayList<Cart> cartList = daoCart.getCartList(account_id);
-		
-		// insert order
-		// int order_id, int account_id, int product_id, String color, int order_count, String order_date_s,
-		// int post, String address, String address2, String order_message, String pay, int total
-		ArrayList<Order> orderList = (ArrayList<Order>)request.getAttribute("orderList");
+	// TODO : session에서 가져오기
+	int account_id = 100001;
 
-		if (orderList != null){
-			for (Order order : orderList) {
-				daoOrder.insertOrder(order);
-			}	
+	// Dao
+	Dao_Cart daoCart = new Dao_Cart();
+	Dao_Product daoProduct = new Dao_Product();
+	Dao_OrderDetail daoOrderDetail = new Dao_OrderDetail();
+	Dao_OrderProduct daoOrderProduct = new Dao_OrderProduct();
+
+	// cart list
+	ArrayList<Cart> cartList = daoCart.getCartList(account_id);
+	
+	// INSERT OrderDetail
+	String proc = request.getParameter("proc");
+	
+	if (proc != null) {
+		if (proc.equals("order")){
+			int order_id = daoOrderDetail.getNextOrderId();
+			// int account_id = 현재 저장된 값 그대로 사용
+			Date now = new Date();
+			String order_date_s = sf.format(new Date());
+			String post = request.getParameter("post1") + request.getParameter("post2");
+			String address1 = request.getParameter("address1");
+			String address2 = request.getParameter("address2");
+			String order_message = request.getParameter("order_message");
+			if (order_message == null){
+				order_message = "";
+			}
+			String pay = request.getParameter("pay");
+			String total = request.getParameter("total");
+			
+			daoOrderDetail.insertOrderDetail(new OrderDetail(order_id, account_id, 
+					order_date_s, Integer.parseInt(post), address1, address2,
+					order_message, pay, Integer.parseInt(total)));
+			
+			String[] product_ids = request.getParameterValues("product_id");
+			String[] colors = request.getParameterValues("color");
+			String[] counts = request.getParameterValues("count");
+			
+			for (int idx = 0; idx < product_ids.length; idx++) {
+				daoOrderProduct.insertOrderProduct(new OrderProduct(order_id, 
+						Integer.parseInt(product_ids[idx]), colors[idx], Integer.parseInt(counts[idx])));
+				
+			}
+			
+			response.sendRedirect(path + "/src/mypage/mypage_myOrder.jsp");
 		}
+	}
 		
-		int tempPrice = 30000;
-		DecimalFormat df = new DecimalFormat("#,###");
 	%>
 	
 <body>
 	<jsp:include page="../common/header.jsp"/>
 	<jsp:include page="../common/side.jsp"/>
 	
+	<form id="formOrder">
+		<input type="button" value="주문 테스트"/>
 	<div class="content_wrap">
 		<div class="cart_title clear_fix">
 			주문/결제
@@ -86,6 +118,7 @@
 						<th>가격</th>
 					</tr>
 					<%
+						int sum = 0;
 						for (int i = 0; i < cartList.size(); i++) {
 							Cart cart = cartList.get(i);
 							Product product = daoProduct.getProdList(cart.getProduct_id(), cart.getColor());
@@ -95,6 +128,11 @@
 							<c:set var="color" value="<%=cart.getColor() %>"/>
 							<c:set var="count" value="<%=cart.getCount() %>"/>
 							<tr>
+								<td style="display:none;">
+									<input type="hidden" name="product_id" value="${product_id}">
+									<input type="hidden" name="color" value="${color}">
+									<input type="hidden" name="count" value="${count}">
+								</td>
 								<td class="td_center"><img src="<%=path%><%=product.getThumbnail()%>" class="thumbnail_s"></td>
 								<td class="td_left"><a href="<%=path%>/src/shop/shop1_Bowl/Bowl1.jsp"><%=product.getName() %></a></td>
 								<td class="td_center">${count}개</td>
@@ -104,6 +142,7 @@
 								<td colspan="4"><img src="<%=path%>/img/cart/cart_option.gif"> color: ${color} ${count}개</td>
 							</tr>		
 							<%
+							sum += product.getPrice() * cart.getCount();
 						}
 					%>
 				</tbody>
@@ -234,14 +273,14 @@
 						<th class="th_left">주소</th>
 						<td colspan="3">
 							<span>
-								<input type="text" class="w60" id="zipNo1">
+								<input type="text" class="w60" id="zipNo1" name="post1" readonly>
 								-
-								<input type="text" class="w60" id="zipNo2">
+								<input type="text" class="w60" id="zipNo2" name="post2" readonly>
 								<input type="button" value="우편번호" class="btn btn_normal" onclick="goPopup()">
 							</span>
 							<span>
-								<input type="text" class="w240" id="roadAddrPart1">
-								<input type="text" class="w240" id="addrDetail">
+								<input type="text" class="w240" id="roadAddrPart1" name="address1" readonly>
+								<input type="text" class="w240" id="addrDetail" name="address2">
 							</span>
 						</td>
 					</tr>
@@ -288,7 +327,7 @@
 						<th>결제 예정금액</th>
 					</tr>
 					<tr>
-						<td><span>242,000원</span></td>
+						<td><span><%=df.format(sum)%>원</span></td>
 						<td>
 							<img src="<%=path%>/img/cart/bul_h23_plus.png" class="fL">
 							<span>무료</span>
@@ -303,7 +342,7 @@
 						</td>
 						<td>
 							<img src="<%=path%>/img/cart/bul_h23_equal.png" class="fL">
-							<span class="c_red">242,000</span>원
+							<span class="c_red"><%=df.format(sum)%></span>원
 						</td>
 					</tr>
 				</tbody>
@@ -329,7 +368,7 @@
 						<td>
 							<label>
 								<span>
-									<input type="radio" name="pay"> 무통장 입금
+									<input type="radio" name="pay" value="무통장 입금" checked="checked"> 무통장 입금
 									<select>
 										<option>농협중앙회</option>
 										<option>국민은행</option>
@@ -338,9 +377,9 @@
 									</select>
 								</span>
 							</label>
-							<label><span><input type="radio" name="pay"> 신용카드</span></label>
-							<label><span><input type="radio" name="pay"> 실시간 계좌이체</span></label>
-							<label><span><input type="radio" name="pay"> 휴대폰 결제</span></label>
+							<label><span><input type="radio" name="pay" value="신용카드"> 신용카드</span></label>
+							<label><span><input type="radio" name="pay" value="실시간 계좌이체"> 실시간 계좌이체</span></label>
+							<label><span><input type="radio" name="pay" value="휴대폰 결제"> 휴대폰 결제</span></label>
 						</td>
 					</tr>
 					<tr>
@@ -430,19 +469,23 @@
 				</colgroup>
 				<tr>
 					<th class="final_title">최종 결제 금액</th>
-					<td class="final_content"><span class="c_red">242,000</span>원</td>
+					<td class="final_content"><span class="c_red"><%=df.format(sum)%></span>원</td>
 				</tr>
 			</table>
 		</div>
 		
 		<div class="cart_button_wrap">
-			<input type="button" class="btn btn_thatch" value="주문하기" onclick="orderSuccess()">
+			<input type="button" class="btn btn_thatch" value="주문하기" onclick="onOrder()">
 			<input type="button" class="btn btn_normal" value="주문취소" onclick="orderCancel()">
 		</div>
 	</div>
+	<input type="hidden" name="total" value="<%=sum%>"/>
+	<input type="hidden" name="proc"/>
+	</form>
 	<jsp:include page="../common/footer.jsp"/>
 </body>
 <script type="text/javascript">
+	
 	function goPopup(){
 		var pop = window.open("../common/jusoPopup.jsp", "pop", "width=570,height=420, scrollbars=yes, resizable=yes");
 	}
@@ -456,6 +499,7 @@
 		document.querySelector("#addrDetail").value = addrDetail;
 	}
 	
+	// not using
 	function orderSuccess(){
 		alert('주문에 성공했습니다.');
 		location.href='<%=path%>/src/main/main.jsp';
@@ -477,6 +521,31 @@
 		document.querySelector("#form3").style.display = "none";
 		var form = "#" + obj.value;
 		document.querySelector(form).style.display = "inline";
+	}
+	
+	function onOrder(){
+		if ($("[name=post1]").val() == "") {
+			alert("우편번호를 입력해주세요.");
+			return false;
+		}
+		
+		if ($("[name=post2]").val() == "") {
+			alert("우편번호를 입력해주세요.");
+			return false;
+		}
+		
+		if ($("[name=address1]").val() == "") {
+			alert("주소를 입력해주세요.");
+			return false;
+		}
+		
+		if ($("[name=address2]").val() == "") {
+			alert("상세주소를 입력해주세요.");
+			return false;
+		}
+		
+		$("[name=proc]").val("order");
+		$("#formOrder").submit();
 	}
 </script>
 </html>

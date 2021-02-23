@@ -110,6 +110,10 @@ input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-o
 	padding: 0px 10px;
 }
 
+.table_order [name=post1], .table_order [name=post2], .table_order [name=address1] {
+	background-color: #efefef;
+}
+
 .table_order.table_order_payment tbody th {
 	font-size: 14px;
 	padding: 15px;
@@ -142,3 +146,4 @@ textarea[name=order_message]{
 	width: 500px;
 	height: 100px;
 }
+
