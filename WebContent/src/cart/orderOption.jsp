@@ -1,6 +1,9 @@
 <%@page import="java.text.DecimalFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" import="java.util.*" import="java.net.*" %>
+	pageEncoding="UTF-8" import="java.util.*" import="java.net.*"
+	import="hsoban.vo.*" import="hsoban.dao.*" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
 	request.setCharacterEncoding("UTF-8");
 	String path = request.getContextPath();
@@ -13,9 +16,7 @@
 <link rel="stylesheet" href="<%=path%>/css/common.css">
 <link rel="stylesheet" href="<%=path%>/css/cart.css">
 <link rel="stylesheet" href="<%=path%>/css/cartOption.css">
-<style type="text/css">
-
-</style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
 </head>
 <body>
 	<div class="modify_option_wrap">
@@ -77,8 +78,14 @@
 			<form>
 				<input type="button" value="변경하기" class="btn btn_option btn_modify" onclick="window.close()">
 				<input type="button" value="취소" class="btn btn_option btn_cancel" onclick="window.close()">
+				<input type="button" onclick="test()">
 			</form>
 		</div>
 	</div>
 </body>
+<script type="text/javascript">
+	function test(){
+		opener.location.href="https://www.naver.com";
+	}
+</script>
 </html>

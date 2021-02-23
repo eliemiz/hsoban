@@ -10,12 +10,28 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="<%=path%>/css/common.css">
-<style>
+<style type="text/css">
+#cartList tr:first-child:hover {
+	cursor: auto;
+}
+
+#cartList tr:hover {
+	background-color: #f7f7f7;
+	cursor: pointer;
+}
+
+#cartList tr:active {
+	background-color: #f0f0f0;
+}
 
 </style>
 </head>
 	<%
 		// 변수 선언
+		String qna_id = request.getParameter("qna_id");
+		if (qna_id == null || qna_id.trim().equals("")){
+			qna_id = "";
+		}
 		String product_id = request.getParameter("product_id");
 		if (product_id == null || product_id.trim().equals("")){
 			product_id = "";
@@ -39,13 +55,14 @@
 			</tr>
 			<tr>
 				<td colspan="2"><input type="button" value="검색" id="searchButton" class="btn btn_thatch">
+			    <input type="button" value="새 데이터 입력" id="insertButton" class="btn btn_black" onclick="location.href='qna_insert.jsp'">
 			</td>
 		</table>
 	</form>
 	<table id="qnaList">
 		<tr>
+		    <th>qna_id</th>
 			<th>product_id</th>
-			<th>qna_id</th>
 			<th>color</th>
 			<th>title</th>
 			<th>content</th>
@@ -59,14 +76,14 @@
 		<%
 		for (Qna qna : qlist){
 		%>		
-		<tr onclick="callDetail(<%=qna.getProduct_id() %>)">				
-			<td><%=qna.getProduct_id() %></td>
+		<tr onclick="callDetail(<%=qna.getQna_id() %>)">				
 			<td><%=qna.getQna_id() %></td>
+			<td><%=qna.getProduct_id() %></td>
 			<td><%=qna.getColor() %></td>
 			<td><%=qna.getTitle() %></td>
 			<td><%=qna.getContent() %></td>
 			<td><%=qna.getAccount_id() %></td>
-			<td><%=qna.getPosting_date_s() %></td>
+			<td><%=qna.getPosting_date() %></td>
 			<td><%=qna.getViews() %></td>
 			<td><%=qna.getAttach() %></td>
 			<td><%=qna.getPrev_id() %></td>
@@ -80,7 +97,7 @@
 <script type="text/javascript">
 	var searchButton = document.querySelector('#searchButton');
 	searchButton.onclick = function() {
-		var qna_id = document.querySelector('[name=product_id]');
+		var product_id = document.querySelector('[name=product_id]');
 		// 유효성 체크
 		if (isNaN(product_id.value)){
 			alert('숫자를 입력해주세요.');
@@ -90,11 +107,9 @@
 		document.querySelector('#qnaForm').submit();
 	}
 
-	function callDetail(){
+	function callDetail(qna_id){
 		var url = "qna_detail.jsp?";
-		url += "product_id=" + arguments[0];
-		url += "&qna_id=" + arguments[1];
-		url += "&title=" + arguments[2];		
+		url += "qna_id=" + qna_id;	
 		location.href = url;
 	}
 	

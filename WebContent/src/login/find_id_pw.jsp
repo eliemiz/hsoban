@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.*" import="java.net.*"%>
+    pageEncoding="UTF-8" import="java.util.*" import="java.net.*"
+    import="hsoban.vo.*" import="hsoban.dao.*" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
    request.setCharacterEncoding("UTF-8");
    String path = request.getContextPath();
@@ -11,6 +14,21 @@
 <title>아이디/비밀번호 찾기</title>
 <link rel="stylesheet" href="<%=path%>/css/login.css">
 </head>
+<%
+	String id = request.getParameter("id");
+	String pass = request.getParameter("pass");
+	String name = request.getParameter("name");
+	String email = request.getParameter("email");
+	String phone = request.getParameter("phone");
+		
+	if (id == null) id = "";
+	if (pass == null) pass = "";
+	if (name == null) name = "";
+	if (email == null) email = "";
+	if (phone == null) phone = "";
+	
+	Dao_Account dao = new Dao_Account();
+%>
 <style>
 body {
    text-align: center;
@@ -57,8 +75,8 @@ div {
    </div><br>
    <form id="form1">
       <table border>
-         <tr><th class="th_center">이&nbsp;름</th><td class="td_left"><input type="text" name="username"></td></tr>
-         <tr><th class="th_center">이메일</th><td class="td_left"><input type="text" name="mail" ></td></tr></table><br>
+         <tr><th class="th_center">이&nbsp;름</th><td class="td_left"><input type="text" name="username" value="<%=name%>"></td></tr>
+         <tr><th class="th_center">이메일</th><td class="td_left"><input type="text" name="mail" value="<%=email%>" ></td></tr></table><br>
          <div style="text-align:center;"><a href="find_id_fin.jsp"><span>
          <input type="button" class="btn btn_color" value="아이디찾기" style="height:30px; width:160px;"></span></a>
          <a href="login.jsp"><span>
@@ -66,8 +84,8 @@ div {
    </form>
    <form id="form2">
       <table border>
-         <tr><th class="th_center">이&nbsp;름</th><td class="td_left"><input type="text" name="username"></td></tr>
-         <tr><th class="th_center">휴대폰 번호</th><td class="td_left"><input type="text" name="phone" ></td></tr></table><br>
+         <tr><th class="th_center">이&nbsp;름</th><td class="td_left"><input type="text" name="username" value="<%=name%>"></td></tr>
+         <tr><th class="th_center">휴대폰 번호</th><td class="td_left"><input type="text" name="phone" value="<%=phone%>"></td></tr></table><br>
          <div style="text-align:center;"><a href="find_id_fin.jsp"><span>
          <input type="button" class="btn btn_color" value="아이디찾기" style="height:30px; width:160px;"></span></a>
          <a href="login.jsp"><span>

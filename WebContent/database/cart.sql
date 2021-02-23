@@ -110,3 +110,134 @@ CREATE TABLE CART (
 
 UPDATE cart SET count = 3
 	WHERE account_id = 100200 AND product_id = 100022 AND color = '블랙';
+SELECT * FROM cart;
+
+SELECT * FROM product;
+INSERT INTO product VALUES  (101013, 'red', '국그릇', 'bowl', '적당히 큼', 1000000, 'json으로 설명 달 예정', '그림.그림');
+
+SELECT * FROM review;
+
+SELECT * FROM cart;
+
+-----------------------------------------------------------
+
+CREATE TABLE "HSOBAN"."CART" (
+	"ACCOUNT_ID" NUMBER, 
+	"PRODUCT_ID" NUMBER, 
+	"COLOR" VARCHAR2(50), 
+	"COUNT" NUMBER, 
+ 	CONSTRAINT "CART_PK" PRIMARY KEY ("ACCOUNT_ID", "PRODUCT_ID", "COLOR")
+);
+
+INSERT INTO HSOBAN.CART VALUES(100012, 100111, '그린(유광)', 2);
+INSERT INTO HSOBAN.CART VALUES(100012, 100112, '블랙', 3);
+INSERT INTO HSOBAN.CART VALUES(100013, 100111, '블랙', 1);
+INSERT INTO HSOBAN.CART VALUES(100013, 100113, '그린(유광)', 5);
+INSERT INTO HSOBAN.CART VALUES(100200, 100022, '블랙', 10);
+INSERT INTO HSOBAN.CART VALUES(100012, 100101, '블랙(유광)', 10);
+INSERT INTO HSOBAN.CART VALUES(100012, 123123, '블랙', 2);
+
+SELECT * FROM HSOBAN.CART;
+
+SELECT * FROM HSOBAN.CART
+	WHERE ACCOUNT_ID=100012 AND PRODUCT_ID=100111 AND COLOR='그린(유광)';
+
+-----------------------------------------------------------
+
+INSERT INTO HSOBAN.CART VALUES (100012, 100101, '블랙(유광)', 2);
+
+UPDATE HSOBAN.CART SET
+	COUNT = 5
+	WHERE ACCOUNT_ID=100012 AND PRODUCT_ID=100111 AND COLOR='그린(유광)';
+	
+DELETE FROM HSOBAN.CART
+	WHERE ACCOUNT_ID=100012 AND PRODUCT_ID=100101 AND COLOR='블랙(유광)';
+	
+SELECT * FROM WISH_LIST;
+
+CREATE TABLE "HSOBAN"."WISH_LIST" (
+	"ACCOUNT_ID" NUMBER, 
+	"PRODUCT_ID" NUMBER, 
+	"COLOR" VARCHAR2(50), 
+	CONSTRAINT "WISH_LIST_PK" PRIMARY KEY ("ACCOUNT_ID", "PRODUCT_ID", "COLOR")
+);
+	 
+INSERT INTO HSOBAN.WISH_LIST VALUES(100012, 100303, '분홍');
+INSERT INTO HSOBAN.WISH_LIST VALUES(100013, 100111, '베이지');
+INSERT INTO HSOBAN.WISH_LIST VALUES(100013, 100134, '블루');
+INSERT INTO HSOBAN.WISH_LIST VALUES(100014, 100154, '블랙');
+INSERT INTO HSOBAN.WISH_LIST VALUES(123456, 123456, '시뻘건색');
+
+SELECT * FROM HSOBAN.WISH_LIST;
+
+SELECT * FROM HSOBAN.WISH_LIST
+	WHERE ACCOUNT_ID=100013 AND PRODUCT_ID=100111 AND COLOR='베이지';
+ 
+
+
+INSERT INTO HSOBAN.WISH_LIST VALUES(123456, 123456, '시뻘건색');
+
+DELETE FROM HSOBAN.WISH_LIST
+	WHERE ACCOUNT_ID=123456 AND PRODUCT_ID=123456 AND COLOR='시뻘건색';
+
+SELECT * FROM HSOBAN.WISH_LIST;
+	
+SELECT * FROM cart ORDER BY account_id;
+
+INSERT INTO cart VALUES (100001, 100001, '블랙', 2);
+INSERT INTO cart VALUES (100001, 100001, '그린(유광)', 1);
+INSERT INTO cart VALUES (100001, 100002, '블랙', 1);
+INSERT INTO cart VALUES (100001, 100003, '블랙', 1);
+
+SELECT * FROM product ORDER BY product_id, color;
+SELECT * FROM account;
+UPDATE product SET thumbnail = '/img/shop/Bowl1_00.jpg';
+100001	100002	블랙
+100001	100002	그린
+100001	100003	베이지;
+SELECT * FROM WISH_LIST;
+SELECT * FROM product;
+SELECT * FROM stock;
+
+
+insert into stock values (100000,	'그린'  ,10) ;
+insert into stock values (100000,	'블랙'  ,10) ;
+insert into stock values (100001,	'그린'  ,10) ;
+insert into stock values (100002,	'그린'  ,10) ;
+insert into stock values (100002,	'블랙'  ,10) ;
+insert into stock values (100002,	'블루'  ,10) ;
+insert into stock values (100003,	'베이지',10) ;
+INSERT INTO stock VALUES SELECT product_id, color, 10 FROM product;
+INSERT INTO stock VALUES WHERE (SELECT product_id, color, 10 FROM product WHERE  product_);
+
+
+INSERT INTO product VALUES (100000, '그린', '국그릇', 'BOWL', 'SIZE수정 필요', 32000, 'DESCRIPTION 수정 필요', '/shop/Bowl1_00.jpg');
+INSERT INTO product VALUES (product_id_seq.nextval, '그린', '국그릇', 'BOWL', 'SIZE수정 필요', 32000, 'DESCRIPTION 수정 필요', '/shop/Bowl1_00.jpg');
+INSERT INTO product VALUES (product_id_seq.nextval, '블랙', '두부볼', 'BOWL', 'SIZE수정 필요', 32000, 'DESCRIPTION 수정 필요', '/shop/Bowl1_00.jpg');
+
+SELECT * FROM cart;
+SELECT * FROM WISH_LIST wl;
+
+SELECT * FROM ORDERED;
+SELECT * FROM order_by_product;
+SELECT * FROM order_by_detail;
+
+SELECT * FROM product;
+SELECT * FROM account;
+
+SELECT * FROM product;
+
+INSERT INTO account VALUES (100001, '김회원', 'tempid', 'temppass', '2020-01-01', '남', 15535, '서울신림동', '강북로 15-1', 'temporary@naver.com', '010-1234-5678', '010-8765-4321', '0', '0', 'NORMAL');
+
+DELETE FROM account WHERE account_id = 100060;
+DROP TABLE order_by_detail;
+CREATE TABLE order_by_product AS SELECT order_id, product_id, color, order_count FROM ordered;
+CREATE TABLE order_by_detail AS SELECT order_id, account_id, ORDER_date, post, address, address2, order_message, pay, total FROM ordered;
+
+SELECT * FROM order_by_detail;
+
+SELECT * FROM product;
+
+SELECT order_id_seq.nextval FROM dual;
+
+SELECT * FROM ORDER_BY_PRODUCT obp ;

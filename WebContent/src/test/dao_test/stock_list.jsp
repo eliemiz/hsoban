@@ -15,6 +15,7 @@ String path = request.getContextPath();
 <link rel="stylesheet" href="<%=path%>/css/common.css">
 <style type="text/css">
 	tr:hover{background-color:yellow;}
+	td{text-align:center;}
 </style>
 </head>
 <%

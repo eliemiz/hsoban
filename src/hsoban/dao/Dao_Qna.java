@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import hsoban.vo.Qna;
 
 
+
 /*
  CREATE TABLE QNA (
    QNA_ID NUMBER,
@@ -26,20 +27,46 @@ public class Dao_Qna extends Dao {
 	public ArrayList<Qna> getQnaList() {
 
 		ArrayList<Qna> qlist = new ArrayList<Qna>();
+		
+		try {
+			connect();
+
+			String sql = "SELECT * FROM QNA ORDER BY QNA_ID";
+			pstmt = con.prepareStatement(sql);
+
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				Qna qna = new Qna(rs.getInt("QNA_ID"), rs.getInt("PRODUCT_ID"), 
+						   rs.getString("COLOR"), rs.getString("TITLE"), rs.getString("CONTENT"),
+						   rs.getInt("ACCOUNT_ID"), rs.getDate("POSTING_DATE"), rs.getInt("VIEWS"),  
+						   rs.getString("ATTACH"),  rs.getInt("PREV_ID"), rs.getInt("NEXT_ID"));
+				qlist.add(qna);
+			}
+
+			rs.close();
+			pstmt.close();
+			con.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 
 		return qlist;
 	}
 //조회(조건, 리스트)- product_id	
 	public ArrayList<Qna> getQnaList(int product_id) {
-
 		ArrayList<Qna> qlist = new ArrayList<Qna>();
 		
 		try {
 			connect();
 			
-			String sql = "SELECT * FROM QNA";
+			String sql = "SELECT * FROM QNA WHERE PRODUCT_ID = ? ORDER BY QNA_ID";
 			pstmt = con.prepareStatement(sql);
-			
+			pstmt.setInt(1, product_id);
 			rs = pstmt.executeQuery();	
 			
 			while (rs.next()) {
@@ -72,7 +99,6 @@ public class Dao_Qna extends Dao {
 				String sql = "SELECT * FROM QNA WHERE QNA_ID = ?";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, qna_id);
-
 				rs = pstmt.executeQuery();	
 				
 				if (rs.next()) {
@@ -169,9 +195,7 @@ public class Dao_Qna extends Dao {
 	            		+ "		COLOR = ?,\r\n"
 	            		+ "		TITLE = ?,\r\n"
 	            		+ "		CONTENT = ?,\r\n"
-	            		+ "		ATTACH = ?,\r\n"
-	            		+ "		PREV_ID = ?,\r\n"
-	            		+ "		NEXT_ID = ?\r\n"
+	            		+ "		ATTACH = ?\r\n"
 	            		+ "WHERE QNA_ID = ? ";
 	            pstmt = con.prepareStatement(sql);
 	            pstmt.setInt(1, qna.getProduct_id());
@@ -179,9 +203,7 @@ public class Dao_Qna extends Dao {
 	            pstmt.setString(3, qna.getTitle());
 	            pstmt.setString(4, qna.getContent());
 	            pstmt.setString(5, qna.getAttach());
-	            pstmt.setInt(6, qna.getPrev_id());
-	            pstmt.setInt(7, qna.getNext_id());
-	            pstmt.setInt(8, qna.getQna_id());
+	            pstmt.setInt(6, qna.getQna_id());
 	            pstmt.executeUpdate();
 	            con.commit();
 
@@ -245,8 +267,8 @@ public class Dao_Qna extends Dao {
 		//dao.deleteQna(1);
 		//dao.updateQna(new Qna(0, 1000100, "진그레이", "재입고문의.", "다음 달에 입고예정입니다.", 100012,
 		//		   "2021-02-08", 13, null, 1, 0));   
-		dao.updateQna(new Qna(0, 1000100, "진그레이", "재입고문의.", "다음 달에 입고예정입니다.", 100012,
-				   "2021-02-08", 13, null, 1, 0));   
+		//dao.updateQna(new Qna(0, 1000100, "진그레이", "재입고문의.", "다음 달에 입고예정입니다.", 100012,
+		//		   "2021-02-08", 13, null, 1, 0));   
 	}
 
 }

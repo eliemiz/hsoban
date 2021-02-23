@@ -14,22 +14,18 @@
 	<%
 	
 	// 변수 선언
-		String qna_id = request.getParameter("qna_id");
 		String product_id = request.getParameter("product_id");
 		String color = request.getParameter("color");
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
 		String account_id = request.getParameter("account_id");
-		String posting_date = request.getParameter("posting_date");
+		String posting_date_s = request.getParameter("posting_date_s");
 		String views = request.getParameter("views");
 		String attach = request.getParameter("attach");
 		String prev_id = request.getParameter("prev_id");
 		String next_id = request.getParameter("next_id");
 	
 	// validate
-	if (qna_id == null || qna_id.trim().equals("")) {
-		qna_id = "0";
-	}
 	if (product_id == null || product_id.trim().equals("")) {
 		product_id = "0";
 	}
@@ -45,8 +41,8 @@
 	if (account_id == null || account_id.trim().equals("")) {
 		account_id = "0";
 	}
-	if (posting_date == null) {
-		posting_date = "";
+	if (posting_date_s == null) {
+		posting_date_s = "";
 	}
 	if (views == null || views.trim().equals("")) {
 		views = "0";
@@ -62,10 +58,9 @@
 	}
 	
 	// insert
-	if (qna_id != "0"){
-		Qna qna = new Qna(Integer.parseInt(qna_id), Integer.parseInt(product_id), color,
-				   title, content, Integer.parseInt(account_id), posting_date, Integer.parseInt(views), attach,
-				   Integer.parseInt(prev_id), Integer.parseInt(next_id));
+	if (product_id != "0"){
+		Qna qna = new Qna(Integer.parseInt(product_id), color, title, content, Integer.parseInt(account_id), posting_date_s, 
+				Integer.parseInt(views), attach, Integer.parseInt(prev_id), Integer.parseInt(next_id));
 		
 		Dao_Qna dao = new Dao_Qna();
 		dao.insertQna(qna);		
@@ -77,10 +72,7 @@
 <body>
 	<form method="post" id="qnaForm">
  <table>
-		<tr>
-			<th>qna_id</th>
-			<td><input type="text" name="qna_id"></td>
-		</tr>	
+		
 		<tr>
 			<th>product_id</th>
 			<td><input type="text" name="product_id"></td>
@@ -102,8 +94,8 @@
 			<td><input type="text" name="account_id"></td>
 		</tr>	
 		<tr>	
-			<th>posting_date</th>
-			<td><input type="text" name="posting_date_s"></td>
+			<th>posting_date_s</th>
+			<td><input type="text" name="posting_date_s"  placeholder="YYYY-MM-DD"></td>
 		</tr>	
 		<tr>	
 			<th>views</th>
@@ -133,7 +125,6 @@
 	var insertButton = document.querySelector('#insertButton');
 	insertButton.onclick = function() {
 		var qnaForm = document.querySelector('#qnaForm');
-		var qna_id = document.querySelector('[name=qna_id]');
 		var product_id = document.querySelector('[name=product_id]');
 		var color = document.querySelector('[name=color]');
 		var title = document.querySelector('[name=title]');
@@ -145,7 +136,7 @@
 		var prev_id = document.querySelector('[name=prev_id]');
 		var next_id = document.querySelector('[name=next_id]');
 		// 유효성 체크
-		if (isNaN(qna_id.value) || isNaN(product_id.value) || isNaN(account_id.value) || 
+		if (isNaN(product_id.value) || isNaN(account_id.value) || 
 				isNaN(views.value) || isNaN(prev_id.value) || isNaN(next_id.value)){
 			alert('숫자를 입력하세요');
 			return false;

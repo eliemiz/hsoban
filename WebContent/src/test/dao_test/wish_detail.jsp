@@ -11,6 +11,13 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="<%=path%>/css/common.css">
+<style type="text/css">
+body {
+	width: 90%;
+	margin: auto;
+	padding-top: 50px;
+}
+</style>
 </head>
 	<%
 		// 변수 선언 for 페이지 로드

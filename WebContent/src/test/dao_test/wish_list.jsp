@@ -25,6 +25,11 @@
 	background-color: #f0f0f0;
 }
 
+body {
+	width: 90%;
+	margin: auto;
+	padding-top: 50px;
+}
 </style>
 </head>
 

@@ -51,7 +51,7 @@
 		<tr><th>Product_ID</th><td><input type="text" name="product_id" value="<%=st.getProduct_id()%>"/></td></tr>
 		<tr><th>Color</th><td><input type="text" name="color" value="<%=st.getColor()%>"/></td></tr>
 		<tr><th>Stock</th><td><input type="text" name="stock" value="<%=st.getStock()%>"/></td></tr>
-		<tr><td colspan="2">
+		<tr><td align="center" colspan="2">
 				<input type="submit" value="수정" id="updateButton"/>
 				<input type="button" value="리스트로 이동" onclick="location.href='stock_list.jsp'"/>
 	</table>

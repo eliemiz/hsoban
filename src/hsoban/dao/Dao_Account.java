@@ -37,7 +37,7 @@ public class Dao_Account extends Dao {
 	}
 	// 조회(조건-단일) - 회원번호
 	public Account getAccount(int account_id){
-		Account account = new Account();
+		Account account = null;
 		try {
 			connect();
 			String sql = "SELECT * FROM account WHERE account_id = ?";
@@ -64,7 +64,7 @@ public class Dao_Account extends Dao {
 	}
 	// 조회(조건-단일) - 아이디, 비밀번호
 	public Account getAccount(String id, String pass){
-		Account account = new Account();
+		Account account = null;
 		try {
 			connect();
 			String sql = "SELECT * FROM account WHERE id=? AND pass=?";
@@ -124,7 +124,7 @@ public class Dao_Account extends Dao {
 		Account account = null;
 		try {
 			connect();
-			String sql = "SELECT * FROM account WHERE account_id=? AND pass=?";
+			String sql = "SELECT * FROM account WHERE name=? AND phone=?";
 			System.out.println(sql);
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, name);
@@ -211,7 +211,7 @@ public class Dao_Account extends Dao {
 					+ "WHERE account_id = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, account.getName());
-			pstmt.setString(2, account.getId());
+			pstmt.setString(2, account.getPass());
 			pstmt.setString(3, account.getGender());
 			pstmt.setInt(4, account.getPost());
 			pstmt.setString(5, account.getAddress());
@@ -222,7 +222,6 @@ public class Dao_Account extends Dao {
 			pstmt.setBoolean(10, account.isMail_recv());
 			pstmt.setBoolean(11, account.isSms_recv());
 			pstmt.setInt(12, account.getAccount_id());
-			
 			pstmt.executeQuery();
 			con.commit();
 			pstmt.close();

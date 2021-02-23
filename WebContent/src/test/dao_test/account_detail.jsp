@@ -16,6 +16,11 @@
 	String account_id = request.getParameter("account_id");
 	if (account_id == null || account_id.trim().equals("")){
 		account_id = "0";}
+	
+	
+	Dao_Account dao = new Dao_Account();
+	Account account = dao.getAccount(Integer.parseInt(account_id));
+	
 	String name = request.getParameter("name");
 	if (name == null) {name = "";}
 	String id = request.getParameter("id");
@@ -44,16 +49,20 @@
 	String sms_recv = request.getParameter("ms_recv");
 	if (sms_recv == null) {sms_recv = "";}
 	String auth = request.getParameter("auth");
-	if (auth  == null) {auth  = "";}
+	if (auth  == null) {auth  = "";} 
 	
-	Dao_Account dao = new Dao_Account();
-	Account account = new Account(Integer.parseInt(account_id), name, id, pass,
-			birthday_s, gender, Integer.parseInt(post), address,
-			address2, email, phone, phone2, Boolean.parseBoolean(mail_recv),
-			Boolean.parseBoolean(sms_recv), auth);
 	String proc = request.getParameter("proc");
 	if (proc == null) {
 		proc = "";
+	}
+	if (proc.equals("update")){
+		
+		Account newAccount = new Account(Integer.parseInt(account_id), name, id, pass, 
+				birthday_s, gender, Integer.parseInt(post), address, address2, email, phone,
+				phone2, Boolean.parseBoolean(mail_recv), Boolean.parseBoolean(sms_recv), auth);
+		
+		dao.updateAccount(newAccount);
+		response.sendRedirect("account_list.jsp");
 	}
 	if (proc.equals("delete")) {
 		dao.deleteAccount(Integer.parseInt(account_id));
@@ -70,7 +79,7 @@
 			</tr>
 			<tr>
 				<th>name</th>
-				<td><input type="text" name="name" value="<%=account.getName()%>" disabled></td>
+				<td><input type="text" name="name" value="<%=account.getName()%>"></td>
 			</tr>
 			<tr>
 				<th>id</th>
@@ -78,7 +87,7 @@
 			</tr>
 			<tr>
 				<th>pass</th>
-				<td><input type="text" name="pass" value="<%=account.getPass()%>" disabled></td>
+				<td><input type="text" name="pass" value="<%=account.getPass()%>"></td>
 			</tr>
 			<tr>
 				<th>birthday</th>
@@ -86,39 +95,39 @@
 			</tr>
 			<tr>
 				<th>gender</th>
-				<td><input type="text" name="gender" value="<%=account.getGender()%>" disabled></td>
+				<td><input type="text" name="gender" value="<%=account.getGender()%>"></td>
 			</tr>
 			<tr>
 				<th>post</th>
-				<td><input type="text" name=post" value="<%=account.getPost()%>" disabled></td>
+				<td><input type="text" name="post" value="<%=account.getPost()%>"></td>
 			</tr>
 			<tr>
 				<th>address</th>
-				<td><input type="text" name="address" value="<%=account.getAddress()%>" disabled></td>
+				<td><input type="text" name="address" value="<%=account.getAddress()%>"></td>
 			</tr>
 			<tr>
 				<th>address2</th>
-				<td><input type="text" name="address2" value="<%=account.getAddress2()%>" disabled></td>
+				<td><input type="text" name="address2" value="<%=account.getAddress2()%>"></td>
 			</tr>
 			<tr>
 				<th>email</th>
-				<td><input type="text" name="email" value="<%=account.getEmail()%>" disabled></td>
+				<td><input type="text" name="email" value="<%=account.getEmail()%>"></td>
 			</tr>
 			<tr>
 				<th>phone</th>
-				<td><input type="text" name="phone" value="<%=account.getPhone()%>" disabled></td>
+				<td><input type="text" name="phone" value="<%=account.getPhone()%>"></td>
 			</tr>
 			<tr>
 				<th>phone2</th>
-				<td><input type="text" name="phone2" value="<%=account.getPhone2()%>" disabled></td>
+				<td><input type="text" name="phone2" value="<%=account.getPhone2()%>"></td>
 			</tr>
 			<tr>
 				<th>mail_recv</th>
-				<td><input type="text" name="mail_recv" value="<%=account.isMail_recv()%>" disabled></td>
+				<td><input type="text" name="mail_recv" value="<%=account.isMail_recv()%>"></td>
 			</tr>
 			<tr>
 				<th>sms_recv</th>
-				<td><input type="text" name="sms_recv" value="<%=account.isSms_recv()%>" disabled></td>
+				<td><input type="text" name="sms_recv" value="<%=account.isSms_recv()%>"></td>
 			</tr>
 			<tr>
 				<th>auth</th>
@@ -126,8 +135,8 @@
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input type="submit" value="수정" id="updateButton" disabled>
-					<input type="submit" value="삭제" id="deleteButton">
+					<input type="button" value="수정" id="updateButton">
+					<input type="button" value="삭제" id="deleteButton">
 					<input type="button" value="리스트 이동" onclick="location.href='account_list.jsp'">
 				</td>
 			</tr>
@@ -137,7 +146,20 @@
 <script type="text/javascript">
 var accountForm = document.querySelector('#accountForm');
 var proc = document.querySelector('[name=proc]');
+var updateButton = document.querySelector('#updateButton');
 var deleteButton = document.querySelector('#deleteButton');
+var post = document.querySelector('[name=post]');
+
+	 updateButton.onclick = function(){
+		
+  	    if(isNaN(post.value)){
+ 	      alert('숫자를 입력하세요(post)');
+ 		  return false;
+  	    }
+  	    proc.value = 'update';
+	 	accountForm.submit();
+	 }
+	 
 	deleteButton.onclick = function() {
 		proc.value = 'delete';
 		if(confirm('정말 삭제하시겠습니까?')){

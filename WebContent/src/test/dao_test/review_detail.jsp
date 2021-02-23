@@ -30,7 +30,7 @@
 	   }
 	   String color = request.getParameter("color");
 	   if(color==null){
-			   color="";
+		  color="";
 	   }
 	   String title = request.getParameter("title");
 	   if(title==null){
@@ -50,8 +50,9 @@
 	   }
 	   
 	   if(process.equals("update")){
-		      // update
-		      Review newReview = new Review(Integer.parseInt(product_id), color, title, content, attach);
+		      // update  
+		      Review newReview = new Review(Integer.parseInt(review_id), Integer.parseInt(product_id), color, title, content, 
+		    		  review.getAccount_id(), review.getPosting_date_s(), review.getViews(), attach);
 		     
 		      dao.updateReview(newReview);
 		    
