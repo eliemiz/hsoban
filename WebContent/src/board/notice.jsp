@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"
     import="java.util.*"
     import="java.net.*"
+    import="hsoban.dao.*" import="hsoban.vo.*"
     %>
 <% request.setCharacterEncoding("UTF-8");
    String path = request.getContextPath();
@@ -17,6 +18,46 @@
 <style>
 </style>
 </head>
+<%
+	// ### 데이터를 조회하기 위한 변수
+   String notice_id = request.getParameter("notice_id");
+   
+   if(notice_id==null || notice_id.trim().equals("")){
+      notice_id="0";
+   }
+   
+   Dao_Notice dao = new Dao_Notice();
+	Notice notice = dao.getNotice(Integer.parseInt(notice_id));
+               
+	// # update
+   String title = request.getParameter("title");
+   if(title==null){
+      title="";
+   }
+   String content = request.getParameter("content");
+   if(content==null){
+      content="";
+   }
+   // process 수정/삭제 여부를 결정하는 변수
+   String process = request.getParameter("process");
+   if(process==null){
+      process="";
+   }
+
+   if(process.equals("update")){
+      // update
+      Notice newNotice = new Notice(Integer.parseInt(notice_id), title, content, notice.getAccount_id(),
+            notice.getPosting_date_s(), notice.getViews());
+     
+      dao.updateNotice(newNotice);
+    
+      response.sendRedirect("notice_board.jsp");
+   } else if(process.equals("delete")){
+      // delete
+      dao.deleteNotice(Integer.parseInt(notice_id));
+      response.sendRedirect("notice_board.jsp");
+   }
+%>
 <body>
 	<jsp:include page="../common/header.jsp"/>
 	<jsp:include page="../common/side.jsp"/>
@@ -27,13 +68,15 @@
 	<br><br><br>
 	<div id="content" class="content_wrap">
                   <div class="bbs-table-view">
+                  <form method="post" id="noticeForm">
+                  <input type="hidden" name="process" value="">
                       <table>
                           <thead>
                               <tr>
                                   <th class="td_left">
                                   <div class="cont-sub-des">
                                       <div>
-                                          <span><em>제목</em>화소반 고객 감사 이벤트</span>
+                                          <span><em>제목</em><input type="text" name="title" value="<%=notice.getTitle() %>"></span>
                                       </div>
                                   </div>
                               </tr>
@@ -52,18 +95,17 @@
                                   <td class="td_left">
                                       <div class="cont-sub-des">
                                           <div>
-                                               <span><em>작성일</em>2020/02/03</span>
+                                               <span><em>작성일</em><input type="text" name="title" value="<%=notice.getPosting_date()%>"disabled></span>
                                                <span><em>첨부파일</em>event.jpg</span>
-                                               <span><em>조회수</em> 130</span>
+                                               <span><em>조회수</em><input type="text" name="title" value="<%=notice.getViews() %>"disabled></span>
                                           </div>
                                       </div>
                                   </td>
                               </tr>
                               <tr>
                                   <td class="td_left">
-                                       <img src="<%=path%>/img/board/event.jpg" class="event">
-                                      <div class="data-bd-cont">&nbsp;화소반 그릇과 함께 상차림 한 걸 올려주시면 저희가 7명께<br>
-																롱팟 스테이크접시 사각원찬기 小 긴일자찬기를 드립니다!!많이 참여해 주세요^^
+                                       <img src="<%=path%>/img/board/event.jpg" class="event"><%-- notice테이블에는 attach항목없음 빼도되는지?? --%>
+                                      <div class="data-bd-cont">&nbsp;<input size="200" type="text" name="title" value="<%=notice.getContent() %>">
                                       </div>
                                   </td>
                               </tr>
@@ -73,6 +115,8 @@
 					  </form>
 				         <br>
 				    	<div style="text-align:right;">
+				    	<input type="submit" value="수정하기" class="btn btn_normal" id="updateButton"/> <%-- 수정 왜안되는지?? --%>
+				    	<input type="submit" value="삭제하기" class="btn btn_normal" id="deleteButton"/> <%-- 삭제기능 이상무 --%>
 						<input type="button" value="목록보기" class="btn btn_normal" onclick="location.href='notice_board.jsp'">
 		               </div><!-- .page-body -->
 		           </div><!-- #bbsData -->
@@ -102,4 +146,36 @@
 	  </form>
   <jsp:include page="../common/footer.jsp"/>
 </body>
+<script type="text/javascript">
+   var noticeForm = document.querySelector('#noticeForm');
+   var process = document.querySelector('[name=process]');
+   var updateButton = document.querySelector('#updateButton');
+   var deleteButton = document.querySelector('#deleteButton');
+   var notice_id = document.querySelector('[name=notice_id]');
+   var account_id = document.querySelector('[name=account_id]');
+   var views = document.querySelector('[name=views]');
+   var title = document.querySelector('[name=title]');
+   var content = document.querySelector('[name=content]');
+ 	// update button
+   updateButton.onclick = function(){
+      if((title.value)==null || (title.value)==""){
+    	  alert('글자를 입력하세요');
+    	  return false;
+      }
+      if ((content.value)==null ||(content.value)==""){
+			alert('글자를 입력하세요');
+			return false;
+		}
+      
+    	process.value = 'update';
+    	noticeForm.submit();
+    	}
+ 	
+   deleteButton.onclick = function(){
+      process.value = 'delete';
+      if(confirm("정말 삭제하시겠습니까?")){
+         noticeForm.submit();
+      }
+   }
+</script>
 </html>
