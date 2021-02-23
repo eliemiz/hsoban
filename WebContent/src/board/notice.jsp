@@ -4,6 +4,9 @@
     import="java.net.*"
     import="hsoban.dao.*" import="hsoban.vo.*"
     %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<jsp:useBean id="bMgr" class="hsoban.dao.Dao_Notice" />
 <% request.setCharacterEncoding("UTF-8");
    String path = request.getContextPath();
 %>    
@@ -96,7 +99,6 @@
                                       <div class="cont-sub-des">
                                           <div>
                                                <span><em>작성일</em><input type="text" name="title" value="<%=notice.getPosting_date()%>"disabled></span>
-                                               <span><em>첨부파일</em>event.jpg</span>
                                                <span><em>조회수</em><input type="text" name="title" value="<%=notice.getViews() %>"disabled></span>
                                           </div>
                                       </div>
@@ -104,7 +106,6 @@
                               </tr>
                               <tr>
                                   <td class="td_left">
-                                       <img src="<%=path%>/img/board/event.jpg" class="event"><%-- notice테이블에는 attach항목없음 빼도되는지?? --%>
                                       <div class="data-bd-cont">&nbsp;<input size="200" type="text" name="title" value="<%=notice.getContent() %>">
                                       </div>
                                   </td>

@@ -93,23 +93,23 @@
                        <th>
                        	 <div>TITLE</div>
                        </th>
-                       <td colspan="3">
+                       <td>
                            <div class="td_left">
                            	<input id="bw_input_subject" class="MS_input_txt input_style2" type="text" name="title">
-                           <input type="checkbox" name="tag" value="ok"> HTML태그 허용<br></div>
+                       </td>
+                        <th>
+                       	 <div>조회수</div>
+                       </th>
+                       <td>
+                       	 <div class="td_left">
+                       	 	<input id="bw_input_views" type="text" name="views" class="MS_input_txt input_style"></div>
+                       		<input type="checkbox" name="tag" value="ok"> HTML태그 허용<br></div>
                        </td>
                    </tr>
                    <tr>
                        <th><div>CONTENT</div></th>
                        <td colspan="3"><div class="td_left"><textarea id="MS_text_content" name="content" style="font-family: 굴림체; width: 100%; height: 380px;"></textarea>
                        <input type="hidden" name="mobile_content_type" value=""></div>
-                       </td>
-                   </tr>
-                   <tr>
-                       <th><div>FILE</div></th> <%-- attach 활용할지 --%>
-                       <td colspan="3">
-                           <div class="td_left"><input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg"></div>
-                          
                        </td>
                    </tr>
               </tbody>
