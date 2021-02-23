@@ -220,7 +220,11 @@ SELECT * FROM WISH_LIST wl;
 
 SELECT * FROM ORDERED;
 SELECT * FROM order_by_product;
+ALTER TABLE order_by_product RENAME COLUMN order_count TO "count";
 SELECT * FROM order_by_detail;
 
-CREATE TABLE order_by_product AS SELECT order_id, account_id, product_id, color, order_count FROM ordered;
-CREATE TABLE order_by_detail AS SELECT order_id, ORDER_date, post, address, address2, order_message, pay, total FROM ordered;
+SELECT * FROM product;
+
+DROP TABLE order_by_detail;
+CREATE TABLE order_by_product AS SELECT order_id, product_id, color, order_count FROM ordered;
+CREATE TABLE order_by_detail AS SELECT order_id, account_id, ORDER_date, post, address, address2, order_message, pay, total FROM ordered;
