@@ -7,12 +7,12 @@ import hsoban.vo.Stock;
 
 public class Dao_Product extends Dao {
 	// 조회(전체, 리스트)
-	public ArrayList<Product> getProdList() {
+	public ArrayList<Product> prodList() {
 		ArrayList<Product> plist = new ArrayList<Product>();
 		try {
 			connect();
 
-			String sql = "SELECT * FROM PRODUCT ORDER BY CATEGORY";
+			String sql = "SELECT * FROM PRODUCT ORDER BY product_id";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
@@ -26,6 +26,8 @@ public class Dao_Product extends Dao {
 			con.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return plist;
@@ -183,9 +185,62 @@ public class Dao_Product extends Dao {
 				System.out.println("일반 에러: " + e.getMessage());
 			}
 		}
+		
+		// 0223 추가. 단일조건으로 값을 넘기기 위함
+		public Product getProduct(int product_id) {
+			Product prod = null;
+			try {
+				connect();
+
+				String sql = "SELECT * FROM PRODUCT WHERE product_id = ? ORDER BY PRODUCT_ID";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, product_id);
+				rs = pstmt.executeQuery();
+				while (rs.next()) {
+					prod = new Product(rs.getInt("product_id"), rs.getString("color"), rs.getString("name"),
+							rs.getString("category"), rs.getString("product_size"), rs.getInt("price"),
+							rs.getString("description"), rs.getString("thumbnail"));
+				}
+				rs.close();
+				pstmt.close();
+				con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return prod;
+		}
+		
+		// 0223 추가. distinct 필요
+		public ArrayList<Product> distinctList() {
+			ArrayList<Product> plist = new ArrayList<Product>();
+			try {
+				connect();
+
+				String sql = "SELECT DISTINCT product_id, name, price, thumbnail FROM PRODUCT ORDER BY product_id";
+				pstmt = con.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				while (rs.next()) {
+					Product prod = new Product(rs.getInt("product_id"), rs.getString("name"), rs.getInt("price"), rs.getString("thumbnail"));
+					plist.add(prod);
+				}
+				rs.close();
+				pstmt.close();
+				con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return plist;
+		}
 	public static void main(String[] args) {
 		Dao_Product dao = new Dao_Product();
-		dao.getProdList();
+		dao.distinctList();
+//		dao.getProdList();
 //		ArrayList<Product> plist = dao.getProdList("");
 //		ArrayList<Product> plist = dao.getProdList(0,"");
 	}

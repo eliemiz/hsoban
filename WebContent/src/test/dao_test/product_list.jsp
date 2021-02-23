@@ -27,9 +27,9 @@ String path = request.getContextPath();
 	
 	// 목록 출력
 	Dao_Product dao = new Dao_Product();
-	ArrayList<Product> plist = dao.getProdList();
+	ArrayList<Product> plist = dao.prodList();
 	if(category==""){
-		plist = dao.getProdList();
+		plist = dao.prodList();
 	} else {
 		plist = dao.getProdList(category);
 	}

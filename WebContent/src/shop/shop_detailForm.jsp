@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.*" import="java.net.*"%>
+    pageEncoding="UTF-8" import="java.util.*" import="java.net.*"
+    import = "hsoban.vo.*"
+    import = "hsoban.dao.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%
@@ -26,12 +28,17 @@
 	height: 14px;
 }
 </style>
+<%
+String product_id = request.getParameter("product_id");
+if(product_id==null||product_id.equals("")) product_id="0";
+Dao_Product dao = new Dao_Product();
+Product prod = dao.getProduct(new Integer(product_id));
+%>
 <meta charset="UTF-8">
-<title>[국그릇]</title>
+<title>[<%=prod.getName()%>]</title>
 </head>
 <body>
-<jsp:include page="../../common/header.jsp"/>
-
+<jsp:include page="../common/header.jsp"/>
 <div id="contentWrapper">
 	<div id="contentWrap">
 		<div id="content">
@@ -40,37 +47,31 @@
 					<div class="thumb-info">
 						<div class="thumb-wrap">
 							<div class="thumb detail_image">
-								<img src="/hsoban/img/shop/Bowl1_01.jpg" alt="대표이미지"/>
+								<img src="../../<%=prod.getThumbnail()%>" alt="대표이미지"/>
 							</div>
 						</div>
 						<form name="form1" method="post" id="form1" action="/hsoban/cart/cart.jsp">	
-							<!-- value값 처리 -->
-							<input type="hidden" name="product_id" value="100000">
-							<input type="hidden" id="price" name="price" value="34000">
-							<input type="hidden" name="miniq" id="miniq" value="1">
-							<input type="hidden" name="maxq" id="maxq" value="99">
-							<input type="hidden" name="cart_free" value="">
-							<input type="hidden" name="basket_use" id="basket_use" value="Y">
 							<div class="info">
-								<h3 class="tit-prd">국그릇</h3>
+								<h3 class="tit-prd"><%=prod.getName() %></h3>
 								<div class="table-opt">
 									<table summary="판매가격, 적립금, 주문수량, 옵션, 사이즈, 상품조르기, sns">
 										<!-- <caption>상품 옵션</caption> -->
 										<colgroup><col width="90"><col width="*"></colgroup>
 										<tbody>
-											<tr><th scope="row"><div class="tb-left">판매가격</div></th><td class="price"><div class="tb-left">34,000원</div></td></tr>
+											<tr><th scope="row"><div class="tb-left">판매가격</div></th><td class="price"><div class="tb-left"><%=prod.getPrice()%>원</div></td></tr>
 											<tr><td colspan="2">
 												<div class="opt-wrap" style="margin-top: 0">										
 													<dl>
 														<dt>color</dt>
 														<dd><select name="optionlist[]" onchange="change_option(this,'basic');" label="color" opt_type="SELECT" opt_id="3" opt_mix="Y" require="Y" opt_mandatory="Y" class="basic_option">
 																<option value>옵션 선택</option>
-																<option matrix="1" sto_id="3" price="34000" title="블랙" value="0">블랙</option>
-																<option matrix="2" sto_id="4" price="34000" title="베이지" value="0">베이지</option>
-																<option matrix="3" sto_id="5" price="34000" title="그린(유광)" value="0">그린(유광)</option>
-																<option matrix="4" sto_id="14" price="34000" title="와인" value="0">와인</option>
-																<option matrix="4" sto_id="14" price="34000" title="그레이" value="0">그레이</option>
-																<option matrix="5" sto_id="11" price="34000" title="진그레이" value="0">진그레이</option>																		
+																<option matrix="1" sto_id="3" price="78000" title="블랙" value="0">블랙</option>
+																<option matrix="2" sto_id="4" price="78000" title="베이지" value="0">베이지</option>
+																<option matrix="3" sto_id="5" price="78000" title="그린(유광)" value="0">그린(유광)-일시품절</option>
+																<option matrix="4" sto_id="14" price="78000" title="와인" value="0">와인</option>
+																<option matrix="4" sto_id="14" price="78000" title="그레이" value="0">그레이</option>
+																<option matrix="5" sto_id="11" price="78000" title="진그레이" value="0">진그레이</option>
+																<!-- size 선택에 따라 option 선택창 >> 추후 함수 처리 -->																												
 															</select>
 														</dd>
 													</dl>
@@ -81,15 +82,7 @@
 												<div class="MK_optAddWrap">
 													<div id="MK_innerOptWrap">
 														<div id="MK_innerOptScroll">
-															<jsp:useBean id="prod" class="hsoban.vo.Product"/>
-															<c:set target="${prod}" property="color" value="${prod.color}"/>
-															<c:if test="${not empty prod.color}">
-															<ul id="MK_innerOpt_01" class="MK_inner-opt-cm">
-																<c:choose>
-																	<c:when test="${prod.color==블랙}"><li>블랙</li></c:when>
-																</c:choose>
-															</ul>
-															</c:if>
+															<ul id="MK_innerOpt_01" class="MK_inner-opt-cm"></ul>
 															<ul id="MK_innerOpt_02" class="MK_inner-opt-cm"></ul>
 														</div>
 														<div id="MK_innerOptPrice">
@@ -115,72 +108,44 @@
 						</form>
 					</div>
 					<img src="/hsoban/src/shop/img/detail_top.jpg" alt="그릇 소개"/>
-					<div class="prd-detail">
-						<div id="videotalk_area"></div>
-							<p align="center" style="margin: 0px; text-align: center;"><span style="font-size: 9pt;"></span><br><span style="text-align: center; font-size: small;">&nbsp;</span></p>
-							<p align="center" style="margin: 0px; text-align: center;"><strong><font color="#676767"><font size="3"></font></font></strong>&nbsp;
-								<strong>
-									<font color="#676767">
-										<font size="3">◎</font>
-										<font size="5">
-											<font size="4">size</font>
-											<font color="rgb(0.0.0)">&nbsp;&nbsp; 11.5
-												<font style="font-size: 11pt;">cm(d)x													
-													<font size="5">6</font>
-												</font>
-												<font style="font-size: 11pt;">cm(h)</font>
-											</font>
-										</font>
-									</font>
-								</strong>
-							</p>
+					<div class="prd-detail">						
+							<jsp:include page="shop_description.jsp"/>						
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
-							<p align="left" style="margin: 0px; text-align: left;"><font color="#000000" style="background-color: rgb(255, 255, 255);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#828282" style="background-color: rgb(255, 255, 255);">&nbsp;&nbsp; º&nbsp;본 제품은 일일이 손으로 빚어 가마에서 구워나오는 &nbsp;수제의 특성상&nbsp;약간의 사이즈 차이가 있을 수 있습니다.</font></p>
-							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
-							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; º 기물에 보이는 유약의 흐름이나 검정색으로 보이는 작은 철분점은 교환,반품의 사유가 되지 않습니다.</font></p>
-							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
-							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; º 제품 상세 사진은 화면의 해상도에 따라 색이 약간 다를 수도 있습니다.</font></p>
-							<p align="center" style="margin: 0px; text-align: center;"><br><span style="text-align: center; font-size: small;">&nbsp;</span><br><strong><font color="#676767"><font style="font-size: 11pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></font></strong><br></p>							
-							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
-							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
-							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
-							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
-							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
-							<p align="center" style="margin: 0px; text-align: center;"><img src="/hsoban/img/shop/Bowl1_02.jpg"></p>
+							<p align="center" style="margin: 0px; text-align: center;"><img src="/hsoban/img/shop/Bowl2_02.jpg"></p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>					
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>					
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>					
-							<p align="center" style="margin: 0px; text-align: center;"><img src="/hsoban/img/shop/Bowl1_03.jpg"></p>
+							<p align="center" style="margin: 0px; text-align: center;"><img src="/hsoban/img/shop/Bowl2_03.jpg"></p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
-							<p align="center" style="margin: 0px; text-align: center;"><img src="/hsoban/img/shop/Bowl1_04.jpg"></p>
+							<p align="center" style="margin: 0px; text-align: center;"><img src="/hsoban/img/shop/Bowl2_04.jpg"></p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
-							<p align="center" style="margin: 0px; text-align: center;"><img src="/hsoban/img/shop/Bowl1_05.jpg"></p>
+							<p align="center" style="margin: 0px; text-align: center;"><img src="/hsoban/img/shop/Bowl2_05.jpg"></p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
-							<p align="center" style="margin: 0px; text-align: center;"><img src="/hsoban/img/shop/Bowl1_06.jpg"></p>
+							<p align="center" style="margin: 0px; text-align: center;"><img src="/hsoban/img/shop/Bowl2_06.jpg"></p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
-							<p align="center" style="margin: 0px; text-align: center;"><img src="/hsoban/img/shop/Bowl1_07.jpg"></p>
+							<p align="center" style="margin: 0px; text-align: center;"><img src="/hsoban/img/shop/Bowl2_07.jpg"></p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
 							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
@@ -195,8 +160,8 @@
 					<img src="/hsoban/src/shop/img/detail_info.jpg" alt="주의사항" style="display:block;"/>
 					<h3 class="tit-detail">상품문의
 						<span class="btns">
-							<a class="list" href="../../board/inquiry_board.jsp">전체보기</a>
-							<a class="answer" href="../../board/inquiry_write.jsp">상품문의</a>
+							<a class="list" href="../board/inquiry_board.jsp">전체보기</a>
+							<a class="answer" href="../board/inquiry_write.jsp">상품문의</a>
 						</span>
                     </h3>
                     <div class="table-slide qna-list">
@@ -307,7 +272,7 @@
 	</div>
 </div>
 
-<jsp:include page="../../common/side.jsp"/>	
-<jsp:include page="../../common/footer.jsp"/>
+<jsp:include page="../common/side.jsp"/>	
+<jsp:include page="../common/footer.jsp"/>
 </body>
 </html>

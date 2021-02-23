@@ -111,4 +111,13 @@ public class Product {
 		this.thumbnail = thumbnail;
 	}
 
+	// 0223 추가
+	public Product(int product_id, String name, int price, String thumbnail) {
+		super();
+		this.product_id = product_id;
+		this.name = name;
+		this.price = price;
+		this.thumbnail = thumbnail;
+	}
+
 }
