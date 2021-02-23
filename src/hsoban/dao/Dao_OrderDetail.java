@@ -135,7 +135,7 @@ public class Dao_OrderDetail extends Dao {
 			connect();
 			con.setAutoCommit(false);
 
-			String sql = "INSERT INTO ORDER_BY_DETAIL VALUES (?,?,?,?,?,?,?,?,?)";
+			String sql = "INSERT INTO ORDER_BY_DETAIL VALUES (?,?,TO_DATE(?,'YYYY-MM-DD'),?,?,?,?,?,?)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, order.getOrder_id());
 			pstmt.setInt(2, order.getAccount_id());
@@ -177,6 +177,7 @@ public class Dao_OrderDetail extends Dao {
 		
 		// insert
 		// dao.insertOrderDetail(new OrderDetail(10000, 100001, "2020-01-01", 13358, "서울신림동", "상세한주소", "배송시 던져주세요", "외상", 54000));
+		dao.insertOrderDetail(new OrderDetail(10001, 100001, "2020-01-01", 13358, "서울신림동", "상세한주소", "배송시 던져주세요", "외상", 54000));
 		
 		ArrayList<OrderDetail> list = dao.getOrderDetailList(100001);
 		System.out.println(list);
