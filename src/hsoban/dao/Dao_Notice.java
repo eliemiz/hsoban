@@ -58,6 +58,11 @@ public class Dao_Notice extends Dao {
 		}
 		return notice;
 	}
+	// 조회(account_id)작성자
+	
+	// 조회(title) 제목
+	
+	// 조회(content) 내용
 	
 	// 입력
 	/*

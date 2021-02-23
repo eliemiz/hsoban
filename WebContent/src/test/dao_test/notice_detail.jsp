@@ -84,10 +84,10 @@
  	// update button
    updateButton.onclick = function(){
 	   //유효성체크
-      if(isNaN(notice_id.value) || isNaN(account_id.value) || isNaN(views.value)){
-    	  alert('숫자를 입력하세요');
-    	  return false;
-      }
+   //   if(isNaN(notice_id.value) || isNaN(account_id.value) || isNaN(views.value)){
+   // 	  alert('숫자를 입력하세요');
+   // 	  return false;
+   //   }
       if((title.value)==null || (title.value)==""){
     	  alert('글자를 입력하세요');
     	  return false;

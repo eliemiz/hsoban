@@ -40,18 +40,18 @@ pre {
 <jsp:include page="../common/side.jsp"/>
 <div class="content_wrap"><br>
 <p class="p_title" align="center">회원정보</p><br>
-<form method="post">
+<form method="post" id="frm1">
 <table border align="center">
 <tr><th class="th_left">■ 이름</th>
 	<td class="td_left"><input type="text" size="16"/></td></tr>
 <tr><th class="th_left">■ 아이디</th>
 	<td class="td_left">
-	<input type="text" size="16"/><span>
+	<input type="text" size="16" name="id" id="id"/><span id="idCk">
 	<input type="button" class="btn btn_black" value="중복확인" style="height:22px; width:110px;" onclick="doubleid()"></span></td></tr>
 <tr><th class="th_left">■ 비밀번호</th>
-	<td class="td_left"><input type="password" size="16"/>&nbsp;*영문 대소문자/숫자/특수문자를 혼용하여 2종류 10~16자 또는 3종류 8~16자</td></tr>
+	<td class="td_left"><input type="password" size="16" name="pass" id="pass"/>&nbsp;*영문8자~16자</td></tr>
 <tr><th class="th_left">■ 비밀번호 확인</th>
-	<td class="td_left"><input type="password" size="16"/></td></tr>
+	<td class="td_left"><input type="password" size="16" id="pass-check"/></td></tr>
 <tr><th class="th_left">■ 생일/성별</th>
 	<td class="td_left"><select>
 	<option>선택</option><option>1920</option><option>1921</option><option>1922</option><option>1923</option><option>1924</option><option>1925</option><option>1926</option><option>1927</option><option>1928</option><option>1929</option>
@@ -306,5 +306,29 @@ function doubleid(){
 function doublemail(){
 	alert("이메일이 중복되었습니다.")
 }
+
+document.getElementById('frm1').onsubmit = function(){
+	var pass = document.getElementById('pass').value;
+	var passCheck = document.getElementById('pass-check').value;
+	// 비밀번호가 같은지 확인
+	if (pass == passCheck){
+		alert('회원가입에 성공하셨습니다.');
+	} else {
+		alert('다시 입력해주세요');
+		return false;
+	}
+	var idVal = document.querySelector("#id").value;
+	var idCk = document.querySelector("#idCk");
+	if(idVal==""||idVal.length>16 ||idVal.length<8){
+		idCk.innerText="아이디는 문자열은 8~16로 입력해야합니다.";
+		idCk.style.color="red";
+		isValid = false; 
+	}else {
+		idCk.innerText="정상입력";
+		idCk.style.color="blue";
+	}
+	return isValid;
+	};
+};
 </script>
 </html>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8" import="java.util.*" import="java.net.*"%>
+   pageEncoding="UTF-8" import="java.util.*" import="java.net.*"
+   import="hsoban.dao.*" import="hsoban.vo.*"%>
 <%
    request.setCharacterEncoding("UTF-8");
 String path = request.getContextPath();
@@ -15,6 +16,29 @@ String path = request.getContextPath();
 
 </style>
 </head>
+<%
+/*
+// 변수 선언
+String account_id = request.getParameter("account_id");
+if(account_id == null || account_id.trim().equals("")){
+	account_id = "";
+}
+
+// 목록 불러오기
+Dao_Notice dao = new Dao_Notice();
+ArrayList<Notice> list;
+if (account_id == ""){
+	list = dao.getNoticeList();
+} else{
+	list=dao.getNoticeList(Integer.parseInt(account_id));
+}
+
+*/
+// 목록 불러오기
+Dao_Notice dao = new Dao_Notice();
+ArrayList<Notice> list = dao.getNoticeList();
+
+%>
 <body>
    <jsp:include page="../common/header.jsp" />
    <jsp:include page="../common/side.jsp"/>
@@ -22,11 +46,11 @@ String path = request.getContextPath();
    
       <br><br>  
       <p class="title">NOTICE</p>
-      <input align="center" type="button" value="글쓰기" class="btn btn_thatch" /><br>
+      <input align="center" type="button" value="글쓰기" class="btn btn_thatch" onclick="location.href='notice_write.jsp'"/><br>
       </div>
       <br><br><br>  
       <div class="content_wrap">
-      <div style="text-align: right;">
+      <div style="text-align: right;"> <%-- 이름,제목,내용 검색기능 dao에 추가하기 --%>
         <span><input id="name" type="radio" name="select" ><label for="name">이름</label>&nbsp;
 	    <input id="title" type="radio" name="select" checked><label for="title">제목</label>&nbsp;
 	    <input id="contents" type="radio" name="select"><label for="content">내용</label>&nbsp;
@@ -35,10 +59,10 @@ String path = request.getContextPath();
 		color: white;" type="submit" value="검색" /></span>
       </div>
       <br>
-       <table>
+       <table id="noticeList">
       <colgroup>
          <col width="50">
-         <col width="40">
+         <col width="150">
          <col width="*">
          <col width="150">
          <col width="150">
@@ -53,80 +77,22 @@ String path = request.getContextPath();
              <th scope="col"><div class="th_center">작성일</div></th>
              <th scope="col"><div class="th_center">조회수</div></th>
          </tr>
+         <%
+         for(Notice notice : list){
+         %>
      </thead>
             <tbody>     
-               <tr>
-                   <td><div class="td_center">+</div></td>
-                   <td><div class="td_left">&nbsp;<img src="<%=path%>/img/board/mic.png" class="mic"></div></td>
-                   <td><div class="td_left">2021년 설 연휴 이전 배송이 2월10일 마감되어 15일 이후 발송됩니다.</div></td>
-                   <td><div class="td_center">운영자</td>
-                   <td><div class="td_center">2020/02/03</div></td>
-                   <td><div class="td_center">200</div></td>               
+               <tr onclick="callDetail(<%=notice.getNotice_id()%>)">
+                   <td><div class="td_center"><%=notice.getNotice_id() %></div></td>
+                   <td><div class="td_left"><%=notice.getTitle() %></div></td>
+                   <td><div class="td_left"><%=notice.getContent() %></div></td>
+                   <td><div class="td_center"><%=notice.getAccount_id() %></td>
+                   <td><div class="td_center"><%=notice.getPosting_date() %></div></td>
+                   <td><div class="td_center"><%=notice.getViews() %></div></td>               
                </tr>
-               <tr>
-                   <td><div class="td_center">+</div></td>
-                   <td><div class="td_left">&nbsp;<img src="<%=path%>/img/board/mic.png" class="mic"></div></td>
-                   <td><div class="td_left"><a href="../board/notice.jsp">화소반 고객 감사 이벤트</a></div></td>
-                   <td><div class="td_center">운영자</td>
-                   <td><div class="td_center">2020/02/03</div></td>
-                   <td><div class="td_center">100</div></td>               
-               </tr>
-               <tr>
-                   <td><div class="td_center">+</div></td>
-                   <td><div class="td_left">&nbsp;<img src="<%=path%>/img/board/mic.png" class="mic"></div></td>
-                   <td><div class="td_left"><a href="../board/notice.jsp">화소반 고객 감사 이벤트</a></div></td>
-                   <td><div class="td_center">운영자</td>
-                   <td><div class="td_center">2020/02/03</div></td>
-                   <td><div class="td_center">120</div></td>               
-               </tr>
-               <tr>
-                   <td><div class="td_center">+</div></td>
-                   <td><div class="td_left">&nbsp;<img src="<%=path%>/img/board/mic.png" class="mic"></div></td>
-                   <td><div class="td_left"><a href="../board/notice.jsp">화소반 고객 감사 이벤트</a></div></td>
-                   <td><div class="td_center">운영자</td>
-                   <td><div class="td_center">2020/02/03</div></td>
-                   <td><div class="td_center">198</div></td>               
-               </tr>
-               <tr>
-                   <td><div class="td_center">+</div></td>
-                   <td><div class="td_left">&nbsp;<img src="<%=path%>/img/board/mic.png" class="mic"></div></td>
-                   <td><div class="td_left"><a href="../board/notice.jsp">화소반 고객 감사 이벤트</a></div></td>
-                   <td><div class="td_center">운영자</td>
-                   <td><div class="td_center">2020/02/03</div></td>
-                   <td><div class="td_center">2</div></td>               
-               </tr>
-               <tr>
-                   <td><div class="td_center">+</div></td>
-                   <td><div class="td_left">&nbsp;<img src="<%=path%>/img/board/mic.png" class="mic"></div></td>
-                   <td><div class="td_left"><a href="../board/notice.jsp">화소반 고객 감사 이벤트</a></div></td>
-                   <td><div class="td_center">운영자</td>
-                   <td><div class="td_center">2020/02/03</div></td>
-                   <td><div class="td_center">178</div></td>               
-               </tr>
-               <tr>
-                   <td><div class="td_center">+</div></td>
-                   <td><div class="td_left">&nbsp;<img src="<%=path%>/img/board/mic.png" class="mic"></div></td>
-                   <td><div class="td_left"><a href="../board/notice.jsp">화소반 고객 감사 이벤트</a></div></td>
-                   <td><div class="td_center">운영자</td>
-                   <td><div class="td_center">2021/02/03</div></td>
-                   <td><div class="td_center">200</div></td>               
-               </tr>
-               <tr>
-                   <td><div class="td_center">+</div></td>
-                   <td><div class="td_left">&nbsp;<img src="<%=path%>/img/board/mic.png" class="mic"></div></td>
-                   <td><div class="td_left"><a href="../board/notice.jsp">화소반 고객 감사 이벤트</a></div></td>
-                   <td><div class="td_center">운영자</td>
-                   <td><div class="td_center">2020/02/03</div></td>
-                   <td><div class="td_center">230</div></td>               
-               </tr>
-               <tr>
-                   <td><div class="td_center">+</div></td>
-                   <td><div class="td_left">&nbsp;<img src="<%=path%>/img/board/mic.png" class="mic"></div></td>
-                   <td><div class="td_left"><a href="../board/notice.jsp">화소반 고객 감사 이벤트</a></div></td>
-                   <td><div class="td_center">운영자</td>
-                   <td><div class="td_center">2020/02/03</div></td>
-                   <td><div class="td_center">300</div></td>               
-               </tr>
+               <%
+         		}
+               %>
            </tbody>
             </table>
       <br>
@@ -138,4 +104,11 @@ String path = request.getContextPath();
    </div>
    <jsp:include page="../common/footer.jsp" />
 </body>
+<script type="text/javascript">
+	function callDetail(notice_id){
+		var url = "notice.jsp?";
+		url += "notice_id=" + notice_id;
+		location.href = url;
+	}
+</script>
 </html>
