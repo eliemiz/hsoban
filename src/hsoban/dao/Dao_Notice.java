@@ -59,11 +59,89 @@ public class Dao_Notice extends Dao {
 		return notice;
 	}
 	// 조회(account_id)작성자
-	
+	public ArrayList<Notice> getNoticeList(int account_id){
+		ArrayList<Notice> list = new ArrayList<Notice>();
+		try {
+			connect();
+			String sql = "SELECT * FROM notice WHERE account_id= ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, account_id);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				Notice notice = new Notice(rs.getInt("NOTICE_ID"),rs.getString("TITLE"),
+						rs.getString("CONTENT"),rs.getInt("ACCOUNT_ID"),
+						rs.getDate("POSTING_DATE"),
+						rs.getInt("VIEWS"));
+				list.add(notice);
+			}
+			rs.close();
+			pstmt.close();
+			con.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
+	}
 	// 조회(title) 제목
-	
+	public ArrayList<Notice> getNoticeList1(String Title){
+		ArrayList<Notice> list = new ArrayList<Notice>();
+		try {
+			connect();
+			String sql = "SELECT * FROM notice WHERE title LIKE '%공지%'";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, Title);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				Notice notice = new Notice(rs.getInt("NOTICE_ID"),rs.getString("TITLE"),
+						rs.getString("CONTENT"),rs.getInt("ACCOUNT_ID"),
+						rs.getDate("POSTING_DATE"),
+						rs.getInt("VIEWS"));
+				list.add(notice);
+			}
+			rs.close();
+			pstmt.close();
+			con.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
+	}
 	// 조회(content) 내용
-	
+	public ArrayList<Notice> getNoticeList2(String Content){
+		ArrayList<Notice> list = new ArrayList<Notice>();
+		try {
+			connect();
+			String sql = "SELECT * FROM notice WHERE content LIKE '%수정%'";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, Content);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				Notice notice = new Notice(rs.getInt("NOTICE_ID"),rs.getString("TITLE"),
+						rs.getString("CONTENT"),rs.getInt("ACCOUNT_ID"),
+						rs.getDate("POSTING_DATE"),
+						rs.getInt("VIEWS"));
+				list.add(notice);
+			}
+			rs.close();
+			pstmt.close();
+			con.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
+	}
 	// 입력
 	/*
 	공지글 입력 sql
