@@ -71,8 +71,8 @@ ArrayList<Notice> list = dao.getNoticeList();
      <thead>
          <tr>
              <th scope="col"><div class="th_center">번호</div></th>
-             <th scope="col"><div class="th_center">&nbsp;</div></th>
              <th scope="col"><div class="th_center">제목</div></th>
+             <th scope="col"><div class="th_center">내용</div></th>
              <th scope="col"><div class="th_center">작성자</div></th>
              <th scope="col"><div class="th_center">작성일</div></th>
              <th scope="col"><div class="th_center">조회수</div></th>

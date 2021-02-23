@@ -98,15 +98,15 @@
                                   <td class="td_left">
                                       <div class="cont-sub-des">
                                           <div>
-                                               <span><em>작성일</em><input type="text" name="title" value="<%=notice.getPosting_date()%>"disabled></span>
-                                               <span><em>조회수</em><input type="text" name="title" value="<%=notice.getViews() %>"disabled></span>
+                                               <span><em>작성일</em><input type="text" name="posting_date" value="<%=notice.getPosting_date()%>"disabled></span>
+                                               <span><em>조회수</em><input type="text" name="views" value="<%=notice.getViews() %>"disabled></span>
                                           </div>
                                       </div>
                                   </td>
                               </tr>
                               <tr>
                                   <td class="td_left">
-                                      <div class="data-bd-cont">&nbsp;<input size="200" type="text" name="title" value="<%=notice.getContent() %>">
+                                      <div class="data-bd-cont">&nbsp;<input size="200" type="text" name="content" value="<%=notice.getContent() %>">
                                       </div>
                                   </td>
                               </tr>
