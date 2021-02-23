@@ -10,22 +10,8 @@
 <link rel="stylesheet" href="/hsoban/css/allCommon.css">
 <link rel="stylesheet" href="/hsoban/css/shopdetail.css">
 <link rel="stylesheet" href="/hsoban/css/common.css">
-<style>
-.mic {
-	width: 14px;
-	height: 14px;
-}
-.note {
-	width: 25px;
-	height: 25px;
-}
-.reply {
-	width: 14px;
-	height: 14px;
-}
-</style>
 <meta charset="UTF-8">
-<title>[틴샐러드볼大]</title>
+<title>Shop Description</title>
 </head>
 <body>
 	<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
