@@ -17,13 +17,22 @@ String path = request.getContextPath();
 </style>
 </head>
 <%
-/*
+
 // 변수 선언
 String account_id = request.getParameter("account_id");
 if(account_id == null || account_id.trim().equals("")){
 	account_id = "";
 }
-
+/*
+String title = request.getParameter("title");
+if(title == null || title.trim().equals("")){
+	title = "";
+}
+String content = request.getParameter("content");
+if(content == null || content.trim().equals("")){
+	content = "";
+}
+*/
 // 목록 불러오기
 Dao_Notice dao = new Dao_Notice();
 ArrayList<Notice> list;
@@ -32,12 +41,22 @@ if (account_id == ""){
 } else{
 	list=dao.getNoticeList(Integer.parseInt(account_id));
 }
-
-*/
+/*
+if (title == ""){
+	list = dao.getNoticeList1();
+} else{
+	list=dao.getNoticeList1(Integer.parseInt(title));
+}
+if (content == ""){
+	list = dao.getNoticeList2();
+} else{
+	list=dao.getNoticeList2(Integer.parseInt(content));
+} */ 
+/*
 // 목록 불러오기
 Dao_Notice dao = new Dao_Notice();
 ArrayList<Notice> list = dao.getNoticeList();
-
+*/
 %>
 <body>
    <jsp:include page="../common/header.jsp" />
@@ -50,19 +69,22 @@ ArrayList<Notice> list = dao.getNoticeList();
       </div>
       <br><br><br>  
       <div class="content_wrap">
-      <div style="text-align: right;"> <%-- 이름,제목,내용 검색기능 dao에 추가하기 --%>
+      <form method="post" id="noticeForm">
+      <div style="text-align: right;"> <%-- 이름,제목,내용 검색기능 dao에 추가하기
         <span><input id="name" type="radio" name="select" ><label for="name">이름</label>&nbsp;
 	    <input id="title" type="radio" name="select" checked><label for="title">제목</label>&nbsp;
-	    <input id="contents" type="radio" name="select"><label for="content">내용</label>&nbsp;
-	    <input type="text" name="searchText" value="" />
+	    <input id="contents" type="radio" name="select"><label for="content">내용</label>&nbsp; --%>
+	    <label for="account_id">작성자번호</label>
+	    <input type="text" name="account_id" value="<%=account_id %>" />
 	    <input style="background-color: #464646;
-		color: white;" type="submit" value="검색" /></span>
+		color: white;" type="submit" value="검색" id="searchButton"/></span>
       </div>
+      </form>
       <br>
        <table id="noticeList">
       <colgroup>
          <col width="50">
-         <col width="150">
+         <col width="50">
          <col width="*">
          <col width="150">
          <col width="150">
@@ -71,8 +93,8 @@ ArrayList<Notice> list = dao.getNoticeList();
      <thead>
          <tr>
              <th scope="col"><div class="th_center">번호</div></th>
+             <th scope="col"><div class="th_center">&nbsp</div></th>
              <th scope="col"><div class="th_center">제목</div></th>
-             <th scope="col"><div class="th_center">내용</div></th>
              <th scope="col"><div class="th_center">작성자</div></th>
              <th scope="col"><div class="th_center">작성일</div></th>
              <th scope="col"><div class="th_center">조회수</div></th>
@@ -84,8 +106,9 @@ ArrayList<Notice> list = dao.getNoticeList();
             <tbody>     
                <tr onclick="callDetail(<%=notice.getNotice_id()%>)">
                    <td><div class="td_center"><%=notice.getNotice_id() %></div></td>
+                   <td><div class="td_left">&nbsp;<img src="<%=path%>/img/board/mic.png" class="mic"></div></td>
                    <td><div class="td_left"><%=notice.getTitle() %></div></td>
-                   <td><div class="td_left"><%=notice.getContent() %></div></td>
+                 <%-- <td><div class="td_left"><%=notice.getContent() %></div></td> --%>
                    <td><div class="td_center"><%=notice.getAccount_id() %></td>
                    <td><div class="td_center"><%=notice.getPosting_date() %></div></td>
                    <td><div class="td_center"><%=notice.getViews() %></div></td>               
@@ -105,6 +128,16 @@ ArrayList<Notice> list = dao.getNoticeList();
    <jsp:include page="../common/footer.jsp" />
 </body>
 <script type="text/javascript">
+	var searchButton = document.querySelector('#searchButton');
+	searchButton.onclick=function(){
+		var account_id = document.querySelector('[name=account_id]');
+		if(isNaN(account_id.value)){
+			alert('숫자를 입력해주세요.');
+			return false;
+		}
+		document.querySelector('#noticeForm').submit();
+	}
+	
 	function callDetail(notice_id){
 		var url = "notice.jsp?";
 		url += "notice_id=" + notice_id;
