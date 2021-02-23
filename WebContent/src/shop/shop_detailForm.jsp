@@ -47,7 +47,7 @@ Product prod = dao.getProduct(new Integer(product_id));
 					<div class="thumb-info">
 						<div class="thumb-wrap">
 							<div class="thumb detail_image">
-								<img src="../../<%=prod.getThumbnail()%>" alt="대표이미지"/>
+								<img src="../../<%=prod.getThumbnail()%>" alt="대표이미지" width="100%"/>
 							</div>
 						</div>
 						<form name="form1" method="post" id="form1" action="/hsoban/cart/cart.jsp">	
