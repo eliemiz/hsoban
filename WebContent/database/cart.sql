@@ -236,8 +236,10 @@ CREATE TABLE order_by_detail AS SELECT order_id, account_id, ORDER_date, post, a
 
 SELECT * FROM order_by_detail;
 
-SELECT * FROM product;
+SELECT * FROM WISH_LIST wl ;
 
-SELECT order_id_seq.nextval FROM dual;
+SELECT * FROM account;
+INSERT INTO HSOBAN.ACCOUNT
+(ACCOUNT_ID, NAME, ID, PASS, BIRTHDAY, GENDER, POST, ADDRESS, ADDRESS2, EMAIL, PHONE, PHONE2, MAIL_RECV, SMS_RECV, AUTH)
+VALUES(100002, '운영자', 'tempid', 'temppass', TIMESTAMP '2020-01-01 00:00:00.000000', '남', 15535, '서울신림동', '강북로 15-1', 'temporary@naver.com', '010-1234-5678', '010-8765-4321', '0', '0', 'MANAGER');
 
-SELECT * FROM ORDER_BY_PRODUCT obp ;

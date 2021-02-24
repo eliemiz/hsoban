@@ -50,12 +50,14 @@
 		daoWishlist.deleteWish(Integer.parseInt(account_id_temp), Integer.parseInt(product_id), color);
 	} else if (proc.equals("deleteCart")) {
 		daoCart.deleteCart(Integer.parseInt(account_id_temp), Integer.parseInt(product_id), color);
+	} else if (proc.equals("deleteCartAll")) {
+		daoCart.deleteCartAll(Integer.parseInt(account_id_temp));
 	} else if (proc.equals("addWish")) {
 		daoWishlist.insertWish(new WishList(Integer.parseInt(account_id_temp), Integer.parseInt(product_id), color));
 		daoCart.deleteCart(Integer.parseInt(account_id_temp), Integer.parseInt(product_id), color);
 	} else if (proc.equals("deleteWish")) {
 		daoWishlist.deleteWish(Integer.parseInt(account_id_temp), Integer.parseInt(product_id), color);
-	}
+	} 
 	
 	// cart list 불러오기
 	ArrayList<Cart> cartList = daoCart.getCartList(account_id);
@@ -130,12 +132,14 @@
 									</form>
 								</td>
 								<td class="td_center"><%=i + 1%></td>
-								<td class="td_center"><img src="<%=path%><%=product.getThumbnail() %>" class="thumbnail_m"></td>
+								<% String thumbnail = product.getThumbnail() + "_00.jpg"; %>
+								<td class="td_center"><img src="<%=thumbnail%>" class="thumbnail_m"></td>
 								<td class="td_left">
 									<div>
 										<div>
 											<%-- TODO : 링크 경로 바꾸기 --%>
-											<a href="<%=path%>/src/shop/shop1_Bowl/Bowl1.jsp"><%=product.getName() %></a>
+											<%String url = path + "/src/shop/shop_detailForm.jsp?product_id=" + cart.getProduct_id(); %>
+											<a href="<%=url%>"><%=product.getName() %></a>
 										</div>
 										<div>
 											<span>[color: ${color} ${count}개]</span>
@@ -183,8 +187,10 @@
 		
 		<div class="cart_button_wrap clear_fix">
 			<input type="button" value="주문하기" class="btn btn_thatch" onclick="location.href='order.jsp'">
+			<% String url = path + "/src/shop/shop_detailForm.jsp?product_id=" + product_id; %>
 			<input type="button" value="계속 쇼핑하기" class="btn btn_normal" onclick="location.href='<%=path%>/src/shop/shop1_Bowl/Bowl_main.jsp'">
-			<input type="button" value="장바구니 비우기" class="btn btn_normal">
+			<input type="button" value="장바구니 비우기" class="btn btn_normal"
+				onclick="submitCartForm(0, 'deleteCartAll')">
 		</div>
 		
 		<div class="cart_wrap clear_fix">
@@ -232,7 +238,8 @@
 									<input type="hidden" name="proc">
 								</form>
 							</td>
-							<td class="td_center"><img src="<%=path%><%=product.getThumbnail()%>" class="thumbnail_m"></td>
+							<% String thumbnail = product.getThumbnail() + "_00.jpg"; %>
+							<td class="td_center"><img src="<%=thumbnail%>" class="thumbnail_m"></td>
 							<td class="td_left">
 								<div><%=product.getName()%></div>
 								<div><span>[color:<%=wish.getColor()%>]</span></div>
@@ -286,6 +293,11 @@
 			form = document.querySelector("#cartForm" + idx);
 		} else if (proc == 'addCart' || proc == 'deleteWish') {
 			form = document.querySelector("#wishForm" + idx)
+		} else if (proc == 'deleteCartAll') {
+			if (!confirm('장바구니를 비우시겠습니까?')){
+				return false;
+			}
+			form = document.querySelector("#cartForm" + idx);
 		}
 		form.proc.value = proc;
 		

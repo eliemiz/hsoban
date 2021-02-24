@@ -41,7 +41,11 @@
 	Dao_Product daoProduct = new Dao_Product();
 	Dao_OrderDetail daoOrderDetail = new Dao_OrderDetail();
 	Dao_OrderProduct daoOrderProduct = new Dao_OrderProduct();
+	Dao_Account daoAccount = new Dao_Account();
 
+	// account
+	Account account = daoAccount.getAccount(account_id);
+	
 	// cart list
 	ArrayList<Cart> cartList = daoCart.getCartList(account_id);
 	
@@ -133,7 +137,8 @@
 									<input type="hidden" name="color" value="${color}">
 									<input type="hidden" name="count" value="${count}">
 								</td>
-								<td class="td_center"><img src="<%=path%><%=product.getThumbnail()%>" class="thumbnail_s"></td>
+								<% String thumbnail = product.getThumbnail() + "_00.jpg"; %>
+								<td class="td_center"><img src="<%=thumbnail%>" class="thumbnail_s"></td>
 								<td class="td_left"><a href="<%=path%>/src/shop/shop1_Bowl/Bowl1.jsp"><%=product.getName() %></a></td>
 								<td class="td_center">${count}개</td>
 								<td class="td_right"><%= df.format(product.getPrice()) %>원</td>
@@ -172,7 +177,11 @@
 					<tr>
 						<th class="th_left">이메일</th>
 						<td>
-							<input type="text"> @ <input type="text" id="domain">
+							<%
+							String str = account.getEmail();
+							String[] tokens = str.split("@");
+							%>
+							<input type="text" value="<%=tokens[0]%>"> @ <input type="text" id="domain" value="<%=tokens[1]%>">
 							<select onchange="onChangeDomain(this)">
 							<%
 							for (Option domain : Selection.domains){
@@ -187,7 +196,11 @@
 					<tr>
 						<th class="th_left">연락처</th>
 						<td>
-							<select>
+							<%
+							str = account.getPhone();
+							tokens = str.split("-");
+							%>
+							<select id="p1">
 							<%
 							for (Option areaCodeEx : Selection.areaCodeEx){
 							%>
@@ -196,10 +209,15 @@
 							}
 							%>
 							</select>
+							<script type="text/javascript">
+								$(document).ready(function(){
+								    $("#p1 option[value='<%=tokens[0]%>']").attr("selected", true);
+								});
+							</script>
 							-
-							<input type="text" class="w60">
+							<input type="text" class="w60" value="<%=tokens[1]%>">
 							-
-							<input type="text" class="w60">
+							<input type="text" class="w60" value="<%=tokens[2]%>">
 						</td>
 					</tr>
 				</tbody>
@@ -224,12 +242,16 @@
 				<tbody>
 					<tr>
 						<th class="th_left">이름</th>
-						<td colspan="3"><input type="text"></td>
+						<td colspan="3"><input type="text" value="<%=account.getName()%>"></td>
 					</tr>
 					<tr>
 						<th class="th_left">연락처1</th>
 						<td>
-							<select>
+							<%
+							str = account.getPhone();
+							tokens = str.split("-");
+							%>
+							<select id="p2">
 							<%
 							for (Option areaCodeEx : Selection.areaCodeEx){
 							%>
@@ -238,14 +260,23 @@
 							}
 							%>
 							</select>
+							<script type="text/javascript">
+								$(document).ready(function(){
+								    $("#p2 option[value='<%=tokens[0]%>']").attr("selected", true);
+								});
+							</script>
 							-
-							<input type="text" class="w60">
+							<input type="text" class="w60" value="<%=tokens[1]%>">
 							-
-							<input type="text" class="w60">
+							<input type="text" class="w60" value="<%=tokens[2]%>">
 						</td>
 						<th class="th_left">연락처2</th>
 						<td>
-							<select>
+							<%
+							str = account.getPhone2();
+							tokens = str.split("-");
+							%>
+							<select id="p3">
 							<%
 							for (Option areaCode : Selection.areaCode){
 							%>
@@ -254,33 +285,41 @@
 							}
 							%>
 							</select>
+							<script type="text/javascript">
+								$(document).ready(function(){
+								    $("#p3 option[value='<%=tokens[0]%>']").attr("selected", true);
+								});
+							</script>
 							-
-							<input type="text" class="w60">
+							<input type="text" class="w60" value="<%=tokens[1]%>">
 							-
-							<input type="text" class="w60">
+							<input type="text" class="w60" value="<%=tokens[2]%>">
 						</td>
 					</tr>
-					<tr>
+					<%-- <tr>
 						<th class="th_left">배송지 선택</th>
 						<td colspan="3">
-							<label><input type="radio" name="address"> 자택</label>
+							<label><input type="radio" name="address" checked> 자택</label>
 							<label><input type="radio" name="address"> 최근 배송지</label>
 							<input type="button" value="배송지 목록" class="btn btn_normal">
 							<label><input type="radio" name="address"> 신규 배송지</label>
 						</td>
-					</tr>
+					</tr> --%>
 					<tr>
 						<th class="th_left">주소</th>
 						<td colspan="3">
 							<span>
-								<input type="text" class="w60" id="zipNo1" name="post1" readonly>
+								<%
+								str = Integer.toString(account.getPost());
+								%>
+								<input type="text" class="w60" id="zipNo1" name="post1" value="<%=str.substring(0, 3)%>" readonly>
 								-
-								<input type="text" class="w60" id="zipNo2" name="post2" readonly>
+								<input type="text" class="w60" id="zipNo2" name="post2" value="<%=str.substring(3)%>" readonly>
 								<input type="button" value="우편번호" class="btn btn_normal" onclick="goPopup()">
 							</span>
 							<span>
-								<input type="text" class="w240" id="roadAddrPart1" name="address1" readonly>
-								<input type="text" class="w240" id="addrDetail" name="address2">
+								<input type="text" class="w240" id="roadAddrPart1" name="address1" value="<%=account.getAddress()%>" readonly>
+								<input type="text" class="w240" id="addrDetail" name="address2" value="<%=account.getAddress2()%>">
 							</span>
 						</td>
 					</tr>
@@ -293,19 +332,19 @@
 					<tr>
 						<th class="th_left">무통장 입금자명</th>
 						<td colspan="3">
-							<input type="text">
+							<input type="text" value="<%=account.getName()%>">
 							(주문자와 같을 경우 생략 가능)
 						</td>
 					</tr>
 				</tbody>
-				<tfoot>
+				<%--<tfoot>
 					<tr>
 						<td colspan="4">
 							<label><input type="checkbox">
 							해당 배송지 정보를 나의 회원정보로 등록합니다.</label>
 						</td>
 					</tr>
-				</tfoot>
+				</tfoot> --%>
 			</table>
 		</div>
 		
@@ -386,7 +425,7 @@
 						<th class="th_left">증빙 신청</th>
 						<td>
 							<span>
-								<label><input type="radio" name="evidenceCheck"> 신청 안함</label>
+								<label><input type="radio" name="evidenceCheck" checked> 신청 안함</label>
 								<label><input type="radio" name="evidenceCheck"> 현금영수증</label>
 							</span>
 							<div>
@@ -452,7 +491,7 @@
 						<th class="th_left">주문 동의</th>
 						<td>
 							<label>
-								<input type="checkbox">
+								<input type="checkbox" id="buyCheck">
 								상기 결제 정보를 확인하였으며, 구매 진행에 동의합니다.
 							</label>
 						</td>
@@ -524,6 +563,11 @@
 	}
 	
 	function onOrder(){
+		if ($("#buyCheck").prop("checked") == false){
+			alert("주문 동의에 체크해주세요.");
+			return false;
+		}
+		
 		if ($("[name=post1]").val() == "") {
 			alert("우편번호를 입력해주세요.");
 			return false;

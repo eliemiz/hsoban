@@ -222,6 +222,39 @@ public class Dao_Cart extends Dao {
 			}
 		}
 	}
+	
+	// 삭제 all
+		public void deleteCartAll(int account_id) {
+			try {
+				connect();
+				con.setAutoCommit(false);
+
+				String sql = "DELETE FROM CART WHERE ACCOUNT_ID = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, account_id);
+				pstmt.executeQuery();
+				con.commit();
+
+				pstmt.close();
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+				try {
+					con.rollback();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+				try {
+					con.rollback();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		}
 
 	public static void main(String[] args) {
 		Dao_Cart dao = new Dao_Cart();
