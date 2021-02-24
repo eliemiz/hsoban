@@ -118,6 +118,7 @@ INSERT INTO product VALUES ('400004','베이지','종지','Side Bowl','8.5cm(d) 
 INSERT INTO product VALUES ('400004','그린','종지','Side Bowl','8.5cm(d) * 2cm(h)',14000,'/src/shop/shop_description.jsp','/hsoban/img/shop/SideBowl5');
 INSERT INTO product VALUES ('400004','그레이','종지','Side Bowl','8.5cm(d) * 2cm(h)',14000,'/src/shop/shop_description.jsp','/hsoban/img/shop/SideBowl5');
 
+
 /* Cup */
 -- 머그: 블랙, 베이지, 와인, 그린, 그레이, 진그레이
 INSERT INTO PRODUCT VALUES ('500000','블랙','머그','Cup','7cm(d) * 9cm(h) (용량:320ml)',38000,'/src/shop/shop_description.jsp','/img/shop/Cup1_00.jpg');
