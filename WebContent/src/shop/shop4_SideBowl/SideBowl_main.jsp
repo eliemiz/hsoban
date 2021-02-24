@@ -56,7 +56,7 @@
                                 <dt class="thumb"><img onclick="detail(400001)" class="MS_prod_img_s" src="/hsoban/img/shop/SideBowl2_00.jpg" alt="상품 썸네일" title="상품 썸네일"></dt>
                                 <dd>
                                     <ul>
-                                        <li class="prd-name"><span class="MK-product-icons"></span>나즌볼 中</li>
+                                        <li class="prd-name"><span class="MK-product-icons"></span>나즌볼中</li>
                                         <li class="prd-price">48,000원</li>
                                     </ul>
                                 </dd>
@@ -65,7 +65,7 @@
                                 <dt class="thumb"><img onclick="detail(400002)" class="MS_prod_img_s" src="/hsoban/img/shop/SideBowl3_00.jpg" alt="상품 썸네일" title="상품 썸네일"></dt>
                                 <dd>
                                     <ul>
-                                        <li class="prd-name"><span class="MK-product-icons"></span>피클볼 中</li>
+                                        <li class="prd-name"><span class="MK-product-icons"></span>피클볼中</li>
                                         <li class="prd-price">36,000원</li>
                                     </ul>
                                 </dd>
@@ -74,8 +74,17 @@
                                 <dt class="thumb"><img onclick="detail(400003)" class="MS_prod_img_s" src="/hsoban/img/shop/SideBowl4_00.jpg" alt="상품 썸네일" title="상품 썸네일"></dt>
                                 <dd>
                                     <ul>
-                                        <li class="prd-name"><span class="MK-product-icons"></span>콩접시 中</li>
+                                        <li class="prd-name"><span class="MK-product-icons"></span>콩접시中</li>
                                         <li class="prd-price">26,000원</li>
+                                    </ul>
+                                </dd>
+                            </dl>
+                            <dl class="item-list">
+                                <dt class="thumb"><img onclick="detail(400004)" class="MS_prod_img_s" src="/hsoban/img/shop/SideBowl5_00.jpg" alt="상품 썸네일" title="상품 썸네일"></dt>
+                                <dd>
+                                    <ul>
+                                        <li class="prd-name"><span class="MK-product-icons"></span>종지</li>
+                                        <li class="prd-price">14,000원</li>
                                     </ul>
                                 </dd>
                             </dl>
