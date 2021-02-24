@@ -58,3 +58,13 @@ VALUES(101200,'그릇 살 일이 없다.','2021-02-14');
 SELECT * FROM WITHDRAW_ACCOUNT;
 
 SELECT * FROM WITHDRAW_ACCOUNT;
+SELECT * FROM order_by_product;
+INSERT INTO order_by_product
+VALUES(80,100003,'그린',1);
+INSERT INTO order_by_detail
+VALUES(80,100001,'2021-01-24',15535,'서울신림동','강북로 15-1','부재시 경비실','무통장입금',32000);
+SELECT * FROM order_by_detail;
+DELETE FROM order_by_product
+WHERE color = '2021-02-23';
+DELETE FROM order_by_detail
+WHERE post=468777;

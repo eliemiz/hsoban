@@ -1,5 +1,13 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" import="java.util.*" import="java.net.*" 
+	import="hsoban.vo.*" import="hsoban.dao.*" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%
+	request.setCharacterEncoding("UTF-8");
+	String path = request.getContextPath();
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,6 +17,60 @@
 <meta charset="UTF-8">
 <title>관심상품</title>
 </head>
+<%--
+
+// 변수 선언
+String account_id = request.getParameter("account_id");
+if (account_id == null || account_id.trim().equals("")){
+	account_id = "";
+}
+
+Dao_WishList dao = new Dao_WishList();
+ArrayList<WishList> list;
+if (account_id == ""){
+	list = dao.getWishList();
+} else {
+	list = dao.getWishList(Integer.parseInt(account_id));	
+}
+
+ --%>
+<%
+DecimalFormat df = new DecimalFormat("#,###");
+
+int account_id = 100001;
+	Dao_WishList dao = new Dao_WishList();
+	ArrayList<WishList> list = dao.getWishList(account_id);	
+	
+	Dao_Cart daoCart = new Dao_Cart();
+	
+	Dao_Stock daoStock = new Dao_Stock();
+
+	Dao_Product daoProduct = new Dao_Product();
+	  for (int i = 0; i < list.size(); i++) {
+          Product product = daoProduct.getProdList(list.get(i).getProduct_id(), list.get(i).getColor());
+     }
+				
+	  String account_id_temp = request.getParameter("account_id");
+		String product_id = request.getParameter("product_id");
+		String color = request.getParameter("color");
+		
+	
+		
+		String proc = request.getParameter("proc");
+		if (proc == null){
+			proc = "";
+		}
+		
+		  if (proc.equals("addCart")) {
+			daoCart.insertCart(new Cart(Integer.parseInt(account_id_temp), Integer.parseInt(product_id), color, 1)); // TODO 숫자 변경?
+			dao.deleteWish(Integer.parseInt(account_id_temp), Integer.parseInt(product_id), color);
+			response.sendRedirect("../mypage/mypage_myWish.jsp");
+		} else if (proc.equals("deleteWish")) {
+			dao.deleteWish(Integer.parseInt(account_id_temp), Integer.parseInt(product_id), color);
+			response.sendRedirect("../mypage/mypage_myWish.jsp");
+		}
+		
+%>
 <body>
 <jsp:include page="../common/header.jsp"/>
 <jsp:include page="../common/side.jsp"/>
@@ -27,73 +89,71 @@
                     <div class="page-body">
                         <div class="table-d2-list">
                             <table summary="사진,  상품명, 수량, 재고, 적립금, 가격, 장바구니">
-                                <caption>예치금 내역</caption>
-                                <colgroup>
-                                    <col width="130">
-                                    <col width="100">
-                                    <col width="*">
-                                    <col width="150">
-                                    <col width="150">
-                                    <col width="180">
-                                </colgroup>
-        <form name="list_form" method="post"></form>                                <thead>
-                                    <tr>
-                                        <th scope="row">
-                                        	<div class="tb-center"><!--input type="checkbox" class="chk-rdo" /-->
-                                        		<input type="checkbox" name="all_brchk" onclick="all_brchk_check(this);" id="allchk">
-                                        	</div>
-                                        </th>
-                                        <th scope="row"><div class="tb-center" style="font-size:12px">사진</div></th>
-                                        <th scope="row"><div class="tb-center" style="font-size:12px">상품명</div></th>
-                                        <th scope="row"><div class="tb-center" style="font-size:12px">재고</div></th>
-                                        <!--<th scope="row"><div class="tb-center">적립금</div></th>-->
-                                        <th scope="row"><div class="tb-center" style="font-size:12px">가격</div></th>
-                                        <th scope="row"><div class="tb-center" style="font-size:12px">장바구니</div></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                        <input type="hidden" name="quantity[]" value="1000000000">
-            <input type="hidden" name="brandcodes[]" value="001000000002">
-            <input type="hidden" name="branduids[]" value="1008823">
-            <input type="hidden" id="param_0" spcode="" spcode2="" option_type="" optcode="" optioncode="" opts="" optionvalue="" wish_id="1" brandcode="001000000002" product_type="NORMAL">                                    <tr>
-                                        <td>
-                                        	<div class="tb-center"><!--input type="checkbox" class="chk-rdo" /-->
-                                       		 <input type="checkbox" name="brchks" value="001000000002" >
-                                       		</div>
-                                       	</td>
-                                        <td>
-                                            <div class="tb-center">
-                                                <a href="../shop/shop1_Bowl/Bowl1.jsp"><img src="/hsoban/img/mypage/0010000000263.jpg" style="width: 84px; height: 84px"></a>
-                                            </div>
-                                        </td>
-                                        <td class="product">
-                                            <div class="tb-left">국그릇</div>
-                                            <div class="tb-left"><span class="wish-opt">[color : 베이지 1개]</span></div>
-                                        </td>
-                                        <td><div class="tb-center">있음</div></td>
-                                        <!--<td><div class="tb-right">0원</div></td>-->
-                                        <td>
-                                            <div class="tb-center">
-                                             34,000원
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="tb-center tb-btns">
-                                            <!--  
-                                                <a class="basket" href="javascript: go_basket(0, 'kor');">장바구니 담기</a>
-                                                 <a class="delete" href="javascript: del_wishlist('1008823','0');">관심상품 삭제</a>
-                                                 -->
-                                                 <span><input class="basket" type="button" value="장바구니 담기" onclick="go_cart()"/></span>
-                                                 <span><input class="delete" type="button" value="관심상품 삭제" onclick="go_delete()"/></span>
-                                            </div>
-                                        </td>
-                                    </tr>
+                            <colgroup>
+					<col width="100">
+					<col width="*">
+					<col width="150">
+					<col width="150">
+					<col width="180">
+				</colgroup>
+				<caption>관심상품</caption>
+				<tbody>
+				<tr>
+                  <th scope="row"><div class="tb-center" style="font-size:12px">사진</div></th>
+                  <th scope="row"><div class="tb-center" style="font-size:12px">상품명</div></th>
+                  <th scope="row"><div class="tb-center" style="font-size:12px">재고</div></th>
+                  <th scope="row"><div class="tb-center" style="font-size:12px">가격</div></th>
+                  <th scope="row"><div class="tb-center" style="font-size:12px">처리</div></th>
+                </tr>
+					<%
+					for (int i = 0; i < list.size(); i++){
+						WishList wish = list.get(i);
+						Product product = daoProduct.getProdList(wish.getProduct_id(), wish.getColor());
+						Stock stock = daoStock.getStock(wish.getProduct_id(), wish.getColor());
+						%>
+						<c:set var="account_id" value="<%=wish.getAccount_id()%>"/>
+						<c:set var="product_id" value="<%=wish.getProduct_id()%>"/>
+						<c:set var="color" value="<%=wish.getColor()%>"/>
+						<tr>
+							<td style="display:none">
+								<% String id = "wishForm" + i; %>
+								<form id="<%=id%>" method="post">
+									<input type="hidden" name="account_id" value="${account_id}">
+									<input type="hidden" name="product_id" value="${product_id}">
+									<input type="hidden" name="color" value="${color}">
+									<input type="hidden" name="proc">
+								</form>
+							</td>
+							<td class="td_center"><img src="<%=path%><%=product.getThumbnail()%>" class="thumbnail_m" style="width: 84px; height: 84px"></td>
+							<td class="product">
+								<div class="tb-center"><%=product.getName()%></div>
+								<div class="tb-center"><span class="wish-opt">[color:<%=wish.getColor()%>]</span></div>
+							</td>
+							<td class="td_center">
+								<c:set var="stock" value="<%=stock.getStock() %>" scope="page"/>
+								<c:choose>
+									<c:when test="${stock > 0}">있음</c:when>
+									<c:otherwise>없음</c:otherwise>
+								</c:choose>
+							</td> 
+							<td class="td_center"><%=df.format(product.getPrice()) %>원</td>
+							<td class="td_center">
+								<span>
+									<input type="button" value="장바구니 담기" class="btn btn_thatch"
+										onclick="submitCartForm(<%=i%>, 'addCart')">
+								</span>
+								<span>
+									<input type="button" value="관심상품 삭제" class="btn btn_normal"
+										onclick="submitCartForm(<%=i%>, 'deleteWish')">
+								</span>
+							</td>
+						</tr>
+						<%
+					}
+					%>
                                             </tbody>
                             </table>
                         </div>
-                        <div class="btn-foot">
-                            <a class="delete" href="javascript: multi_del_wishlist()" style="text-decoration:none" onclick="go_s_delete()">선택삭제</a>
-                                                    </div>
                         <ol class="paging">
                                         <li><strong>1</strong></li>
                                     </ol>
@@ -103,36 +163,29 @@
         </div><!-- #contentWrap -->
     </div>
     </div>
+   
     <jsp:include page="../common/footer.jsp"/>
 </body>
 <script type="text/javascript">
-function all_brchk_check(){
-	if(document.querySelector("[name=all_brchk]").checked==true){
-		document.querySelector("[name=brchks]").checked=true;
-	}else{
-		document.querySelector("[name=brchks]").checked=false;
-	}
-}
-
-function go_cart(){
-	alert("장바구니에 상품을 담습니다.");
-	location.href="../cart/cart.jsp";
-}
 
 
-function go_delete(){
-	alert("Wish List 상품이 삭제됩니다.");
-}
+ function submitCartForm(){
+		var idx = arguments[0];
+		var proc = arguments[1];
 
-function go_s_delete(){
-
-	   if(document.querySelector("[name=brchks]").checked==false) {
-		   alert('상품을 선택해주세요');
-	   }
-
-	   else { 
-		   alert("Wish List 상품이 삭제됩니다.");
-	   }
+		var form = '';
+		if (proc == 'modifyNumber'){
+			var m_count = document.querySelector("[name=m_count" + idx + "]");
+			form = document.querySelector("#cartForm" + idx);
+			form.count.value = m_count.value;
+		} else if (proc == 'addWish' || proc == 'deleteCart') {
+			form = document.querySelector("#cartForm" + idx);
+		} else if (proc == 'addCart' || proc == 'deleteWish') {
+			form = document.querySelector("#wishForm" + idx)
+		}
+		form.proc.value = proc;
+		
+		form.submit();
 	}
 
 </script>

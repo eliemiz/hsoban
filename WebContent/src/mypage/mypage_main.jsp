@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.*" import="java.net.*"%>
+    pageEncoding="UTF-8" import="java.util.*" import="java.net.*"
+    	import="hsoban.dao.*" import="hsoban.vo.*" %>
+    		<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
     <%
 	request.setCharacterEncoding("UTF-8");
 	String path = request.getContextPath();
@@ -13,6 +16,21 @@
 <meta charset="UTF-8">
 <title>마이페이지</title>
 </head>
+<%--
+
+String account_id = request.getParameter("account_id");
+if (account_id == null || account_id.trim().equals("")){
+	account_id = "0";}
+	
+	Dao_Account dao = new Dao_Account();
+Account account = dao.getAccount(Integer.parseInt(account_id));
+--%>
+<%
+
+int account_id = 100001;
+Dao_Account dao = new Dao_Account();
+Account account = dao.getAccount(account_id);
+%>
 <body>
 <jsp:include page="../common/header.jsp"/>
 <jsp:include page="../common/side.jsp"/>
@@ -34,32 +52,33 @@
                             <table>
                                 <tbody><tr>
                                     <th>이름</th>
-                                    <td>-</td>
+                                    <td><%=account.getName()%></td>
                                 </tr>
                                 <tr>
                                     <th>아이디</th>
-                                    <td>-</td>
+                                    <td><%=account.getId()%></td>
                                 </tr>
                                 <tr>
                                     <th>주소</th>
-                                    <td>-</td>
+                                    <td><%=account.getAddress()%><%=account.getAddress2()%></td>
                                 </tr>
                                 <tr>
                                     <th>이메일</th>
-                                    <td>-</td>
+                                    <td><%=account.getEmail()%></td>
                                 </tr>
                                 <tr>
                                     <th>휴대폰</th>
-                                    <td>-</td>
+                                    <td><%=account.getPhone()%></td>
                                 </tr>
                                 <tr>
                                     <th>연락처</th>
-                                    <td>-</td>
+                                    <td><%=account.getPhone2()%></td>
                                 </tr>
                             </tbody></table>
                         </div>
                         <div class="my-btn-area">
-                            <a class="red" href="../mypage/mypage_myInfo.jsp" style="text-decoration:none"><li>개인정보수정</li></a>
+                            <a class="red"  style="text-decoration:none" 
+                            onclick="callDetail(<%=account.getAccount_id()%>)"><li>개인정보수정</li></a>
                             <a onclick="withdrawal()"><li>회원탈퇴</li></a>
                         </div>
                     </div><!-- .page-body -->
@@ -80,7 +99,11 @@ function withdrawal(){
 	}
 }
 
-
+function callDetail(account_id){
+    var url = "../mypage/mypage_myInfo.jsp?";
+    url += "account_id=" + account_id;
+    location.href = url;
+ }
 
 
 </script>

@@ -2,6 +2,12 @@
     pageEncoding="UTF-8" import="java.util.*" import="java.net.*"
 	import="hsoban.dao.*" import="hsoban.vo.*"
 	%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%
+	request.setCharacterEncoding("UTF-8");
+	String path = request.getContextPath();
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,15 +47,24 @@ div {
 			order_id = "0";
 		}
 		
-		Dao_Order dao = new Dao_Order();
-		Order order = dao.getOrder(Integer.parseInt(order_id));
-		
-		
-		Dao_Product daoProduct = new Dao_Product();
-		Product product = daoProduct.getProdList(order.getProduct_id(), order.getColor());
-		
-		Dao_Account daoAccount = new Dao_Account();
-		Account account = daoAccount.getAccount( order.getAccount_id());
+		// dao for use
+	      Dao_OrderDetail dao2 = new Dao_OrderDetail();
+	      Dao_OrderProduct dao = new Dao_OrderProduct();
+	      Dao_Account daoAccount = new Dao_Account();
+	      Dao_Product daoProduct = new Dao_Product();
+	      
+	      // get order detail
+	      OrderDetail dorder = dao2.getOrderDetail(Integer.parseInt(order_id));
+	      
+	      // get order product list
+	      ArrayList<OrderProduct> plist = dao.getOrderProductList(dorder.getOrder_id());
+
+	      // get account
+	      Account account = daoAccount.getAccount( dorder.getAccount_id());
+
+	      for (int i = 0; i < plist.size(); i++) {
+              Product product = daoProduct.getProdList(plist.get(i).getProduct_id(), plist.get(i).getColor());
+         }
 %>
 <body>
 <jsp:include page="../common/header.jsp"/>
@@ -73,9 +88,9 @@ div {
                 <tbody>
                     <tr>
                         <th scope="row"><div class="tb-center">주문번호</div></th>
-                        <td><div class="tb-center"><%=order.getOrder_id() %></div></td>
+                        <td><div class="tb-center"><%=dorder.getOrder_id() %></div></td>
                         <th scope="row"><div class="tb-center">주문일자</div></th>
-                        <td><div class="tb-center"><%=order.getOrder_date() %></div></td>
+                        <td><div class="tb-center"><%=dorder.getOrder_date() %></div></td>
                     </tr>
                     <tr>
                         <th scope="row"><div class="tb-center">주문자</div></th>
@@ -106,11 +121,11 @@ div {
                     </tr>
                     <tr>
                         <th scope="row"><div class="tb-center">주소</div></th>
-                        <td colspan="3"><div class="tb-left"><%=order.getAddress() %><%=order.getAddress2() %></div></td>
+                        <td colspan="3"><div class="tb-left"><%=dorder.getAddress() %><%=dorder.getAddress2() %></div></td>
                     </tr>
                     <tr>
                         <th scope="row"><div class="tb-center">배송메세지</div></th>
-                        <td colspan="3"><div class="tb-left"><%=order.getOrder_message() %></div></td>
+                        <td colspan="3"><div class="tb-left"><%=dorder.getOrder_message() %></div></td>
                     </tr>
                                 </tbody>
             </table>
@@ -135,7 +150,7 @@ div {
                 <tfoot>
                     <tr><td colspan="5">
                         <div class="tb-right">
-                           <%=order.getTotal() %> 원
+                           <%=dorder.getTotal() %> 원
                         </div>
                     </td>
                 </tr></tfoot>
@@ -143,17 +158,28 @@ div {
                 <tr>
                			<td>
                             <div class="tb-center">
-                              <img src="/hsoban/img/mypage/0010000000263.jpg" style="width: 58px; height: 58px">
+                              <img src="
+                               <% for (int i = 0; i < plist.size(); i++) {
+                                    Product product = daoProduct.getProdList(plist.get(i).getProduct_id(), plist.get(i).getColor());
+                                 %>
+                              <%=path%><%=product.getThumbnail()%>
+                              <%} %>
+                              " class="thumbnail_s" style="width: 58px; height: 58px">
                             </div>
                         </td>
                         <td>
                             <div class="tb-left">
-                                <a href="javascript:go_brand('001000000026');" style="text-decoration: none; color: #777;"><%=product.getName() %><br></a>
-                                <span class="quantity order_table_Td style4"> color : <%=order.getColor() %></span>
+                                <a href="javascript:go_brand('001000000026');" style="text-decoration: none; color: #777;">
+                                <% for (int i = 0; i < plist.size(); i++) {
+                                    Product product = daoProduct.getProdList(plist.get(i).getProduct_id(), plist.get(i).getColor());
+                                 %>
+                                <%=product.getName()%>
+                                <%} %><br></a>
+                                <span class="quantity order_table_Td style4"><%for(OrderProduct order:plist){ %> color : <%=order.getColor() %> <%} %></span>
                             </div>
                         </td>
-                        <td><div class="tb-center"><%=order.getOrder_count()%></div></td>
-                        <td><div class="tb-center tb-price"><strong><font color="#FF5D00"><%=order.getTotal() %></font></strong>원</div></td>
+                        <td><div class="tb-center"><%for(OrderProduct order:plist){ %> <%=order.getCount()%><%} %></div></td>
+                        <td><div class="tb-center tb-price"><strong><font color="#FF5D00"><%=dorder.getTotal() %></font></strong>원</div></td>
                         <td><div class="tb-center">배송완료</div></td>
                  </tr>
                  </tbody>
@@ -173,8 +199,8 @@ div {
                 </tr></thead>
                 <tfoot>
                     <tr>
-                        <td><div class="tb-center"><%=order.getPay() %></div></td>
-                        <td><div class="tb-center"><%=order.getTotal() %></div></td>
+                        <td><div class="tb-center"><%=dorder.getPay() %></div></td>
+                        <td><div class="tb-center"><%=dorder.getTotal() %></div></td>
                     </tr>
                 </tfoot>
             </table>

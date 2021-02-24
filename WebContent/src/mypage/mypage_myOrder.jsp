@@ -2,6 +2,12 @@
     pageEncoding="UTF-8" import="java.util.*" import="java.net.*"
 	import="hsoban.dao.*" import="hsoban.vo.*"
 	%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%
+	request.setCharacterEncoding("UTF-8");
+	String path = request.getContextPath();
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,11 +16,25 @@
 <link rel="stylesheet" href="/hsoban/css/mypage.css">
 <meta charset="UTF-8">
 <title>주문 내역</title>
-<%
-Dao_Order dao = new Dao_Order();
-ArrayList<Order> list;
+<%--
 
-list = dao.getOrderList();
+String account_id = request.getParameter("account_id");
+if (account_id == null || account_id.trim().equals("")){
+	account_id = "0";}
+	
+	Dao_OrderDetail dao = new Dao_OrderDetail();
+ArrayList<OrderDetail> list;
+
+list = dao.getOrderDetailList(Integer.parseInt(account_id));
+	
+--%>
+<%
+int account_id = 100001;
+
+Dao_OrderDetail dao = new Dao_OrderDetail();
+ArrayList<OrderDetail> list;
+
+list = dao.getOrderDetailList( account_id);
 
 %>
 </head>
@@ -58,7 +78,7 @@ list = dao.getOrderList();
                                 
                                 <% 
                                 int cnt=1;
-								for (Order order : list){%>
+								for (OrderDetail order : list){%>
 										
 									
                                         <tr onclick="callDetail(<%=order.getOrder_id() %>)">
