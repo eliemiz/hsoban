@@ -72,7 +72,8 @@
                                   <td class="td_left">
                                       <div class="cont-sub-des">
                                           <div>
-                                              <span><em>작성자</em><%=notice.getAccount_id() %></span>
+                                              <span><em>작성자</em>운영자</span>
+                                              <span><em>번호</em><%=notice.getNotice_id() %></span>
                                           </div>
                                       </div>
                                   </td>

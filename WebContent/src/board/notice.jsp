@@ -89,7 +89,8 @@
                                   <td class="td_left">
                                       <div class="cont-sub-des">
                                           <div>
-                                              <span><em>작성자</em><input type="text" name="account_id" value="<%=notice.getAccount_id() %>" disabled></span>
+                                              <span><em>작성자</em><input type="text" name="account_id" value="운영자" disabled></span>
+                                              <span><em>번호</em><input type="text" name="notice_id" value="<%=notice.getNotice_id() %>" disabled></span>
                                           </div>
                                       </div>
                                   </td>

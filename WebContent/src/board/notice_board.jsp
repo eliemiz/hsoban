@@ -17,6 +17,9 @@ String path = request.getContextPath();
 </style>
 </head>
 <%
+Dao_Account daoAccount = new Dao_Account();
+ Account account = daoAccount.getAccount(notice.getAccount_id());
+
 
 // 변수 선언
 String account_id = request.getParameter("account_id");
@@ -74,7 +77,7 @@ ArrayList<Notice> list = dao.getNoticeList();
         <span><input id="name" type="radio" name="select" ><label for="name">이름</label>&nbsp;
 	    <input id="title" type="radio" name="select" checked><label for="title">제목</label>&nbsp;
 	    <input id="contents" type="radio" name="select"><label for="content">내용</label>&nbsp; --%>
-	    <span><label for="account_id">작성자번호</label>
+	    <span><label for="account.getName()">이름</label>
 	    <input type="text" name="account_id" value="<%=account_id %>" />
 	    <input style="background-color: #464646;
 		color: white;" type="submit" value="검색" id="searchButton"/></span>
@@ -105,11 +108,11 @@ ArrayList<Notice> list = dao.getNoticeList();
      </thead>
             <tbody>     
                <tr onclick="callDetail(<%=notice.getNotice_id()%>)">
-                   <td><div class="td_center"><%=notice.getNotice_id() %></div></td>
+                   <td><div class="td_center"><%=account.getName() %></div></td>
                    <td><div class="td_left">&nbsp;<img src="<%=path%>/img/board/mic.png" class="mic"></div></td>
                    <td><div class="td_left"><%=notice.getTitle() %></div></td>
                  <%-- <td><div class="td_left"><%=notice.getContent() %></div></td> --%>
-                   <td><div class="td_center"><%=notice.getAccount_id() %></td>
+                   <td><div class="td_center">운영자</td>
                    <td><div class="td_center"><%=notice.getPosting_date() %></div></td>
                    <td><div class="td_center"><%=notice.getViews() %></div></td>               
                </tr>
@@ -135,6 +138,10 @@ ArrayList<Notice> list = dao.getNoticeList();
 			alert('숫자를 입력해주세요.');
 			return false;
 		}
+		// if((title.value)==null || (title.value)==""){
+	    //	  alert('글자를 입력하세요');
+	    //	  return false;
+	    // }
 		document.querySelector('#noticeForm').submit();
 	}
 	
