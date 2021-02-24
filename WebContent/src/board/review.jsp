@@ -24,7 +24,7 @@
 <%
 		//변수 선언 for 페이지 로드      
 		// String review_id = request.getParameter("review_id");
-		String review_id = "122";
+		String review_id = "1";
 	      // validate      
 	      if (review_id == null || review_id.trim().equals("")) {
 	         review_id = "0";

@@ -30,7 +30,7 @@ transition:all .2s linear; -ms-transition:all .2s linear; -khtml-transition:all 
 </head>
 <%
 String review_id = request.getParameter("review_id");
-//String review_id = "122";
+
 if (review_id == null || review_id.trim().equals("")) {
 	         review_id = "0";
 }
@@ -91,17 +91,16 @@ Dao_Account daoAccount = new Dao_Account();
 	    <tbody>
 	    
 	    <%
-	    int cnt=8;
-	    for (Review rev : rlist){
-	    	Review review = dao.getReview(Integer.parseInt(review_id));
+	    int cnt=6;
+	    for (Review review : rlist){
 	    	Product product = daoProduct.getProdList(review.getProduct_id(), review.getColor());
 	    	Account account = daoAccount.getAccount(review.getAccount_id());
 		%>		
 		<tr onclick="callDetail(<%=review.getReview_id() %>)">				
 			<td><div class="td_center"><%=cnt--%></div></td>
-			 <td><div class="td_center"><img src="<%=path%><%=product.getThumbnail() %>" class="img"></div></td>
+			 <td><div class="td_center"><img src="<%=path%>/img/board/note.jpg" class="note"></div></td>
 			<td><div class="td_center">
-			<img src="<%=path%>/img/board/review.jpg" class="img" ></div></td>
+			<img src="<%=path%><%=product.getThumbnail() %>" class="img"></div></td>
 			<td><div class="td_left"><a href="../board/review.jsp"><%=review.getTitle() %></a></div></td>
 			<td><div class="td_center"><%=account.getName() %></div></td>
 			<td><div class="td_center"><%=review.getPosting_date() %></div></td>

@@ -19,7 +19,7 @@
 </style>
 </head>
 <%
-    String review_id = "122";
+    String review_id = "1";
 	// validate		
 	if (review_id == null || review_id.trim().equals("")) {
 		review_id = "0";
