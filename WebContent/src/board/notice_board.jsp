@@ -13,47 +13,49 @@ String path = request.getContextPath();
 <link rel="stylesheet" href="<%=path%>/css/common.css">
 <link rel="stylesheet" href="<%=path%>/css/board.css">
 <style>
-
+/* 마우스 오버시에 음영을 넣고, 커서 모양을 바꿔주는 style코드*/
+#noticeList tbody tr:hover {
+	background-color: #f7f7f7;
+	cursor: pointer;
+}
 </style>
 </head>
-<%
+<% 
 Dao_Account daoAccount = new Dao_Account();
- Account account = daoAccount.getAccount(notice.getAccount_id());
-
 
 // 변수 선언
 String account_id = request.getParameter("account_id");
 if(account_id == null || account_id.trim().equals("")){
-	account_id = "";
+   account_id = "";
 }
 /*
 String title = request.getParameter("title");
 if(title == null || title.trim().equals("")){
-	title = "";
+   title = "";
 }
 String content = request.getParameter("content");
 if(content == null || content.trim().equals("")){
-	content = "";
+   content = "";
 }
 */
 // 목록 불러오기
 Dao_Notice dao = new Dao_Notice();
 ArrayList<Notice> list;
 if (account_id == ""){
-	list = dao.getNoticeList();
+   list = dao.getNoticeList();
 } else{
-	list=dao.getNoticeList(Integer.parseInt(account_id));
+   list=dao.getNoticeList(Integer.parseInt(account_id));
 }
 /*
 if (title == ""){
-	list = dao.getNoticeList1();
+   list = dao.getNoticeList1();
 } else{
-	list=dao.getNoticeList1(Integer.parseInt(title));
+   list=dao.getNoticeList1(Integer.parseInt(title));
 }
 if (content == ""){
-	list = dao.getNoticeList2();
+   list = dao.getNoticeList2();
 } else{
-	list=dao.getNoticeList2(Integer.parseInt(content));
+   list=dao.getNoticeList2(Integer.parseInt(content));
 } */ 
 /*
 // 목록 불러오기
@@ -73,14 +75,14 @@ ArrayList<Notice> list = dao.getNoticeList();
       <br><br><br>  
       <div class="content_wrap">
       <form method="post" id="noticeForm">
-      <div style="text-align: right;"> <%-- 이름,제목,내용 검색기능 dao에 추가하기
+      <div style="text-align: right;"> <%-- 이름,제목,내용 검색기능 
         <span><input id="name" type="radio" name="select" ><label for="name">이름</label>&nbsp;
-	    <input id="title" type="radio" name="select" checked><label for="title">제목</label>&nbsp;
-	    <input id="contents" type="radio" name="select"><label for="content">내용</label>&nbsp; --%>
-	    <span><label for="account.getName()">이름</label>
-	    <input type="text" name="account_id" value="<%=account_id %>" />
-	    <input style="background-color: #464646;
-		color: white;" type="submit" value="검색" id="searchButton"/></span>
+       <input id="title" type="radio" name="select" checked><label for="title">제목</label>&nbsp;
+       <input id="contents" type="radio" name="select"><label for="content">내용</label>&nbsp; --%>
+       <span><label for="account.getName()">이름</label>
+       <input type="text" name="account_name" />
+       <input style="background-color: #464646;
+      color: white;" type="submit" value="검색" id="searchButton"/></span>
       </div>
       </form>
       <br>
@@ -104,20 +106,20 @@ ArrayList<Notice> list = dao.getNoticeList();
          </tr>
          <%
          for(Notice notice : list){
+        	 Account account = daoAccount.getAccount(notice.getAccount_id());
          %>
      </thead>
             <tbody>     
                <tr onclick="callDetail(<%=notice.getNotice_id()%>)">
-                   <td><div class="td_center"><%=account.getName() %></div></td>
+            	   <td><div class="td_center"><img src="<%=path%>/img/board/arrow.png" class="arrow"></div></td> 
                    <td><div class="td_left">&nbsp;<img src="<%=path%>/img/board/mic.png" class="mic"></div></td>
                    <td><div class="td_left"><%=notice.getTitle() %></div></td>
-                 <%-- <td><div class="td_left"><%=notice.getContent() %></div></td> --%>
-                   <td><div class="td_center">운영자</td>
+                   <td><div class="td_center"><%=account.getName() %></td>
                    <td><div class="td_center"><%=notice.getPosting_date() %></div></td>
                    <td><div class="td_center"><%=notice.getViews() %></div></td>               
                </tr>
                <%
-         		}
+               }
                %>
            </tbody>
             </table>
@@ -131,25 +133,22 @@ ArrayList<Notice> list = dao.getNoticeList();
    <jsp:include page="../common/footer.jsp" />
 </body>
 <script type="text/javascript">
-	var searchButton = document.querySelector('#searchButton');
-	searchButton.onclick=function(){
-		var account_id = document.querySelector('[name=account_id]');
-		if(isNaN(account_id.value)){
-			alert('숫자를 입력해주세요.');
-			return false;
-		}
-		// if((title.value)==null || (title.value)==""){
-	    //	  alert('글자를 입력하세요');
-	    //	  return false;
-	    // }
-		document.querySelector('#noticeForm').submit();
-	}
-	
-	function callDetail(notice_id){
-		var url = "notice_read.jsp?";
-		// var url = "notice.jsp?";
-		url += "notice_id=" + notice_id;
-		location.href = url;
-	}
+   var searchButton = document.querySelector('#searchButton');
+   searchButton.onclick=function(){
+      var account_name = document.querySelector('[name=account_name]');
+      if((account_name.value)==null || (account_name.value)==""){
+         alert('작성자를 입력해주세요.');
+         return false;
+      }
+
+      document.querySelector('#noticeForm').submit();
+   }
+   
+   function callDetail(notice_id){
+      var url = "notice_read.jsp?";
+      // var url = "notice.jsp?";
+      url += "notice_id=" + notice_id;
+      location.href = url;
+   }
 </script>
 </html>

@@ -51,13 +51,13 @@
    }
 %>
 <body>
-	<jsp:include page="../common/header.jsp"/>
-	<jsp:include page="../common/side.jsp"/>
-	<div style="text-align:center;">
-	<br><br><br><br>
-	<p class="title">NOTICE</p><br>
-	</div>
-	<br><br><br>
+   <jsp:include page="../common/header.jsp"/>
+   <jsp:include page="../common/side.jsp"/>
+   <div style="text-align:center;">
+   <br><br><br><br>
+   <p class="title">NOTICE</p><br>
+   </div>
+   <br><br><br>
       <div class="content_wrap">
        <form method="post" id="noticeForm">
        <tr>
@@ -74,36 +74,36 @@
                <tbody>
                    <tr>
                        <th>
-                       	 <div>NAME</div>
+                           <div>NAME</div>
                        </th>
                        <td>
                          <div class="td_left">
-                         	<input id="bw_input_writer" type="text" name="account_id" class="MS_input_txt input_style">
+                            <input id="bw_input_writer" type="text" name="account_id" class="MS_input_txt input_style">
                          </div>
                        </td>
                        <th>
-                       	 <div>작성일</div>
+                           <div>작성일</div>
                        </th>
                        <td>
-                       	 <div class="td_left">
-                       	 	<input id="bw_input_passwd" type="text" name="posting_date_s" class="MS_input_txt input_style"></div>
+                           <div class="td_left">
+                              <input id="bw_input_passwd" type="text" name="posting_date_s" class="MS_input_txt input_style" value="2021-02-25" disabled></div>
                        </td>
                    </tr>
                    <tr>
                        <th>
-                       	 <div>TITLE</div>
+                           <div>TITLE</div>
                        </th>
                        <td>
                            <div class="td_left">
-                           	<input id="bw_input_subject" class="MS_input_txt input_style2" type="text" name="title">
+                              <input id="bw_input_subject" class="MS_input_txt input_style2" type="text" name="title">
                        </td>
                         <th>
-                       	 <div>조회수</div>
+                           <div>조회수</div>
                        </th>
                        <td>
-                       	 <div class="td_left">
-                       	 	<input id="bw_input_views" type="text" name="views" class="MS_input_txt input_style"></div>
-                       		<input type="checkbox" name="tag" value="ok"> HTML태그 허용<br></div>
+                           <div class="td_left">
+                              <input id="bw_input_views" type="text" name="views" class="MS_input_txt input_style" value="0" disabled></div>
+                             <input type="checkbox" name="tag" value="ok"> HTML태그 허용<br></div>
                        </td>
                    </tr>
                    <tr>
@@ -115,10 +115,10 @@
               </tbody>
            </table>
         <br>
-      	<div style="text-align:right;">
-		<input type="button" value="완료" class="btn btn_thatch" id="insertButton"> 
-		<input type="button" value="목록" class="btn btn_normal" onclick="location.href='notice_board.jsp'" > <%-- 목록 확인 이상무 --%>
-		</div>
+         <div style="text-align:right;">
+      <input type="button" value="완료" class="btn btn_thatch" id="insertButton"> 
+      <input type="button" value="목록" class="btn btn_normal" onclick="location.href='notice_board.jsp'" >
+      </div>
  </form>
  </div>
  <jsp:include page="../common/footer.jsp"/>
@@ -126,26 +126,22 @@
 <script type="text/javascript">
 var insertButton = document.querySelector('#insertButton');
 insertButton.onclick = function(){
-	  // 유효성 객체를 위해 선언한 변수
-	  var noticeForm = document.querySelector('#noticeForm');
+     // 유효성 객체를 위해 선언한 변수
+     var noticeForm = document.querySelector('#noticeForm');
    var title = document.querySelector('[name=title]');
    var content = document.querySelector('[name=content]');
-   var account_id = document.querySelector('[name=account_id]');
-   var posting_date = document.querySelector('[name=posting_date_s]');
-   var views = document.querySelector('[name=views]');
+//   var account_id = document.querySelector('[name=account_id]');
+//   var posting_date = document.querySelector('[name=posting_date_s]');
+//   var views = document.querySelector('[name=views]');
    
-   if( isNaN(account_id.value) || isNaN(views.value)){
- 	  alert('숫자를 입력하세요');
- 	  return false;
-   }
    if((title.value)==null || (title.value)==""){
- 	  alert('글자를 입력하세요');
- 	  return false;
+      alert('글자를 입력하세요');
+      return false;
    }
    if ((content.value)==null ||(content.value)==""){
-			alert('글자를 입력하세요');
-			return false;
-		}
+         alert('글자를 입력하세요');
+         return false;
+      }
 
    noticeForm.submit();
 }

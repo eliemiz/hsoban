@@ -22,7 +22,7 @@
 </style>
 </head>
 <%
-	// ### 데이터를 조회하기 위한 변수
+   // ### 데이터를 조회하기 위한 변수
    String notice_id = request.getParameter("notice_id");
    
    if(notice_id==null || notice_id.trim().equals("")){
@@ -30,7 +30,7 @@
    }
    
    Dao_Notice dao = new Dao_Notice();
-	Notice notice = dao.getNotice(Integer.parseInt(notice_id));
+   Notice notice = dao.getNotice(Integer.parseInt(notice_id));
                
    // process 수정/삭제 여부를 결정하는 변수
    String process = request.getParameter("process");
@@ -45,17 +45,18 @@
    }
 %>
 <body>
-	<jsp:include page="../common/header.jsp"/>
-	<jsp:include page="../common/side.jsp"/>
-	<div style="text-align:center;">
-	<br><br><br>
-	<p class="title">NOTICE</p>
-	</div>
-	<br><br><br>
-	<div id="content" class="content_wrap">
+   <jsp:include page="../common/header.jsp"/>
+   <jsp:include page="../common/side.jsp"/>
+   <div style="text-align:center;">
+   <br><br><br>
+   <p class="title">NOTICE</p>
+   </div>
+   <br><br><br>
+   <div id="content" class="content_wrap">
                   <div class="bbs-table-view">
                   <form method="post" id="noticeForm">
                   <input type="hidden" name="process" value="">
+                  <input type="hidden" name="notice_id" value="<%=notice.getNotice_id() %>">
                       <table>
                           <thead>
                               <tr>
@@ -98,16 +99,16 @@
                           </tbody>
                       </table>
                       </fieldset>
-					  </form>
-				         <br>
-				    	<div style="text-align:right;">
-				    	<input type="button" value="수정하기" class="btn btn_normal" onclick="location.href='notice.jsp'"/>
-				    	<input type="submit" value="삭제하기" class="btn btn_normal" id="deleteButton"/>
-						<input type="button" value="목록보기" class="btn btn_normal" onclick="location.href='notice_board.jsp'">
-		               </div><!-- .page-body -->
-		           </div><!-- #bbsData -->
-      				<br><br><br>
-             		  <table>
+                 </form>
+                     <br>
+                   <div style="text-align:right;">
+                   <input type="button" value="수정하기" class="btn btn_normal" onclick="location.href='notice.jsp?notice_id=<%=notice.getNotice_id()%>'"/>
+                   <input type="button" value="삭제하기" class="btn btn_normal" id="deleteButton"/>
+                  <input type="button" value="목록보기" class="btn btn_normal" onclick="location.href='notice_board.jsp'">
+                     </div><!-- .page-body -->
+                 </div><!-- #bbsData -->
+                  <br><br><br>
+                     <table>
                         <colgroup>
                             <col>
                             <col width="150">
@@ -129,7 +130,7 @@
                             </tbody>
                     </table>
            </div>
-	  </form>
+     </form>
   <jsp:include page="../common/footer.jsp"/>
 </body>
 <script type="text/javascript">
@@ -138,12 +139,18 @@
    var deleteButton = document.querySelector('#deleteButton');
    var notice_id = document.querySelector('[name=notice_id]');
    var account_id = document.querySelector('[name=account_id]');
- 	
+    
    deleteButton.onclick = function(){
       process.value = 'delete';
       if(confirm("정말 삭제하시겠습니까?")){
          noticeForm.submit();
       }
    }
+ //  updateButton.onclick = function(){
+//	   process.value = 'update';
+//	   if(confirm("수정하는 페이지로 넘어가시겠습니까?")){
+//		   noticeForm.submit();
+//	   }
+ //  }
 </script>
 </html>
