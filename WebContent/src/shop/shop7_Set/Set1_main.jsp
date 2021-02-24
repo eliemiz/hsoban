@@ -72,7 +72,7 @@
 </body>
 <script>
 	function detail(product_id){
-  		location.href="../shop_detailForm.jsp?product_id="+product_id;
+  		location.href="../shop_detailForm2.jsp?product_id="+product_id;
   	}
 </script>
 </html>
