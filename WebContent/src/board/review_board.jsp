@@ -3,6 +3,7 @@
 	import="hsoban.dao.*" import="hsoban.vo.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<jsp:useBean id="bMgr" class="hsoban.dao.Dao_Review" />
 <% request.setCharacterEncoding("UTF-8");
    String path = request.getContextPath();
 %>    
@@ -28,10 +29,24 @@ transition:all .2s linear; -ms-transition:all .2s linear; -khtml-transition:all 
 
 </head>
 <%
+String review_id = request.getParameter("review_id");
+//String review_id = "122";
+if (review_id == null || review_id.trim().equals("")) {
+	         review_id = "0";
+}
+
 Dao_Review dao = new Dao_Review();
 ArrayList<Review> rlist = dao.getReviewList();
+
+
+// product 로드
+Dao_Product daoProduct = new Dao_Product();
+
+Dao_Account daoAccount = new Dao_Account();
+
 %>
 <body>
+
 	<jsp:include page="../common/header.jsp"/>
     <jsp:include page="../common/side.jsp"/>
 	<div style="text-align:center;">
@@ -47,10 +62,11 @@ ArrayList<Review> rlist = dao.getReviewList();
 	    <input id="title" type="radio" name="select" checked><label for="title">제목</label>&nbsp;
 	    <input id="contents" type="radio" name="select"><label for="content">내용</label>&nbsp;
 	    <input type="text" name="searchText" value="" />
-	    <input style="background-color: #464646;
-		color: white;" type="submit" value="검색" /></span>
+	    <input type="button" style="background-color: #464646;
+		color: white;"  value="검색" onClick="javascript:check()"></span>
     </div>
         <br>
+        <form name="searchFrm" method="post" action="reivew_board.jsp">
        <table>
       <colgroup>
          <col width="50">
@@ -75,15 +91,19 @@ ArrayList<Review> rlist = dao.getReviewList();
 	    <tbody>
 	    
 	    <%
-		for (Review review : rlist){
+	    int cnt=8;
+	    for (Review rev : rlist){
+	    	Review review = dao.getReview(Integer.parseInt(review_id));
+	    	Product product = daoProduct.getProdList(review.getProduct_id(), review.getColor());
+	    	Account account = daoAccount.getAccount(review.getAccount_id());
 		%>		
 		<tr onclick="callDetail(<%=review.getReview_id() %>)">				
-			<td><div class="td_center"><%=review.getReview_id() %></div></td>
-			 <td><div class="td_center"><img src="<%=path%>/img/board/note.jpg" class="note"></div></td>
-			<td><div class="td_center"><a href="../shop/shop_default.jsp">
+			<td><div class="td_center"><%=cnt--%></div></td>
+			 <td><div class="td_center"><img src="<%=path%><%=product.getThumbnail() %>" class="img"></div></td>
+			<td><div class="td_center">
 			<img src="<%=path%>/img/board/review.jpg" class="img" ></div></td>
 			<td><div class="td_left"><a href="../board/review.jsp"><%=review.getTitle() %></a></div></td>
-			<td><div class="td_center"><%=review.getAccount_id() %></div></td>
+			<td><div class="td_center"><%=account.getName() %></div></td>
 			<td><div class="td_center"><%=review.getPosting_date() %></div></td>
 			<td><div class="td_center"><%=review.getViews() %></div></td>
 		</tr>
@@ -93,6 +113,7 @@ ArrayList<Review> rlist = dao.getReviewList();
           
       </tbody>
    </table>
+   </form>
       <ol class="paging">
    		<li><strong>1</strong></li>
    </ol>
@@ -101,5 +122,18 @@ ArrayList<Review> rlist = dao.getReviewList();
    <jsp:include page="../common/footer.jsp" />
 </body>
 <script type="text/javascript">
+function check(){
+	if(document.searchFrm.keyWord.value=""){
+		alert("검색어를 입력하세요.");
+		document.searchFrm.keyWord.focus();
+		return;
+	}
+	document.searchFrm.submit();
+}
+function callDetail(review_id){
+	var url = "review.jsp?";
+	url += "review_id=" + review_id;	
+	location.href = url;
+}	
 </script>
 </html>
