@@ -74,7 +74,7 @@ ArrayList<Notice> list = dao.getNoticeList();
         <span><input id="name" type="radio" name="select" ><label for="name">이름</label>&nbsp;
 	    <input id="title" type="radio" name="select" checked><label for="title">제목</label>&nbsp;
 	    <input id="contents" type="radio" name="select"><label for="content">내용</label>&nbsp; --%>
-	    <label for="account_id">작성자번호</label>
+	    <span><label for="account_id">작성자번호</label>
 	    <input type="text" name="account_id" value="<%=account_id %>" />
 	    <input style="background-color: #464646;
 		color: white;" type="submit" value="검색" id="searchButton"/></span>
@@ -139,7 +139,8 @@ ArrayList<Notice> list = dao.getNoticeList();
 	}
 	
 	function callDetail(notice_id){
-		var url = "notice.jsp?";
+		var url = "notice_read.jsp?";
+		// var url = "notice.jsp?";
 		url += "notice_id=" + notice_id;
 		location.href = url;
 	}

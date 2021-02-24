@@ -32,30 +32,13 @@
    Dao_Notice dao = new Dao_Notice();
 	Notice notice = dao.getNotice(Integer.parseInt(notice_id));
                
-	// # update
-   String title = request.getParameter("title");
-   if(title==null){
-      title="";
-   }
-   String content = request.getParameter("content");
-   if(content==null){
-      content="";
-   }
    // process 수정/삭제 여부를 결정하는 변수
    String process = request.getParameter("process");
    if(process==null){
       process="";
    }
 
-   if(process.equals("update")){
-      // update
-      Notice newNotice = new Notice(Integer.parseInt(notice_id), title, content, notice.getAccount_id(),
-            notice.getPosting_date_s(), notice.getViews());
-     
-      dao.updateNotice(newNotice);
-    
-      response.sendRedirect("notice_board.jsp");
-   } else if(process.equals("delete")){
+   if(process.equals("delete")){
       // delete
       dao.deleteNotice(Integer.parseInt(notice_id));
       response.sendRedirect("notice_board.jsp");
@@ -79,7 +62,7 @@
                                   <th class="td_left">
                                   <div class="cont-sub-des">
                                       <div>
-                                          <span><em>제목</em><input type="text" name="title" value="<%=notice.getTitle() %>"></span>
+                                          <span><em>제목</em><em><%=notice.getTitle() %></em></span>
                                       </div>
                                   </div>
                               </tr>
@@ -89,7 +72,7 @@
                                   <td class="td_left">
                                       <div class="cont-sub-des">
                                           <div>
-                                              <span><em>작성자</em><input type="text" name="account_id" value="<%=notice.getAccount_id() %>" disabled></span>
+                                              <span><em>작성자</em><%=notice.getAccount_id() %></span>
                                           </div>
                                       </div>
                                   </td>
@@ -98,8 +81,8 @@
                                   <td class="td_left">
                                       <div class="cont-sub-des">
                                           <div>
-                                               <span><em>작성일</em><input type="text" name="posting_date" value="<%=notice.getPosting_date()%>"disabled></span>
-                                               <span><em>조회수</em><input type="text" name="views" value="<%=notice.getViews() %>"disabled></span>
+                                               <span><em>작성일</em><%=notice.getPosting_date()%></span>
+                                               <span><em>조회수</em><%=notice.getViews() %></span>
                                           </div>
                                       </div>
                                   </td>
@@ -107,7 +90,7 @@
                               <tr>
                                   <td class="td_left">
                                   <div class="td_left">
-                                      <div class="data-bd-cont">&nbsp;<input size="200" type="text" name="content" value="<%=notice.getContent() %>">
+                                      <div class="data-bd-cont">&nbsp;<%=notice.getContent() %>
                                       </div>
                                   </td>
                               </tr>
@@ -117,8 +100,8 @@
 					  </form>
 				         <br>
 				    	<div style="text-align:right;">
-				    	<input type="submit" value="수정하기" class="btn btn_normal" id="updateButton"/> <%-- 수정 왜안되는지?? --%>
-				    	<input type="submit" value="삭제하기" class="btn btn_normal" id="deleteButton"/> <%-- 삭제기능 이상무 --%>
+				    	<input type="button" value="수정하기" class="btn btn_normal" onclick="location.href='notice.jsp'"/>
+				    	<input type="submit" value="삭제하기" class="btn btn_normal" id="deleteButton"/>
 						<input type="button" value="목록보기" class="btn btn_normal" onclick="location.href='notice_board.jsp'">
 		               </div><!-- .page-body -->
 		           </div><!-- #bbsData -->
@@ -151,27 +134,9 @@
 <script type="text/javascript">
    var noticeForm = document.querySelector('#noticeForm');
    var process = document.querySelector('[name=process]');
-   var updateButton = document.querySelector('#updateButton');
    var deleteButton = document.querySelector('#deleteButton');
    var notice_id = document.querySelector('[name=notice_id]');
    var account_id = document.querySelector('[name=account_id]');
-   var views = document.querySelector('[name=views]');
-   var title = document.querySelector('[name=title]');
-   var content = document.querySelector('[name=content]');
- 	// update button
-   updateButton.onclick = function(){
-      if((title.value)==null || (title.value)==""){
-    	  alert('글자를 입력하세요');
-    	  return false;
-      }
-      if ((content.value)==null ||(content.value)==""){
-			alert('글자를 입력하세요');
-			return false;
-		}
-      
-    	process.value = 'update';
-    	noticeForm.submit();
-    	}
  	
    deleteButton.onclick = function(){
       process.value = 'delete';

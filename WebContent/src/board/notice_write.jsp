@@ -116,7 +116,7 @@
            </table>
         <br>
       	<div style="text-align:right;">
-		<input type="button" value="완료" class="btn btn_thatch" id="insertButton"> <%-- 완료가 안됨 --%>
+		<input type="button" value="완료" class="btn btn_thatch" id="insertButton"> 
 		<input type="button" value="목록" class="btn btn_normal" onclick="location.href='notice_board.jsp'" > <%-- 목록 확인 이상무 --%>
 		</div>
  </form>
