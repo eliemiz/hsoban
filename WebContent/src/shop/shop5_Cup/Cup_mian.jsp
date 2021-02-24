@@ -44,7 +44,7 @@
 					<div class="item-wrap">
 						<div class="item-cont">
 							<dl class="item-list">
-                                <dt class="thumb"><a href="Cup1.jsp"><img class="MS_prod_img_s" src="/hsoban/img/shop/Cup1_00.jpg" alt="상품 썸네일" title="상품 썸네일"></a></dt>
+                                <dt class="thumb"><img onclick="detail(500000)" class="MS_prod_img_s" src="/hsoban/img/shop/Cup1_00.jpg" alt="상품 썸네일" title="상품 썸네일"></dt>
                                 <dd>
                                     <ul>
                                         <li class="prd-name"><span class="MK-product-icons"></span>머그</li>
@@ -53,7 +53,7 @@
                                 </dd>
                             </dl>
 							<dl class="item-list">
-                                <dt class="thumb"><a href="Cup2.jsp"><img class="MS_prod_img_s" src="/hsoban/img/shop/Cup2_00.jpg" alt="상품 썸네일" title="상품 썸네일"></a></dt>
+                                <dt class="thumb"><img onclick="detail(500001)" class="MS_prod_img_s" src="/hsoban/img/shop/Cup2_00.jpg" alt="상품 썸네일" title="상품 썸네일"></dt>
                                 <dd>
                                     <ul>
                                         <li class="prd-name"><span class="MK-product-icons"></span>티잔</li>
@@ -62,7 +62,7 @@
                                 </dd>
                             </dl>
 							<dl class="item-list">
-                                <dt class="thumb"><a href="Cup3.jsp"><img class="MS_prod_img_s" src="/hsoban/img/shop/Cup3_00.jpg" alt="상품 썸네일" title="상품 썸네일"></a></dt>
+                                <dt class="thumb"><img onclick="detail(500002)" class="MS_prod_img_s" src="/hsoban/img/shop/Cup3_00.jpg" alt="상품 썸네일" title="상품 썸네일"></dt>
                                 <dd>
                                     <ul>
                                         <li class="prd-name"><span class="MK-product-icons"></span>저그</li>
@@ -71,7 +71,7 @@
                                 </dd>
                             </dl>
 							<dl class="item-list">
-                                <dt class="thumb"><a href="Cup4.jsp"><img class="MS_prod_img_s" src="/hsoban/img/shop/Cup4_00.jpg" alt="상품 썸네일" title="상품 썸네일"></a></dt>
+                                <dt class="thumb"><img onclick="detail(500003)" class="MS_prod_img_s" src="/hsoban/img/shop/Cup4_00.jpg" alt="상품 썸네일" title="상품 썸네일"></dt>
                                 <dd>
                                     <ul>
                                         <li class="prd-name"><span class="MK-product-icons"></span>아이스통머그</li>
@@ -88,4 +88,9 @@
 <jsp:include page="../../common/side.jsp"/>	
 <jsp:include page="../../common/footer.jsp"/>
 </body>
+<script>
+	function detail(product_id){
+  		location.href="../shop_detailForm.jsp?product_id="+product_id;
+  	}
+</script>
 </html>

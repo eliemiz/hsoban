@@ -47,7 +47,7 @@ Product prod = dao.getProduct(new Integer(product_id));
 					<div class="thumb-info">
 						<div class="thumb-wrap">
 							<div class="thumb detail_image">
-								<img src="../../<%=prod.getThumbnail()%>" alt="대표이미지" width="100%"/>
+								<img src="<%=prod.getThumbnail()%>_01.jpg" alt="대표이미지"/>
 							</div>
 						</div>
 						<form name="form1" method="post" id="form1" action="/hsoban/cart/cart.jsp">	
@@ -108,54 +108,33 @@ Product prod = dao.getProduct(new Integer(product_id));
 						</form>
 					</div>
 					<img src="/hsoban/src/shop/img/detail_top.jpg" alt="그릇 소개"/>
-					<div class="prd-detail">						
+					<div class="prd-detail">
+							<br><br><br><br><br>
+							Size : <%=prod.getProduct_size() %> <%-- font-size 및 color 조정 필요 --%>				
 							<jsp:include page="shop_description.jsp"/>						
-							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
-							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
-							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
-							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
-							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
-							<p align="center" style="margin: 0px; text-align: center;"><img src="/hsoban/img/shop/Bowl2_02.jpg"></p>
-							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
-							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
-							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>					
-							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>					
-							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>					
-							<p align="center" style="margin: 0px; text-align: center;"><img src="/hsoban/img/shop/Bowl2_03.jpg"></p>
-							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
-							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
-							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
-							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
-							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
-							<p align="center" style="margin: 0px; text-align: center;"><img src="/hsoban/img/shop/Bowl2_04.jpg"></p>
-							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
-							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
-							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
-							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
-							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
-							<p align="center" style="margin: 0px; text-align: center;"><img src="/hsoban/img/shop/Bowl2_05.jpg"></p>
-							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
-							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
-							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
-							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
-							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
-							<p align="center" style="margin: 0px; text-align: center;"><img src="/hsoban/img/shop/Bowl2_06.jpg"></p>
-							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
-							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
-							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
-							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
-							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
-							<p align="center" style="margin: 0px; text-align: center;"><img src="/hsoban/img/shop/Bowl2_07.jpg"></p>
-							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
-							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
-							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
-							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
-							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
-							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
-							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
-							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
-							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
-							<p align="justify" style="margin: 0px; text-align: justify;"><font color="#828282" style="background-color: rgb(255, 255, 255);"></font>&nbsp;</p>
+							<br><br><br><br><br>
+							<p align="center" style="margin: 0px; text-align: center;"><img src="<%=prod.getThumbnail()%>_02.jpg" alt=""></p>
+							<br><br><br><br><br>				
+							<p align="center" style="margin: 0px; text-align: center;"><img src="<%=prod.getThumbnail()%>_03.jpg" alt=""></p>
+							<br><br><br><br><br>
+							<p align="center" style="margin: 0px; text-align: center;"><img src="<%=prod.getThumbnail()%>_04.jpg" alt=""></p>
+							<br><br><br><br><br>
+							<p align="center" style="margin: 0px; text-align: center;"><img src="<%=prod.getThumbnail()%>_05.jpg" alt=""></p>
+							<br><br><br><br><br>
+							<p align="center" style="margin: 0px; text-align: center;"><img src="<%=prod.getThumbnail()%>_06.jpg" alt=""></p>
+							<br><br><br><br><br>
+							<p align="center" style="margin: 0px; text-align: center;"><img src="<%=prod.getThumbnail()%>_07.jpg" alt=""></p>
+							<br><br><br><br><br>
+							<p align="center" style="margin: 0px; text-align: center;"><img src="<%=prod.getThumbnail()%>_08.jpg" alt=""></p>
+							<br><br><br><br><br>
+							<p align="center" style="margin: 0px; text-align: center;"><img src="<%=prod.getThumbnail()%>_09.jpg" alt=""></p>
+							<br><br><br><br><br>
+							<p align="center" style="margin: 0px; text-align: center;"><img src="<%=prod.getThumbnail()%>_10.jpg" alt=""></p>
+							<br><br><br><br><br>
+							<p align="center" style="margin: 0px; text-align: center;"><img src="<%=prod.getThumbnail()%>_11.jpg" alt=""></p>
+							<br><br><br><br><br>
+							<p align="center" style="margin: 0px; text-align: center;"><img src="<%=prod.getThumbnail()%>_12.jpg" alt=""></p>
+							<br><br><br><br><br><br><br><br><br><br>
 					</div>
 					<img src="/hsoban/src/shop/img/detail_info.jpg" alt="주의사항" style="display:block;"/>
 					<h3 class="tit-detail">상품문의

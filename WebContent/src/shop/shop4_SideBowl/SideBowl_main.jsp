@@ -44,7 +44,7 @@
 					<div class="item-wrap">
 						<div class="item-cont">
 							<dl class="item-list">
-                                <dt class="thumb"><a href="SideBowl1.jsp"><img class="MS_prod_img_s" src="/hsoban/img/shop/SideBowl1_00.jpg" alt="상품 썸네일" title="상품 썸네일"></a></dt>
+                                <dt class="thumb"><img onclick="detail(400000)" class="MS_prod_img_s" src="/hsoban/img/shop/SideBowl1_00.jpg" alt="상품 썸네일" title="상품 썸네일"></dt>
                                 <dd>
                                     <ul>
                                         <li class="prd-name"><span class="MK-product-icons"></span>사각멀티볼</li>
@@ -53,7 +53,7 @@
                                 </dd>
                             </dl>
 							<dl class="item-list">
-                                <dt class="thumb"><a href="SideBowl2.jsp"><img class="MS_prod_img_s" src="/hsoban/img/shop/SideBowl2_00.jpg" alt="상품 썸네일" title="상품 썸네일"></a></dt>
+                                <dt class="thumb"><img onclick="detail(400001)" class="MS_prod_img_s" src="/hsoban/img/shop/SideBowl2_00.jpg" alt="상품 썸네일" title="상품 썸네일"></dt>
                                 <dd>
                                     <ul>
                                         <li class="prd-name"><span class="MK-product-icons"></span>나즌볼 中</li>
@@ -62,7 +62,7 @@
                                 </dd>
                             </dl>
 							<dl class="item-list">
-                                <dt class="thumb"><a href="SideBowl3.jsp"><img class="MS_prod_img_s" src="/hsoban/img/shop/SideBowl3_00.jpg" alt="상품 썸네일" title="상품 썸네일"></a></dt>
+                                <dt class="thumb"><img onclick="detail(400002)" class="MS_prod_img_s" src="/hsoban/img/shop/SideBowl3_00.jpg" alt="상품 썸네일" title="상품 썸네일"></dt>
                                 <dd>
                                     <ul>
                                         <li class="prd-name"><span class="MK-product-icons"></span>피클볼 中</li>
@@ -71,7 +71,7 @@
                                 </dd>
                             </dl>
 							<dl class="item-list">
-                                <dt class="thumb"><a href="SideBowl4.jsp"><img class="MS_prod_img_s" src="/hsoban/img/shop/SideBowl4_00.jpg" alt="상품 썸네일" title="상품 썸네일"></a></dt>
+                                <dt class="thumb"><img onclick="detail(400003)" class="MS_prod_img_s" src="/hsoban/img/shop/SideBowl4_00.jpg" alt="상품 썸네일" title="상품 썸네일"></dt>
                                 <dd>
                                     <ul>
                                         <li class="prd-name"><span class="MK-product-icons"></span>콩접시 中</li>
@@ -88,4 +88,9 @@
 <jsp:include page="../../common/side.jsp"/>	
 <jsp:include page="../../common/footer.jsp"/>
 </body>
+<script>
+	function detail(product_id){
+  		location.href="../shop_detailForm.jsp?product_id="+product_id;
+  	}
+</script>
 </html>

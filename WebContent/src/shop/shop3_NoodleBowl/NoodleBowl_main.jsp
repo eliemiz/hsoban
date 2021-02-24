@@ -44,7 +44,7 @@
 					<div class="item-wrap">
 						<div class="item-cont">
 							<dl class="item-list">
-                                <dt class="thumb"><a href="NoodleBowl1.jsp"><img class="MS_prod_img_s" src="/hsoban/img/shop/NoodleBowl1_00.jpg" alt="상품 썸네일" title="상품 썸네일"></a></dt>
+                                <dt class="thumb"><img onclick="detail(300000)" class="MS_prod_img_s" src="/hsoban/img/shop/NoodleBowl1_00.jpg" alt="상품 썸네일" title="상품 썸네일"></dt>
                                 <dd>
                                     <ul>
                                         <li class="prd-name"><span class="MK-product-icons"></span>일자면기</li>
@@ -53,7 +53,7 @@
                                 </dd>
                             </dl>
 							<dl class="item-list">
-                                <dt class="thumb"><a href="NoodleBowl2.jsp"><img class="MS_prod_img_s" src="/hsoban/img/shop/NoodleBowl2_00.jpg" alt="상품 썸네일" title="상품 썸네일"></a></dt>
+                                <dt class="thumb"><img onclick="detail(300001)" class="MS_prod_img_s" src="/hsoban/img/shop/NoodleBowl2_00.jpg" alt="상품 썸네일" title="상품 썸네일"></dt>
                                 <dd>
                                     <ul>
                                         <li class="prd-name"><span class="MK-product-icons"></span>윤볼</li>
@@ -62,7 +62,7 @@
                                 </dd>
                             </dl>
 							<dl class="item-list">
-                                <dt class="thumb"><a href="NoodleBowl3.jsp"><img class="MS_prod_img_s" src="/hsoban/img/shop/NoodleBowl3_00.jpg" alt="상품 썸네일" title="상품 썸네일"></a></dt>
+                                <dt class="thumb"><img onclick="detail(300002)" class="MS_prod_img_s" src="/hsoban/img/shop/NoodleBowl3_00.jpg" alt="상품 썸네일" title="상품 썸네일"></dt>
                                 <dd>
                                     <ul>
                                         <li class="prd-name"><span class="MK-product-icons"></span>햇볼 大</li>
@@ -79,4 +79,9 @@
 <jsp:include page="../../common/side.jsp"/>	
 <jsp:include page="../../common/footer.jsp"/>
 </body>
+<script>
+	function detail(product_id){
+  		location.href="../shop_detailForm.jsp?product_id="+product_id;
+  	}
+</script>
 </html>

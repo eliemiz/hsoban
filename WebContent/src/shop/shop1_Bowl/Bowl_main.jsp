@@ -3,6 +3,8 @@
     import = "java.util.*"
     import = "hsoban.vo.*"
     import = "hsoban.dao.*"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,10 +38,6 @@
 </head>
 <body>
 <jsp:include page="../../common/header.jsp"/>
-<%
-	Dao_Product daoProduct = new Dao_Product();
-	ArrayList<Product> prodList = daoProduct.distinctList();
-%>
 	<div id="contentWrapper">
 		<div id="contentWrap">
 			<div id="content">
@@ -48,19 +46,84 @@
 						<div class="bcate">Bowl</div>
 					</div>
 					<div class="item-wrap">
-						<div class="item-cont">
-						<% for(Product p:prodList){%>
+						<div class="item-cont">	
 							<dl class="item-list">
                                 <dt class="thumb">
-                                	<img onclick="detail(<%=p.getProduct_id()%>)" class="MS_prod_img_s" src="../../../<%=p.getThumbnail() %>" alt="상품 썸네일" title="상품 썸네일">
+                                	<img onclick="detail(100000)" class="MS_prod_img_s" src="/hsoban/img/shop/Bowl1_00.jpg" alt="상품 썸네일" title="상품 썸네일">
                                 </dt>
                                 <dd>
                                     <ul>
-                                        <li class="prd-name"><span class="MK-product-icons"></span><%=p.getName() %></li>
-                                        <li class="prd-price"><%=p.getPrice()%>원</li>
+                                        <li class="prd-name"><span class="MK-product-icons"></span>국그릇</li>
+                                        <li class="prd-price">34,000원</li>
                                     </ul>
                                 </dd>
-                            </dl><%} %>                            	
+                            </dl>	
+							<dl class="item-list">
+                                <dt class="thumb">
+                                	<img onclick="detail(100001)" class="MS_prod_img_s" src="/hsoban/img/shop/Bowl2_00.jpg" alt="상품 썸네일" title="상품 썸네일">
+                                </dt>
+                                <dd>
+                                    <ul>
+                                        <li class="prd-name"><span class="MK-product-icons"></span>틴샐러드볼大</li>
+                                        <li class="prd-price">78,000원</li>
+                                    </ul>
+                                </dd>
+                            </dl>	
+							<dl class="item-list">
+                                <dt class="thumb">
+                                	<img onclick="detail(100002)" class="MS_prod_img_s" src="/hsoban/img/shop/Bowl3_00.jpg" alt="상품 썸네일" title="상품 썸네일">
+                                </dt>
+                                <dd>
+                                    <ul>
+                                        <li class="prd-name"><span class="MK-product-icons"></span>스프볼</li>
+                                        <li class="prd-price">42,000원</li>
+                                    </ul>
+                                </dd>
+                            </dl>	
+							<dl class="item-list">
+                                <dt class="thumb">
+                                	<img onclick="detail(100003)" class="MS_prod_img_s" src="/hsoban/img/shop/Bowl4_00.jpg" alt="상품 썸네일" title="상품 썸네일">
+                                </dt>
+                                <dd>
+                                    <ul>
+                                        <li class="prd-name"><span class="MK-product-icons"></span>밥그릇</li>
+                                        <li class="prd-price">32,000원</li>
+                                    </ul>
+                                </dd>
+                            </dl>	
+							<dl class="item-list">
+                                <dt class="thumb">
+                                	<img onclick="detail(100004)" class="MS_prod_img_s" src="/hsoban/img/shop/Bowl5_00.jpg" alt="상품 썸네일" title="상품 썸네일">
+                                </dt>
+                                <dd>
+                                    <ul>
+                                        <li class="prd-name"><span class="MK-product-icons"></span>토리볼</li>
+                                        <li class="prd-price">32,000원</li>
+                                    </ul>
+                                </dd>
+                            </dl>	
+							<dl class="item-list">
+                                <dt class="thumb">
+                                	<img onclick="detail(100005)" class="MS_prod_img_s" src="/hsoban/img/shop/Bowl6_00.jpg" alt="상품 썸네일" title="상품 썸네일">
+                                </dt>
+                                <dd>
+                                    <ul>
+                                        <li class="prd-name"><span class="MK-product-icons"></span>라운드볼</li>
+                                        <li class="prd-price">120,000원</li>
+                                    </ul>
+                                </dd>
+                            </dl>	
+							<dl class="item-list">
+                                <dt class="thumb">
+                                	<img onclick="detail(100006)" class="MS_prod_img_s" src="/hsoban/img/shop/Bowl7_00.jpg" alt="상품 썸네일" title="상품 썸네일">
+                                </dt>
+                                <dd>
+                                    <ul>
+                                        <li class="prd-name"><span class="MK-product-icons"></span>속 더 깊은 볼</li>
+                                        <li class="prd-price">108,000원</li>
+                                    </ul>
+                                </dd>
+                            </dl>	
 						</div> 
 					</div>
 				</div>

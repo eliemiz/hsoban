@@ -44,7 +44,7 @@
 					<div class="item-wrap">
 						<div class="item-cont">
 							<dl class="item-list">
-                                <dt class="thumb"><a href="PlateDish1.jsp"><img class="MS_prod_img_s" src="/hsoban/img/shop/PlateDish1_00.jpg" alt="상품 썸네일" title="상품 썸네일"></a></dt>
+                                <dt class="thumb"><img onclick="detail(200000)" class="MS_prod_img_s" src="/hsoban/img/shop/PlateDish1_00.jpg" alt="상품 썸네일" title="상품 썸네일"></dt>
                                 <dd>
                                     <ul>
                                         <li class="prd-name"><span class="MK-product-icons"></span>피크닉볼大</li>
@@ -53,7 +53,7 @@
                                 </dd>
                             </dl>
 							<dl class="item-list">
-                                <dt class="thumb"><a href="PlateDish2.jsp"><img class="MS_prod_img_s" src="/hsoban/img/shop/PlateDish2_00.jpg" alt="상품 썸네일" title="상품 썸네일"></a></dt>
+                                <dt class="thumb"><img onclick="detail(200001)" class="MS_prod_img_s" src="/hsoban/img/shop/PlateDish2_00.jpg" alt="상품 썸네일" title="상품 썸네일"></dt>
                                 <dd>
                                     <ul>
                                         <li class="prd-name"><span class="MK-product-icons"></span>딥타원접시 특대</li>
@@ -62,7 +62,7 @@
                                 </dd>
                             </dl>
 							<dl class="item-list">
-                                <dt class="thumb"><a href="PlateDish3.jsp"><img class="MS_prod_img_s" src="/hsoban/img/shop/PlateDish3_00.jpg" alt="상품 썸네일" title="상품 썸네일"></a></dt>
+                                <dt class="thumb"><img onclick="detail(200002)" class="MS_prod_img_s" src="/hsoban/img/shop/PlateDish3_00.jpg" alt="상품 썸네일" title="상품 썸네일"></dt>
                                 <dd>
                                     <ul>
                                         <li class="prd-name"><span class="MK-product-icons"></span>딥사각접시</li>
@@ -71,7 +71,7 @@
                                 </dd>
                             </dl>
 							<dl class="item-list">
-                                <dt class="thumb"><a href="PlateDish4.jsp"><img class="MS_prod_img_s" src="/hsoban/img/shop/PlateDish4_00.jpg" alt="상품 썸네일" title="상품 썸네일"></a></dt>
+                                <dt class="thumb"><img onclick="detail(200003)" class="MS_prod_img_s" src="/hsoban/img/shop/PlateDish4_00.jpg" alt="상품 썸네일" title="상품 썸네일"></dt>
                                 <dd>
                                     <ul>
                                         <li class="prd-name"><span class="MK-product-icons"></span>대접시</li>
@@ -88,4 +88,9 @@
 <jsp:include page="../../common/side.jsp"/>		
 <jsp:include page="../../common/footer.jsp"/>
 </body>
+<script>
+	function detail(product_id){
+  		location.href="../shop_detailForm.jsp?product_id="+product_id;
+  	}
+</script>
 </html>

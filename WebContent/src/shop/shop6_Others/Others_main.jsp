@@ -44,7 +44,7 @@
 					<div class="item-wrap">
 						<div class="item-cont">
 							<dl class="item-list">
-                                <dt class="thumb"><a href="Others1.jsp"><img class="MS_prod_img_s" src="/hsoban/img/shop/Others1_00.jpg" alt="상품 썸네일" title="상품 썸네일"></a></dt>
+                                <dt class="thumb"><img onclick="detail(600000)" class="MS_prod_img_s" src="/hsoban/img/shop/Others1_00.jpg" alt="상품 썸네일" title="상품 썸네일"></dt>
                                 <dd>
                                     <ul>
                                         <li class="prd-name"><span class="MK-product-icons"></span>수저받침대</li>
@@ -53,7 +53,7 @@
                                 </dd>
                             </dl>
 							<dl class="item-list">
-                                <dt class="thumb"><a href="Others2.jsp"><img class="MS_prod_img_s" src="/hsoban/img/shop/Others2_00.jpg" alt="상품 썸네일" title="상품 썸네일"></a></dt>
+                                <dt class="thumb"><img onclick="detail(600001)" class="MS_prod_img_s" src="/hsoban/img/shop/Others2_00.jpg" alt="상품 썸네일" title="상품 썸네일"></dt>
                                 <dd>
                                     <ul>
                                         <li class="prd-name"><span class="MK-product-icons"></span>소스팟</li>
@@ -62,7 +62,7 @@
                                 </dd>
                             </dl>
 							<dl class="item-list">
-                                <dt class="thumb"><a href="Others3.jsp"><img class="MS_prod_img_s" src="/hsoban/img/shop/Others3_00.jpg" alt="상품 썸네일" title="상품 썸네일"></a></dt>
+                                <dt class="thumb"><img onclick="detail(600002)" class="MS_prod_img_s" src="/hsoban/img/shop/Others3_00.jpg" alt="상품 썸네일" title="상품 썸네일"></dt>
                                 <dd>
                                     <ul>
                                         <li class="prd-name"><span class="MK-product-icons"></span>술병</li>
@@ -71,7 +71,7 @@
                                 </dd>
                             </dl>
 							<dl class="item-list">
-                                <dt class="thumb"><a href="Others4.jsp"><img class="MS_prod_img_s" src="/hsoban/img/shop/Others4_00.jpg" alt="상품 썸네일" title="상품 썸네일"></a></dt>
+                                <dt class="thumb"><img onclick="detail(600003)" class="MS_prod_img_s" src="/hsoban/img/shop/Others4_00.jpg" alt="상품 썸네일" title="상품 썸네일"></dt>
                                 <dd>
                                     <ul>
                                         <li class="prd-name"><span class="MK-product-icons"></span>드리퍼</li>
@@ -88,4 +88,9 @@
 <jsp:include page="../../common/side.jsp"/>	
 <jsp:include page="../../common/footer.jsp"/>
 </body>
+<script>
+	function detail(product_id){
+  		location.href="../shop_detailForm.jsp?product_id="+product_id;
+  	}
+</script>
 </html>

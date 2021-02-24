@@ -214,13 +214,14 @@ public class Dao_Product extends Dao {
 		}
 		
 		// 0223 추가. distinct 필요
-		public ArrayList<Product> distinctList() {
+		public ArrayList<Product> distinctList(String category) {
 			ArrayList<Product> plist = new ArrayList<Product>();
 			try {
 				connect();
 
-				String sql = "SELECT DISTINCT product_id, name, price, thumbnail FROM PRODUCT ORDER BY product_id";
+				String sql = "SELECT DISTINCT product_id, name, price, thumbnail FROM PRODUCT WHERE CATEGORY = ? ORDER BY product_id";
 				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, category);
 				rs = pstmt.executeQuery();
 				while (rs.next()) {
 					Product prod = new Product(rs.getInt("product_id"), rs.getString("name"), rs.getInt("price"), rs.getString("thumbnail"));
@@ -239,7 +240,6 @@ public class Dao_Product extends Dao {
 		}
 	public static void main(String[] args) {
 		Dao_Product dao = new Dao_Product();
-		dao.distinctList();
 //		dao.getProdList();
 //		ArrayList<Product> plist = dao.getProdList("");
 //		ArrayList<Product> plist = dao.getProdList(0,"");
