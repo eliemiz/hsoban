@@ -28,13 +28,20 @@
 </style>
 </head>
 <%
-	
 	// format
 	SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 	DecimalFormat df = new DecimalFormat("#,###");
 	
 	// TODO : session에서 가져오기
-	int account_id = 100001;
+	Object obj = session.getAttribute("sessionId");
+	String account_id;
+	if (obj == null){
+		account_id = "0";
+		response.sendRedirect(path + "/src/login/login.jsp");
+		return;
+	} else {
+		account_id = obj.toString();
+	}
 
 	// Dao
 	Dao_Cart daoCart = new Dao_Cart();
@@ -44,10 +51,10 @@
 	Dao_Account daoAccount = new Dao_Account();
 
 	// account
-	Account account = daoAccount.getAccount(account_id);
+	Account account = daoAccount.getAccount(Integer.parseInt(account_id));
 	
 	// cart list
-	ArrayList<Cart> cartList = daoCart.getCartList(account_id);
+	ArrayList<Cart> cartList = daoCart.getCartList(Integer.parseInt(account_id));
 	
 	// INSERT OrderDetail
 	String proc = request.getParameter("proc");
@@ -68,7 +75,7 @@
 			String pay = request.getParameter("pay");
 			String total = request.getParameter("total");
 			
-			daoOrderDetail.insertOrderDetail(new OrderDetail(order_id, account_id, 
+			daoOrderDetail.insertOrderDetail(new OrderDetail(order_id, Integer.parseInt(account_id), 
 					order_date_s, Integer.parseInt(post), address1, address2,
 					order_message, pay, Integer.parseInt(total)));
 			
@@ -93,7 +100,6 @@
 	<jsp:include page="../common/side.jsp"/>
 	
 	<form id="formOrder">
-		<input type="button" value="주문 테스트"/>
 	<div class="content_wrap">
 		<div class="cart_title clear_fix">
 			주문/결제

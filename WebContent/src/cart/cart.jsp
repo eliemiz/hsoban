@@ -19,12 +19,21 @@
 </head>
 	
 	<%
-
+	Object obj = session.getAttribute("sessionId");
+	String account_id;
+	if (obj == null) {
+		account_id = "0";
+		response.sendRedirect(path + "/src/login/login.jsp");
+		return;
+	} else {
+		account_id = obj.toString();
+	}
+	
 	// for number format
 	DecimalFormat df = new DecimalFormat("#,###");
 	
 	// TODO : session에서 가져올 것
-	int account_id = 100001;
+// 	int account_id = 100001;
 	
 	// 사용되는 DAO 객체 생성
 	Dao_Cart daoCart = new Dao_Cart();
@@ -33,7 +42,7 @@
 	Dao_Stock daoStock = new Dao_Stock();
 	
 	// Update, Delete 처리. TODO : 유효성 체크
-	String account_id_temp = request.getParameter("account_id");
+	// String account_id_temp = request.getParameter("account_id");
 	String product_id = request.getParameter("product_id");
 	String color = request.getParameter("color");
 	
@@ -44,26 +53,26 @@
 	
 	if (proc.equals("modifyNumber")){
 		String count = request.getParameter("count");
-		daoCart.updateCart(new Cart(Integer.parseInt(account_id_temp), Integer.parseInt(product_id), color, Integer.parseInt(count)));
+		daoCart.updateCart(new Cart(Integer.parseInt(account_id), Integer.parseInt(product_id), color, Integer.parseInt(count)));
 	} else if (proc.equals("addCart")) {
-		daoCart.insertCart(new Cart(Integer.parseInt(account_id_temp), Integer.parseInt(product_id), color, 1)); // TODO 숫자 변경?
-		daoWishlist.deleteWish(Integer.parseInt(account_id_temp), Integer.parseInt(product_id), color);
+		daoCart.insertCart(new Cart(Integer.parseInt(account_id), Integer.parseInt(product_id), color, 1)); // TODO 숫자 변경?
+		daoWishlist.deleteWish(Integer.parseInt(account_id), Integer.parseInt(product_id), color);
 	} else if (proc.equals("deleteCart")) {
-		daoCart.deleteCart(Integer.parseInt(account_id_temp), Integer.parseInt(product_id), color);
+		daoCart.deleteCart(Integer.parseInt(account_id), Integer.parseInt(product_id), color);
 	} else if (proc.equals("deleteCartAll")) {
-		daoCart.deleteCartAll(Integer.parseInt(account_id_temp));
+		daoCart.deleteCartAll(Integer.parseInt(account_id));
 	} else if (proc.equals("addWish")) {
-		daoWishlist.insertWish(new WishList(Integer.parseInt(account_id_temp), Integer.parseInt(product_id), color));
-		daoCart.deleteCart(Integer.parseInt(account_id_temp), Integer.parseInt(product_id), color);
+		daoWishlist.insertWish(new WishList(Integer.parseInt(account_id), Integer.parseInt(product_id), color));
+		daoCart.deleteCart(Integer.parseInt(account_id), Integer.parseInt(product_id), color);
 	} else if (proc.equals("deleteWish")) {
-		daoWishlist.deleteWish(Integer.parseInt(account_id_temp), Integer.parseInt(product_id), color);
+		daoWishlist.deleteWish(Integer.parseInt(account_id), Integer.parseInt(product_id), color);
 	} 
 	
 	// cart list 불러오기
-	ArrayList<Cart> cartList = daoCart.getCartList(account_id);
+	ArrayList<Cart> cartList = daoCart.getCartList(Integer.parseInt(account_id));
 	
 	// wish list 불러오기
-	ArrayList<WishList> wishList = daoWishlist.getWishList(account_id);
+	ArrayList<WishList> wishList = daoWishlist.getWishList(Integer.parseInt(account_id));
 	
 	%>
 <body>
