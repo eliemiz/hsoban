@@ -75,12 +75,12 @@ ArrayList<Notice> list = dao.getNoticeList();
       <br><br><br>  
       <div class="content_wrap">
       <form method="post" id="noticeForm">
-      <div style="text-align: right;"> <%-- 이름,제목,내용 검색기능 
+      <div style="text-align: right;"> <%-- 이름,제목,내용 검색기능 --%>
         <span><input id="name" type="radio" name="select" ><label for="name">이름</label>&nbsp;
        <input id="title" type="radio" name="select" checked><label for="title">제목</label>&nbsp;
-       <input id="contents" type="radio" name="select"><label for="content">내용</label>&nbsp; --%>
-       <span><label for="account.getName()">이름</label>
-       <input type="text" name="account_name" />
+       <input id="contents" type="radio" name="select"><label for="content">내용</label>&nbsp; 
+      <%-- <span><label for="account.getName()"></label> --%>
+       <input type="text" name="search-Text" value=""/>
        <input style="background-color: #464646;
       color: white;" type="submit" value="검색" id="searchButton"/></span>
       </div>

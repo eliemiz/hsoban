@@ -78,7 +78,7 @@
                        </th>
                        <td>
                          <div class="td_left">
-                            <input id="bw_input_writer" type="text" name="account_id" class="MS_input_txt input_style">
+                            <input id="bw_input_writer" type="text" name="account_id" class="MS_input_txt input_style" placeholder="100000">
                          </div>
                        </td>
                        <th>
@@ -86,7 +86,8 @@
                        </th>
                        <td>
                            <div class="td_left">
-                              <input id="bw_input_passwd" type="text" name="posting_date_s" class="MS_input_txt input_style" value="2021-02-25" disabled></div>
+                           <input id="bw_input_passwd" type="text" name="posting_date_s" class="MS_input_txt input_style" value="2021-02-25" disabled></div>
+                      <%--   <input id="bw_input_passwd" type="text" name="posting_date_s" class="MS_input_txt input_style" placeholder="YYYY-MM-DD"></div>   --%>     
                        </td>
                    </tr>
                    <tr>
