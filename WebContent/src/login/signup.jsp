@@ -65,7 +65,7 @@ pre {
 	String sms_recv = request.getParameter("ms_recv");
 	if (sms_recv == null) {sms_recv = "";}
 	String auth = request.getParameter("auth");
-	if (auth  == null) {auth  = "";}
+	if (auth  == null) {auth  = "";} 
 	
 	if (name != ""){
 		Account account = new Account(0, name, id, pass, birthday_s, gender, Integer.parseInt(post), 
@@ -74,7 +74,7 @@ pre {
 		Dao_Account dao = new Dao_Account();
 		dao.insertAccount(account);		
 		
-		response.sendRedirect("loginTest.jsp");
+		response.sendRedirect("/hsoban/src/main/main.jsp");
 	}
 %>
 <body>
@@ -92,26 +92,28 @@ pre {
 	<td class="td_left"><input type="password" size="16" name="pass" id="pass"/>&nbsp;*영문8자~16자</td></tr>
 <tr><th class="th_left">■ 생일/성별</th>
 	<td class="td_left"><input type="text" name="birthday_s" placeholder="YYYY-MM-DD" size="16"/>
-	<input type="text" name="gender" placeholder="성별 입력" size="8"/>
+	남성<input type="radio" size="20" name="gender" value="남"/>여성<input type="radio" size="20" name="gender" value="여"/>
 	</td></tr>
 <tr><th class="th_left">■ 우편번호</th>
 	<td class="td_left"><input type="text" size="8" id="zipNo" name="post"/>
 <tr><th class="th_left">■ 집주소</th>
-	<td class="td_left"><input type="text" size="60" id="roadAddrPart1" name="address"/></td></tr>
+	<td class="td_left"><input type="text" size="60" id="roadAddrPart1" name="address" placeholder="예) 판교역로 235, 제주 첨단로 242"/></td></tr>
 <tr><th class="th_left">■ 상세주소</th>
-	<td class="td_left"><input type="text" size="60" id="addrDetail" name="address2"/></td></tr>
+	<td class="td_left"><input type="text" size="60" id="addrDetail" name="address2" placeholder="예) 대림 아파트 101동"/></td></tr>
 <tr><th class="th_left">■ 이메일</th>
 	<td class="td_left"><input type="text" size="20" name="email" placeholder="user@email.com"/></td></tr>
 <tr><th class="th_left">■ 휴대폰</th>
-	<td class="td_left"><input type="text" size="20" name="phone"/></td></tr>	
-<tr><th class="th_left">연락처</th>
-	<td class="td_left"><input type="text" size="20" name="phone2"/></td></tr>	
-<tr><th class="th_left">메일수신</th>
-	<td class="td_left"><input type="text" size="20" name="mail_recv"/></td></tr>
-<tr><th class="th_left">sms수신</th>
-	<td class="td_left"><input type="text" size="20" name="sms_recv"/></td></tr>
-<tr><th class="th_left">권한</th>
-	<td class="td_left"><input type="text" size="20" name="auth"/></td></tr>	
+	<td class="td_left"><input type="text" size="20" name="phone" placeholder="010-1234-5678"/></td></tr>	
+<tr><th class="th_left">■ 연락처</th>
+	<td class="td_left"><input type="text" size="20" name="phone2" placeholder="031-123-4567"/></td></tr>	
+<tr><th class="th_left">■ 메일수신</th>
+	<td class="td_left">동의<input type="radio" size="20" name="mail_recv" value="true"/>
+						비동의<input type="radio" size="20" name="mail_recv" value="false"/></td></tr>
+<tr><th class="th_left">■ sms수신</th>
+	<td class="td_left">동의<input type="radio" size="20" name="sms_recv" value="true"/>
+						비동의<input type="radio" size="20" name="sms_recv" value="false"/></td></tr>
+<tr><th class="th_left" style="visibility:hidden;">■ 권한</th>
+	<td class="td_left" style="visibility:hidden;" ><input type="text" size="20" name="auth" value="NORMAL" disabled /></td></tr>	
 </table><br>
 </form>
 <table border align="center" width="1170px">				
