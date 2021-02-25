@@ -82,6 +82,7 @@
 			response.sendRedirect("review_board.jsp");
 	   }
 %>
+
 <body>
 	<jsp:include page="../common/header.jsp"/>
 	<jsp:include page="../common/side.jsp"/>
@@ -98,8 +99,10 @@
 					         <col width="120">
 					         <col width="*">
 					     </colgroup>				
-                                          
-                            <td><div class="td_left">상 품 번 호: <input type="text" name="product_id" value="<%=review.getProduct_id() %>"></a><br>
+                            <tr>
+                            <td><% String thumbnail = product.getThumbnail() + "_00.jpg"; %>
+            						<img src="<%=thumbnail%>" class="img"></td>		            
+                            <td><div class="td_left">상 품 번 호: <input type="text" name="product_id" value="<%=review.getProduct_id() %>"><br>
                             상품색상:<input type="text" name="color" value="<%=review.getColor() %>">
                             </div></td>
                             </tr>

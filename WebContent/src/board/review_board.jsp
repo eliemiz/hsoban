@@ -29,21 +29,40 @@ transition:all .2s linear; -ms-transition:all .2s linear; -khtml-transition:all 
 
 </head>
 <%
-String review_id = request.getParameter("review_id");
-
-if (review_id == null || review_id.trim().equals("")) {
-	         review_id = "0";
-}
-
-Dao_Review dao = new Dao_Review();
-ArrayList<Review> rlist = dao.getReviewList();
-
-
-// product 로드
-Dao_Product daoProduct = new Dao_Product();
-
-Dao_Account daoAccount = new Dao_Account();
-
+		String review_id = request.getParameter("review_id");
+		
+		if (review_id == null || review_id.trim().equals("")) {
+			         review_id = "0";
+		}
+		
+		Dao_Review dao = new Dao_Review();
+		ArrayList<Review> rlist = dao.getReviewList();
+		
+		
+		// product 로드
+		Dao_Product daoProduct = new Dao_Product();
+		
+		Dao_Account daoAccount = new Dao_Account();
+		
+		
+		//변수 선언
+		String reivew_id = request.getParameter("reivew_id");
+		if (reivew_id == null || reivew_id.trim().equals("")){
+			reivew_id = "";
+		}
+		String product_id = request.getParameter("product_id");
+		if (product_id == null || product_id.trim().equals("")){
+			product_id = "";
+		}
+		
+		// 목록 불러오기
+		Dao_Review d = new Dao_Review();
+		ArrayList<Review> list;
+		if (product_id  == ""){
+			list = d.getReviewList();
+		} else {
+			list = d.getReviewList(Integer.parseInt(product_id));	
+		}
 %>
 <body>
 
@@ -62,12 +81,12 @@ Dao_Account daoAccount = new Dao_Account();
 	    <input id="title" type="radio" name="select" checked><label for="title">제목</label>&nbsp;
 	    <input id="contents" type="radio" name="select"><label for="content">내용</label>&nbsp;
 	    <input type="text" name="searchText" value="" />
-	    <input type="button" style="background-color: #464646;
-		color: white;"  value="검색" onClick="javascript:check()"></span>
+	    <input style="background-color: #464646;
+		color: white;" type="submit" value="검색" /></span>
     </div>
         <br>
-        <form name="searchFrm" method="post" action="reivew_board.jsp">
-       <table>
+        <form>
+       <table  id="reviewList">
       <colgroup>
          <col width="50">
          <col width="30">
@@ -91,17 +110,18 @@ Dao_Account daoAccount = new Dao_Account();
 	    <tbody>
 	    
 	    <%
-	    int cnt=6;
+	    int cnt=1;
 	    for (Review review : rlist){
 	    	Product product = daoProduct.getProdList(review.getProduct_id(), review.getColor());
 	    	Account account = daoAccount.getAccount(review.getAccount_id());
 		%>		
 		<tr onclick="callDetail(<%=review.getReview_id() %>)">				
-			<td><div class="td_center"><%=cnt--%></div></td>
+			<td><div class="td_center"><%=cnt++%></div></td>
 			 <td><div class="td_center"><img src="<%=path%>/img/board/note.jpg" class="note"></div></td>
-			<td><div class="td_center">
-			<img src="<%=path%><%=product.getThumbnail() %>" class="img"></div></td>
-			<td><div class="td_left"><a href="../board/review.jsp"><%=review.getTitle() %></a></div></td>
+			<td><div class="td_center"> <!-- 사진 수정하기 -->
+			<% String thumbnail = product.getThumbnail() + "_00.jpg"; %>
+            <img src="<%=thumbnail%>" class="img"></div></td>			
+			<td><div class="td_left"><a href="../board/review_read.jsp"><%=review.getTitle() %></a></div></td>
 			<td><div class="td_center"><%=account.getName() %></div></td>
 			<td><div class="td_center"><%=review.getPosting_date() %></div></td>
 			<td><div class="td_center"><%=review.getViews() %></div></td>

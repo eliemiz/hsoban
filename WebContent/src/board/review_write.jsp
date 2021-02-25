@@ -77,6 +77,11 @@
 	<br><br><br>
       <div class="content_wrap">
        <form method="post" id="reviewForm">
+       <input type="hidden" name="account_id" class="MS_input_txt input_style" value="100001">
+       <input type="hidden" name="posting_date_s" class="MS_input_txt input_style" value="2021-02-26">
+       <input type="hidden" name="views" class="MS_input_txt input_style" value="0">
+       <input type="hidden" name="product_id" class="MS_input_txt input_style" value="100001">
+       <input type="hidden" name="color" class="MS_input_txt input_style" value="블랙">
        <tr>
        <td height=20 align= center bgcolor=#ccc><font color=white> 글쓰기</font></td>
        </tr>
@@ -89,40 +94,6 @@
                    <col width="90">
                </colgroup>
              <tbody>
-             	<tr>
-                       <th>
-                       	 <div>PRODUCT</div>
-                       </th>
-                       <td>
-                         <div class="td_left">
-                         	<input id="bw_input_writer" type="text" name="product_id" class="MS_input_txt input_style">
-                         </div>
-                       </td>
-                       <th>
-                       	 <div>COLOR</div>
-                       </th>
-                       <td>
-                       	 <div class="td_left">
-                       	 	<input id="bw_input_passwd" type="text" name="color" class="MS_input_txt input_style"></div>
-                       </td>
-                   </tr>
-                   <tr>
-                       <th>
-                       	 <div>NAME</div>
-                       </th>
-                       <td>
-                         <div class="td_left">
-                         	<input id="bw_input_writer" type="text" name="account_id" class="MS_input_txt input_style">
-                         </div>
-                       </td>
-                       <th>
-                       	 <div>POSTING DATE</div>
-                       </th>
-                       <td>
-                       	 <div class="td_left">
-                       	 	<input id="bw_input_passwd" type="text" name="posting_date_s" class="MS_input_txt input_style"></div>
-                       </td>
-                   </tr>
                    <tr>
                        <th>
                        	 <div>TITLE</div>
@@ -131,19 +102,13 @@
                            <div class="td_left">
                            	<input id="bw_input_subject" class="MS_input_txt input_style2" type="text" name="title">
                        </td>
-                        <th>
-                       	 <div>VIEWS</div>
-                       </th>
-                       <td>
-                       	 <div class="td_left">
-                       	 	<input id="bw_input_views" type="text" name="views" class="MS_input_txt input_style"></div>
-                       		
-                       </td>
+                       
                    </tr>
                    <tr>
                        <th><div>CONTENT</div></th>
-                       <td colspan="3"><div class="td_left"><textarea id="MS_text_content" name="content" style="font-family: 굴림체; width: 100%; height: 380px;"></textarea>
-                       <input type="hidden" name="mobile_content_type" value=""></div>
+                       <td colspan="3">
+                       <div class="td_left"><textarea id="MS_text_content" name="content" style="font-family: 굴림체; width: 100%; height: 380px;"></textarea>
+                      </div>
                        </td>
                    </tr>
                     <tr>
@@ -177,14 +142,6 @@ insertButton.onclick = function() {
 	var views = document.querySelector('[name=views]');
 	var attach = document.querySelector('[name=attach]');
 	// 유효성 체크
-	if (isNaN(product_id.value) || isNaN(account_id.value) || isNaN(views.value)){
-		alert('숫자를 입력하세요');
-		return false;
-	}
-	if ((color.value)==null ||(color.value)==""){
-		alert('글자를 입력하세요');
-		return false;
-	}
 	if ((title.value)==null ||(title.value)==""){
 		alert('글자를 입력하세요');
 		return false;
