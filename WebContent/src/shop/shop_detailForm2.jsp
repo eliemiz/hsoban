@@ -155,7 +155,7 @@
 									<input type="hidden" name="color" value="${color}">
 									<input type="hidden" name="proc">
 									<!-- </form> -->
-                                    <button onclick="submitCartForm('addOrder')"><img src="/hsoban/src/shop/img/btn_order.png" alt="바로구매" title="바로구매"></button>
+                                    <button style="background-color:black; color:white;" onclick="submitCartForm('addOrder')"><img src="/hsoban/src/shop/img/btn_order.png" alt="바로구매" title="바로구매"></button>
                                    	<button onclick="submitCartForm('addCart')"><img src="/hsoban/src/shop/img/btn_cart.png" alt="장바구니 담기" title="장바구니 담기"></button>
                                     <button onclick="submitCartForm('addWish')"><img src="/hsoban/src/shop/img/btn_wish.png" alt="관심상품" title="관심상품"></button>
                                 </div>

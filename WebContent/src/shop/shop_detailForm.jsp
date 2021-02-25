@@ -27,14 +27,9 @@
 	width: 14px;
 	height: 14px;
 }
+#detailpage .opt-spin .btns img { overflow: hidden; float: left; text-indent: -999px; background: black; }
 </style>
 <%-- <%
-
-
-
-
-
-
 int account_id = 100001;
 Dao_Cart cartDao = new Dao_Cart();
 ArrayList<Cart> cart = cartDao.getCartList(account_id);
@@ -42,9 +37,7 @@ ArrayList<Cart> cart = cartDao.getCartList(account_id);
 Dao_Stock daoStock = new Dao_Stock();
 
 %> --%>
-	<%
-
-	
+<%	
 	// for number format
 /* 	DecimalFormat df = new DecimalFormat("#,###"); */
 	
@@ -169,7 +162,7 @@ Dao_Stock daoStock = new Dao_Stock();
 									<%-- <input type="hidden" name="color" value="${color}"> --%>
 									<input type="hidden" name="proc">
 									<!-- </form> -->
-                                    <button onclick="submitCartForm('addOrder')"><img src="/hsoban/src/shop/img/btn_order.png" alt="바로구매" title="바로구매"></button>
+                                    <button style="background-color:black; color:white;" onclick="submitCartForm('addOrder')"><img src="/hsoban/src/shop/img/btn_order.png" alt="바로구매" title="바로구매"></button>
                                    	<button onclick="submitCartForm('addCart')"><img src="/hsoban/src/shop/img/btn_cart.png" alt="장바구니 담기" title="장바구니 담기"></button>
                                     <button onclick="submitCartForm('addWish')"><img src="/hsoban/src/shop/img/btn_wish.png" alt="관심상품" title="관심상품"></button>
                                 </div>
