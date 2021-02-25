@@ -14,6 +14,7 @@
 <link rel="stylesheet" href="/hsoban/css/allCommon.css">
 <link rel="stylesheet" href="/hsoban/css/common.css">
 <link rel="stylesheet" href="/hsoban/css/mypage.css">
+<link rel="stylesheet" href="<%=path%>/css/cart.css">
 <meta charset="UTF-8">
 <title>관심상품</title>
 </head>
@@ -124,9 +125,13 @@ int account_id = 100001;
 									<input type="hidden" name="proc">
 								</form>
 							</td>
-							<td class="td_center"><img src="<%=path%><%=product.getThumbnail()%>" class="thumbnail_m" style="width: 84px; height: 84px"></td>
+							<% String thumbnail = product.getThumbnail() + "_00.jpg"; %>
+							<td class="td_center"><img src="<%=thumbnail%>" class="thumbnail_m" style="width: 84px; height: 84px"></td>
 							<td class="product">
-								<div class="tb-center"><%=product.getName()%></div>
+						<div class="tb-center">	
+								<%String url = path + "/src/shop/shop_detailForm.jsp?product_id=" + wish.getProduct_id(); %>
+									<a href="<%=url%>" style="text-decoration:none; color:#464646;"><%=product.getName() %></a>
+						</div>
 								<div class="tb-center"><span class="wish-opt">[color:<%=wish.getColor()%>]</span></div>
 							</td>
 							<td class="td_center">

@@ -17,7 +17,54 @@
 <link rel="stylesheet" href="/hsoban/css/common.css">
 <link rel="stylesheet" href="/hsoban/css/mypage.css">
 <%
-int account_id=100001;
+int account_id=100081;
+Dao_Account dao = new Dao_Account();
+Account account = dao.getAccount(account_id);
+
+
+String reason = request.getParameter("reason");
+String withdraw_date_s = request.getParameter("withdraw_date_s");
+
+String name = request.getParameter("name");
+if (name == null) {name = "";}
+String id = request.getParameter("id");
+if (id == null) {id = "";}
+String pass = request.getParameter("pass");
+if (pass == null) {pass = "";}
+String birthday_s = request.getParameter("birthday_s");
+if (birthday_s == null) {birthday_s = "";}
+String gender = request.getParameter("gender");
+if (gender == null) {gender = "";}
+String post = request.getParameter("post");
+if (post == null || post.trim().equals("")){
+	post = "0";}
+String address = request.getParameter("address");
+if (address == null) {address = "";}
+String address2 = request.getParameter("address2");
+if (address2 == null) {address2 = "";}
+String email = request.getParameter("email");
+if (email == null) {email = "";}
+String phone = request.getParameter("phone");
+if (phone == null) {phone = "";}
+String phone2 = request.getParameter("phone2");
+if (phone2 == null) {phone2 = "";}
+String mail_recv = request.getParameter("mail_recv");
+if (mail_recv == null) {mail_recv = "";}
+String sms_recv = request.getParameter("ms_recv");
+if (sms_recv == null) {sms_recv = "";}
+String auth = request.getParameter("auth");
+if (auth  == null) {auth  = "";} 
+
+String proc = request.getParameter("proc");
+if (proc == null) {
+	proc = "";
+}
+if (proc.equals("delete")) {
+	dao.deleteAccount(account_id);
+	response.sendRedirect("../main/main.jsp");
+}
+
+
 %>
 <body>
 <jsp:include page="../common/header.jsp"/>
@@ -28,6 +75,23 @@ int account_id=100001;
                         <div class="dbox-wrap">
                         <div class="scede-frm">
                         <div class="bbs-tit">회원탈퇴</div>
+                        <form method="post" id="withdrawForm">
+						<input type="hidden" name="proc" value="">
+						<input type="hidden" name="account_id" value="<%=account.getAccount_id()%>">
+						<input type="hidden" name="name" value="<%=account.getName()%>">
+						<input type="hidden" name="id" value="<%=account.getId()%>" >
+						<input type="hidden" name="pass" value="<%=account.getPass()%>">
+						<input type="hidden" name="birthday" value="<%=account.getBirthday()%>">
+						<input type="hidden" name="gender" value="<%=account.getGender()%>">
+						<input type="hidden" name="post" value="<%=account.getPost()%>">
+						<input type="hidden" name="address" value="<%=account.getAddress()%>">
+						<input type="hidden" name="address2" value="<%=account.getAddress2()%>">
+						<input type="hidden" name="email" value="<%=account.getEmail()%>">
+						<input type="hidden" name="phone2" value="<%=account.getPhone2()%>">
+						<input type="hidden" name="mail_recv" value="<%=account.isMail_recv()%>">
+						<input type="hidden" name="sms_recv" value="<%=account.isSms_recv()%>">
+						<input type="hidden" name="auth" value="<%=account.getAuth()%>">
+						
                             <fieldset>
                                 <legend >탈퇴 사유 작성 폼</legend>
                                 <div class="table-d2-view">
@@ -46,40 +110,38 @@ int account_id=100001;
                                     </table>
                                 </div>
                                 <div class="btn-foot">
-                                     <span align="center"><input type="button" class="btn btn_black" value="회원탈퇴" style="height:22px; width:110px;" onclick="go()"></span>
+                                     <span align="center"><input type="button" name="deleteButton"id="deleteButton"class="btn btn_black" value="회원탈퇴" style="height:22px; width:110px;" onclick="go()"></span>
                                      <span><input type="button" class="btn btn_black" value="탈퇴취소" style="height:22px; width:110px;" onclick="location.href='../mypage/mypage_main.jsp'";></span>
                                 </div>
                             </fieldset>
+                             </form>
                         </div><!-- .scede-frm -->
+                       
                     </div>
                     </div>
                     </div>
+                    
    <jsp:include page="../common/footer.jsp"/>            
 </body>
 <script type="text/javascript">
 
-function withdrawal_fin(){
-	var result = confirm('탈퇴할 경우 회원관련 데이터가 복구되지 않습니다. 정말로 탈퇴를 하시겠습니까?');
-	if(result==true){
-		alert('해당 ID를 탈퇴처리해 드렸습니다.');
-		location.href="../main/main.jsp";
-	}else{
-		location.href="../mypage/mypage_main.jsp";
-	}
-		
+var accountForm = document.querySelector('#withdrawForm');
+var proc = document.querySelector('[name=proc]');
+var deleteButton = document.querySelector('#deleteButton');
+
+	 
+deleteButton.onclick = function() {
+	proc.value = 'delete';
 	
-}
-
-function go(){
-
-	   if(reason.value.length<1) {
+	if(reason.value.length<1) {
 		   alert('탈퇴 사유를 입력해주세요.');
 	   }
+	else if(confirm('정말 탈퇴하시겠습니까?')){
+		withdrawForm.submit();	
+	} 
+}
 
-	   else { 
-		   withdrawal_fin()
-	   }
-	}
+
 
 </script>
 </html>

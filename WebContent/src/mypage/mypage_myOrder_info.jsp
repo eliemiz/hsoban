@@ -1,3 +1,4 @@
+  
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.util.*" import="java.net.*"
 	import="hsoban.dao.*" import="hsoban.vo.*"
@@ -41,7 +42,6 @@ div {
 <%
 //변수 선언 for 페이지 로드
 		String order_id = request.getParameter("order_id");
-
 		// validate
 		if (order_id == null || order_id.trim().equals("")) {
 			order_id = "0";
@@ -58,10 +58,8 @@ div {
 	      
 	      // get order product list
 	      ArrayList<OrderProduct> plist = dao.getOrderProductList(dorder.getOrder_id());
-
 	      // get account
 	      Account account = daoAccount.getAccount( dorder.getAccount_id());
-
 	      for (int i = 0; i < plist.size(); i++) {
               Product product = daoProduct.getProdList(plist.get(i).getProduct_id(), plist.get(i).getColor());
          }
@@ -157,24 +155,25 @@ div {
                 <tbody>
                 <tr>
                			<td>
-                            <div class="tb-center">
-                              <img src="
-                               <% for (int i = 0; i < plist.size(); i++) {
+               			<% for (int i = 0; i < plist.size(); i++) {
                                     Product product = daoProduct.getProdList(plist.get(i).getProduct_id(), plist.get(i).getColor());
                                  %>
-                              <%=path%><%=product.getThumbnail()%>
+                            <% String thumbnail = product.getThumbnail() + "_00.jpg"; %>
+                            <div class="tb-center">
+                              <img src="
+                              <%=thumbnail%>
                               <%} %>
                               " class="thumbnail_s" style="width: 58px; height: 58px">
                             </div>
                         </td>
                         <td>
                             <div class="tb-left">
-                                <a href="javascript:go_brand('001000000026');" style="text-decoration: none; color: #777;">
+                                <div  style="text-decoration: none; color: #777;">
                                 <% for (int i = 0; i < plist.size(); i++) {
                                     Product product = daoProduct.getProdList(plist.get(i).getProduct_id(), plist.get(i).getColor());
                                  %>
                                 <%=product.getName()%>
-                                <%} %><br></a>
+                                <%} %><br></div>
                                 <span class="quantity order_table_Td style4"><%for(OrderProduct order:plist){ %> color : <%=order.getColor() %> <%} %></span>
                             </div>
                         </td>
