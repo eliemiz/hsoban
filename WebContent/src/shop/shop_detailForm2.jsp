@@ -35,7 +35,13 @@
 /* 	DecimalFormat df = new DecimalFormat("#,###"); */
 	
 	// TODO : session에서 가져올 것
-	int account_id = 100001;
+//	int account_id = 100001;
+	Object object = session.getAttribute("sessionId");
+	String account_id;
+	if(object==null) account_id = "0";
+	else{
+		account_id = object.toString();
+	}
 	
 	// 사용되는 DAO 객체 생성
 	Dao_Cart daoCart = new Dao_Cart();
