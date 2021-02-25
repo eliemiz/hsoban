@@ -32,6 +32,7 @@ Dao_Account dao = new Dao_Account();
 int result = dao.login(account.getId(), account.getPass());
 if (result == 1){ 
 	PrintWriter script = response.getWriter();
+	session.setAttribute("sessionId",account.getAccount_id());
 	script.println("<script>");
 	script.println("location.href = '/hsoban/src/main/main.jsp'"); 
 	script.println("</script>");
