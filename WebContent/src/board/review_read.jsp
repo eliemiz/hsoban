@@ -126,7 +126,7 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <form method="post" id="commentForm">
+                            <form method="post" id="commentForm" style="display:none;">
                             <input type="hidden" name="review_id" value="1">
                             <input type="hidden" name="id" value="tempid">
                             <input type="hidden" name="process">
