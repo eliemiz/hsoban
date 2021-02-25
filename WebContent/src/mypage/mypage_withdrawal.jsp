@@ -17,13 +17,35 @@
 <link rel="stylesheet" href="/hsoban/css/common.css">
 <link rel="stylesheet" href="/hsoban/css/mypage.css">
 <%
-int account_id=100081;
+Object object = session.getAttribute("sessionId");
+String account_id;
+if (object == null) account_id = "0";
+else {
+    account_id = object.toString();
+}
+
 Dao_Account dao = new Dao_Account();
-Account account = dao.getAccount(account_id);
+Account account = dao.getAccount(Integer.parseInt(account_id));
 
 
 String reason = request.getParameter("reason");
 String withdraw_date_s = request.getParameter("withdraw_date_s");
+
+
+
+if (reason == null) {
+	reason = "";
+}
+if (withdraw_date_s == null) {
+	withdraw_date_s = "";
+}
+
+
+
+		
+	
+	
+
 
 String name = request.getParameter("name");
 if (name == null) {name = "";}
@@ -60,8 +82,14 @@ if (proc == null) {
 	proc = "";
 }
 if (proc.equals("delete")) {
-	dao.deleteAccount(account_id);
-	response.sendRedirect("../main/main.jsp");
+
+	Withdraw_account with = new Withdraw_account(Integer.parseInt(account_id), reason, withdraw_date_s);
+	
+	Dao_Withdraw_account dao2 = new Dao_Withdraw_account();
+	dao2.insertWithdraw_account(with);	
+	dao.deleteAccount(Integer.parseInt(account_id));
+	
+	response.sendRedirect("../mypage/mypage_withdrawal_session_fin.jsp");
 }
 
 
@@ -91,6 +119,16 @@ if (proc.equals("delete")) {
 						<input type="hidden" name="mail_recv" value="<%=account.isMail_recv()%>">
 						<input type="hidden" name="sms_recv" value="<%=account.isSms_recv()%>">
 						<input type="hidden" name="auth" value="<%=account.getAuth()%>">
+						<input type='date' id='currentDate' name="withdraw_date_s" value=""/>
+
+
+<script>
+  document.getElementById('currentDate').value = new Date().toISOString().substring(0, 10);;
+</script>
+						
+						
+						
+						
 						
                             <fieldset>
                                 <legend >탈퇴 사유 작성 폼</legend>

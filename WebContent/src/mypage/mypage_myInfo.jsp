@@ -35,9 +35,15 @@ Account account = dao.getAccount(Integer.parseInt(account_id));
 
  --%>
 <%
-int account_id=100043;
+
+Object object = session.getAttribute("sessionId");
+String account_id;
+if (object == null) account_id = "0";
+else {
+    account_id = object.toString();
+}
 Dao_Account dao = new Dao_Account();
-Account account = dao.getAccount(account_id);
+Account account = dao.getAccount(Integer.parseInt(account_id));
 
 String name = request.getParameter("name");
 if (name == null) {name = "";}
@@ -75,7 +81,7 @@ if (proc == null) {
 }
 if (proc.equals("update")){
 	
-	Account newAccount = new Account(account_id, name, id, pass, 
+	Account newAccount = new Account(Integer.parseInt(account_id), name, id, pass, 
 			birthday_s, gender, Integer.parseInt(post), address, address2, email, phone,
 			phone2, Boolean.parseBoolean(mail_recv), Boolean.parseBoolean(sms_recv), auth);
 	

@@ -16,7 +16,14 @@
 <meta charset="UTF-8">
 <title>마이페이지</title>
 </head>
+
 <%--
+ int account_id = 100043;
+Dao_Account dao = new Dao_Account();
+Account account = dao.getAccount(account_id); 
+--%>
+<%--
+session.getAttribute("sessionId");
 
 String account_id = request.getParameter("account_id");
 if (account_id == null || account_id.trim().equals("")){
@@ -26,10 +33,15 @@ if (account_id == null || account_id.trim().equals("")){
 Account account = dao.getAccount(Integer.parseInt(account_id));
 --%>
 <%
+Object object = session.getAttribute("sessionId");
+String account_id;
+if (object == null) account_id = "0";
+else {
+    account_id = object.toString();
+}
 
-int account_id = 100043;
 Dao_Account dao = new Dao_Account();
-Account account = dao.getAccount(account_id);
+Account account = dao.getAccount(Integer.parseInt(account_id));
 %>
 <body>
 <jsp:include page="../common/header.jsp"/>

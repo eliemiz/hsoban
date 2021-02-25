@@ -41,6 +41,13 @@ div {
 </style>
 <%
 //변수 선언 for 페이지 로드
+Object object = session.getAttribute("sessionId");
+String account_id;
+if (object == null) account_id = "0";
+else {
+    account_id = object.toString();
+}
+
 		String order_id = request.getParameter("order_id");
 		// validate
 		if (order_id == null || order_id.trim().equals("")) {

@@ -38,9 +38,14 @@ if (account_id == ""){
 <%
 DecimalFormat df = new DecimalFormat("#,###");
 
-int account_id = 100001;
+Object object = session.getAttribute("sessionId");
+String account_id;
+if (object == null) account_id = "0";
+else {
+    account_id = object.toString();
+}
 	Dao_WishList dao = new Dao_WishList();
-	ArrayList<WishList> list = dao.getWishList(account_id);	
+	ArrayList<WishList> list = dao.getWishList(Integer.parseInt(account_id));	
 	
 	Dao_Cart daoCart = new Dao_Cart();
 	

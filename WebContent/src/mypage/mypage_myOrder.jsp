@@ -29,12 +29,17 @@ list = dao.getOrderDetailList(Integer.parseInt(account_id));
 	
 --%>
 <%
-int account_id = 100001;
+Object object = session.getAttribute("sessionId");
+String account_id;
+if (object == null) account_id = "0";
+else {
+    account_id = object.toString();
+}
 
 Dao_OrderDetail dao = new Dao_OrderDetail();
 ArrayList<OrderDetail> list;
 
-list = dao.getOrderDetailList( account_id);
+list = dao.getOrderDetailList(Integer.parseInt(account_id));
 
 %>
 </head>
