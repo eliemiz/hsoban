@@ -62,6 +62,29 @@ public class Dao_Account extends Dao {
 		}
 		return account;
 	}
+	public int login(String id, String pass) { 
+		String SQL = "SELECT pass FROM account WHERE id = ?"; 
+		try {
+			connect();
+			pstmt = con.prepareStatement(SQL);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery(); 
+			if (rs.next()) {
+				if (rs.getString(1).contentEquals(pass)) {
+					return 1; // 로그인 성공
+				}
+				else {
+					return 0; // 비밀번호 불일치
+				}
+			}
+			return -1; // 아이디가 없음
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -2; // DB 오류 
+	}
+
+
 	// 조회(조건-단일) - 아이디, 비밀번호
 	public Account getAccount(String id, String pass){
 		Account account = null;
@@ -170,7 +193,7 @@ public class Dao_Account extends Dao {
 			pstmt.setBoolean(13, account.isSms_recv());
 			pstmt.setString(14, account.getAuth());
 			
-			pstmt.executeQuery();
+			rs = pstmt.executeQuery();
 			con.commit();
 			pstmt.close();
 			con.close();
