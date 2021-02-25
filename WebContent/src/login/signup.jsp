@@ -68,7 +68,7 @@ pre {
 	if (auth  == null) {auth  = "";}
 	
 	if (name != ""){
-		Account account = new Account(name, id, pass, birthday_s, gender, Integer.parseInt(post), 
+		Account account = new Account(0, name, id, pass, birthday_s, gender, Integer.parseInt(post), 
 				address, address2, email, phone, phone2, Boolean.parseBoolean(mail_recv),
 				Boolean.parseBoolean(sms_recv), auth);
 		Dao_Account dao = new Dao_Account();
