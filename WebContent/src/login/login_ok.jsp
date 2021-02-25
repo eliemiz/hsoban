@@ -7,9 +7,10 @@
 <% request.setCharacterEncoding("UTF-8");
    String path = request.getContextPath();
 %>    
-<jsp:useBean id="account" class="hsoban.vo.Account" scope="page"/> <!-- 한명의 회원 정보를 담는 User클래스를 자바 빈즈로 사용하며 현재 page안에서만 빈즈를 사용 -->
+<jsp:useBean id="account" class="hsoban.vo.Account" scope="page"/>
 <jsp:setProperty name="account" property="id" />
 <jsp:setProperty name="account" property="pass" />
+<jsp:setProperty name="account" property="account_id" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,13 +28,17 @@
 </head>
 <%
 
-
 Dao_Account dao = new Dao_Account();
+Account temp = dao.getAccount(account.getId(), account.getPass());
+
 int result = dao.login(account.getId(), account.getPass());
 if (result == 1){ 
 	PrintWriter script = response.getWriter();
-	session.setAttribute("sessionId",account.getAccount_id());
 	script.println("<script>");
+	session.setAttribute("sessionId",temp.getAccount_id());
+	//session.setAttribute("sessionId2",account.getId());
+	//session.setAttribute("sessionId3",account.getPass());
+	//script.println("location.href = '/hsoban/src/test/sessionTest.jsp'");
 	script.println("location.href = '/hsoban/src/main/main.jsp'"); 
 	script.println("</script>");
 }
@@ -60,10 +65,6 @@ else if (result == -1){
 }
 %>
 <body>
-   <h3>제목</h3>
-   <table>
-      <tr><th>타이틀</th></tr>
-      <tr><td>내용</td></tr>
-   </table>
+   <h3></h3>
 </body>
 </html>
