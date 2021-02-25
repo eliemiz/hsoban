@@ -152,7 +152,7 @@ public class Dao_Notice extends Dao {
 		try {
 			connect();
 			con.setAutoCommit(false);
-			String sql = "INSERT INTO NOTICE VALUES (NOTICE_ID_SEQ.nextval, ?, ?, ?, ?, ?)"; 
+			String sql = "INSERT INTO NOTICE VALUES (NOTICE_ID_SEQ.nextval, ?, ?, ?, TO_DATE(?, 'YYYY-MM-DD'), ?)"; 
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, notice.getTitle());  
 			pstmt.setString(2, notice.getContent());
