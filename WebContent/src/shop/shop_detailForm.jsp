@@ -27,7 +27,6 @@
 	width: 14px;
 	height: 14px;
 }
-#detailpage .opt-spin .btns img { overflow: hidden; float: left; text-indent: -999px; background: black; }
 </style>
 <%-- <%
 int account_id = 100001;
