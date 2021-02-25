@@ -44,6 +44,69 @@
 		response.sendRedirect("review_list.jsp");
 	}
 %>
+<%
+	
+	// 변수 선언
+	
+	String id = request.getParameter("id");
+	String pass = request.getParameter("pass");
+	String content = request.getParameter("content");
+	
+	// validate
+	if (id == null) {
+		id = "";
+	}
+	if (pass == null) {
+		pass = "";
+	}
+	if (content == null) {
+		content = "";
+	}
+	
+	// insert
+	if (review_id != "0"){
+		Comments comment = new Comments(0, Integer.parseInt(review_id), id, pass, content);
+		
+		Dao_Comments cdao = new Dao_Comments();
+		cdao.insertComments(comment);
+		
+		response.sendRedirect("review_read.jsp");
+	}
+	// comments 불러오기
+	Dao_Comments cdao = new Dao_Comments();
+	ArrayList<Comments> list;
+	
+	if (id == ""){
+		list = cdao.getCommentsList();
+	} else {
+		list = cdao.getCommentsList(Integer.parseInt(id));	
+	}
+	
+	/*
+	// comments 삭제
+	String comment_id = request.getParameter("comment_id");
+				
+		// validate
+		if (comment_id == null) {
+			comment_id = "";
+		}
+		
+		Dao_Comments cdao = new Dao_Comments();
+		Comments comment = cdao.getComments(Integer.parseInt(comment_id));
+		
+		String process = request.getParameter("process");
+		if (process == null) {
+			process = "";
+		}
+
+		// delete
+		if (process.equals("delete")) {
+			
+			cdao.deleteComments(Integer.parseInt(comment_id));
+			response.sendRedirect("comment_list.jsp");
+		}
+		*/
+%>
 <body>
 	<jsp:include page="../common/header.jsp"/>
 	<jsp:include page="../common/side.jsp"/>
@@ -58,9 +121,11 @@
 					         <col width="120">
 					         <col width="*">
 					     </colgroup>
-                            <td><a href="../shop/shop1_Bowl/Bowl2.jsp"><img src="<%=path%><%=product.getThumbnail() %>" class="img"></a></td>                   
+					        <tr>
+                            <td><% String thumbnail = product.getThumbnail() + "_00.jpg"; %>
+            						<img src="<%=thumbnail%>" class="img"></td>                
                             <td><div class="td_left">상 품 명:<%=product.getName() %><%=review.getColor() %>
-                            </a><br>
+                            <br>
                             상품가격:<strong><%=product.getPrice() %>원</strong></div></td>
                             </tr>
                         </table>
@@ -99,6 +164,24 @@
                                     </tr>
                                 </tbody>
                             </table>
+                            <form>
+                            <table>
+                            <%
+							for (Comments comment : list){
+							%>
+		
+                            <tr onclick="callDetail(<%=comment.getId()%>)">	
+                            	<th><%=account.getId() %></th>
+                            	<th><input size="100" type="text" name="content" value="<%=comment.getContent() %>"  style="margin: 0px; width: 800px; height: 85px;"></th>
+                            	
+                            </tr>
+                            <%
+							}
+							%> 
+                            </table>
+                            </form>
+                            <form id="commentList">
+                            <input type="hidden" name="process" value="">
                                   <table >
                                     <colgroup>
                                         <col width="120">
@@ -106,40 +189,36 @@
                                         <col width="150">
                                     </colgroup>
                                     <tbody>
+                                 
                                         <tr>
                                             <td colspan="3" class="td_left">
                                                     <div class="wrt">
-                                                        <label>> NAME</label>&nbsp;&nbsp;&nbsp;<%=account.getId() %><span><input name="cname" type="hidden" value="temp123">&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                                        <label>> PASSWORD</label>&nbsp;&nbsp;&nbsp;<span><input type="password" name="cpass" class="MS_input_txt input-style input-style2" onclick="CheckLogin()" onkeypress="CheckLogin()" placeholder="패스워드"> </span>
+                                                        <label>> NAME</label>&nbsp;&nbsp;&nbsp;<%=account.getId() %>
+                                                        <label>> PASSWORD</label>&nbsp;&nbsp;&nbsp;<span><input type="text" name="pass"></span>
                                                     </div>
                                               </td>
                                            </tr>
                                            <tr>
                                            <td colspan="3" class="td_left">
-                                               <textarea name="comment" onchange="Checklength(this);" onkeyup="Checklength(this);" onclick="CheckLogin()" placeholder="내용" style="margin: 0px; width: 999px; height: 85px;">
+                                               <textarea name="comment"  placeholder="내용" style="margin: 0px; width: 999px; height: 85px;">
                                                </textarea>
-                                            <input type="button" value="글쓰기" class="btn_write2">
+                                            <input type="button" value="입력" class="btn btn_thatch" id="insertButton">    
                                            </td>   
                                         </tr>
                                     </tbody>
                                 </table>
-                            </fieldset>
 							</form>
 							<br>
 							   <div class="view-link">
-                                    <dt></dt>
-                                    <dd>
                                     <input type="button" value="수정" class="btn_write" onclick="location.href='review.jsp'">&nbsp;
                                     <input type="button" value="삭제" class="btn_write"  id="deleteButton">    
-                                    </dd>                                                       
+                                                     
                             </div>
                             <br>
 			               <span><img src="<%=path%>/img/board/up.png" class="up">&nbsp;이전글 :</span>
 	                      	 <a href="../board/review2.jsp">수저받침대</a><br>
                        	   <span><img src="<%=path%>/img/board/down.png" class="down">&nbsp;다음글 :</span>
-                             <a href="../board/review2.jsp">수저받침대</a>	
-                        </div>
-                          <br>
+                             <a href="../board/review2.jsp">수저받침대</a><br>
 				     	<div style="text-align:right;">
 						<input type="button" value="완료" class="btn btn_thatch" onclick="location.href='review_board.jsp'">
 						<input type="button" value="목록보기" class="btn btn_normal" onclick="location.href='review_board.jsp'">
@@ -167,5 +246,35 @@ var attach = document.querySelector('[name=attach]');
 			reviewForm.submit();	
 		} 
 	}
+	var insertButton = document.querySelector('#insertButton');
+	insertButton.onclick = function() {
+		var commentForm = document.querySelector('#commentForm');
+		var review_id = document.querySelector('[name=review_id]');
+		
+		// 유효성 체크
+		if (isNaN(review_id.value)){
+			alert('숫자를 입력하세요');
+			return false;
+		}
+		
+		commentForm.submit();
+	}
+	function callDetail(id){
+		var url = "comment_detail.jsp?";
+		url += "id=" + id;
+		location.href = url;
+	}
+	/*
+	var commentForm = document.querySelector('#commentForm');
+	var process = document.querySelector('[name=process]');
+	var deleteButton = document.querySelector('#deleteButton');
+	
+	deleteButton.onclick = function() {
+		process.value = 'delete';
+		if (confirm('정말 삭제하시겠습니까?')){
+			commentForm.submit();	
+		} 
+	}
+	*/
 </script>
 </html>
