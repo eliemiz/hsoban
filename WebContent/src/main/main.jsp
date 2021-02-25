@@ -361,7 +361,7 @@ img {cursor:pointer;}
 					<div class="item-wrap">
 						<div class="item-cont">
 							<dl class="item-list">
-                                <dt class="thumb"><img class="MS_prod_img_s" src="/hsoban/img/shop/Set1_00.jpg" alt="상품 썸네일" title="상품 썸네일" onclick="detail(700000)"></a></dt>
+                                <dt class="thumb"><img class="MS_prod_img_s" src="/hsoban/img/shop/Set1_00.jpg" alt="상품 썸네일" title="상품 썸네일" onclick="detail2(700000)"></a></dt>
                                 <dd>
                                     <ul>
                                         <li class="prd-name"><span class="MK-product-icons"></span>2인세트</li>
@@ -370,7 +370,7 @@ img {cursor:pointer;}
                                 </dd>
                             </dl>
                             <dl class="item-list">
-                                <dt class="thumb"><img class="MS_prod_img_s" src="/hsoban/img/shop/Set2_00.jpg" alt="상품 썸네일" title="상품 썸네일" onclick="detail(700001)"></a></dt>
+                                <dt class="thumb"><img class="MS_prod_img_s" src="/hsoban/img/shop/Set2_00.jpg" alt="상품 썸네일" title="상품 썸네일" onclick="detail2(700001)"></a></dt>
                                 <dd>
                                     <ul>
                                         <li class="prd-name"><span class="MK-product-icons"></span>4인세트</li>
@@ -394,5 +394,8 @@ img {cursor:pointer;}
 function detail(product_id){
         location.href="../shop/shop_detailForm.jsp?product_id="+product_id;
      }
+function detail2(product_id){
+    	location.href="../shop/shop_detailForm2.jsp?product_id="+product_id;
+ }     
 </script>     
 </html>
