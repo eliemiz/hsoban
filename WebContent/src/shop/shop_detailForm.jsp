@@ -28,12 +28,74 @@
 	height: 14px;
 }
 </style>
-<%
-String product_id = request.getParameter("product_id");
-if(product_id==null||product_id.equals("")) product_id="0";
-Dao_Product dao = new Dao_Product();
-Product prod = dao.getProduct(new Integer(product_id));
-%>
+<%-- <%
+
+
+
+
+
+
+int account_id = 100001;
+Dao_Cart cartDao = new Dao_Cart();
+ArrayList<Cart> cart = cartDao.getCartList(account_id);
+
+Dao_Stock daoStock = new Dao_Stock();
+
+%> --%>
+	<%
+
+	
+	// for number format
+/* 	DecimalFormat df = new DecimalFormat("#,###"); */
+	
+	// TODO : session에서 가져올 것
+	int account_id = 100001;
+	
+	// 사용되는 DAO 객체 생성
+	Dao_Cart daoCart = new Dao_Cart();
+	Dao_WishList daoWishlist = new Dao_WishList();
+	Dao_Product daoProduct = new Dao_Product();
+	Dao_Stock daoStock = new Dao_Stock();
+	Dao_Order daoOrder = new Dao_Order();
+	Dao_Product dao = new Dao_Product();
+	Dao_Product dao2 = new Dao_Product();
+	ArrayList<Product> plist = dao2.prodList();
+	
+	// Update, Delete 처리. TODO : 유효성 체크
+	String account_id_temp = request.getParameter("account_id");
+	String product_id = request.getParameter("product_id");
+//	String color = request.getParameter("color");
+	String color = request.getParameter("optionlist");
+	
+	String proc = request.getParameter("proc");
+	if (proc == null){
+		proc = "";
+	}
+	
+	if (proc.equals("modifyNumber")){
+		String count = request.getParameter("count");
+		daoCart.updateCart(new Cart(Integer.parseInt(account_id_temp), Integer.parseInt(product_id), color, Integer.parseInt(count)));	
+	} else if (proc.equals("addCart")) {
+		String count = request.getParameter("count");
+		daoCart.insertCart(new Cart(Integer.parseInt(account_id_temp), Integer.parseInt(product_id), color, 1)); // TODO 숫자 변경?
+		response.sendRedirect("../cart/cart.jsp");	
+	} else if (proc.equals("addWish")) {
+		String count = request.getParameter("count");
+		daoWishlist.insertWish(new WishList(Integer.parseInt(account_id_temp), Integer.parseInt(product_id), color));
+		response.sendRedirect("../mypage/mypage_myWish.jsp");
+	} else if (proc.equals("addOrder")){
+		// 추가(진석님)
+		String count = request.getParameter("count");
+//		daoOrder.insertOrder(new Order(Integer.parseInt(account_id_temp), Integer.parseInt(product_id)));
+		daoCart.insertCart(new Cart(Integer.parseInt(account_id_temp), Integer.parseInt(product_id), color, 1));
+		
+		//추가
+		response.sendRedirect("../cart/cart.jsp");
+	}
+	// product list
+	Product prod = dao.getProduct(new Integer(product_id));
+	
+	%>
 <meta charset="UTF-8">
 <title>[<%=prod.getName()%>]</title>
 </head>
@@ -50,7 +112,7 @@ Product prod = dao.getProduct(new Integer(product_id));
 								<img src="<%=prod.getThumbnail()%>_01.jpg" alt="대표이미지"/>
 							</div>
 						</div>
-						<form name="form1" method="post" id="form1" action="/hsoban/cart/cart.jsp">	
+						<form name="form1" method="post" id="form1">	<!--  action="../cart/cart.jsp" 삭제 -->
 							<div class="info">
 								<h3 class="tit-prd"><%=prod.getName() %></h3>
 								<div class="table-opt">
@@ -63,16 +125,14 @@ Product prod = dao.getProduct(new Integer(product_id));
 												<div class="opt-wrap" style="margin-top: 0">										
 													<dl>
 														<dt>color</dt>
-														<dd><select name="optionlist[]" onchange="change_option(this,'basic');" label="color" opt_type="SELECT" opt_id="3" opt_mix="Y" require="Y" opt_mandatory="Y" class="basic_option">
-																<option value>옵션 선택</option>
-																<option matrix="1" sto_id="3" price="78000" title="블랙" value="0">블랙</option>
-																<option matrix="2" sto_id="4" price="78000" title="베이지" value="0">베이지</option>
-																<option matrix="3" sto_id="5" price="78000" title="그린(유광)" value="0">그린(유광)-일시품절</option>
-																<option matrix="4" sto_id="14" price="78000" title="와인" value="0">와인</option>
-																<option matrix="4" sto_id="14" price="78000" title="그레이" value="0">그레이</option>
-																<option matrix="5" sto_id="11" price="78000" title="진그레이" value="0">진그레이</option>
-																<!-- size 선택에 따라 option 선택창 >> 추후 함수 처리 -->																												
-															</select>
+														<dd><select name="optionlist" onchange="temp()" label="color" opt_type="SELECT" opt_id="3" opt_mix="Y" require="Y" opt_mandatory="Y" class="basic_option">
+																<option value="opt">옵션 선택</option>				
+																<%-- product_id마다 컬러가 다 다르므로 해당 id에 있는 color목록을 다 받아와야 함.(성공) --%>
+																<%for(Product p : plist){
+																	if(p.getProduct_id()==prod.getProduct_id()){%>
+																<option value="<%=p.getColor()%>"><%=p.getColor()%></option>
+																<%} }%>																																											
+															</select>															
 														</dd>
 													</dl>
 												</div>
@@ -91,7 +151,7 @@ Product prod = dao.getProduct(new Integer(product_id));
 													</div>
 													<div id="MK_innerOptTotal">
                                                                 <span class="MK_txt-total">TOTAL</span>
-                                                                <strong class="MK_total" id="MK_p_total">0</strong>
+                                                                <strong class="MK_total" id="MK_p_total" name="total">0</strong>
                                                                 <span class="MK_txt-won">원</span>
                                                     </div>
 												</div>
@@ -100,9 +160,18 @@ Product prod = dao.getProduct(new Integer(product_id));
 									</table>
 								</div>
 								<div class="prd-btns">
-                                    <a href="../../cart/order.jsp" class="btn_red"><img src="/hsoban/src/shop/img/btn_order.png" alt="바로구매" title="바로구매"></a>
-                                    <a href="../../cart/cart.jsp"><img src="/hsoban/src/shop/img/btn_cart.png" alt="장바구니 담기" title="장바구니 담기"></a>
-                                    <a href="../../mypage/mypage_myWish.jsp"><img src="/hsoban/src/shop/img/btn_wish.png" alt="관심상품" title="관심상품"></a>
+								<c:set var="account_id" value="<%=account_id%>"/>
+								<c:set var="product_id" value="<%=prod.getProduct_id()%>"/>
+								<c:set var="color" value="<%=prod.getColor()%>"/>
+									<!-- <form method="post"> -->
+									<input type="hidden" name="account_id" value="${account_id}">
+									<input type="hidden" name="product_id" value="${product_id}">
+									<%-- <input type="hidden" name="color" value="${color}"> --%>
+									<input type="hidden" name="proc">
+									<!-- </form> -->
+                                    <button onclick="submitCartForm('addOrder')"><img src="/hsoban/src/shop/img/btn_order.png" alt="바로구매" title="바로구매"></button>
+                                   	<button onclick="submitCartForm('addCart')"><img src="/hsoban/src/shop/img/btn_cart.png" alt="장바구니 담기" title="장바구니 담기"></button>
+                                    <button onclick="submitCartForm('addWish')"><img src="/hsoban/src/shop/img/btn_wish.png" alt="관심상품" title="관심상품"></button>
                                 </div>
 							</div>
 						</form>
@@ -110,7 +179,7 @@ Product prod = dao.getProduct(new Integer(product_id));
 					<img src="/hsoban/src/shop/img/detail_top.jpg" alt="그릇 소개"/>
 					<div class="prd-detail">
 							<br><br><br><br><br>
-							Size : <%=prod.getProduct_size() %> <%-- font-size 및 color 조정 필요 --%>				
+							<p style="font-weight:900">Size : <span style="font-size: 1.5em; font-color:red;"><%=prod.getProduct_size() %></span> <%-- font-size 및 color 조정 필요 --%></p>
 							<jsp:include page="shop_description.jsp"/>						
 							<br><br><br><br><br>
 							<p align="center" style="margin: 0px; text-align: center;"><img src="<%=prod.getThumbnail()%>_02.jpg" alt=""></p>
@@ -235,6 +304,7 @@ Product prod = dao.getProduct(new Integer(product_id));
 					                   <td><div class="tb-center">2021/02/08</div></td>
 					                   <td><div class="tb-center">50</div></td>
 					               </tr>
+					              
 					           </tbody>
                         </table>
                         <br>
@@ -250,8 +320,55 @@ Product prod = dao.getProduct(new Integer(product_id));
 		</div>
 	</div>
 </div>
-
 <jsp:include page="../common/side.jsp"/>	
 <jsp:include page="../common/footer.jsp"/>
 </body>
+<script type="text/javascript">
+	function temp(){
+		var select = document.querySelector("#MK_innerOpt_01");
+		var total = document.querySelector("#MK_p_total");
+<%-- 		var tot = 0;
+		if(select!=null){			
+			for(idx=0; idx<=select.size(); idx++){
+				tot += <%=prod.getPrice()%>;
+			}			
+		} --%>
+		var optionList = document.querySelector("[name=optionlist]");
+		select.innerHTML += "<li name='color'><span class='MK_p-name' id='color' name='color'>"+optionList.value+"</span>"
+							+"<strong class='MK_price'>"+<%=prod.getPrice()%>+"원</strong></li>";
+		total.innerText = tot;
+	}
+	 function submitCartForm(proc){
+			/* var proc = arguments[0];
+
+			var form = '';
+			if (proc == 'addOrder'){
+				form = document.querySelector("#formOrder");
+			} else if (proc == 'addWish') {
+				form = document.querySelector("#cartForm");
+			} else if (proc == 'addCart') {
+				form = document.querySelector("#wishForm");
+			}
+			form.proc.value = proc;
+			
+			form.submit(); */
+			var form = document.querySelector("#form1");
+			if(proc=='addCart'){
+				if(!confirm("장바구니에 담겼습니다. 장바구니로 이동하시겠습니까?\n(예:장바구니 이동 / 취소: 계속 쇼핑)")){
+					return false;
+				}
+			} else if (proc == 'addOrder'){
+				if(!confirm('장바구니의 상품과 함께 구매됩니다.\n원치 않으시면 장바구니를 비워주세요.')){
+					return false;
+				} 
+			} else if (proc == 'addWish'){
+				if(!confirm('관심상품에 담았습니다.\n마이페이지 관심상품목록으로 이동하시겠습니까?')){
+					return false;
+				}
+			}
+			form.proc.value = proc;
+			
+			form.submit();
+		}
+</script>
 </html>

@@ -29,10 +29,58 @@
 }
 </style>
 <%
-String product_id = request.getParameter("product_id");
-if(product_id==null||product_id.equals("")) product_id="0";
-Dao_Product dao = new Dao_Product();
-Product prod = dao.getProduct(new Integer(product_id));
+
+	
+	// for number format
+/* 	DecimalFormat df = new DecimalFormat("#,###"); */
+	
+	// TODO : session에서 가져올 것
+	int account_id = 100001;
+	
+	// 사용되는 DAO 객체 생성
+	Dao_Cart daoCart = new Dao_Cart();
+	Dao_WishList daoWishlist = new Dao_WishList();
+	Dao_Product daoProduct = new Dao_Product();
+	Dao_Stock daoStock = new Dao_Stock();
+	Dao_Order daoOrder = new Dao_Order();
+	Dao_Product dao = new Dao_Product();
+	Dao_Product dao2 = new Dao_Product();
+	ArrayList<Product> plist = dao2.prodList();
+	
+	// Update, Delete 처리. TODO : 유효성 체크
+	String account_id_temp = request.getParameter("account_id");
+	String product_id = request.getParameter("product_id");
+//	String color = request.getParameter("color");
+	String color = request.getParameter("color");
+	
+	String proc = request.getParameter("proc");
+	if (proc == null){
+		proc = "";
+	}
+	
+	if (proc.equals("modifyNumber")){
+		String count = request.getParameter("count");
+		daoCart.updateCart(new Cart(Integer.parseInt(account_id_temp), Integer.parseInt(product_id), color, Integer.parseInt(count)));	
+	} else if (proc.equals("addCart")) {
+		String count = request.getParameter("count");
+		daoCart.insertCart(new Cart(Integer.parseInt(account_id_temp), Integer.parseInt(product_id), color, 1)); // TODO 숫자 변경?
+		response.sendRedirect("../cart/cart.jsp");	
+	} else if (proc.equals("addWish")) {
+		String count = request.getParameter("count");
+		daoWishlist.insertWish(new WishList(Integer.parseInt(account_id_temp), Integer.parseInt(product_id), color));
+		response.sendRedirect("../mypage/mypage_myWish.jsp");
+	} else if (proc.equals("addOrder")){
+		// 추가(진석님)
+		String count = request.getParameter("count");
+//		daoOrder.insertOrder(new Order(Integer.parseInt(account_id_temp), Integer.parseInt(product_id)));
+		daoCart.insertCart(new Cart(Integer.parseInt(account_id_temp), Integer.parseInt(product_id), color, 1));
+		
+		//추가
+		response.sendRedirect("../cart/cart.jsp");
+	}
+	// product list
+	Product prod = dao.getProduct(new Integer(product_id));
+	
 %>
 <meta charset="UTF-8">
 <title>[<%=prod.getName()%>]</title>
@@ -50,7 +98,7 @@ Product prod = dao.getProduct(new Integer(product_id));
 								<img src="<%=prod.getThumbnail()%>_01.jpg" alt="대표이미지"/>
 							</div>
 						</div>
-						<form name="form1" method="post" id="form1" action="/hsoban/cart/cart.jsp">	
+						<form name="form1" method="post" id="form1">	
 							<div class="info">
 								<h3 class="tit-prd"><%=prod.getName() %></h3>
 								<div class="table-opt">
@@ -68,13 +116,14 @@ Product prod = dao.getProduct(new Integer(product_id));
                                                                 <ul id="MK_innerOpt_01" class="MK_inner-opt-cm">
                                                                 	<li id="basic_0">
                                                                 		<input type="hidden" id="MS_keys_basic_0" value="0:0" class="basic_option">
-                                                                		<span class="MK_p-name">2인세트</span>
-                                                                		<div class="MK_qty-ctrl">
-	                                                                		<input type="text" id="MS_amount_basic_0" name="amount[]" value="1" onfocusout="set_amount(this, 'basic');" size="4" style="text-align: right; float: left;" class="basic_option" maxlength="">
+                                                                		<span class="MK_p-name"><%=prod.getName() %></span>
+                                                                		<!-- 수량 관련 미표기 -->
+                                                                		<!-- <div class="MK_qty-ctrl">
+	                                                                		<input type="text" id="MS_amount_basic_0" name="amount" value="1" onfocusout="set_amount(this, 'basic');" size="4" style="text-align: right; float: left;" class="basic_option" maxlength="">
 	                                                                		<a href="javascript:set_amount('MS_amount_basic_0', 'basic', 'up');" class="MK_btn-up"><img src="/hsoban/img/common/basket_up.gif" alt="수량증가" border="0"></a>
 	                                                                		<a href="javascript:set_amount('MS_amount_basic_0', 'basic', 'down');" class="MK_btn-dw"><img src="/hsoban/img/common/basket_down.gif" alt="수량감소" border="0"></a>
-                                                                		</div>
-                                                                		<strong class="MK_price"><span id="MK_p_price_basic_0">606,000</span>원</strong>
+                                                                		</div> -->
+                                                                		<strong class="MK_price"><span id="MK_p_price_basic_0"><%=(int)(Math.floor(prod.getPrice()*0.9/1000)*1000)%></span>원</strong>
                                                                 	</li>
                                                                 </ul>                                                                
                                                                 <ul id="MK_innerOpt_02" class="MK_inner-opt-cm"></ul>                                                            </div>
@@ -86,7 +135,7 @@ Product prod = dao.getProduct(new Integer(product_id));
                                                         </div>
                                                             <div id="MK_innerOptTotal">
                                                                 <span class="MK_txt-total">TOTAL</span>
-                                                                <strong class="MK_total" id="MK_p_total">606,000</strong>
+                                                                <strong class="MK_total" id="MK_p_total"><%=(int)(Math.floor(prod.getPrice()*0.9/1000)*1000)%></strong>
                                                                 <span class="MK_txt-won">원</span>
                                                             </div>
 
@@ -97,9 +146,18 @@ Product prod = dao.getProduct(new Integer(product_id));
 									</table>
 								</div>
 								<div class="prd-btns">
-                                    <a href="../../cart/order.jsp" class="btn_red"><img src="/hsoban/src/shop/img/btn_order.png" alt="바로구매" title="바로구매"></a>
-                                    <a href="../../cart/cart.jsp"><img src="/hsoban/src/shop/img/btn_cart.png" alt="장바구니 담기" title="장바구니 담기"></a>
-                                    <a href="../../mypage/mypage_myWish.jsp"><img src="/hsoban/src/shop/img/btn_wish.png" alt="관심상품" title="관심상품"></a>
+								<c:set var="account_id" value="<%=account_id%>"/>
+								<c:set var="product_id" value="<%=prod.getProduct_id()%>"/>
+								<c:set var="color" value="<%=prod.getColor()%>"/>					
+									<!-- <form method="post"> -->
+									<input type="hidden" name="account_id" value="${account_id}">
+									<input type="hidden" name="product_id" value="${product_id}">
+									<input type="hidden" name="color" value="${color}">
+									<input type="hidden" name="proc">
+									<!-- </form> -->
+                                    <button onclick="submitCartForm('addOrder')"><img src="/hsoban/src/shop/img/btn_order.png" alt="바로구매" title="바로구매"></button>
+                                   	<button onclick="submitCartForm('addCart')"><img src="/hsoban/src/shop/img/btn_cart.png" alt="장바구니 담기" title="장바구니 담기"></button>
+                                    <button onclick="submitCartForm('addWish')"><img src="/hsoban/src/shop/img/btn_wish.png" alt="관심상품" title="관심상품"></button>
                                 </div>
 							</div>
 						</form>
@@ -250,4 +308,25 @@ Product prod = dao.getProduct(new Integer(product_id));
 <jsp:include page="../common/side.jsp"/>	
 <jsp:include page="../common/footer.jsp"/>
 </body>
+<script type="text/javascript">
+	function submitCartForm(proc){
+		var form = document.querySelector("#form1");
+		if(proc=='addCart'){
+			if(!confirm("장바구니에 담겼습니다. 장바구니로 이동하시겠습니까?\n(예:장바구니 이동 / 취소: 계속 쇼핑)")){
+				return false;
+			}
+		} else if (proc == 'addOrder'){
+			if(!confirm('장바구니의 상품과 함께 구매됩니다.\n원치 않으시면 장바구니를 비워주세요.')){
+				return false;
+			} 
+		} else if (proc == 'addWish'){
+			if(!confirm('관심상품에 담았습니다.\n마이페이지 관심상품목록으로 이동하시겠습니까?')){
+				return false;
+			}
+		}
+		form.proc.value = proc;
+		
+		form.submit();
+	}
+</script>
 </html>
