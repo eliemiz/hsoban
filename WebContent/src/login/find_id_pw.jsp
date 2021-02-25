@@ -14,21 +14,7 @@
 <title>아이디/비밀번호 찾기</title>
 <link rel="stylesheet" href="<%=path%>/css/login.css">
 </head>
-<%
-	String id = request.getParameter("id");
-	String pass = request.getParameter("pass");
-	String name = request.getParameter("name");
-	String email = request.getParameter("email");
-	String phone = request.getParameter("phone");
-		
-	if (id == null) id = "";
-	if (pass == null) pass = "";
-	if (name == null) name = "";
-	if (email == null) email = "";
-	if (phone == null) phone = "";
-	
-	Dao_Account dao = new Dao_Account();
-%>
+
 <style>
 body {
    text-align: center;
@@ -58,73 +44,54 @@ div {
    font-size:4px;
    
 }
-
 </style>
+<script>
+
+</script>
+
 <body>
 <jsp:include page="../common/header.jsp"/>
 <jsp:include page="../common/side.jsp"/>
 <div class="content_wrap">
-<p class="p_title">아이디/비밀번호 찾기</p>
+<p class="p_title">아이디 찾기</p>
 <p class="p_subtit" align="left">아이디 찾기</p><hr width="1180">
 <pre align="left" style="color:#777777;">회원가입 시, 입력하신 이름 + 이메일 또는 휴대폰 번호로 아이디를 확인하실 수 있습니다.
-
 </pre>
    <div align="left" style="font-size:12px;">
       <input type="radio" name="tempName" id="mail1" onchange="changeForm('mail1')" checked><label for="mail1">이메일로 찾기</label>
       <input type="radio" name="tempName" id="phone1" onchange="changeForm('phone1')"><label for="phone1">휴대폰 번호로 찾기</label>
    </div><br>
-   <form id="form1">
+   <form id="form1" method="post" action="find_id_fin.jsp">
       <table border>
-         <tr><th class="th_center">이&nbsp;름</th><td class="td_left"><input type="text" name="username" value="<%=name%>"></td></tr>
-         <tr><th class="th_center">이메일</th><td class="td_left"><input type="text" name="mail" value="<%=email%>" ></td></tr></table><br>
-         <div style="text-align:center;"><a href="find_id_fin.jsp"><span>
-         <input type="button" class="btn btn_color" value="아이디찾기" style="height:30px; width:160px;"></span></a>
+      
+         <tr><th class="th_center">이&nbsp;름</th><td class="td_left"><input type="text" name="name"></td></tr>
+         <tr><th class="th_center">이메일</th><td class="td_left"><input type="text" name="email"></td></tr></table><br>
+         
+         <div style="text-align:center;"><span>
+         <input type="button" id="searchButton1" class="btn btn_color" value="아이디찾기" style="height:30px; width:160px;"></span>
          <a href="login.jsp"><span>
          <input type="button" class="btn btn_black" value="로그인" style="height:30px; width:160px;"></span></a></div>   
    </form>
-   <form id="form2">
+   <form id="form2" method="post" action="find_id_fin.jsp">
       <table border>
-         <tr><th class="th_center">이&nbsp;름</th><td class="td_left"><input type="text" name="username" value="<%=name%>"></td></tr>
-         <tr><th class="th_center">휴대폰 번호</th><td class="td_left"><input type="text" name="phone" value="<%=phone%>"></td></tr></table><br>
-         <div style="text-align:center;"><a href="find_id_fin.jsp"><span>
-         <input type="button" class="btn btn_color" value="아이디찾기" style="height:30px; width:160px;"></span></a>
+      
+         <tr><th class="th_center">이&nbsp;름</th><td class="td_left"><input type="text" name="name"></td></tr>
+         <tr><th class="th_center">휴대폰 번호</th><td class="td_left"><input type="text" name="phone"></td></tr></table><br>
+         
+         <div style="text-align:center;"><span>
+         <input type="button" id="searchButton2" class="btn btn_color" value="아이디찾기" style="height:30px; width:160px;"></span>
          <a href="login.jsp"><span>
          <input type="button" class="btn btn_black" value="로그인" style="height:30px; width:160px;"></span></a></div>
    </form><br><br>
-<p class="p_subtit" align="left">임시 비밀번호 발급</p><hr width="1180">
-<pre align="left" style="color:#777777;">가입하신 아이디 + 이메일 또는 휴대폰 번호를 입력, 본인인증을 통해 이메일 또는 휴대폰 번호로
-임시 비밀번호를 보내드립니다. 확인 후 로그인하셔서 반드시 비밀번호를 변경하시기 바랍니다.</pre><br>
-   <div align="left" style="font-size:12px;">
-      <input type="radio" name="tempName2" id="mail2" onchange="changeForm('mail2')" checked><label for="mail2">이메일로 찾기</label>
-      <input type="radio" name="tempName2" id="phone2" onchange="changeForm('phone2')"><label for="phone2">휴대폰 번호로 찾기</label>
-   </div><br>
-   <form id="form3">
-      <table border>
-         <tr><th class="th_center">이&nbsp;름</th><td class="td_left"><input type="text" name="username"></td></tr>
-         <tr><th class="th_center">이메일</th><td class="td_left"><input type="text" name="mail" ></td></tr></table><br>
-         <div style="text-align:center;"><a href="find_pw_fin.jsp"><span>
-         <input type="button" class="btn btn_color" value="임시 비밀번호 발급" style="height:30px; width:160px;"></span></a>
-         <a href="login.jsp"><span>
-         <input type="button" class="btn btn_black" value="로그인" style="height:30px; width:160px;"></span></a></div>   
-   </form>
-   <form id="form4">
-      <table border>
-         <tr><th class="th_center">이&nbsp;름</th><td class="td_left"><input type="text" name="username"></td></tr>
-         <tr><th class="th_center">휴대폰 번호</th><td class="td_left"><input type="text" name="phone" ></td></tr></table><br>
-         <div style="text-align:center;"><a href="find_pw_fin.jsp"><span>
-         <input type="button" class="btn btn_color" value="임시 비밀번호 발급" style="height:30px; width:160px;"></span></a>
-         <a href="login.jsp"><span>
-         <input type="button" class="btn btn_black" value="로그인" style="height:30px; width:160px;"></span></a></div>
-   </form></div>
+</div>
 <jsp:include page="../common/footer.jsp"/>
 </body>
 <script type="text/javascript">
 
-   function changeForm(element) {
+function changeForm(element) {
       var form1 = document.querySelector('#form1');
       var form2 = document.querySelector('#form2');
-      var form3 = document.querySelector('#form3');
-      var form4 = document.querySelector('#form4');
+     
       
       if (element == 'mail1') {
          form1.style.display = 'inline-block';
@@ -143,23 +110,17 @@ div {
          
          document.querySelector('#form2').style.visibility = 'visible';
          document.querySelector('#form2').style.width = 'auto'; */
-      } else if (element == 'mail2') {
-         form3.style.display = 'inline-block';
-         form4.style.display = 'none';
-         /* document.querySelector('#form3').style.visibility = 'visible';
-         document.querySelector('#form3').style.width = 'auto';
-         
-         document.querySelector('#form4').style.visibility = 'hidden';
-         document.querySelector('#form4').style.width = '0px'; */
-      } else if (element == 'phone2') {
-         form3.style.display = 'none';
-         form4.style.display = 'inline-block';
-         /* document.querySelector('#form3').style.visibility = 'hidden';
-         document.querySelector('#form3').style.width = '0px';
-         
-         document.querySelector('#form4').style.visibility = 'visible';
-         document.querySelector('#form4').style.width = 'auto'; */
-      }
+      } 
+   }
+   var searchButton1 = document.querySelector("#searchButton1");
+   searchButton1.onclick = function() {
+      
+      document.querySelector('#form1').submit();
+   }
+   var searchButton2 = document.querySelector("#searchButton2");
+   searchButton2.onclick = function() {
+	  
+      document.querySelector('#form2').submit();
    }
 </script>
 </html>

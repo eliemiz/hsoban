@@ -35,26 +35,47 @@ th{
 test
 </style>
 </head>
+<%
+	String name = request.getParameter("name");
+	String email = request.getParameter("email");
+	String phone = request.getParameter("phone");
+	
+	if (name == null) name = "";
+	if (email == null) email = "";
+	if (phone == null) phone = "";
+	
+	Dao_Account dao = new Dao_Account();
+	ArrayList<Account> list = new ArrayList<Account>();
+	if(name != "" && email != ""){
+   		list.add(dao.getAccount2(name, email));
+    } else if(name != "" && phone != ""){
+   	 	list.add(dao.getAccount3(name, phone));
+    }
+%>
 <body>
 <jsp:include page="../common/header.jsp"/>
 <jsp:include page="../common/side.jsp"/>
 <div class="content_wrap">
-<p class="p_title">아이디/비밀번호 찾기</p>
+<p class="p_title">아이디 찾기</p>
 <pre align="center">
 회원가입 시 입력하신 이름 + 이메일 또는 휴대폰 번호로 아이디를 확인하실 수 있습니다.
-정보 보호를 위해 아이디 일부는 숨김 처리하고, 임시 비밀번호는 가입하신 이메일로 발송됩니다.
 
 
 </pre>
-<form method="post" action="login.jsp">
+
 <table border align='center' >
-<tr><th>아이디:gildo**<br><br>전체 아이디는 고객센터로 문의해 주세요.<br> <!-- 아이디 밑줄처리 -->
+<%
+  for(Account account : list){
+%>
+<tr><th>아이디: <%=account.getId()%><br><br>전체 아이디는 고객센터로 문의해 주세요.<br> 
+<%
+  }
+%>
 </th></tr>
 </table><br>
 <div style="text-align:center;"><a href="login.jsp">
 <span><input type="button" class="btn btn_color" value="로그인" style="height:40px; width:230px;"></span></a></div>
 </div>
-</form></div>
 <jsp:include page="../common/footer.jsp"/>
 </body>
 </html>

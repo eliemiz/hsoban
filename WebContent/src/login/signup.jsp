@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.util.*" import="java.net.*"
-    import="selection.*" %>
+    import="hsoban.dao.*" import="hsoban.vo.*" import="selection.*" %>
 <%
 	request.setCharacterEncoding("UTF-8");
 	String path = request.getContextPath();
@@ -35,99 +35,88 @@ pre {
 .scroll { overflow : scroll; }
 </style>
 </head>
+<%
+	
+	String name = request.getParameter("name");
+	if (name == null) {name = "";}
+	String id = request.getParameter("id");
+	if (id == null) {id = "";}
+	String pass = request.getParameter("pass");
+	if (pass == null) {pass = "";}
+	String birthday_s = request.getParameter("birthday_s");
+	if (birthday_s == null) {birthday_s = "";}
+	String gender = request.getParameter("gender");
+	if (gender == null) {gender = "";}
+	String post = request.getParameter("post");
+	if (post == null || post.trim().equals("")){
+		post = "0";}
+	String address = request.getParameter("address");
+	if (address == null) {address = "";}
+	String address2 = request.getParameter("address2");
+	if (address2 == null) {address2 = "";}
+	String email = request.getParameter("email");
+	if (email == null) {email = "";}
+	String phone = request.getParameter("phone");
+	if (phone == null) {phone = "";}
+	String phone2 = request.getParameter("phone2");
+	if (phone2 == null) {phone2 = "";}
+	String mail_recv = request.getParameter("mail_recv");
+	if (mail_recv == null) {mail_recv = "";}
+	String sms_recv = request.getParameter("ms_recv");
+	if (sms_recv == null) {sms_recv = "";}
+	String auth = request.getParameter("auth");
+	if (auth  == null) {auth  = "";}
+	
+	if (name != ""){
+		Account account = new Account(name, id, pass, birthday_s, gender, Integer.parseInt(post), 
+				address, address2, email, phone, phone2, Boolean.parseBoolean(mail_recv),
+				Boolean.parseBoolean(sms_recv), auth);
+		Dao_Account dao = new Dao_Account();
+		dao.insertAccount(account);		
+		
+		response.sendRedirect("loginTest.jsp");
+	}
+%>
 <body>
 <jsp:include page="../common/header.jsp"/>
 <jsp:include page="../common/side.jsp"/>
 <div class="content_wrap"><br>
 <p class="p_title" align="center">회원정보</p><br>
-<form method="post" id="frm1">
+<form method="post" id="accountForm">
 <table border align="center">
 <tr><th class="th_left">■ 이름</th>
-	<td class="td_left"><input type="text" size="16"/></td></tr>
+	<td class="td_left"><input type="text" name="name" size="16"/></td></tr>
 <tr><th class="th_left">■ 아이디</th>
-	<td class="td_left">
-	<input type="text" size="16" name="id" id="id"/><span id="idCk">
-	<input type="button" class="btn btn_black" value="중복확인" style="height:22px; width:110px;" onclick="doubleid()"></span></td></tr>
+	<td class="td_left"><input type="text" size="16" name="id" id="id"/></td></tr>
 <tr><th class="th_left">■ 비밀번호</th>
 	<td class="td_left"><input type="password" size="16" name="pass" id="pass"/>&nbsp;*영문8자~16자</td></tr>
-<tr><th class="th_left">■ 비밀번호 확인</th>
-	<td class="td_left"><input type="password" size="16" id="pass-check"/></td></tr>
 <tr><th class="th_left">■ 생일/성별</th>
-	<td class="td_left"><select>
-	<option>선택</option><option>1920</option><option>1921</option><option>1922</option><option>1923</option><option>1924</option><option>1925</option><option>1926</option><option>1927</option><option>1928</option><option>1929</option>
-	<option>1930</option><option>1931</option><option>1932</option><option>1933</option><option>1934</option><option>1935</option><option>1936</option><option>1937</option><option>1938</option><option>1939</option>
-	<option>1940</option><option>1941</option><option>1942</option><option>1943</option><option>1944</option><option>1945</option><option>1946</option><option>1947</option><option>1948</option><option>1949</option>
-	<option>1950</option><option>1951</option><option>1952</option><option>1953</option><option>1954</option><option>1955</option><option>1956</option><option>1957</option><option>1958</option><option>1959</option>
-	<option>1960</option><option>1961</option><option>1962</option><option>1963</option><option>1964</option><option>1965</option><option>1966</option><option>1967</option><option>1968</option><option>1969</option>
-	<option>1970</option><option>1971</option><option>1972</option><option>1973</option><option>1974</option><option>1975</option><option>1976</option><option>1977</option><option>1978</option><option>1979</option>
-	<option>1980</option><option>1981</option><option>1982</option><option>1983</option><option>1984</option><option>1985</option><option>1986</option><option>1987</option><option>1988</option><option>1989</option>
-	<option>1990</option><option>1991</option><option>1992</option><option>1993</option><option>1994</option><option>1995</option><option>1996</option><option>1997</option><option>1998</option><option>1999</option>
-	<option>2000</option><option>2001</option><option>2002</option><option>2003</option><option>2004</option><option>2005</option><option>2006</option><option>2007</option><option>2008</option><option>2009</option>
-	<option>2010</option><option>2011</option><option>2012</option><option>2013</option><option>2014</option><option>2015</option><option>2016</option><option>2017</option><option>2018</option><option>2019</option>
-	<option>2020</option><option>2021</option></select>년&nbsp;
-	<select>
-	<option>선택</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option>
-	<option>11</option><option>12</option></select>월&nbsp;
-	<select>
-	<option>선택</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option>
-	<option>11</option><option>12</option><option>13</option><option>14</option><option>15</option><option>16</option><option>17</option><option>18</option><option>19</option><option>20</option>
-	<option>21</option><option>22</option><option>23</option><option>24</option><option>25</option><option>26</option><option>27</option><option>28</option><option>29</option><option>30</option>
-	<option>31</option></select>일&nbsp;&nbsp;&nbsp;
-	<input type="radio" name="gender" value="남">남&nbsp;&nbsp;<input type="radio" name="gender" value="여">여
+	<td class="td_left"><input type="text" name="birthday_s" placeholder="YYYY-MM-DD" size="16"/>
+	<input type="text" name="gender" placeholder="성별 입력" size="8"/>
 	</td></tr>
 <tr><th class="th_left">■ 우편번호</th>
-	<td class="td_left"><input type="text" size="8" id="zipNo" name="zipNo"/>&nbsp;
-	<span><input type="button" onClick="goPopup();" class="btn btn_black" value="주소검색" style="height:22px; width:110px;"></span></td></tr>
+	<td class="td_left"><input type="text" size="8" id="zipNo" name="post"/>
 <tr><th class="th_left">■ 집주소</th>
-	<td class="td_left"><input type="text" size="60" id="roadAddrPart1" name="roadAddrPart1"/></td></tr>
+	<td class="td_left"><input type="text" size="60" id="roadAddrPart1" name="address"/></td></tr>
 <tr><th class="th_left">■ 상세주소</th>
-	<td class="td_left"><input type="text" size="60" id="addrDetail" name="addrDetail"/></td></tr>
+	<td class="td_left"><input type="text" size="60" id="addrDetail" name="address2"/></td></tr>
 <tr><th class="th_left">■ 이메일</th>
-	<td class="td_left"><input type="text" size="10"/>&nbsp;@&nbsp;<input type="text" size="10" id="selectedValue"/>
-	<select onchange="onSelect(this)"><%
-			for(Option domain : Selection.domains){
-	%>
-	<option value="<%=domain.value %>"><%=domain.key %></option>
-	<%} %>
-	</select>&nbsp;&nbsp;
-		<span><input type="button" class="btn btn_black" value="중복확인" style="height:22px; width:110px;" onclick="doublemail()"></span>
-	</td></tr>
+	<td class="td_left"><input type="text" size="20" name="email" placeholder="user@email.com"/></td></tr>
 <tr><th class="th_left">■ 휴대폰</th>
-	<td class="td_left"><select>
-		<%
-		for(Option areaCode : Selection.areaCode){
-			%>
-		<option value="<%=areaCode.value %>"><%=areaCode.key %></option>
-		<%} %>
-	</select>&nbsp;-&nbsp;
-	<input type="text" size="5">&nbsp;-&nbsp;<input type="text" size="5"></td></tr>
+	<td class="td_left"><input type="text" size="20" name="phone"/></td></tr>	
 <tr><th class="th_left">연락처</th>
-	<td class="td_left">&nbsp;<select>
-		<%
-		for(Option areaCodeEx : Selection.areaCodeEx){
-			%>
-		<option value="<%=areaCodeEx.value%>"><%=areaCodeEx.key%></option>
-		<%} %>
-	</select>&nbsp;-&nbsp;<input type="text" size="5">&nbsp;-&nbsp;<input type="text" size="5"></td></tr>
+	<td class="td_left"><input type="text" size="20" name="phone2"/></td></tr>	
+<tr><th class="th_left">메일수신</th>
+	<td class="td_left"><input type="text" size="20" name="mail_recv"/></td></tr>
+<tr><th class="th_left">sms수신</th>
+	<td class="td_left"><input type="text" size="20" name="sms_recv"/></td></tr>
+<tr><th class="th_left">권한</th>
+	<td class="td_left"><input type="text" size="20" name="auth"/></td></tr>	
 </table><br>
-<table border align="center" width="1170px">
-<tr><th class="th_left"><input type="checkbox">전체동의</th></tr>
-<tr><th class="th_left"><br><input type="checkbox">&nbsp;이용약관&nbsp;
-	<a href="#terms">
-	<input type="button" class="btn btn_gray2" value="내용보기" style="height:22px; width:110px;"></a></span>
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<input type="checkbox">&nbsp;개인정보 수집 및 이용 안내&nbsp;<span>
-	<input type="button" class="btn btn_gray2" value="내용보기" style="height:22px; width:110px;" onclick="location.href='#inform'"></span>
-	<br><br><hr width="1100" style="border:dashed 1px;"><br>
-	<input type="checkbox">마케팅 수신동의&nbsp;(&nbsp;<input type="checkbox">이메일&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox">&nbsp;SMS)<br><br>
-	&nbsp;&nbsp;&nbsp;쇼핑몰에서 제공하는 신상품 소식/할인쿠폰을 무상으로 보내드립니다!<br>
-	&nbsp;&nbsp;&nbsp;단, 상품 구매 정보는 수신동의 여부 관계없이 발송합니다.<br>
-	&nbsp;&nbsp;&nbsp;제공 동의를 하지 않으셔도 서비스 이용에는 문제가 없습니다.<br><br>
-	</th></tr>
-</table><br>
-<div style="text-align:center;"><a href="../main/main.jsp">
-<span><input type="button" class="btn btn_black" value="동의하고 가입완료" style="height:40px; width:230px;"></span></a></div> 
 </form>
+<table border align="center" width="1170px">				
+<div style="text-align:center;">
+<span><input type="button" class="btn btn_black" value="동의하고 가입완료" id="insertButton" style="height:40px; width:230px;"></span></div> 
 <br><br><hr width="1170"><br><br><h3 align="center" id="terms">이용약관</h3>
 <p class="scroll" id="p1">
 인터넷 쇼핑몰 『화소반몰 사이버 몰』회원 약관<br><br>
@@ -269,7 +258,7 @@ pre {
 ② “몰”과 이용자 간에 제기된 전자상거래 소송에는 한국법을 적용합니다.<br><br>
 본 약관은 2013년05월21일부터 적용됩니다.<br>
 </p><br>
-<h3 align="center" id="inform">개인정보 수집·이용</h3>
+<h3 align="center" id="inform">개인정보 수집·이용</h3> 
 <table border align="center">
 <tr><th class="th_center">구분</th><th class="th_center">목적</th><th class="th_center">항목</th><th class="th_center">보유기간</th></tr>
 <tr><th class="th_center">필수정보</td><td class="td_center">회원제 서비스 이용 / 본인확인</th><td class="td_center">이름, 아이디, 비밀번호, 생일, 성별, 이메일, 주소, 휴대폰</td><td class="td_center">회원탈퇴 후 5일까지</td></tr>
@@ -285,6 +274,16 @@ pre {
 <jsp:include page="../common/footer.jsp"/>
 </body>
 <script type="text/javascript">
+var insertButton = document.querySelector('#insertButton');
+insertButton.onclick = function() {
+	var wishForm = document.querySelector('#accountForm');
+	var post = document.querySelector('[name=post]');
+	if (isNaN(post.value)){
+		alert('숫자를 입력하세요');
+		return false;
+	}
+	accountForm.submit();
+}
 function goPopup(){
 	var pop = window.open("../common/jusoPopup.jsp", "pop", "width=570,height=420, scrollbars=yes, resizable=yes");
 	}
@@ -328,7 +327,6 @@ document.getElementById('frm1').onsubmit = function(){
 		idCk.style.color="blue";
 	}
 	return isValid;
-	};
 };
 </script>
 </html>
