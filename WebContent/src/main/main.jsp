@@ -28,6 +28,7 @@
 #prdBrand .item-wrap .item-cont .item-list .prd-name { width:60%; float:left; text-align:left; padding-left:15px; }
 #prdBrand .item-wrap .item-cont .item-list .prd-price { width:40%; float:right; text-align:right; padding-right:15px; }
 #prdBrand .item-wrap .item-cont .item-list dt.thumb { max-height:187px; overflow:hidden; }
+img {cursor:pointer;}
 </style>
 </head>
 <body>
@@ -38,8 +39,7 @@
   	<div id="f2s-rolling-container1" class="f2s-swiper">
       <div class="swiper-container">
         <div class="swiper-wrapper">                                
-          <div class="swiper-slide"><img src="<%=path%>/img/common/mainroll1.jpg" alt="" /></div>                                
-          <%--  <div class="swiper-slide"><img src="<%=path%>/img/common/mainroll2.jpg" alt="" /></div>    --%>                        
+          <div class="swiper-slide"><img src="<%=path%>/img/common/mainroll1.jpg" alt="" /></div>                                                        
             </div>
            <div class="swiper-pagination"></div>
            <div class="swiper-button-prev"></div>
@@ -57,16 +57,17 @@
 	   <div class="item-wrap">
 		<div class="item-cont">
 			<dl class="item-list">
-                <dt class="thumb"><a href="../shop/shop1_Bowl/Bowl1.jsp"><img class="MS_prod_img_s" src="/hsoban/img/shop/Bowl1_00.jpg" alt="상품 썸네일" title="상품 썸네일"></a></dt>
+                <dt class="thumb"><img class="MS_prod_img_s" src="/hsoban/img/shop/Bowl1_00.jpg" alt="상품 썸네일" title="상품 썸네일" onclick="detail(100000)"></a></dt>
                    <dd>
                      <ul>
+                     <td>
                       <li class="prd-name"><span class="MK-product-icons"></span> 국그릇 </li>
                       <li class="prd-price">34,000원</li>
                      </ul>
                     </dd>
                       </dl>
             <dl class="item-list">
-                <dt class="thumb"><a href="../shop/shop1_Bowl/Bowl2.jsp"><img class="MS_prod_img_s" src="/hsoban/img/shop/Bowl2_00.jpg" alt="상품 썸네일" title="상품 썸네일"></a></dt>
+                <dt class="thumb"><img class="MS_prod_img_s" src="/hsoban/img/shop/Bowl2_00.jpg" alt="상품 썸네일" title="상품 썸네일" onclick="detail(100001)"></a></dt>
                     <dd>
                      <ul>
                        <li class="prd-name"><span class="MK-product-icons"></span> 틴샐러드볼大 </li>
@@ -75,7 +76,7 @@
                     </dd>
                       </dl>
              <dl class="item-list">
-                <dt class="thumb"><a href="../shop/shop1_Bowl/Bowl3.jsp"><img class="MS_prod_img_s" src="/hsoban/img/shop/Bowl3_00.jpg" alt="상품 썸네일" title="상품 썸네일"></a></dt>
+                <dt class="thumb"><img class="MS_prod_img_s" src="/hsoban/img/shop/Bowl3_00.jpg" alt="상품 썸네일" title="상품 썸네일" onclick="detail(100002)"></a></dt>
                     <dd>
                      <ul>
                        <li class="prd-name"><span class="MK-product-icons"></span> 스프볼 </li>
@@ -84,7 +85,7 @@
                     </dd>
                       </dl>
               <dl class="item-list">
-                <dt class="thumb"><a href="../shop/shop1_Bowl/Bowl4.jsp"><img class="MS_prod_img_s" src="/hsoban/img/shop/Bowl4_00.jpg" alt="상품 썸네일" title="상품 썸네일"></a></dt>
+                <dt class="thumb"><img class="MS_prod_img_s" src="/hsoban/img/shop/Bowl4_00.jpg" alt="상품 썸네일" title="상품 썸네일" onclick="detail(100003)"></a></dt>
                     <dd>
                      <ul>
                        <li class="prd-name"><span class="MK-product-icons"></span> 밥그릇 </li>
@@ -109,7 +110,7 @@
 					<div class="item-wrap">
 						<div class="item-cont">
 							<dl class="item-list">
-                                <dt class="thumb"><a href="../shop/shop2_PlateDish/PlateDish1.jsp"><img class="MS_prod_img_s" src="/hsoban/img/shop/PlateDish1_00.jpg" alt="상품 썸네일" title="상품 썸네일"></a></dt>
+                                <dt class="thumb"><img class="MS_prod_img_s" src="/hsoban/img/shop/PlateDish1_00.jpg" alt="상품 썸네일" title="상품 썸네일" onclick="detail(200000)"></a></dt>
                                 <dd>
                                     <ul>
                                         <li class="prd-name"><span class="MK-product-icons"></span>피크닉볼大</li>
@@ -118,7 +119,7 @@
                                 </dd>
                             </dl>
                             <dl class="item-list">
-                                <dt class="thumb"><a href="../shop/shop2_PlateDish/PlateDish2.jsp"><img class="MS_prod_img_s" src="/hsoban/img/shop/PlateDish2_00.jpg" alt="상품 썸네일" title="상품 썸네일"></a></dt>
+                                <dt class="thumb"><img class="MS_prod_img_s" src="/hsoban/img/shop/PlateDish2_00.jpg" alt="상품 썸네일" title="상품 썸네일" onclick="detail(200001)"></a></dt>
                                 <dd>
                                     <ul>
                                         <li class="prd-name"><span class="MK-product-icons"></span>딥타원접시 특대</li>
@@ -127,7 +128,7 @@
                                 </dd>
                             </dl>
                             <dl class="item-list">
-                                <dt class="thumb"><a href="../shop/shop2_PlateDish/PlateDish3.jsp"><img class="MS_prod_img_s" src="/hsoban/img/shop/PlateDish3_00.jpg" alt="상품 썸네일" title="상품 썸네일"></a></dt>
+                                <dt class="thumb"><img class="MS_prod_img_s" src="/hsoban/img/shop/PlateDish3_00.jpg" alt="상품 썸네일" title="상품 썸네일" onclick="detail(200002)"></a></dt>
                                 <dd>
                                     <ul>
                                         <li class="prd-name"><span class="MK-product-icons"></span>딥사각접시</li>
@@ -136,7 +137,7 @@
                                 </dd>
                             </dl>
                             <dl class="item-list">
-                                <dt class="thumb"><a href="../shop/shop2_PlateDish/PlateDish4.jsp"><img class="MS_prod_img_s" src="/hsoban/img/shop/PlateDish4_00.jpg" alt="상품 썸네일" title="상품 썸네일"></a></dt>
+                                <dt class="thumb"><img class="MS_prod_img_s" src="/hsoban/img/shop/PlateDish4_00.jpg" alt="상품 썸네일" title="상품 썸네일" onclick="detail(200003)"></a></dt>
                                 <dd>
                                     <ul>
                                         <li class="prd-name"><span class="MK-product-icons"></span>대접시</li>
@@ -161,7 +162,7 @@
 					<div class="item-wrap">
 						<div class="item-cont">
 							<dl class="item-list">
-                                <dt class="thumb"><a href="../shop/shop3_NoodleBowl/NoodleBowl1.jsp"><img class="MS_prod_img_s" src="/hsoban/img/shop/NoodleBowl1_00.jpg" alt="상품 썸네일" title="상품 썸네일"></a></dt>
+                                <dt class="thumb"><img class="MS_prod_img_s" src="/hsoban/img/shop/NoodleBowl1_00.jpg" alt="상품 썸네일" title="상품 썸네일" onclick="detail(300000)"></a></dt>
                                 <dd>
                                     <ul>
                                         <li class="prd-name"><span class="MK-product-icons"></span>일자면기</li>
@@ -170,7 +171,7 @@
                                 </dd>
                             </dl>
                             <dl class="item-list">
-                                <dt class="thumb"><a href="../shop/shop3_NoodleBowl/NoodleBowl2.jsp"><img class="MS_prod_img_s" src="/hsoban/img/shop/NoodleBowl2_00.jpg" alt="상품 썸네일" title="상품 썸네일"></a></dt>
+                                <dt class="thumb"><img class="MS_prod_img_s" src="/hsoban/img/shop/NoodleBowl2_00.jpg" alt="상품 썸네일" title="상품 썸네일" onclick="detail(300001)"></a></dt>
                                 <dd>
                                     <ul>
                                         <li class="prd-name"><span class="MK-product-icons"></span>윤볼</li>
@@ -179,7 +180,7 @@
                                 </dd>
                             </dl>
                             <dl class="item-list">
-                                <dt class="thumb"><a href="../shop/shop3_NoodleBowl/NoodleBowl3.jsp"><img class="MS_prod_img_s" src="/hsoban/img/shop/NoodleBowl3_00.jpg" alt="상품 썸네일" title="상품 썸네일"></a></dt>
+                                <dt class="thumb"><img class="MS_prod_img_s" src="/hsoban/img/shop/NoodleBowl3_00.jpg" alt="상품 썸네일" title="상품 썸네일" onclick="detail(300002)"></a></dt>
                                 <dd>
                                     <ul>
                                         <li class="prd-name"><span class="MK-product-icons"></span>햇볼 大</li>
@@ -204,7 +205,7 @@
 					<div class="item-wrap">
 						<div class="item-cont">
 							<dl class="item-list">
-                                <dt class="thumb"><a href="../shop/shop4_SideBowl/SideBowl1.jsp"><img class="MS_prod_img_s" src="/hsoban/img/shop/SideBowl1_00.jpg" alt="상품 썸네일" title="상품 썸네일"></a></dt>
+                                <dt class="thumb"><img class="MS_prod_img_s" src="/hsoban/img/shop/SideBowl1_00.jpg" alt="상품 썸네일" title="상품 썸네일" onclick="detail(400000)"></a></dt>
                                 <dd>
                                     <ul>
                                         <li class="prd-name"><span class="MK-product-icons"></span>사각멀티볼</li>
@@ -213,7 +214,7 @@
                                 </dd>
                             </dl>
                             <dl class="item-list">
-                                <dt class="thumb"><a href="../shop/shop4_SideBowl/SideBowl2.jsp"><img class="MS_prod_img_s" src="/hsoban/img/shop/SideBowl2_00.jpg" alt="상품 썸네일" title="상품 썸네일"></a></dt>
+                                <dt class="thumb"><img class="MS_prod_img_s" src="/hsoban/img/shop/SideBowl2_00.jpg" alt="상품 썸네일" title="상품 썸네일" onclick="detail(400001)"></a></dt>
                                 <dd>
                                     <ul>
                                         <li class="prd-name"><span class="MK-product-icons"></span>나즌볼</li>
@@ -222,7 +223,7 @@
                                 </dd>
                             </dl>
                             <dl class="item-list">
-                                <dt class="thumb"><a href="../shop/shop4_SideBowl/SideBowl3.jsp"><img class="MS_prod_img_s" src="/hsoban/img/shop/SideBowl3_00.jpg" alt="상품 썸네일" title="상품 썸네일"></a></dt>
+                                <dt class="thumb"><img class="MS_prod_img_s" src="/hsoban/img/shop/SideBowl3_00.jpg" alt="상품 썸네일" title="상품 썸네일" onclick="detail(400002)"></a></dt>
                                 <dd>
                                     <ul>
                                         <li class="prd-name"><span class="MK-product-icons"></span>피클볼</li>
@@ -231,7 +232,7 @@
                                 </dd>
                             </dl>
                             <dl class="item-list">
-                                <dt class="thumb"><a href="../shop/shop4_SideBowl/SideBowl4.jsp"><img class="MS_prod_img_s" src="/hsoban/img/shop/SideBowl4_00.jpg" alt="상품 썸네일" title="상품 썸네일"></a></dt>
+                                <dt class="thumb"><img class="MS_prod_img_s" src="/hsoban/img/shop/SideBowl4_00.jpg" alt="상품 썸네일" title="상품 썸네일" onclick="detail(400003)"></a></dt>
                                 <dd>
                                     <ul>
                                         <li class="prd-name"><span class="MK-product-icons"></span>콩접시</li>
@@ -256,7 +257,7 @@
 					<div class="item-wrap">
 						<div class="item-cont">
 							<dl class="item-list">
-                                <dt class="thumb"><a href="../shop/shop5_Cup/Cup1.jsp"><img class="MS_prod_img_s" src="/hsoban/img/shop/Cup1_00.jpg" alt="상품 썸네일" title="상품 썸네일"></a></dt>
+                                <dt class="thumb"><img class="MS_prod_img_s" src="/hsoban/img/shop/Cup1_00.jpg" alt="상품 썸네일" title="상품 썸네일" onclick="detail(500000)"></a></dt>
                                 <dd>
                                     <ul>
                                         <li class="prd-name"><span class="MK-product-icons"></span>머그</li>
@@ -265,7 +266,7 @@
                                 </dd>
                             </dl>
                             <dl class="item-list">
-                                <dt class="thumb"><a href="../shop/shop5_Cup/Cup2.jsp"><img class="MS_prod_img_s" src="/hsoban/img/shop/Cup2_00.jpg" alt="상품 썸네일" title="상품 썸네일"></a></dt>
+                                <dt class="thumb"><img class="MS_prod_img_s" src="/hsoban/img/shop/Cup2_00.jpg" alt="상품 썸네일" title="상품 썸네일" onclick="detail(500001)"></a></dt>
                                 <dd>
                                     <ul>
                                         <li class="prd-name"><span class="MK-product-icons"></span>티잔</li>
@@ -274,7 +275,7 @@
                                 </dd>
                             </dl>
                             <dl class="item-list">
-                                <dt class="thumb"><a href="../shop/shop5_Cup/Cup3.jsp"><img class="MS_prod_img_s" src="/hsoban/img/shop/Cup3_00.jpg" alt="상품 썸네일" title="상품 썸네일"></a></dt>
+                                <dt class="thumb"><img class="MS_prod_img_s" src="/hsoban/img/shop/Cup3_00.jpg" alt="상품 썸네일" title="상품 썸네일" onclick="detail(500002)"></a></dt>
                                 <dd>
                                     <ul>
                                         <li class="prd-name"><span class="MK-product-icons"></span>저그</li>
@@ -283,7 +284,7 @@
                                 </dd>
                             </dl>
                             <dl class="item-list">
-                                <dt class="thumb"><a href="../shop/shop5_Cup/Cup4.jsp"><img class="MS_prod_img_s" src="/hsoban/img/shop/Cup4_00.jpg" alt="상품 썸네일" title="상품 썸네일"></a></dt>
+                                <dt class="thumb"><img class="MS_prod_img_s" src="/hsoban/img/shop/Cup4_00.jpg" alt="상품 썸네일" title="상품 썸네일" onclick="detail(500003)"></a></dt>
                                 <dd>
                                     <ul>
                                         <li class="prd-name"><span class="MK-product-icons"></span>아이스통머그</li>
@@ -308,7 +309,7 @@
 					<div class="item-wrap">
 						<div class="item-cont">
 							<dl class="item-list">
-                                <dt class="thumb"><a href="../shop/shop6_Others/Others1.jsp"><img class="MS_prod_img_s" src="/hsoban/img/shop/Others1_00.jpg" alt="상품 썸네일" title="상품 썸네일"></a></dt>
+                                <dt class="thumb"><img class="MS_prod_img_s" src="/hsoban/img/shop/Others1_00.jpg" alt="상품 썸네일" title="상품 썸네일" onclick="detail(600000)"></a></dt>
                                 <dd>
                                     <ul>
                                         <li class="prd-name"><span class="MK-product-icons"></span>수저받침대</li>
@@ -317,7 +318,7 @@
                                 </dd>
                             </dl>
                             <dl class="item-list">
-                                <dt class="thumb"><a href="../shop/shop6_Others/Others2.jsp"><img class="MS_prod_img_s" src="/hsoban/img/shop/Others2_00.jpg" alt="상품 썸네일" title="상품 썸네일"></a></dt>
+                                <dt class="thumb"><img class="MS_prod_img_s" src="/hsoban/img/shop/Others2_00.jpg" alt="상품 썸네일" title="상품 썸네일" onclick="detail(600001)"></a></dt>
                                 <dd>
                                     <ul>
                                         <li class="prd-name"><span class="MK-product-icons"></span>소스팟</li>
@@ -326,7 +327,7 @@
                                 </dd>
                             </dl>
                             <dl class="item-list">
-                                <dt class="thumb"><a href="../shop/shop6_Others/Others3.jsp"><img class="MS_prod_img_s" src="/hsoban/img/shop/Others3_00.jpg" alt="상품 썸네일" title="상품 썸네일"></a></dt>
+                                <dt class="thumb"><img class="MS_prod_img_s" src="/hsoban/img/shop/Others3_00.jpg" alt="상품 썸네일" title="상품 썸네일" onclick="detail(600002)"></a></dt>
                                 <dd>
                                     <ul>
                                         <li class="prd-name"><span class="MK-product-icons"></span>술병</li>
@@ -335,7 +336,7 @@
                                 </dd>
                             </dl>
                             <dl class="item-list">
-                                <dt class="thumb"><a href="../shop/shop6_Others/Others4.jsp"><img class="MS_prod_img_s" src="/hsoban/img/shop/Others4_00.jpg" alt="상품 썸네일" title="상품 썸네일"></a></dt>
+                                <dt class="thumb"><img class="MS_prod_img_s" src="/hsoban/img/shop/Others4_00.jpg" alt="상품 썸네일" title="상품 썸네일" onclick="detail(600003)"></a></dt>
                                 <dd>
                                     <ul>
                                         <li class="prd-name"><span class="MK-product-icons"></span>드리퍼</li>
@@ -360,7 +361,7 @@
 					<div class="item-wrap">
 						<div class="item-cont">
 							<dl class="item-list">
-                                <dt class="thumb"><a href="../shop/shop7_Set/Set1.jsp"><img class="MS_prod_img_s" src="/hsoban/img/shop/Set1_00.jpg" alt="상품 썸네일" title="상품 썸네일"></a></dt>
+                                <dt class="thumb"><img class="MS_prod_img_s" src="/hsoban/img/shop/Set1_00.jpg" alt="상품 썸네일" title="상품 썸네일" onclick="detail(700000)"></a></dt>
                                 <dd>
                                     <ul>
                                         <li class="prd-name"><span class="MK-product-icons"></span>2인세트</li>
@@ -369,7 +370,7 @@
                                 </dd>
                             </dl>
                             <dl class="item-list">
-                                <dt class="thumb"><a href="../shop/shop7_Set/Set1.jsp"><img class="MS_prod_img_s" src="/hsoban/img/shop/Set2_00.jpg" alt="상품 썸네일" title="상품 썸네일"></a></dt>
+                                <dt class="thumb"><img class="MS_prod_img_s" src="/hsoban/img/shop/Set2_00.jpg" alt="상품 썸네일" title="상품 썸네일" onclick="detail(700001)"></a></dt>
                                 <dd>
                                     <ul>
                                         <li class="prd-name"><span class="MK-product-icons"></span>4인세트</li>
@@ -389,4 +390,9 @@
 <jsp:include page="../common/side.jsp"/>
 <jsp:include page="../common/footer.jsp"/>
 </body>
+<script>
+function detail(product_id){
+        location.href="../shop/shop_detailForm.jsp?product_id="+product_id;
+     }
+</script>     
 </html>
