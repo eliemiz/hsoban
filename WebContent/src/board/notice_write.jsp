@@ -60,6 +60,9 @@
    <br><br><br>
       <div class="content_wrap">
        <form method="post" id="noticeForm">
+       		<input id="bw_input_writer" type="hidden" name="account_id" class="MS_input_style" value="100000">
+       		<input id="bw_input_passwd" type="hidden" name="posting_date_s" class="MS_input_style" value="2021-02-25">
+       		<input id="bw_input_views" type="hidden" name="views" class="MS_input_style" value="0">
        <tr>
        <td height=20 align= center bgcolor=#ccc><font color=white> 글쓰기</font></td>
        </tr>
@@ -74,37 +77,11 @@
                <tbody>
                    <tr>
                        <th>
-                           <div>NAME</div>
-                       </th>
-                       <td>
-                         <div class="td_left">
-                            <input id="bw_input_writer" type="text" name="account_id" class="MS_input_txt input_style" placeholder="100000">
-                         </div>
-                       </td>
-                       <th>
-                           <div>작성일</div>
-                       </th>
-                       <td>
-                           <div class="td_left">
-                           <input id="bw_input_passwd" type="text" name="posting_date_s" class="MS_input_txt input_style" value="2021-02-25" disabled></div>
-                      <%--   <input id="bw_input_passwd" type="text" name="posting_date_s" class="MS_input_txt input_style" placeholder="YYYY-MM-DD"></div>   --%>     
-                       </td>
-                   </tr>
-                   <tr>
-                       <th>
                            <div>TITLE</div>
                        </th>
                        <td>
                            <div class="td_left">
                               <input id="bw_input_subject" class="MS_input_txt input_style2" type="text" name="title">
-                       </td>
-                        <th>
-                           <div>조회수</div>
-                       </th>
-                       <td>
-                           <div class="td_left">
-                              <input id="bw_input_views" type="text" name="views" class="MS_input_txt input_style" value="0" disabled></div>
-                             <input type="checkbox" name="tag" value="ok"> HTML태그 허용<br></div>
                        </td>
                    </tr>
                    <tr>
